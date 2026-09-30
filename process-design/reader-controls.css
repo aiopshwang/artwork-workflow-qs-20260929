@@ -13,3 +13,51 @@
   .top-actions { width: 100%; flex-wrap: wrap; justify-content: flex-start; }
   .subtitle { max-width: none; }
 }
+
+/* Visual semantics: all sequence flows remain solid; message flows stay dashed. */
+.reader-flow-sequence .djs-visual > path { stroke: #303a44 !important; stroke-width: 2px !important; }
+.reader-flow-message .djs-visual > path { stroke: #126881 !important; stroke-width: 2.7px !important; stroke-dasharray: 9 6 !important; }
+.reader-flow-message marker path, .reader-flow-message marker circle { stroke: #126881 !important; }
+.reader-flow-return .djs-visual > path { stroke: #ad5a13 !important; stroke-width: 2.7px !important; stroke-dasharray: none !important; }
+.reader-flow-return marker path { stroke: #ad5a13 !important; fill: #ad5a13 !important; }
+.reader-flow-related .djs-visual > path { stroke: #788594 !important; stroke-width: 1.6px !important; stroke-dasharray: 1 6 !important; }
+.reader-flow-label-message .djs-label { fill: #126881 !important; font-weight: 600 !important; }
+.reader-flow-label-return .djs-label { fill: #975114 !important; font-weight: 600 !important; }
+.reader-flow-legend { display: flex; align-items: center; gap: 12px 20px; flex-wrap: wrap; flex-shrink: 0; padding: 9px 20px; background: #fff; border-bottom: 1px solid #d9e4ed; color: #405e75; font-size: 11px; line-height: 1.5; }
+.flow-legend-item { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+.flow-legend-line { position: relative; display: inline-block; width: 27px; height: 0; border-top: 2px solid #303a44; }
+.flow-legend-line:not(.flow-legend-related)::after { content: ''; position: absolute; right: -1px; top: -5px; width: 6px; height: 6px; border-right: 2px solid #303a44; border-top: 2px solid #303a44; transform: rotate(45deg); }
+.flow-legend-message { border-top: 3px dashed #126881; }
+.flow-legend-message::after { border-color: #126881 !important; }
+.flow-legend-return { border-color: #ad5a13; }
+.flow-legend-return::after { border-color: #ad5a13 !important; }
+.flow-legend-return::before { content: '↩'; position: absolute; left: -2px; top: -12px; font-size: 16px; color: #ad5a13; background: white; padding-right: 2px; }
+.flow-legend-related { border-top: 2px dotted #788594; }
+.flow-legend-help { margin-left: auto; color: #71889b; font-size: 10px; }
+.flow-section { padding-top: 12px; border-top: 1px solid #e2eaf0; }
+.flow-section-message > h3 { color: #126881; }
+.flow-section-return > h3 { color: #975114; }
+.flow-section-related > h3 { color: #708091; }
+.flow-neighbor-message { border-left: 3px solid #1682bb; background: #f8fcff; }
+.flow-neighbor-return { border-left: 3px solid #ad5a13; background: #fffaf4; }
+.flow-neighbor-related { border-left: 3px solid #9ba7b4; }
+.flow-neighbor-message strong { color: #126881; }
+.flow-neighbor-return strong { color: #975114; }
+.flow-counterpart { display: block; color: #557185; margin-bottom: 5px; font-size: 11px; }
+.flow-task-name { display: block; }
+@media (max-width: 620px) {
+  .reader-flow-legend { padding: 7px 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 7px 12px; font-size: 10px; }
+  .flow-legend-help { display: none; }
+  .flow-legend-line { width: 24px; }
+  .flow-counterpart { font-size: 12px; }
+  .flow-neighbor { font-size: 13px; }
+}
+
+/* Selection takes priority over all flow colors, including separate SVG labels. */
+#map .reader-muted-element { opacity: .16 !important; filter: grayscale(1) !important; }
+#map .reader-related-element { opacity: 1 !important; filter: none !important; }
+#map .reader-related-element.djs-connection .djs-visual > path { stroke-width: 3px !important; }
+#map .reader-selected-element.djs-shape .djs-visual > rect,
+#map .reader-selected-element.djs-shape .djs-visual > circle,
+#map .reader-selected-element.djs-shape .djs-visual > polygon { stroke: #126da9 !important; stroke-width: 3px !important; fill: #edf7fd !important; }
+.flow-return-reason { display: block; margin-bottom: 5px; color: #975114; font-size: 11px; line-height: 1.6; }
