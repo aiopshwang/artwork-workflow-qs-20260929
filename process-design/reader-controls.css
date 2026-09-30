@@ -1,0 +1,15 @@
+.viewport, .viewport .map, .viewport [data-reader-node] {
+  cursor: grab;
+}
+.viewport {
+  user-select: none;
+  -webkit-user-select: none;
+}
+.viewport.is-dragging, .viewport.is-dragging * {
+  cursor: grabbing !important;
+}
+@media (max-width: 620px) {
+  .top { flex-wrap: wrap; }
+  .top-actions { width: 100%; flex-wrap: wrap; justify-content: flex-start; }
+  .subtitle { max-width: none; }
+}
