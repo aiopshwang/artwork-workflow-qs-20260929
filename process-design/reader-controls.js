@@ -56,7 +56,7 @@
 
   document.getElementById('edit-workflow').addEventListener('click', () => {
     const target = new URL('./editor/', location.href);
-    target.searchParams.set('v', new URLSearchParams(location.search).get('v') || 'flow-4');
+    target.searchParams.set('v', new URLSearchParams(location.search).get('v') || 'flow-5');
     const node = new URLSearchParams(location.hash.slice(1)).get('node');
     if (node) target.hash = new URLSearchParams({ node }).toString();
     location.assign(target.href);
@@ -70,6 +70,7 @@
   const svg = document.querySelector('#map > svg');
   const panel = document.getElementById('detail-content');
   if (!data || !svg || !panel) return;
+  const jumps = window.ArtworkLineJumps.install(svg);
   const model = JSON.parse(data.textContent);
   const approvedQuestions = new Map((model.questionsApproved || []).map(question => [question.id, question]));
   const nodes = new Map(model.pools.flatMap(pool => pool.nodes.map(node => [node.id, { ...node, pool: pool.name }])));
@@ -120,6 +121,7 @@
       group.classList.toggle('reader-selected-element', !!id && elementId === id);
       if (isEdge && group.hasAttribute('data-reader-edge')) group.setAttribute('tabindex', !id || active ? '0' : '-1');
     }
+    jumps.schedule();
   }
   function clearSelection() {
     if (window.artworkReader?.clear) { window.artworkReader.clear(); return; }
@@ -189,7 +191,7 @@
     item.title = description;
     legend.append(item);
   }
-  const help = make('span', '연결선을 누르면 이어진 업무로 이동합니다.', 'flow-legend-help');
+  const help = make('span', '연결선을 누르면 이어진 업무로 이동합니다. 교차점의 작은 끊김은 서로 연결되지 않았다는 뜻입니다.', 'flow-legend-help');
   legend.append(help);
   document.getElementById('hint').after(legend);
 
@@ -276,6 +278,13 @@
       });
     }
   }
+  document.getElementById('viewport').addEventListener('click', event => {
+    if(event.detail===0||event.target.closest('.djs-shape'))return;
+    const id=event.target.closest('[data-element-id]')?.dataset.elementId;
+    if(id?.endsWith('_label'))return;
+    const edgeId=jumps.pickEdge(event),edge=allEdges.find(e=>e.id===edgeId);
+    if(edge){event.preventDefault();event.stopImmediatePropagation();moveAlongEdge(edge);}
+  },true);
   const ns = 'http://www.w3.org/2000/svg';
   function svgNode(tag, attrs) { const element = document.createElementNS(ns, tag); for (const [key, value] of Object.entries(attrs)) element.setAttribute(key, String(value)); return element; }
   for (const node of nodes.values()) {

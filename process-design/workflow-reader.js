@@ -85,6 +85,7 @@
   function nodeCenter(id) { const g = elementFor(id); if (!g) return null; const b = g.getBBox(), m = g.transform.baseVal.consolidate()?.matrix; return { x: b.x + b.width / 2 + (m?.e || 0), y: b.y + b.height / 2 + (m?.f || 0) }; }
   function renderGraph() {
     const map = $('wf-map'), data = modeData(), source = assets[assetKey()]?.svg;
+    if(svg)window.ArtworkLineJumps.get(svg)?.dispose();
     map.replaceChildren(); svg = null; roleRows=[]; $('wf-role-labels').replaceChildren(); box = [0, 0, 100, 100]; zoom = 1;
     if (!data?.steps?.length || data.applicable === false) {
       map.style.width = '100%'; map.style.height = 'auto'; map.append(el('div', data?.summary || '이 Workflow는 솔루션 도입 후 새로 수행하는 업무입니다.', 'wf-empty-current'));
@@ -132,6 +133,7 @@
       group.setAttribute('aria-label','이어진 단계로 이동');
       group.addEventListener('click',e=>{e.stopPropagation();selectStep(aux.targetStepId);});group.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectStep(aux.targetStepId);}});
     }
+    window.ArtworkLineJumps.install(svg);
     setSize(); requestAnimationFrame(readSize);
     setStatus(modes[mode] + ' · 단계를 선택하면 입력 · 행동 · 산출물 · 규칙을 읽을 수 있습니다.');
   }
@@ -143,6 +145,7 @@
     for (const [auxId, aux] of Object.entries(meta.auxiliaryNodes || {})) { steps.add(auxId); if(active.has(aux.targetStepId))active.add(auxId); }
     for (const [auxId, aux] of Object.entries(meta.auxiliaryEdges || {})) { flows.add(auxId); if(active.has(aux.targetStepId))active.add(auxId); }
     for (const g of svg.querySelectorAll('[data-element-id]')) { const raw = g.dataset.elementId, base = raw.endsWith('_label') ? raw.slice(0, -6) : raw; if (!steps.has(base) && !flows.has(base)) continue; g.classList.toggle('wf-muted', !!id && !active.has(base)); g.classList.toggle('wf-related', !!id && active.has(base)); g.classList.toggle('wf-selected', base === id); }
+    window.ArtworkLineJumps.get(svg)?.schedule();
   }
   function selectStep(id, navigate = true) {
     const data = modeData(), s = data?.steps?.find(s => s.id === id); if (!s) return false;
@@ -185,25 +188,14 @@
   $('wf-search').oninput=()=>{const q=$('wf-search').value.trim().toLowerCase(),body=$('wf-results');body.replaceChildren();body.hidden=!q;if(!q)return;const found=(modeData()?.steps||[]).filter(s=>[s.name,s.actor,s.input,s.action,s.output,...(s.rules||[])].join(' ').toLowerCase().includes(q));body.append(el('p',found.length+'개 단계'));for(const s of found){const b=el('button',s.name);b.append(el('small',s.actor||''));b.onclick=()=>selectStep(s.id);body.append(b);}};
   $('wf-search').onkeydown=e=>{if(e.key==='Enter')$('wf-results').querySelector('button')?.click();if(e.key==='Escape')$('wf-results').hidden=true;};
   $('wf-download').onclick=()=>{const xml=xmlAsset();if(!xml)return;const url=URL.createObjectURL(new Blob([xml],{type:'application/xml;charset=utf-8'})),a=el('a');a.href=url;a.download=assetKey()+'.bpmn';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);setStatus('현재 선택한 '+modes[mode]+' BPMN을 내려받습니다.');};
-  $('wf-edit').onclick=()=>{const target=new URL('./editor/',location.href);target.searchParams.set('v','flow-4');target.searchParams.set('xml','../workflows/'+assetKey()+'.bpmn');target.searchParams.set('return',location.hash.slice(1));if(stepId)target.hash=new URLSearchParams({node:stepId});saveReturn();location.assign(target.href);};
+  $('wf-edit').onclick=()=>{const target=new URL('./editor/',location.href);target.searchParams.set('v','flow-5');target.searchParams.set('xml','../workflows/'+assetKey()+'.bpmn');target.searchParams.set('return',location.hash.slice(1));if(stepId)target.hash=new URLSearchParams({node:stepId});saveReturn();location.assign(target.href);};
   let drag=null,suppress=0;const viewport=$('wf-viewport');viewport.addEventListener('scroll',updateRoles,{passive:true});window.addEventListener('resize',updateRoles);new ResizeObserver(updateRoles).observe(viewport);
   viewport.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;suppress=0;drag={id:e.pointerId,x:e.clientX,y:e.clientY,left:viewport.scrollLeft,top:viewport.scrollTop,moved:false};});
   window.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;if(!(e.buttons&1)){finish(e);return;}const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(!drag.moved&&Math.hypot(dx,dy)<5)return;if(!drag.moved){drag.moved=true;viewport.setPointerCapture(e.pointerId);viewport.classList.add('is-dragging');}e.preventDefault();viewport.scrollLeft=drag.left-dx;viewport.scrollTop=drag.top-dy;});
   function finish(e){if(!drag||e.pointerId!==drag.id)return;if(drag.moved)suppress=performance.now()+250;const id=drag.id;drag=null;viewport.classList.remove('is-dragging');if(viewport.hasPointerCapture(id))viewport.releasePointerCapture(id);}
   window.addEventListener('pointerup',finish);viewport.addEventListener('pointercancel',finish);viewport.addEventListener('lostpointercapture',finish);
   viewport.addEventListener('click',e=>{if(performance.now()<suppress){e.preventDefault();e.stopImmediatePropagation();}},true);
-  function closestEdge(event) {
-    let best=null,bestDistance=13;
-    for(const group of svg?.querySelectorAll('.djs-connection[data-element-id]')||[]){
-      const path=group.querySelector('.djs-visual>path');if(!path)continue;
-      const bounds=path.getBoundingClientRect();if(event.clientX<bounds.left-13||event.clientX>bounds.right+13||event.clientY<bounds.top-13||event.clientY>bounds.bottom+13)continue;
-      const matrix=path.getScreenCTM(),length=path.getTotalLength();let previous=null;
-      for(let d=0;d<=length+8;d+=8){const point=path.getPointAtLength(Math.min(d,length)),p={x:point.x*matrix.a+point.y*matrix.c+matrix.e,y:point.x*matrix.b+point.y*matrix.d+matrix.f};
-        if(previous){const dx=p.x-previous.x,dy=p.y-previous.y,t=Math.max(0,Math.min(1,((event.clientX-previous.x)*dx+(event.clientY-previous.y)*dy)/(dx*dx+dy*dy||1))),distance=Math.hypot(event.clientX-(previous.x+t*dx),event.clientY-(previous.y+t*dy));if(distance<bestDistance){bestDistance=distance;best=group.dataset.elementId;}}
-        previous=p;
-      }
-    }return best;
-  }
+  function closestEdge(event) { return window.ArtworkLineJumps.get(svg)?.pickEdge(event) || null; }
   viewport.addEventListener('click',event=>{
     if(event.detail===0||!svg||event.target.closest('[data-wf-step]')||event.target.closest('[data-wf-aux].djs-shape'))return;
     const label=event.target.closest('[data-element-id]')?.dataset.elementId;if(label?.endsWith('_label'))return;
