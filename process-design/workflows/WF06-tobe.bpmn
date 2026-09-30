@@ -3,8 +3,8 @@
   <bpmn:collaboration id="WF06_T_Collaboration" name="이전 주석 반영과 새 오류 재검토 · 도입 후 업무">
     <bpmn:documentation>차수·판·주석을 연결하고 규칙 대조 후 QS가 반영 여부와 추가 지적을 확정한다.
 입력 자료: QS가 검토를 시작한 반영본
-전달 자료: 반영 이력과 다음 업무 기준판</bpmn:documentation>
-    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 검토를 시작한 반영본","outputs":"반영 이력과 다음 업무 기준판","perspective":"tobe","sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06"}</bpmn:documentation>
+전달 자료: 이전 지적별 반영 이력과 수정 요청 또는 다음 검토에 사용할 Artwork의 판·QS 확인 기록</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 검토를 시작한 반영본","outputs":"이전 지적별 반영 이력과 수정 요청 또는 다음 검토에 사용할 Artwork의 판·QS 확인 기록","perspective":"tobe","sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
     <bpmn:participant id="Participant_WF06_T_Process" name="이전 주석 반영과 새 오류 재검토 · 도입 후 업무" processRef="WF06_T_Process" />
   </bpmn:collaboration>
   <bpmn:process id="WF06_T_Process" isExecutable="false">
@@ -22,15 +22,21 @@
         <bpmn:flowNodeRef>WF06_T08_RESULT</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_WF06_T_Process_R1" name="시스템">
+        <bpmn:flowNodeRef>WF06_T01_SYS_RESPONSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF06_T02_SYS_RESPONSE</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>WF06_T03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF06_T04_SYS_RESPONSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF06_T06_SYS_RESPONSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF06_T08_SYS_RESPONSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF06_T07_SYS_RESPONSE</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="WF06_T00" name="수정 요청의 반환본을 QS가 검토한다">
       <bpmn:documentation>해당 업무를 시작할 자료·요청을 받는다.
 입력 자료: QS가 검토를 시작한 반영본
 전달 자료: QS가 검토를 시작한 반영본</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 검토를 시작한 반영본","outputs":"QS가 검토를 시작한 반영본","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T00","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 검토를 시작한 반영본","outputs":"QS가 검토를 시작한 반영본","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T00","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:outgoing>WF06_T00_START_FLOW</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:exclusiveGateway id="J_WF06_T01" name="경로 합류" gatewayDirection="Converging">
@@ -46,45 +52,72 @@
     <bpmn:userTask id="WF06_T01" name="수령본을 확인하고 새 검토 차수를 연다">
       <bpmn:documentation>같은 미완료 검토의 다음 차수로 시작한다. 완료된 개정은 새 개정으로 연결한다.
 입력 자료: 새 Artwork와 수정 요청 이력
-전달 자료: 반영 검토 차수</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새 Artwork와 수정 요청 이력","outputs":"반영 검토 차수","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-02","B-02"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T01","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: QS 담당자가 반영본 검토를 위해 시작한 해당 자재의 새 검토 차수</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새 Artwork와 수정 요청 이력","outputs":"QS 담당자가 반영본 검토를 위해 시작한 해당 자재의 새 검토 차수","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-02","B-02"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T01","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_T_JOIN_WF06_T01</bpmn:incoming>
-      <bpmn:outgoing>WF06_TF01</bpmn:outgoing>
+      <bpmn:outgoing>WF06_T01_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:serviceTask id="WF06_T01_SYS_RESPONSE" name="반영본과 새 검토 차수를 연결해 이전 기록을 보여준다">
+      <bpmn:documentation>QS가 시작한 해당 자재의 검토 차수에 수령본을 연결하고 직전 검토와 주석을 함께 보여준다.
+입력 자료: QS 담당자가 반영본 검토를 위해 시작한 해당 자재의 새 검토 차수
+전달 자료: QS 담당자가 반영본 검토를 위해 시작한 해당 자재의 새 검토 차수</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS 담당자가 반영본 검토를 위해 시작한 해당 자재의 새 검토 차수","outputs":"QS 담당자가 반영본 검토를 위해 시작한 해당 자재의 새 검토 차수","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-02","B-02"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T01_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF06_T01"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF06_T01_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF06_TF01</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:userTask id="WF06_T02" name="직전 차수·주석·기준자료를 연결한다">
       <bpmn:documentation>비교할 판과 주석을 고정하고 기준자료 변경 여부를 확인한다.
 입력 자료: 이전 차수와 이번 파일
-전달 자료: 차수별 비교 기준</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 차수와 이번 파일","outputs":"차수별 비교 기준","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-02","K-검토-03"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T02","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: 현재 검토 차수에 연결한 직전 Artwork·주석본과 적용 문안·허가증 등 비교 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 차수와 이번 파일","outputs":"현재 검토 차수에 연결한 직전 Artwork·주석본과 적용 문안·허가증 등 비교 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-02","K-검토-03"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T02","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_TF01</bpmn:incoming>
-      <bpmn:outgoing>WF06_TF02</bpmn:outgoing>
+      <bpmn:outgoing>WF06_T02_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="WF06_T03" name="주석 반영과 도안 변경을 대조한다">
+    <bpmn:serviceTask id="WF06_T02_SYS_RESPONSE" name="비교할 직전 Artwork·주석과 자료의 판을 고정한다">
+      <bpmn:documentation>담당자가 확인한 비교 자료를 이번 대조 실행에 연결한다.
+입력 자료: 현재 검토 차수에 연결한 직전 Artwork·주석본과 적용 문안·허가증 등 비교 자료
+전달 자료: 현재 검토 차수에 연결한 직전 Artwork·주석본과 적용 문안·허가증 등 비교 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"현재 검토 차수에 연결한 직전 Artwork·주석본과 적용 문안·허가증 등 비교 자료","outputs":"현재 검토 차수에 연결한 직전 Artwork·주석본과 적용 문안·허가증 등 비교 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-02","K-검토-03"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T02_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF06_T02"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF06_T02_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF06_TF02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="WF06_T03" name="주석 반영과 도안 변경을 대조한다">
       <bpmn:documentation>이전 요청 반영·요청 밖 변경·구버전 작업 가능성을 표시한다. 적용 점검을 다시 실행해 새 오류도 찾는다.
 입력 자료: 확인한 판독값·두 판·이전 주석
-전달 자료: 반영 상태·변경 위치·새 검출</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인한 판독값·두 판·이전 주석","outputs":"반영 상태·변경 위치·새 검출","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-11","K-대조-12","K-대조-15","K-대조-06"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T03","actorDetail":"시스템"}</bpmn:documentation>
+전달 자료: 이전 주석별 반영 대조 결과, 도안의 변경 위치와 새로 검출한 차이</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인한 판독값·두 판·이전 주석","outputs":"이전 주석별 반영 대조 결과, 도안의 변경 위치와 새로 검출한 차이","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-11","K-대조-12","K-대조-15","K-대조-06"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T03","actorDetail":"Artwork 시스템","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_TF02</bpmn:incoming>
       <bpmn:outgoing>WF06_TF03</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:serviceTask>
     <bpmn:userTask id="WF06_T04" name="각 지적의 반영 상태와 새 검출을 확인한다">
       <bpmn:documentation>규칙 결과와 원문을 보고 반영·미반영·부분반영을 확인한다. AI 의견은 제안으로 참고한다.
 입력 자료: 규칙 결과와 두 판
-전달 자료: QS가 확인한 반영 상태</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"규칙 결과와 두 판","outputs":"QS가 확인한 반영 상태","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-04","K-검토-06","K-에이전트-06"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T04","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: QS 담당자가 원문을 보고 확인한 이전 지적의 반영 상태와 새 오류</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"규칙 결과와 두 판","outputs":"QS 담당자가 원문을 보고 확인한 이전 지적의 반영 상태와 새 오류","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-04","K-검토-06","K-에이전트-06"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T04","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_TF03</bpmn:incoming>
-      <bpmn:outgoing>WF06_TF04</bpmn:outgoing>
+      <bpmn:outgoing>WF06_T04_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:serviceTask id="WF06_T04_SYS_RESPONSE" name="QS가 확인한 지적별 반영 상태와 새 오류를 기록한다">
+      <bpmn:documentation>규칙 대조 결과와 별도로 담당자가 확인한 반영·미반영·부분반영 및 새 오류를 저장한다.
+입력 자료: QS 담당자가 원문을 보고 확인한 이전 지적의 반영 상태와 새 오류
+전달 자료: QS 담당자가 원문을 보고 확인한 이전 지적의 반영 상태와 새 오류</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS 담당자가 원문을 보고 확인한 이전 지적의 반영 상태와 새 오류","outputs":"QS 담당자가 원문을 보고 확인한 이전 지적의 반영 상태와 새 오류","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-04","K-검토-06","K-에이전트-06"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T04_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF06_T04"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF06_T04_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF06_TF04</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="WF06_T05" name="다시 전달할 수정이 있는가?" gatewayDirection="Diverging" default="WF06_TF08">
       <bpmn:documentation>미반영 지적이나 새 수정이 있으면 다음 주석으로 넘긴다.
 입력 자료: 반영 상태와 새 오류
 전달 자료: 수정 전달 여부</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"반영 상태와 새 오류","outputs":"수정 전달 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-05"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T05","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"반영 상태와 새 오류","outputs":"수정 전달 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-05"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T05","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_TF04</bpmn:incoming>
       <bpmn:outgoing>WF06_TF05</bpmn:outgoing>
       <bpmn:outgoing>WF06_TF08</bpmn:outgoing>
@@ -92,67 +125,112 @@
     <bpmn:userTask id="WF06_T06" name="미반영 지적을 새 도안에 이어 붙인다">
       <bpmn:documentation>반영된 지적은 전달 목록에서 제외하고 미반영 지적은 연결 이력을 유지한다. 지시를 바꾸면 이전 지시의 대체 관계를 남긴다.
 입력 자료: 남은 요청·새 지적과 위치
-전달 자료: 새 도안의 주석과 이어진 지적</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"남은 요청·새 지적과 위치","outputs":"새 도안의 주석과 이어진 지적","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-01","K-주석-03","K-검토-05"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T06","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: 새 Artwork의 해당 위치에 이어 붙인 미반영 지적과 이전 주석의 연결 이력</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"남은 요청·새 지적과 위치","outputs":"새 Artwork의 해당 위치에 이어 붙인 미반영 지적과 이전 주석의 연결 이력","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-01","K-주석-03","K-검토-05"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T06","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_TF05</bpmn:incoming>
-      <bpmn:outgoing>WF06_TF06</bpmn:outgoing>
+      <bpmn:outgoing>WF06_T06_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF06_T08" name="후속 검토에 사용할 판을 남긴다">
       <bpmn:documentation>어느 차수의 파일로 후속 검토하는지 연결한다. 파일 수령이나 지적 해소만으로 최종 승인을 만들지 않는다.
 입력 자료: 이번 차수의 결과
-전달 자료: 후속 검토 기준판</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 차수의 결과","outputs":"후속 검토 기준판","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-03","K-검토-12"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T08","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: 생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 차수의 결과","outputs":"생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-03","K-검토-12"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T08","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_TF08</bpmn:incoming>
-      <bpmn:outgoing>WF06_T08_END_FLOW</bpmn:outgoing>
+      <bpmn:outgoing>WF06_T08_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:serviceTask id="WF06_T06_SYS_RESPONSE" name="새 주석과 이전 지적의 연결 이력을 저장한다">
+      <bpmn:documentation>미반영 지적을 현재 도안의 위치에 연결하고 반영된 지적은 재전달 목록에 넣지 않는다.
+입력 자료: 새 Artwork의 해당 위치에 이어 붙인 미반영 지적과 이전 주석의 연결 이력
+전달 자료: 새 Artwork의 해당 위치에 이어 붙인 미반영 지적과 이전 주석의 연결 이력</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새 Artwork의 해당 위치에 이어 붙인 미반영 지적과 이전 주석의 연결 이력","outputs":"새 Artwork의 해당 위치에 이어 붙인 미반영 지적과 이전 주석의 연결 이력","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-01","K-주석-03","K-검토-05"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T06_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF06_T06"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF06_T06_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF06_TF06</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="WF06_T08_SYS_RESPONSE" name="다음 검토에 사용할 도안의 판과 QS 결과를 보존한다">
+      <bpmn:documentation>담당자가 지정한 도안의 판과 주석 반영 확인 기록을 보존한다. 자동으로 최종 승인하지 않는다.
+입력 자료: 생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록
+전달 자료: 생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록","outputs":"생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-03","K-검토-12"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T08_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF06_T08"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF06_T08_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF06_T08_END_FLOW</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:userTask id="WF06_T07" name="차수를 마감하고 새 수정 요청을 전달한다">
       <bpmn:documentation>디자인팀 받은 일로 넘기고 새 파일이 오면 QS가 다음 검토를 시작한다.
 입력 자료: 확인한 주석·반영 요약
-전달 자료: 수정 요청과 반환 대기</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인한 주석·반영 요약","outputs":"수정 요청과 반환 대기","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["C-05","C-06","C-09","K-검토-05"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T07","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: 마감한 검토 차수, 디자인팀에 전달한 수정 요청·주석본과 수정본 수령 대기 상태</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인한 주석·반영 요약","outputs":"마감한 검토 차수, 디자인팀에 전달한 수정 요청·주석본과 수정본 수령 대기 상태","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["C-05","C-06","C-09","K-검토-05"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T07","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_TF06</bpmn:incoming>
-      <bpmn:outgoing>WF06_TF07</bpmn:outgoing>
+      <bpmn:outgoing>WF06_T07_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="WF06_T08_RESULT" name="후속 검토 기준판">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 후속 검토 기준판
-전달 자료: 후속 검토 기준판</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"후속 검토 기준판","outputs":"후속 검토 기준판","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T08_RESULT","actorDetail":"QS 담당자"}</bpmn:documentation>
+    <bpmn:endEvent id="WF06_T08_RESULT" name="검토할 도안의 판과 주석 반영 기록 보존">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록
+입력 자료: 생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록
+전달 자료: 생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록","outputs":"생산·관련 부서 검토에 사용할 Artwork의 판과 QS가 확인한 주석 반영·새 오류 검토 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T08_RESULT","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_T08_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:serviceTask id="WF06_T07_SYS_RESPONSE" name="디자인팀의 받은 일에 새 수정 요청과 주석본을 전달한다">
+      <bpmn:documentation>마감한 차수의 기록을 보존하고 담당자가 확정한 새 수정 요청을 디자인팀이 확인·내려받을 수 있게 한다.
+입력 자료: 마감한 검토 차수, 디자인팀에 전달한 수정 요청·주석본과 수정본 수령 대기 상태
+전달 자료: 마감한 검토 차수, 디자인팀에 전달한 수정 요청·주석본과 수정본 수령 대기 상태</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"마감한 검토 차수, 디자인팀에 전달한 수정 요청·주석본과 수정본 수령 대기 상태","outputs":"마감한 검토 차수, 디자인팀에 전달한 수정 요청·주석본과 수정본 수령 대기 상태","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["C-05","C-06","C-09","K-검토-05"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_T07_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF06_T07"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF06_T07_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF06_TF07</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:sequenceFlow id="WF06_T00_START_FLOW" sourceRef="WF06_T00" targetRef="J_WF06_T01">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T00","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF06_TF01" sourceRef="WF06_T01" targetRef="WF06_T02">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T01","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF06_TF01" sourceRef="WF06_T01_SYS_RESPONSE" targetRef="WF06_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T01_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF06_TF02" sourceRef="WF06_T02" targetRef="WF06_T03">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T02","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF06_TF02" sourceRef="WF06_T02_SYS_RESPONSE" targetRef="WF06_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T02_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF06_TF03" sourceRef="WF06_T03" targetRef="WF06_T04">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T03","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF06_TF04" sourceRef="WF06_T04" targetRef="WF06_T05">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T04","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF06_TF04" sourceRef="WF06_T04_SYS_RESPONSE" targetRef="WF06_T05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T04_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF06_TF05" name="수정 필요" sourceRef="WF06_T05" targetRef="WF06_T06">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T05","kind":"normal"}</bpmn:documentation>
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">수정 필요</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF06_TF06" sourceRef="WF06_T06" targetRef="WF06_T07">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T06","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF06_TF06" sourceRef="WF06_T06_SYS_RESPONSE" targetRef="WF06_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T06_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF06_TF07" name="반환본 수령 후 QS 검토 시작" sourceRef="WF06_T07" targetRef="J_WF06_T01">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T07","kind":"return"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF06_TF07" name="반환본 수령 후 QS 검토 시작" sourceRef="WF06_T07_SYS_RESPONSE" targetRef="J_WF06_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T07_SYS_RESPONSE","kind":"return"}</bpmn:documentation>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF06_TF08" name="수정 불필요" sourceRef="WF06_T05" targetRef="WF06_T08">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T05","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF06_T08_END_FLOW" sourceRef="WF06_T08" targetRef="WF06_T08_RESULT">
+    <bpmn:sequenceFlow id="WF06_T08_END_FLOW" sourceRef="WF06_T08_SYS_RESPONSE" targetRef="WF06_T08_RESULT">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T08_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF06_T01_SYS_RESPONSE_FLOW" sourceRef="WF06_T01" targetRef="WF06_T01_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF06_T02_SYS_RESPONSE_FLOW" sourceRef="WF06_T02" targetRef="WF06_T02_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF06_T04_SYS_RESPONSE_FLOW" sourceRef="WF06_T04" targetRef="WF06_T04_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF06_T06_SYS_RESPONSE_FLOW" sourceRef="WF06_T06" targetRef="WF06_T06_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T06","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF06_T07_SYS_RESPONSE_FLOW" sourceRef="WF06_T07" targetRef="WF06_T07_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T07","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF06_T08_SYS_RESPONSE_FLOW" sourceRef="WF06_T08" targetRef="WF06_T08_SYS_RESPONSE">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF06_T08","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF06_T_JOIN_WF06_T01" sourceRef="J_WF06_T01" targetRef="WF06_T01">
@@ -163,13 +241,13 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WF06_T_Collaboration">
       <bpmndi:BPMNShape id="Participant_WF06_T_Process_di" bpmnElement="Participant_WF06_T_Process" isHorizontal="true">
-        <dc:Bounds x="40" y="40" width="2820" height="620" />
+        <dc:Bounds x="40" y="40" width="4320" height="780" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_WF06_T_Process_R1_di" bpmnElement="Lane_WF06_T_Process_R1" isHorizontal="true">
-        <dc:Bounds x="70" y="430" width="2790" height="230" />
+        <dc:Bounds x="70" y="430" width="4290" height="390" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_WF06_T_Process_R0_di" bpmnElement="Lane_WF06_T_Process_R0" isHorizontal="true">
-        <dc:Bounds x="70" y="40" width="2790" height="390" />
+        <dc:Bounds x="70" y="40" width="4290" height="390" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T00_di" bpmnElement="WF06_T00">
         <dc:Bounds x="225" y="105" width="40" height="40" />
@@ -180,104 +258,164 @@
       <bpmndi:BPMNShape id="J_WF06_T01_di" bpmnElement="J_WF06_T01" isMarkerVisible="true">
         <dc:Bounds x="518" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="465" y="57" width="160" height="33" />
+          <dc:Bounds x="510" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T01_di" bpmnElement="WF06_T01">
         <dc:Bounds x="740" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF06_T01_SYS_RESPONSE_di" bpmnElement="WF06_T01_SYS_RESPONSE">
+        <dc:Bounds x="1040" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T02_di" bpmnElement="WF06_T02">
-        <dc:Bounds x="1040" y="75" width="210" height="100" />
+        <dc:Bounds x="1340" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF06_T02_SYS_RESPONSE_di" bpmnElement="WF06_T02_SYS_RESPONSE">
+        <dc:Bounds x="1640" y="465" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T03_di" bpmnElement="WF06_T03">
-        <dc:Bounds x="1340" y="465" width="210" height="100" />
+        <dc:Bounds x="1940" y="465" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T04_di" bpmnElement="WF06_T04">
-        <dc:Bounds x="1640" y="75" width="210" height="100" />
+        <dc:Bounds x="2240" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF06_T04_SYS_RESPONSE_di" bpmnElement="WF06_T04_SYS_RESPONSE">
+        <dc:Bounds x="2540" y="465" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T05_di" bpmnElement="WF06_T05" isMarkerVisible="true">
-        <dc:Bounds x="2018" y="98" width="54" height="54" />
+        <dc:Bounds x="2918" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1935" y="160" width="220" height="33" />
+          <dc:Bounds x="2853.25" y="160" width="183.5" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T06_di" bpmnElement="WF06_T06">
-        <dc:Bounds x="2240" y="75" width="210" height="100" />
+        <dc:Bounds x="3140" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T08_di" bpmnElement="WF06_T08">
-        <dc:Bounds x="2240" y="235" width="210" height="100" />
+        <dc:Bounds x="3140" y="235" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF06_T06_SYS_RESPONSE_di" bpmnElement="WF06_T06_SYS_RESPONSE">
+        <dc:Bounds x="3440" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF06_T08_SYS_RESPONSE_di" bpmnElement="WF06_T08_SYS_RESPONSE">
+        <dc:Bounds x="3440" y="625" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T07_di" bpmnElement="WF06_T07">
-        <dc:Bounds x="2540" y="75" width="210" height="100" />
+        <dc:Bounds x="3740" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_T08_RESULT_di" bpmnElement="WF06_T08_RESULT">
-        <dc:Bounds x="2625" y="265" width="40" height="40" />
+        <dc:Bounds x="3825" y="265" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2565" y="313" width="160" height="33" />
+          <dc:Bounds x="3735" y="313" width="220" height="33" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF06_T07_SYS_RESPONSE_di" bpmnElement="WF06_T07_SYS_RESPONSE">
+        <dc:Bounds x="4040" y="465" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="WF06_T00_START_FLOW_di" bpmnElement="WF06_T00_START_FLOW">
         <di:waypoint x="265" y="125" />
-        <di:waypoint x="277" y="125" />
-        <di:waypoint x="277" y="118.25" />
+        <di:waypoint x="506" y="125" />
+        <di:waypoint x="506" y="118.25" />
         <di:waypoint x="524.75" y="118.25" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_TF01_di" bpmnElement="WF06_TF01">
-        <di:waypoint x="950" y="125" />
-        <di:waypoint x="1040" y="125" />
+        <di:waypoint x="1250" y="515" />
+        <di:waypoint x="1262" y="515" />
+        <di:waypoint x="1262" y="125" />
+        <di:waypoint x="1340" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_TF02_di" bpmnElement="WF06_TF02">
-        <di:waypoint x="1250" y="125" />
-        <di:waypoint x="1328" y="125" />
-        <di:waypoint x="1328" y="515" />
-        <di:waypoint x="1340" y="515" />
+        <di:waypoint x="1850" y="515" />
+        <di:waypoint x="1940" y="515" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_TF03_di" bpmnElement="WF06_TF03">
-        <di:waypoint x="1550" y="515" />
-        <di:waypoint x="1562" y="515" />
-        <di:waypoint x="1562" y="125" />
-        <di:waypoint x="1640" y="125" />
+        <di:waypoint x="2150" y="515" />
+        <di:waypoint x="2162" y="515" />
+        <di:waypoint x="2162" y="125" />
+        <di:waypoint x="2240" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_TF04_di" bpmnElement="WF06_TF04">
-        <di:waypoint x="1850" y="125" />
-        <di:waypoint x="2018" y="125" />
+        <di:waypoint x="2750" y="515" />
+        <di:waypoint x="2762" y="515" />
+        <di:waypoint x="2762" y="125" />
+        <di:waypoint x="2918" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_TF05_di" bpmnElement="WF06_TF05">
-        <di:waypoint x="2065.25" y="118.25" />
-        <di:waypoint x="2084" y="118.25" />
-        <di:waypoint x="2084" y="125" />
-        <di:waypoint x="2240" y="125" />
+        <di:waypoint x="2965.25" y="118.25" />
+        <di:waypoint x="3128" y="118.25" />
+        <di:waypoint x="3128" y="125" />
+        <di:waypoint x="3140" y="125" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2175" y="98" width="53" height="17" />
+          <dc:Bounds x="3061" y="91" width="53" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_TF06_di" bpmnElement="WF06_TF06">
-        <di:waypoint x="2450" y="125" />
-        <di:waypoint x="2540" y="125" />
+        <di:waypoint x="3650" y="515" />
+        <di:waypoint x="3662" y="515" />
+        <di:waypoint x="3662" y="125" />
+        <di:waypoint x="3740" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_TF07_di" bpmnElement="WF06_TF07" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
-        <di:waypoint x="2750" y="125" />
-        <di:waypoint x="2762" y="125" />
-        <di:waypoint x="2762" y="53" />
-        <di:waypoint x="460" y="53" />
-        <di:waypoint x="460" y="131.75" />
+        <di:waypoint x="4250" y="515" />
+        <di:waypoint x="4262" y="515" />
+        <di:waypoint x="4262" y="53" />
+        <di:waypoint x="498" y="53" />
+        <di:waypoint x="498" y="131.75" />
         <di:waypoint x="524.75" y="131.75" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2591" y="52" width="161" height="17" />
+          <dc:Bounds x="4091" y="276" width="161" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_TF08_di" bpmnElement="WF06_TF08">
-        <di:waypoint x="2065.25" y="131.75" />
-        <di:waypoint x="2228" y="131.75" />
-        <di:waypoint x="2228" y="285" />
-        <di:waypoint x="2240" y="285" />
+        <di:waypoint x="2965.25" y="131.75" />
+        <di:waypoint x="3128" y="131.75" />
+        <di:waypoint x="3128" y="285" />
+        <di:waypoint x="3140" y="285" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2155" y="262" width="65" height="17" />
+          <dc:Bounds x="3055" y="262" width="65" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_T08_END_FLOW_di" bpmnElement="WF06_T08_END_FLOW">
-        <di:waypoint x="2450" y="285" />
-        <di:waypoint x="2625" y="285" />
+        <di:waypoint x="3650" y="675" />
+        <di:waypoint x="3728" y="675" />
+        <di:waypoint x="3728" y="285" />
+        <di:waypoint x="3825" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF06_T01_SYS_RESPONSE_FLOW_di" bpmnElement="WF06_T01_SYS_RESPONSE_FLOW">
+        <di:waypoint x="950" y="125" />
+        <di:waypoint x="1028" y="125" />
+        <di:waypoint x="1028" y="515" />
+        <di:waypoint x="1040" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF06_T02_SYS_RESPONSE_FLOW_di" bpmnElement="WF06_T02_SYS_RESPONSE_FLOW">
+        <di:waypoint x="1550" y="125" />
+        <di:waypoint x="1628" y="125" />
+        <di:waypoint x="1628" y="515" />
+        <di:waypoint x="1640" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF06_T04_SYS_RESPONSE_FLOW_di" bpmnElement="WF06_T04_SYS_RESPONSE_FLOW">
+        <di:waypoint x="2450" y="125" />
+        <di:waypoint x="2528" y="125" />
+        <di:waypoint x="2528" y="515" />
+        <di:waypoint x="2540" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF06_T06_SYS_RESPONSE_FLOW_di" bpmnElement="WF06_T06_SYS_RESPONSE_FLOW">
+        <di:waypoint x="3350" y="125" />
+        <di:waypoint x="3428" y="125" />
+        <di:waypoint x="3428" y="515" />
+        <di:waypoint x="3440" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF06_T07_SYS_RESPONSE_FLOW_di" bpmnElement="WF06_T07_SYS_RESPONSE_FLOW">
+        <di:waypoint x="3950" y="125" />
+        <di:waypoint x="3962" y="125" />
+        <di:waypoint x="3962" y="515" />
+        <di:waypoint x="4040" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF06_T08_SYS_RESPONSE_FLOW_di" bpmnElement="WF06_T08_SYS_RESPONSE_FLOW">
+        <di:waypoint x="3350" y="285" />
+        <di:waypoint x="3362" y="285" />
+        <di:waypoint x="3362" y="675" />
+        <di:waypoint x="3440" y="675" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_T_JOIN_WF06_T01_di" bpmnElement="WF06_T_JOIN_WF06_T01">
         <di:waypoint x="572" y="125" />

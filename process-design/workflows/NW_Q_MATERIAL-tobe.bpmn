@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_MATERIAL_T_Collaboration" name="사용할 자재와 기존 승인 Artwork·규격을 확인한다 · 도입 후 업무">
+    <bpmn:documentation>해당 업무에서 사용할 시스템 지원과 담당자의 확인
+입력 자료: 대상 자재, 기존 등록 정보와 승인 Artwork·규격
+전달 자료: 사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","perspective":"tobe","sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","sourceSteps":["WF02_A01","WF02_A02","WF02_A03","WF02_T01","WF02_T02"],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_MATERIAL_T_Process" name="사용할 자재와 기존 승인 Artwork·규격을 확인한다 · 도입 후 업무" processRef="NW_Q_MATERIAL_T_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_MATERIAL_T_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_MATERIAL_T_Process">
+      <bpmn:lane id="Lane_NW_Q_MATERIAL_T_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_NW_Q_MATERIAL_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T07</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_NW_Q_MATERIAL_T_Process_R1" name="시스템">
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_MATERIAL_T06</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_MATERIAL_T00" name="대상 자재와 받은 자료를 확인한다">
+      <bpmn:documentation>해당 자재의 이 업무를 시작할 자료를 받는다.
+입력 자료: 대상 자재, 기존 등록 정보와 승인 Artwork·규격
+전달 자료: 대상 자재, 기존 등록 정보와 승인 Artwork·규격</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T00","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="J_NW_Q_MATERIAL_T01" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 대상 품목·자재와 규격
+전달 자료: 대상 품목·자재와 규격</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 품목·자재와 규격","outputs":"대상 품목·자재와 규격","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"tobe","workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T01"}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_TF01</bpmn:incoming>
+      <bpmn:incoming>NW_Q_MATERIAL_TF05</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_MATERIAL_T_JOIN_NW_Q_MATERIAL_T01</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="NW_Q_MATERIAL_T01" name="자재코드·이름 또는 필요한 규격을 입력해 찾는다">
+      <bpmn:documentation>QS가 조회할 자재코드·이름·규격을 입력한다. 개정은 변경 대상 자재부터 찾는다.
+입력 자료: 대상 품목·자재와 규격
+전달 자료: 조회 조건</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 품목·자재와 규격","outputs":"조회 조건","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-09","K-접수-13"],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T01","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_T_JOIN_NW_Q_MATERIAL_T01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_MATERIAL_T02" name="조건에 맞는 기존 자재와 규격을 보여준다">
+      <bpmn:documentation>시스템은 등록된 자재와 규격을 조회한다. 같은 규격과 비슷한 규격을 구분하여 보여준다.
+입력 자료: QS가 정한 조회 조건
+전달 자료: 자재별 규격·기존 승인본 조회 결과
+업무 규칙: 비슷한 규격의 허용차는 QS팀 확정 전 잠정 기준이다.</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 정한 조회 조건","outputs":"자재별 규격·기존 승인본 조회 결과","businessRules":["비슷한 규격의 허용차는 QS팀 확정 전 잠정 기준이다."],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-13","K-접수-14"],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T02","actorDetail":"Artwork 시스템","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_TF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF03</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="NW_Q_MATERIAL_T03" name="자재의 규격과 승인 Artwork를 열어 확인한다">
+      <bpmn:documentation>QS가 후보를 열어 필요한 규격과 승인 도안을 확인한다. 사용할 수 없는 후보를 자동 채택하지 않는다.
+입력 자료: 검색된 자재·규격·승인본
+전달 자료: QS가 확인한 후보와 사용 가능 여부</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검색된 자재·규격·승인본","outputs":"QS가 확인한 후보와 사용 가능 여부","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-13","K-접수-14"],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T03","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_TF03</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF04</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="NW_Q_MATERIAL_T04" name="선택할 자재가 있는가?" gatewayDirection="Diverging" default="NW_Q_MATERIAL_TF07">
+      <bpmn:documentation>조건을 다시 찾아야 하는지, 기존 자재를 선택할지, 신규 등록·규격 변경이 필요한지 고른다.
+입력 자료: 조회 결과와 QS 확인
+전달 자료: 재검색·기존 사용·등록/변경 구분</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"조회 결과와 QS 확인","outputs":"재검색·기존 사용·등록/변경 구분","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-13","K-접수-15"],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T04","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_TF04</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF05</bpmn:outgoing>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF06</bpmn:outgoing>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF07</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="NW_Q_MATERIAL_T05" name="사용할 자재와 승인본을 선택한다">
+      <bpmn:documentation>선택한 자재·규격과 승인본을 이번 Artwork 업무에 사용할 자료로 지정한다.
+입력 자료: QS가 확인한 기존 자재
+전달 자료: 선택한 자재·승인본</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 확인한 기존 자재","outputs":"선택한 자재·승인본","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-15"],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T05","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_TF06</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF08</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="NW_Q_MATERIAL_T08" name="등록·규격 변경 업무로 넘길 자재가 정해짐">
+      <bpmn:documentation>이 결과로 상위 흐름의 다음 판단 또는 담당 업무에 연결한다.
+입력 자료: 신규 등록 또는 규격 변경할 자재와 필요한 규격
+전달 자료: 신규 등록 또는 규격 변경할 자재와 필요한 규격</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"신규 등록 또는 규격 변경할 자재와 필요한 규격","outputs":"신규 등록 또는 규격 변경할 자재와 필요한 규격","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T08","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_TF07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="NW_Q_MATERIAL_T06" name="선택한 자재·규격·승인본을 이번 업무에 연결한다">
+      <bpmn:documentation>시스템이 선택 결과와 자료 연결을 보존해 이후 자료 준비에서 다시 사용할 수 있게 한다.
+입력 자료: 선택한 자재·승인본
+전달 자료: 이번 업무에 연결한 기존 자재·승인본·규격</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"선택한 자재·승인본","outputs":"이번 업무에 연결한 기존 자재·승인본·규격","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-15"],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T06","actorDetail":"Artwork 시스템","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_TF08</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_MATERIAL_TF09</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="NW_Q_MATERIAL_T07" name="이번 업무에 사용할 자재·승인본·규격이 연결됨">
+      <bpmn:documentation>이 결과로 상위 흐름의 다음 판단 또는 담당 업무에 연결한다.
+입력 자료: 선택한 기존 자재·승인 Artwork·규격과 연결 기록
+전달 자료: 선택한 기존 자재·승인 Artwork·규격과 연결 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"선택한 기존 자재·승인 Artwork·규격과 연결 기록","outputs":"선택한 기존 자재·승인 Artwork·규격과 연결 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-09·13·14·15 / B-34"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-31~40·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"단계-36: 기존 자재 조회 1단계, 등록 절차 2단계"}],"workflowId":"NW_Q_MATERIAL","originalStepId":"NW_Q_MATERIAL_T07","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_MATERIAL","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"대상 자재, 기존 등록 정보와 승인 Artwork·규격","outputs":"사용할 자재와 승인본·규격, 신규 등록 또는 규격 변경 필요 여부","includes":["대상 자재의 기존 규격·승인본 확인","같은 규격 또는 유사 규격 검색","사용할 기존 자재 선택과 등록 필요 구분"],"excludes":["ERP 등록 실행","디자인 전달 자료 취합","위탁 신규에 기존 자재 검색 강제"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_MATERIAL_TF09</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF01" sourceRef="NW_Q_MATERIAL_T00" targetRef="J_NW_Q_MATERIAL_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF02" sourceRef="NW_Q_MATERIAL_T01" targetRef="NW_Q_MATERIAL_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF03" sourceRef="NW_Q_MATERIAL_T02" targetRef="NW_Q_MATERIAL_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF04" sourceRef="NW_Q_MATERIAL_T03" targetRef="NW_Q_MATERIAL_T04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF05" name="조회 조건을 바꿔 다시 찾기" sourceRef="NW_Q_MATERIAL_T04" targetRef="J_NW_Q_MATERIAL_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T04","kind":"return"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">조회 조건을 바꿔 다시 찾기</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF06" name="기존 자재 선택" sourceRef="NW_Q_MATERIAL_T04" targetRef="NW_Q_MATERIAL_T05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T04","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">기존 자재 선택</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF07" name="등록·규격 변경 필요" sourceRef="NW_Q_MATERIAL_T04" targetRef="NW_Q_MATERIAL_T08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF08" sourceRef="NW_Q_MATERIAL_T05" targetRef="NW_Q_MATERIAL_T06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T05","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_TF09" sourceRef="NW_Q_MATERIAL_T06" targetRef="NW_Q_MATERIAL_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_MATERIAL_T06","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_MATERIAL_T_JOIN_NW_Q_MATERIAL_T01" sourceRef="J_NW_Q_MATERIAL_T01" targetRef="NW_Q_MATERIAL_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_NW_Q_MATERIAL_T01"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_MATERIAL_T_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_MATERIAL_T_Process_di" bpmnElement="Participant_NW_Q_MATERIAL_T_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="2820" height="620" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_MATERIAL_T_Process_R1_di" bpmnElement="Lane_NW_Q_MATERIAL_T_Process_R1" isHorizontal="true">
+        <dc:Bounds x="70" y="430" width="2790" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_MATERIAL_T_Process_R0_di" bpmnElement="Lane_NW_Q_MATERIAL_T_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="2790" height="390" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T00_di" bpmnElement="NW_Q_MATERIAL_T00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_NW_Q_MATERIAL_T01_di" bpmnElement="J_NW_Q_MATERIAL_T01" isMarkerVisible="true">
+        <dc:Bounds x="518" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="510" y="57" width="70" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T01_di" bpmnElement="NW_Q_MATERIAL_T01">
+        <dc:Bounds x="740" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T02_di" bpmnElement="NW_Q_MATERIAL_T02">
+        <dc:Bounds x="1040" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T03_di" bpmnElement="NW_Q_MATERIAL_T03">
+        <dc:Bounds x="1340" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T04_di" bpmnElement="NW_Q_MATERIAL_T04" isMarkerVisible="true">
+        <dc:Bounds x="1718" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1669.25" y="160" width="151.5" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T05_di" bpmnElement="NW_Q_MATERIAL_T05">
+        <dc:Bounds x="1940" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T08_di" bpmnElement="NW_Q_MATERIAL_T08">
+        <dc:Bounds x="2025" y="265" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1935" y="313" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T06_di" bpmnElement="NW_Q_MATERIAL_T06">
+        <dc:Bounds x="2240" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_MATERIAL_T07_di" bpmnElement="NW_Q_MATERIAL_T07">
+        <dc:Bounds x="2625" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2535" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF01_di" bpmnElement="NW_Q_MATERIAL_TF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="506" y="125" />
+        <di:waypoint x="506" y="118.25" />
+        <di:waypoint x="524.75" y="118.25" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF02_di" bpmnElement="NW_Q_MATERIAL_TF02">
+        <di:waypoint x="950" y="125" />
+        <di:waypoint x="962" y="125" />
+        <di:waypoint x="962" y="515" />
+        <di:waypoint x="1040" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF03_di" bpmnElement="NW_Q_MATERIAL_TF03">
+        <di:waypoint x="1250" y="515" />
+        <di:waypoint x="1262" y="515" />
+        <di:waypoint x="1262" y="125" />
+        <di:waypoint x="1340" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF04_di" bpmnElement="NW_Q_MATERIAL_TF04">
+        <di:waypoint x="1550" y="125" />
+        <di:waypoint x="1718" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF05_di" bpmnElement="NW_Q_MATERIAL_TF05" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
+        <di:waypoint x="1761.2" y="114.2" />
+        <di:waypoint x="1784" y="114.2" />
+        <di:waypoint x="1784" y="53" />
+        <di:waypoint x="498" y="53" />
+        <di:waypoint x="498" y="131.75" />
+        <di:waypoint x="524.75" y="131.75" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1067" y="17" width="149" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF06_di" bpmnElement="NW_Q_MATERIAL_TF06">
+        <di:waypoint x="1772" y="125" />
+        <di:waypoint x="1940" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1883" y="44" width="81" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF07_di" bpmnElement="NW_Q_MATERIAL_TF07">
+        <di:waypoint x="1761.2" y="135.8" />
+        <di:waypoint x="1928" y="135.8" />
+        <di:waypoint x="1928" y="285" />
+        <di:waypoint x="2025" y="285" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1970" y="239" width="110" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF08_di" bpmnElement="NW_Q_MATERIAL_TF08">
+        <di:waypoint x="2150" y="125" />
+        <di:waypoint x="2228" y="125" />
+        <di:waypoint x="2228" y="515" />
+        <di:waypoint x="2240" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_TF09_di" bpmnElement="NW_Q_MATERIAL_TF09">
+        <di:waypoint x="2450" y="515" />
+        <di:waypoint x="2462" y="515" />
+        <di:waypoint x="2462" y="125" />
+        <di:waypoint x="2625" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_MATERIAL_T_JOIN_NW_Q_MATERIAL_T01_di" bpmnElement="NW_Q_MATERIAL_T_JOIN_NW_Q_MATERIAL_T01">
+        <di:waypoint x="572" y="125" />
+        <di:waypoint x="740" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -56,7 +56,7 @@
 
   document.getElementById('edit-workflow').addEventListener('click', () => {
     const target = new URL('./editor/', location.href);
-    target.searchParams.set('v', new URLSearchParams(location.search).get('v') || 'flow-5');
+    target.searchParams.set('v', new URLSearchParams(location.search).get('v') || 'flow-6');
     const node = new URLSearchParams(location.hash.slice(1)).get('node');
     if (node) target.hash = new URLSearchParams({ node }).toString();
     location.assign(target.href);
@@ -303,8 +303,8 @@
     if (node.solutionSupport && /Task$|task$/i.test(node.type)) {
       const label = supportLabel(node.solutionSupport);
       const badge = svgNode('g', { class: 'reader-solution-mark', 'aria-label': label });
-      badge.append(svgNode('rect', { x: Math.max(7, node.w - 86), y: 7, width: 78, height: 17, rx: 4 }));
-      const text = svgNode('text', { x: Math.max(7, node.w - 86) + 39, y: 19, 'text-anchor': 'middle' }); text.textContent = label; badge.append(text); visual.append(badge);
+      badge.append(svgNode('rect', { x: Math.max(7, node.w - 86), y: -28, width: 78, height: 17, rx: 4 }));
+      const text = svgNode('text', { x: Math.max(7, node.w - 86) + 39, y: -16, 'text-anchor': 'middle' }); text.textContent = label; badge.append(text); visual.append(badge);
     }
   }
   document.addEventListener('reader:selection', event => { focusSelection(event.detail.id); if (event.detail.id) updatePanel(); });

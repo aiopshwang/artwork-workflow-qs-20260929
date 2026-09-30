@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_TEXT_T_Collaboration" name="문안·변경 근거와 Artwork를 대조하고 이전 주석·추가 오류를 검토한다 · 도입 후 업무">
+    <bpmn:documentation>QS가 확보 문안·허가 신청자료 또는 해당 변경 근거와 적용 항목을 확인하고, 규칙 결과·AI 제안을 원문과 보며 기준 대조·주석 반영·새 오류를 함께 검토한다.
+입력 자료: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석
+전달 자료: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","perspective":"tobe","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"},{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","sourceSteps":["WF05_A01","WF06_A01","WF05_A04","WF05_A05","WF06_A02","WF06_A03","WF06_A05","WF06_A06","WF05_A06","WF05_T01","WF05_T02","WF06_T02","WF05_T03","WF05_T04","WF05_T05","WF05_T06","WF06_T03","WF05_T07","WF06_T04","WF06_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_TEXT_T_Process" name="문안·변경 근거와 Artwork를 대조하고 이전 주석·추가 오류를 검토한다 · 도입 후 업무" processRef="NW_Q_TEXT_T_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_TEXT_T_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_TEXT_T_Process">
+      <bpmn:lane id="Lane_NW_Q_TEXT_T_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_TEXT_T00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_NW_Q_TEXT_T06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T08</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_NW_Q_TEXT_T_Process_R1" name="시스템">
+        <bpmn:flowNodeRef>NW_Q_TEXT_T01_SYS</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T02_PRE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_TEXT_T07_SYS</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_TEXT_T00" name="이 업무에 필요한 자료를 확인한다">
+      <bpmn:documentation>상위 업무에서 전달받은 자료로 이 업무를 시작한다.
+입력 자료: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석
+전달 자료: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T00","actorDetail":"QS팀","sourceSteps":["WF05_T01"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_TEXT_TF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_Q_TEXT_T01" name="이번 도안과 확보 문안·허가 신청자료·해당 변경 근거를 확인한다">
+      <bpmn:documentation>QS가 해당 자재의 검토를 시작하고 차수·목적·도안과 기준자료의 판을 정한다. 이미 진행 중인 같은 차수의 판단 보완을 새 차수로 만들지 않는다.
+입력 자료: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석
+전달 자료: 이번 도안·검토 목적과 선택한 확보 문안·허가 신청자료·해당 변경 근거</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"이번 도안·검토 목적과 선택한 확보 문안·허가 신청자료·해당 변경 근거","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-02","K-검토-03","K-대조-01","K-대조-02","K-대조-03","K-대조-05"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"},{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T01","actorDetail":"QS팀","sourceSteps":["WF05_T01","WF05_T02","WF06_T02"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_TF01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_T01_SYS_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_TEXT_T01_SYS" name="선택한 도안과 확보 문안·허가 신청자료·해당 변경 근거를 연결해 보여준다">
+      <bpmn:documentation>QS가 시작한 검토의 입력 파일·기준자료·차수를 연결해 표시한다. 파일 업로드만으로 새 차수를 만들지 않는다.
+입력 자료: 이번 도안·검토 목적과 선택한 확보 문안·허가 신청자료·해당 변경 근거
+전달 자료: 해당 검토에 연결된 도안·확보 문안·허가 신청자료·해당 변경 근거·차수</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 도안·검토 목적과 선택한 확보 문안·허가 신청자료·해당 변경 근거","outputs":"해당 검토에 연결된 도안·확보 문안·허가 신청자료·해당 변경 근거·차수","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-02","K-검토-03","K-대조-01","K-대조-02","K-대조-03","K-대조-05"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"},{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T01_SYS","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T01","WF05_T02","WF06_T02"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_T01_SYS_FLOW</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_TF02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="NW_Q_TEXT_T02_PRE" name="확보 문안·허가 신청자료·해당 변경 근거와 도안의 판독값을 보여준다">
+      <bpmn:documentation>AI 판독값과 위치를 제안으로 표시하며 읽지 못한 항목은 구분한다. QS가 확인·보완한다.
+입력 자료: 해당 검토에 연결된 도안·확보 문안·허가 신청자료·해당 변경 근거·차수
+전달 자료: 원문과 확인할 확보 문안·허가 신청자료·해당 변경 근거·도안 판독값</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"해당 검토에 연결된 도안·확보 문안·허가 신청자료·해당 변경 근거·차수","outputs":"원문과 확인할 확보 문안·허가 신청자료·해당 변경 근거·도안 판독값","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-판독-02","K-판독-03","K-판독-04","K-판독-06","K-판독-07","K-대조-06","K-대조-09","K-접수-08"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T02_PRE","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T03","WF05_T04","WF05_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_TF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_T02_PRE_FLOW</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="NW_Q_TEXT_T02" name="확보 문안·허가 신청자료·해당 변경 근거·도안의 판독값을 확인한다">
+      <bpmn:documentation>AI 판독값과 원문 위치를 QS가 확인·수정한다. 누락·판독불가·기준 상충은 해당 항목의 사유로 남긴다.
+입력 자료: 원문과 확인할 확보 문안·허가 신청자료·해당 변경 근거·도안 판독값
+전달 자료: QS가 확인한 확보 문안·허가 신청자료·해당 변경 근거·도안 판독값</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"원문과 확인할 확보 문안·허가 신청자료·해당 변경 근거·도안 판독값","outputs":"QS가 확인한 확보 문안·허가 신청자료·해당 변경 근거·도안 판독값","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-판독-02","K-판독-03","K-판독-04","K-판독-06","K-판독-07","K-대조-06","K-대조-09","K-접수-08"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T02","actorDetail":"QS팀","sourceSteps":["WF05_T03","WF05_T04","WF05_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_T02_PRE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_TF03</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_TEXT_T03" name="확보 문안·허가 신청자료·해당 변경 근거의 반영 내용을 규칙으로 대조한다">
+      <bpmn:documentation>확보 문안·허가 신청자료 또는 해당 변경 근거와 적용되는 기재·규격·바코드 항목을 대조한다. 자료가 없는 항목은 구분하고 가능한 다른 항목의 검토는 계속한다.
+입력 자료: QS가 확인한 확보 문안·허가 신청자료·해당 변경 근거·도안 판독값
+전달 자료: 확보 문안·허가 신청자료·해당 변경 근거와 도안의 차이·위치·확인하지 못한 항목</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 확인한 확보 문안·허가 신청자료·해당 변경 근거·도안 판독값","outputs":"확보 문안·허가 신청자료·해당 변경 근거와 도안의 차이·위치·확인하지 못한 항목","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-08","K-대조-06","K-대조-09","K-대조-24"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T03","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T06"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_TF03</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_TF04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="NW_Q_TEXT_T04" name="이전 지적 또는 비교할 이전 판이 있는가?" gatewayDirection="Diverging" default="NW_Q_TEXT_TF06">
+      <bpmn:documentation>이전 주석이 있으면 지적 반영을, 비교 가능한 이전 판이 있으면 요청 밖 변경도 확인한다. 둘 다 없는 첫 신규만 이 대조를 건너뛴다.
+입력 자료: 차수와 이전 주석 기록
+전달 자료: 반영 대조 적용 여부</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"차수와 이전 주석 기록","outputs":"반영 대조 적용 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-02","K-검토-03"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T04","actorDetail":"QS팀","sourceSteps":["WF06_T02"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_TF04</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_TF05</bpmn:outgoing>
+      <bpmn:outgoing>NW_Q_TEXT_TF06</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="NW_Q_TEXT_T05" name="이전 지적·비교판에 해당하는 변경을 대조한다">
+      <bpmn:documentation>이전 지적이 있으면 반영 후보를 표시한다. 비교할 승인본·직전 판이 있으면 요청 밖 변경 위치도 표시한다. 각 자료가 있는 범위만 대조한다.
+입력 자료: 이전 주석·직전 판·이번 도안
+전달 자료: 지적별 반영 후보와 변경 위치</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 주석·직전 판·이번 도안","outputs":"지적별 반영 후보와 변경 위치","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-11","K-대조-12","K-대조-15","K-대조-06"],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T05","actorDetail":"Artwork 시스템","sourceSteps":["WF06_T03"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_TF05</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_TF07</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="J_NW_Q_TEXT_T06" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 기준 대조 결과와 적용되는 반영 대조 결과
+전달 자료: 기준 대조 결과와 적용되는 반영 대조 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기준 대조 결과와 적용되는 반영 대조 결과","outputs":"기준 대조 결과와 적용되는 반영 대조 결과","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"tobe","workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T06"}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_TF06</bpmn:incoming>
+      <bpmn:incoming>NW_Q_TEXT_TF07</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_T_JOIN_NW_Q_TEXT_T06</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="NW_Q_TEXT_T06" name="반영 상태·새 오류와 원문을 함께 확인한다">
+      <bpmn:documentation>규칙 대조 결과와 원문을 보며 지적 반영 상태, 요청 밖 변경, 새 오류를 확인한다. 첫 검토에서도 적용되는 항목과 새 오류를 본다.
+입력 자료: 기준 대조 결과와 적용되는 반영 대조 결과
+전달 자료: QS가 확인한 차이·반영 상태·새 오류</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기준 대조 결과와 적용되는 반영 대조 결과","outputs":"QS가 확인한 차이·반영 상태·새 오류","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-에이전트-06","K-검토-04","K-검토-06"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"},{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T06","actorDetail":"QS팀","sourceSteps":["WF05_T07","WF06_T04"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_T_JOIN_NW_Q_TEXT_T06</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_TF08</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_Q_TEXT_T07" name="항목별 판단과 남은 수정 내용을 기록한다">
+      <bpmn:documentation>확인·수정요청·해당없음과 필요한 사유를 남긴다. 반영된 지적은 다음 전달 목록에서 제외할 수 있게 구분한다. 허가 전 자료로 검토한 경우에는 허가증을 받은 뒤 다시 대조할 항목을 남긴다.
+입력 자료: QS가 확인한 검토 내용
+전달 자료: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 확인한 검토 내용","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-04","K-검토-06"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"},{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T07","actorDetail":"QS팀","sourceSteps":["WF05_T07","WF06_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_TF08</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_T07_SYS_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_TEXT_T07_SYS" name="QS의 판단·근거·수정 내용을 저장한다">
+      <bpmn:documentation>확인·수정요청·해당없음과 사유, 이전 지적별 상태를 보관한다. 새 주석 작성·전달은 다음 업무다.
+입력 자료: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목
+전달 자료: QS 판단·근거·반영 상태·수정사항 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","outputs":"QS 판단·근거·반영 상태·수정사항 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-04","K-검토-06"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"},{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T07_SYS","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T07","WF06_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_T07_SYS_FLOW</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_TEXT_TF09</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="NW_Q_TEXT_T08" name="QS 판단·근거와 미반영 지적·새 수정사항 기록">
+      <bpmn:documentation>표시한 파일·자료 또는 확인 내용을 남기고 상위 업무 흐름으로 돌아간다.
+입력 자료: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목
+전달 자료: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"NW_Q_TEXT","originalStepId":"NW_Q_TEXT_T08","actorDetail":"QS팀","sourceSteps":["WF06_T04"],"level":"node-detail","scope":{"parentNodeId":"Q_TEXT","start":"다음 자료를 받은 상태에서 시작한다: Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","end":"이 업무에서 남길 내용: 문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","inputs":"Artwork, 확보된 문안·허가 신청자료 또는 변경 근거, 이전 주석이 있는 경우 해당 주석","outputs":"문안·변경 근거 대비 Artwork 반영 결과, 이전 주석의 미반영 사항과 새 수정 의견, 허가 전 검토라면 허가 후 다시 확인할 항목","includes":["이번 자재·판과 해당 검토 기준 확인","기준 내용의 Artwork 반영 여부 대조","이전 지적이 있을 때 반영 확인","요청 밖 변경·새 오류·적용되는 공통 항목 확인","수정할 내용과 확인하지 못한 항목 정리"],"excludes":["새 수정 주석 작성·디자인팀 전달","디자인 수정과 생산·의뢰사 검토","허가증 수령 대기와 다음 업무 분기"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_TEXT_TF09</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF01" sourceRef="NW_Q_TEXT_T00" targetRef="NW_Q_TEXT_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF02" sourceRef="NW_Q_TEXT_T01_SYS" targetRef="NW_Q_TEXT_T02_PRE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T01_SYS","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF03" sourceRef="NW_Q_TEXT_T02" targetRef="NW_Q_TEXT_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF04" sourceRef="NW_Q_TEXT_T03" targetRef="NW_Q_TEXT_T04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF05" name="이전 지적·비교판 있음" sourceRef="NW_Q_TEXT_T04" targetRef="NW_Q_TEXT_T05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T04","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">이전 지적·비교판 있음</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF06" name="둘 다 없음" sourceRef="NW_Q_TEXT_T04" targetRef="J_NW_Q_TEXT_T06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF07" sourceRef="NW_Q_TEXT_T05" targetRef="J_NW_Q_TEXT_T06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T05","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF08" sourceRef="NW_Q_TEXT_T06" targetRef="NW_Q_TEXT_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T06","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_TF09" sourceRef="NW_Q_TEXT_T07_SYS" targetRef="NW_Q_TEXT_T08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T07_SYS","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_T01_SYS_FLOW" sourceRef="NW_Q_TEXT_T01" targetRef="NW_Q_TEXT_T01_SYS">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_T02_PRE_FLOW" sourceRef="NW_Q_TEXT_T02_PRE" targetRef="NW_Q_TEXT_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T02_PRE","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_T07_SYS_FLOW" sourceRef="NW_Q_TEXT_T07" targetRef="NW_Q_TEXT_T07_SYS">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_TEXT_T07","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_TEXT_T_JOIN_NW_Q_TEXT_T06" sourceRef="J_NW_Q_TEXT_T06" targetRef="NW_Q_TEXT_T06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_NW_Q_TEXT_T06"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_TEXT_T_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_TEXT_T_Process_di" bpmnElement="Participant_NW_Q_TEXT_T_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="4020" height="460" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_TEXT_T_Process_R1_di" bpmnElement="Lane_NW_Q_TEXT_T_Process_R1" isHorizontal="true">
+        <dc:Bounds x="70" y="270" width="3990" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_TEXT_T_Process_R0_di" bpmnElement="Lane_NW_Q_TEXT_T_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="3990" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T00_di" bpmnElement="NW_Q_TEXT_T00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T01_di" bpmnElement="NW_Q_TEXT_T01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T01_SYS_di" bpmnElement="NW_Q_TEXT_T01_SYS">
+        <dc:Bounds x="740" y="305" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T02_PRE_di" bpmnElement="NW_Q_TEXT_T02_PRE">
+        <dc:Bounds x="1040" y="305" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T02_di" bpmnElement="NW_Q_TEXT_T02">
+        <dc:Bounds x="1340" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T03_di" bpmnElement="NW_Q_TEXT_T03">
+        <dc:Bounds x="1640" y="305" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T04_di" bpmnElement="NW_Q_TEXT_T04" isMarkerVisible="true">
+        <dc:Bounds x="2018" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1935" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T05_di" bpmnElement="NW_Q_TEXT_T05">
+        <dc:Bounds x="2240" y="305" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_NW_Q_TEXT_T06_di" bpmnElement="J_NW_Q_TEXT_T06" isMarkerVisible="true">
+        <dc:Bounds x="2618" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2610" y="57" width="70" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T06_di" bpmnElement="NW_Q_TEXT_T06">
+        <dc:Bounds x="2840" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T07_di" bpmnElement="NW_Q_TEXT_T07">
+        <dc:Bounds x="3140" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T07_SYS_di" bpmnElement="NW_Q_TEXT_T07_SYS">
+        <dc:Bounds x="3440" y="305" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_TEXT_T08_di" bpmnElement="NW_Q_TEXT_T08">
+        <dc:Bounds x="3825" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3735" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF01_di" bpmnElement="NW_Q_TEXT_TF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF02_di" bpmnElement="NW_Q_TEXT_TF02">
+        <di:waypoint x="950" y="355" />
+        <di:waypoint x="1040" y="355" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF03_di" bpmnElement="NW_Q_TEXT_TF03">
+        <di:waypoint x="1550" y="125" />
+        <di:waypoint x="1562" y="125" />
+        <di:waypoint x="1562" y="355" />
+        <di:waypoint x="1640" y="355" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF04_di" bpmnElement="NW_Q_TEXT_TF04">
+        <di:waypoint x="1850" y="355" />
+        <di:waypoint x="1862" y="355" />
+        <di:waypoint x="1862" y="125" />
+        <di:waypoint x="2018" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF05_di" bpmnElement="NW_Q_TEXT_TF05">
+        <di:waypoint x="2065.25" y="131.75" />
+        <di:waypoint x="2228" y="131.75" />
+        <di:waypoint x="2228" y="355" />
+        <di:waypoint x="2240" y="355" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2096" y="324" width="122" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF06_di" bpmnElement="NW_Q_TEXT_TF06">
+        <di:waypoint x="2065.25" y="118.25" />
+        <di:waypoint x="2624.75" y="118.25" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2603" y="166" width="57" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF07_di" bpmnElement="NW_Q_TEXT_TF07">
+        <di:waypoint x="2450" y="355" />
+        <di:waypoint x="2462" y="355" />
+        <di:waypoint x="2462" y="131.75" />
+        <di:waypoint x="2624.75" y="131.75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF08_di" bpmnElement="NW_Q_TEXT_TF08">
+        <di:waypoint x="3050" y="125" />
+        <di:waypoint x="3140" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_TF09_di" bpmnElement="NW_Q_TEXT_TF09">
+        <di:waypoint x="3650" y="355" />
+        <di:waypoint x="3662" y="355" />
+        <di:waypoint x="3662" y="125" />
+        <di:waypoint x="3825" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_T01_SYS_FLOW_di" bpmnElement="NW_Q_TEXT_T01_SYS_FLOW">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="662" y="125" />
+        <di:waypoint x="662" y="355" />
+        <di:waypoint x="740" y="355" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_T02_PRE_FLOW_di" bpmnElement="NW_Q_TEXT_T02_PRE_FLOW">
+        <di:waypoint x="1250" y="355" />
+        <di:waypoint x="1328" y="355" />
+        <di:waypoint x="1328" y="125" />
+        <di:waypoint x="1340" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_T07_SYS_FLOW_di" bpmnElement="NW_Q_TEXT_T07_SYS_FLOW">
+        <di:waypoint x="3350" y="125" />
+        <di:waypoint x="3362" y="125" />
+        <di:waypoint x="3362" y="355" />
+        <di:waypoint x="3440" y="355" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_TEXT_T_JOIN_NW_Q_TEXT_T06_di" bpmnElement="NW_Q_TEXT_T_JOIN_NW_Q_TEXT_T06">
+        <di:waypoint x="2672" y="125" />
+        <di:waypoint x="2840" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

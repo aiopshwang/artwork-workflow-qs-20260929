@@ -3,8 +3,8 @@
   <bpmn:collaboration id="WF12_A_Collaboration" name="추가 변경·동시 요청·멈춤·접음·재개 · 현재 업무">
     <bpmn:documentation>현재 자료에서 확인된 추가자료·자재 추가·변경 요청의 처리만 표현한다. 시스템의 멈춤·접음·재개 조건은 도입 후 흐름에서 구분한다.
 입력 자료: 기존 업무 중 들어온 자료·자재·변경 요청
-전달 자료: 이어서 준비·검토할 자재별 업무</bpmn:documentation>
-    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 업무 중 들어온 자료·자재·변경 요청","outputs":"이어서 준비·검토할 자재별 업무","perspective":"asis","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12"}</bpmn:documentation>
+전달 자료: 추가 자료와 변경 요청을 반영한 자재별 검토 범위 및 이어서 사용할 Artwork·자료</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 업무 중 들어온 자료·자재·변경 요청","outputs":"추가 자료와 변경 요청을 반영한 자재별 검토 범위 및 이어서 사용할 Artwork·자료","perspective":"asis","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
     <bpmn:participant id="Participant_WF12_A_Process" name="추가 변경·동시 요청·멈춤·접음·재개 · 현재 업무" processRef="WF12_A_Process" />
   </bpmn:collaboration>
   <bpmn:process id="WF12_A_Process" isExecutable="false">
@@ -23,17 +23,17 @@
     <bpmn:startEvent id="WF12_A01" name="진행 중 자료나 변경 요청을 추가로 받는다">
       <bpmn:documentation>받은 내용이 무엇인지 확인한다.
 입력 자료: 반영본·보완 자료·추가 자재·새 변경 요청
-전달 자료: 추가 수령 내용</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"반영본·보완 자료·추가 자재·새 변경 요청","outputs":"추가 수령 내용","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A01","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 추가로 받은 자료 또는 변경 요청의 내용과 대상 자재</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"반영본·보완 자료·추가 자재·새 변경 요청","outputs":"추가로 받은 자료 또는 변경 요청의 내용과 대상 자재","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A01","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:outgoing>WF12_AF01</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:exclusiveGateway id="WF12_A02" name="같은 자재 자료인가, 추가 자재인가, 새 변경인가?" gatewayDirection="Diverging" default="WF12_AF04">
       <bpmn:documentation>기존 검토의 반영·보완인지, 대상 자재 추가인지, 별도 변경 내용인지 구분한다.
 입력 자료: 기존 요청과 새 자료
 전달 자료: 처리할 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 요청과 새 자료","outputs":"처리할 대상","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A02","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 요청과 새 자료","outputs":"처리할 대상","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A02","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF12_AF01</bpmn:incoming>
       <bpmn:outgoing>WF12_AF02</bpmn:outgoing>
       <bpmn:outgoing>WF12_AF03</bpmn:outgoing>
@@ -42,27 +42,27 @@
     <bpmn:userTask id="WF12_A03" name="같은 자재의 다음 자료로 검토한다">
       <bpmn:documentation>해당 자재의 이전 검토와 함께 보고 필요한 검토를 이어 간다.
 입력 자료: 같은 요청의 반영본·보완 자료
-전달 자료: 기존 자재의 추가 검토</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"같은 요청의 반영본·보완 자료","outputs":"기존 자재의 추가 검토","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A03","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 같은 자재에서 추가 자료를 반영해 확인한 내용과 남은 검토사항</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"같은 요청의 반영본·보완 자료","outputs":"같은 자재에서 추가 자료를 반영해 확인한 내용과 남은 검토사항","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A03","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF12_AF02</bpmn:incoming>
       <bpmn:outgoing>WF12_AF05</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF12_A04" name="추가된 자재를 별도로 준비·검토한다">
       <bpmn:documentation>그 자재의 확보 자료와 제작·검토를 별도로 진행한다.
 입력 자료: 새로 포함된 케이스·설명서·라벨 등
-전달 자료: 추가 자재의 업무</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새로 포함된 케이스·설명서·라벨 등","outputs":"추가 자재의 업무","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A04","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 새로 추가된 자재의 요청 내용, 확보 자료와 별도로 진행할 검토 범위</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새로 포함된 케이스·설명서·라벨 등","outputs":"새로 추가된 자재의 요청 내용, 확보 자료와 별도로 진행할 검토 범위","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A04","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF12_AF03</bpmn:incoming>
       <bpmn:outgoing>WF12_AF06</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF12_A05" name="새 변경 내용과 영향을 확인한다">
       <bpmn:documentation>허가 변경·변경 명령·규격·제조사·의뢰사 요구 등 실제 사유와 적용 대상을 확인한다.
 입력 자료: 변경 이유·근거·대상 자재
-전달 자료: 새 변경의 검토 범위</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"변경 이유·근거·대상 자재","outputs":"새 변경의 검토 범위","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A05","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 새 변경 내용이 영향을 주는 자재와 다시 검토할 항목</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"변경 이유·근거·대상 자재","outputs":"새 변경 내용이 영향을 주는 자재와 다시 검토할 항목","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A05","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF12_AF04</bpmn:incoming>
       <bpmn:outgoing>WF12_AF07</bpmn:outgoing>
     </bpmn:userTask>
@@ -80,18 +80,18 @@
     <bpmn:userTask id="WF12_A06" name="해당 자재의 검토 업무로 이어 간다">
       <bpmn:documentation>대상 자재의 준비·주석·반영 검토 흐름으로 연결한다.
 입력 자료: 정리한 추가 자료·변경 범위
-전달 자료: 이어서 처리할 자재별 업무</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"정리한 추가 자료·변경 범위","outputs":"이어서 처리할 자재별 업무","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A06","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 추가 자료·변경 요청을 반영한 자재별 검토 범위와 이어서 사용할 Artwork·자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"정리한 추가 자료·변경 범위","outputs":"추가 자료·변경 요청을 반영한 자재별 검토 범위와 이어서 사용할 Artwork·자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A06","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF12_A_JOIN_WF12_A06</bpmn:incoming>
       <bpmn:outgoing>WF12_A06_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="WF12_A06_RESULT" name="이어서 처리할 자재별 업무">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 이어서 처리할 자재별 업무
-전달 자료: 이어서 처리할 자재별 업무</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이어서 처리할 자재별 업무","outputs":"이어서 처리할 자재별 업무","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A06_RESULT","actorDetail":"QS팀"}</bpmn:documentation>
+    <bpmn:endEvent id="WF12_A06_RESULT" name="추가 자료·변경 내용을 자재별 검토로 전달">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 추가 자료·변경 요청을 반영한 자재별 검토 범위와 이어서 사용할 Artwork·자료
+입력 자료: 추가 자료·변경 요청을 반영한 자재별 검토 범위와 이어서 사용할 Artwork·자료
+전달 자료: 추가 자료·변경 요청을 반영한 자재별 검토 범위와 이어서 사용할 Artwork·자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"추가 자료·변경 요청을 반영한 자재별 검토 범위와 이어서 사용할 Artwork·자료","outputs":"추가 자료·변경 요청을 반영한 자재별 검토 범위와 이어서 사용할 Artwork·자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-77·M-78~80·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"접수-08·개정-17·검건-02·검건-05·검건-07·검건-08·자료-10·자료-11·승인-07"},{"path":"docs/superpowers/specs/2026-09-26-artwork-phase1-design-supplement-1.md","ref":"라 ② 중단·되살리기 / ⑤ 사건 하나·자재마다 건"},{"path":"CODEX.md","ref":"현행과 목표 구분·변경 요청·자재 추가·중단 취소 재개"}],"workflowId":"WF12","originalStepId":"WF12_A06_RESULT","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF12_A06_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="WF12_AF01" sourceRef="WF12_A01" targetRef="WF12_A02">
@@ -157,7 +157,7 @@
       <bpmndi:BPMNShape id="J_WF12_A06_di" bpmnElement="J_WF12_A06" isMarkerVisible="true">
         <dc:Bounds x="1118" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1065" y="57" width="160" height="33" />
+          <dc:Bounds x="1110" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF12_A06_di" bpmnElement="WF12_A06">
@@ -166,7 +166,7 @@
       <bpmndi:BPMNShape id="WF12_A06_RESULT_di" bpmnElement="WF12_A06_RESULT">
         <dc:Bounds x="1725" y="105" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1642" y="153" width="206" height="33" />
+          <dc:Bounds x="1635" y="153" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="WF12_AF01_di" bpmnElement="WF12_AF01">
@@ -202,8 +202,8 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF12_AF05_di" bpmnElement="WF12_AF05">
         <di:waypoint x="950" y="125" />
-        <di:waypoint x="1106" y="125" />
-        <di:waypoint x="1106" y="114.2" />
+        <di:waypoint x="962" y="125" />
+        <di:waypoint x="962" y="114.2" />
         <di:waypoint x="1128.8" y="114.2" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF12_AF06_di" bpmnElement="WF12_AF06">

@@ -3,8 +3,8 @@
   <bpmn:collaboration id="WF03_A_Collaboration" name="수탁 의뢰사 도안과 제작기준 검토 · 현재 업무">
     <bpmn:documentation>의뢰사가 만든 도안을 동국 기준과 확인하고, 수정 왕복 후 동국용 디자인 작업으로 넘긴다.
 입력 자료: 수탁 신규·개정의 대상과 의뢰사 요청
-전달 자료: 동국용 Artwork 제작에 사용할 파일</bpmn:documentation>
-    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수탁 신규·개정의 대상과 의뢰사 요청","outputs":"동국용 Artwork 제작에 사용할 파일","perspective":"asis","sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정의 현행 기본업무: 의뢰사 도안·동국 제작기준 검토"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03"}</bpmn:documentation>
+전달 자료: 디자인팀이 동국제약용 Artwork를 제작할 때 사용할 편집 가능한 의뢰사 원본과 칼선·규격·수정 내용</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수탁 신규·개정의 대상과 의뢰사 요청","outputs":"디자인팀이 동국제약용 Artwork를 제작할 때 사용할 편집 가능한 의뢰사 원본과 칼선·규격·수정 내용","perspective":"asis","sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정의 현행 기본업무: 의뢰사 도안·동국 제작기준 검토"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
     <bpmn:participant id="Participant_WF03_A_Process" name="수탁 의뢰사 도안과 제작기준 검토 · 현재 업무" processRef="WF03_A_Process" />
   </bpmn:collaboration>
   <bpmn:process id="WF03_A_Process" isExecutable="false">
@@ -41,9 +41,9 @@
     <bpmn:exclusiveGateway id="WF03_A01" name="수탁 신규인가, 기존 자재 개정인가?" gatewayDirection="Diverging" default="WF03_AF02">
       <bpmn:documentation>최초 제작인지 기존 동국용 Artwork 변경인지 구분한다.
 입력 자료: 의뢰사 요청과 대상 자재
-전달 자료: 기준 선택 경로</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"수탁담당"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사 요청과 대상 자재","outputs":"기준 선택 경로","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A01","actorDetail":"수탁팀 또는 개발부 → QS팀"}</bpmn:documentation>
+전달 자료: 수탁 신규 또는 개정 구분과 그에 따라 사용할 제작·검토 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"수탁담당","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사 요청과 대상 자재","outputs":"수탁 신규 또는 개정 구분과 그에 따라 사용할 제작·검토 자료","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A01","actorDetail":"수탁팀 또는 개발부 → QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_A_START_FLOW1</bpmn:incoming>
       <bpmn:outgoing>WF03_AF01</bpmn:outgoing>
       <bpmn:outgoing>WF03_AF02</bpmn:outgoing>
@@ -51,18 +51,18 @@
     <bpmn:userTask id="WF03_A02" name="대응 자사품목과 제공할 제작기준을 확인한다">
       <bpmn:documentation>대응 자사품목이 있으면 관련 칼선·규격을 준비한다. 대응 품목이 없으면 확보한 제작기준으로 진행한다.
 입력 자료: 수탁 신규 품목
-전달 자료: 의뢰사에 제공할 칼선·규격</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수탁 신규 품목","outputs":"의뢰사에 제공할 칼선·규격","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A02","actorDetail":"수탁팀 또는 개발부·QS팀"}</bpmn:documentation>
+전달 자료: 의뢰사에 제공할 해당 자재의 칼선 도면과 규격 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수탁 신규 품목","outputs":"의뢰사에 제공할 해당 자재의 칼선 도면과 규격 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A02","actorDetail":"수탁팀 또는 개발부·QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_AF01</bpmn:incoming>
       <bpmn:outgoing>WF03_AF03</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF03_A03" name="해당 수탁 자재의 기존 자사용 승인본을 확인한다">
       <bpmn:documentation>그 수탁 자재의 기존 동국용 승인 Artwork와 규격을 비교 기준으로 확보한다.
 입력 자료: 수탁 개정 대상
-전달 자료: 수탁 개정의 기준본</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수탁 개정 대상","outputs":"수탁 개정의 기준본","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A03","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 수탁 개정에서 비교할 해당 자재의 기존 동국제약용 승인 Artwork와 변경 근거자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수탁 개정 대상","outputs":"수탁 개정에서 비교할 해당 자재의 기존 동국제약용 승인 Artwork와 변경 근거자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A03","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_AF02</bpmn:incoming>
       <bpmn:outgoing>WF03_AF04</bpmn:outgoing>
     </bpmn:userTask>
@@ -81,17 +81,17 @@
       <bpmn:documentation>파일의 대상 자재와 변경 요청을 확인한다.
 입력 자료: 의뢰사가 만든 PDF·Illustrator 파일
 전달 자료: 의뢰사 Artwork와 원본</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사가 만든 PDF·Illustrator 파일","outputs":"의뢰사 Artwork와 원본","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A04","actorDetail":"의뢰사 → 수탁팀 또는 개발부 → QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사가 만든 PDF·Illustrator 파일","outputs":"의뢰사 Artwork와 원본","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A04","actorDetail":"의뢰사 → 수탁팀 또는 개발부 → QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_A_JOIN_WF03_A04</bpmn:incoming>
       <bpmn:outgoing>WF03_AF05</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="WF03_A05" name="도안과 동국 제작기준을 검토한다">
-      <bpmn:documentation>도안의 규격·표시사항을 해당 기준과 비교한다. 생산 관련 확인 결과는 받아 반영한다. 의뢰사 허가증의 적절성 검토를 추가하지 않는다.
-입력 자료: 의뢰사 도안·칼선·규격·기존 승인본
-전달 자료: 기준 차이와 필요한 수정</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사 도안·칼선·규격·기존 승인본","outputs":"기준 차이와 필요한 수정","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A05","actorDetail":"QS팀"}</bpmn:documentation>
+    <bpmn:userTask id="WF03_A05" name="의뢰사 도안을 칼선·규격과 대조하고, 개정이면 기존 승인본·변경 내용도 확인한다">
+      <bpmn:documentation>의뢰사 Artwork를 해당 자재의 칼선·규격과 비교한다. 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거를 함께 보고 수정이 필요한 내용을 확인한다.
+입력 자료: 의뢰사 Artwork, 해당 자재의 칼선·규격, 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료
+전달 자료: 의뢰사 Artwork와 칼선·규격의 차이, 개정 시 기존 승인본·변경 근거와 대조해 확인한 수정사항</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사 Artwork, 해당 자재의 칼선·규격, 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork와 칼선·규격의 차이, 개정 시 기존 승인본·변경 근거와 대조해 확인한 수정사항","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A05","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_AF05</bpmn:incoming>
       <bpmn:outgoing>WF03_AF06</bpmn:outgoing>
     </bpmn:userTask>
@@ -99,8 +99,8 @@
       <bpmn:documentation>수정할 사항과 의뢰사에 보낼 내용을 정리한다.
 입력 자료: 비교 내용과 생산 관련 회신
 전달 자료: 의뢰사 수정 요청 여부</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"비교 내용과 생산 관련 회신","outputs":"의뢰사 수정 요청 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A06","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"비교 내용과 생산 관련 회신","outputs":"의뢰사 수정 요청 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A06","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_AF06</bpmn:incoming>
       <bpmn:outgoing>WF03_AF07</bpmn:outgoing>
       <bpmn:outgoing>WF03_AF09</bpmn:outgoing>
@@ -115,12 +115,12 @@
       <bpmn:incoming>WF03_AF11</bpmn:incoming>
       <bpmn:outgoing>WF03_A_JOIN_WF03_A07</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="WF03_A08" name="디자인팀에 업체 원본과 누적자료를 넘긴다">
+    <bpmn:userTask id="WF03_A08" name="디자인팀에 의뢰사 원본·칼선·규격과 수정 내용을 전달한다">
       <bpmn:documentation>동국용 Artwork 제작에 필요한 자료를 전달한다.
 입력 자료: 검토한 업체 원본·최신 칼선·규격·수정 내용
-전달 자료: 동국용 디자인 작업 자료</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토한 업체 원본·최신 칼선·규격·수정 내용","outputs":"동국용 디자인 작업 자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A08","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 디자인팀에 전달한 의뢰사 원본 파일, 칼선·규격, 검토 과정의 수정 내용과 관련 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토한 업체 원본·최신 칼선·규격·수정 내용","outputs":"디자인팀에 전달한 의뢰사 원본 파일, 칼선·규격, 검토 과정의 수정 내용과 관련 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A08","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_AF09</bpmn:incoming>
       <bpmn:outgoing>WF03_AF10</bpmn:outgoing>
     </bpmn:userTask>
@@ -128,36 +128,36 @@
       <bpmn:documentation>의뢰사에 수정·재전달을 요청하고 다시 받는다.
 입력 자료: 지적사항 또는 사용할 수 없는 원본
 전달 자료: 수정된 도안·원본</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"지적사항 또는 사용할 수 없는 원본","outputs":"수정된 도안·원본","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A07","actorDetail":"QS팀 → 수탁팀 또는 개발부 → 의뢰사"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"지적사항 또는 사용할 수 없는 원본","outputs":"수정된 도안·원본","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A07","actorDetail":"QS팀 → 수탁팀 또는 개발부 → 의뢰사","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_A_JOIN_WF03_A07</bpmn:incoming>
       <bpmn:outgoing>WF03_AF08</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="WF03_A09" name="편집 가능한 올바른 원본인가?" gatewayDirection="Diverging" default="WF03_AF12">
       <bpmn:documentation>원본 상태를 확인하고 작업이 가능한지 판단한다.
 입력 자료: 업체 Illustrator 파일
-전달 자료: 제작 진행 또는 원본 재요청</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"업체 Illustrator 파일","outputs":"제작 진행 또는 원본 재요청","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A09","actorDetail":"디자인팀"}</bpmn:documentation>
+전달 자료: 원본 파일의 편집 가능 여부와 잘못된 파일을 다시 받아야 하는지에 대한 확인 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"업체 Illustrator 파일","outputs":"원본 파일의 편집 가능 여부와 잘못된 파일을 다시 받아야 하는지에 대한 확인 결과","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A09","actorDetail":"디자인팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_AF10</bpmn:incoming>
       <bpmn:outgoing>WF03_AF11</bpmn:outgoing>
       <bpmn:outgoing>WF03_AF12</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="WF03_A10" name="동국용 Artwork 제작으로 이어 간다">
-      <bpmn:documentation>동국 양식·시방서가 포함된 확인용 파일을 준비하는 디자인 작업으로 간다.
-입력 자료: 사용할 수 있는 원본과 제작 기준
-전달 자료: 동국용 제작 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"사용할 수 있는 원본과 제작 기준","outputs":"동국용 제작 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A10","actorDetail":"디자인팀"}</bpmn:documentation>
+    <bpmn:userTask id="WF03_A10" name="동국제약용 도안을 제작할 원본과 칼선·규격을 확인한다">
+      <bpmn:documentation>디자인팀이 동국제약용 Artwork 제작을 시작할 의뢰사 원본과 칼선·규격·수정 내용을 확인한다. 도안 제작 자체는 다음 업무에서 진행한다.
+입력 자료: 편집 가능한 의뢰사 원본 파일과 해당 자재의 칼선·규격·수정 내용
+전달 자료: 디자인팀이 동국제약용 Artwork 제작에 사용할 편집 가능한 의뢰사 원본 파일과 칼선·규격·수정 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"편집 가능한 의뢰사 원본 파일과 해당 자재의 칼선·규격·수정 내용","outputs":"디자인팀이 동국제약용 Artwork 제작에 사용할 편집 가능한 의뢰사 원본 파일과 칼선·규격·수정 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A10","actorDetail":"디자인팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_AF12</bpmn:incoming>
       <bpmn:outgoing>WF03_A10_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="WF03_A10_RESULT" name="동국용 제작 대상">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 동국용 제작 대상
-전달 자료: 동국용 제작 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"동국용 제작 대상","outputs":"동국용 제작 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A10_RESULT","actorDetail":"디자인팀"}</bpmn:documentation>
+    <bpmn:endEvent id="WF03_A10_RESULT" name="의뢰사 원본·제작자료의 디자인팀 전달 완료">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 디자인팀이 동국제약용 Artwork 제작에 사용할 편집 가능한 의뢰사 원본 파일과 칼선·규격·수정 내용
+입력 자료: 디자인팀이 동국제약용 Artwork 제작에 사용할 편집 가능한 의뢰사 원본 파일과 칼선·규격·수정 내용
+전달 자료: 디자인팀이 동국제약용 Artwork 제작에 사용할 편집 가능한 의뢰사 원본 파일과 칼선·규격·수정 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인팀이 동국제약용 Artwork 제작에 사용할 편집 가능한 의뢰사 원본 파일과 칼선·규격·수정 내용","outputs":"디자인팀이 동국제약용 Artwork 제작에 사용할 편집 가능한 의뢰사 원본 파일과 칼선·규격·수정 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"수탁 신규·개정과 최신 고객 정정: 수탁 허가증은 동국 검토 소관 아님"},{"path":"docs/22_URS원문.md","ref":"AN-01~14·AO-01~12·AN-04-01·AO-04-01"},{"path":"docs/23_업무규칙장부.md","ref":"품목-13·단계-21·단계-22·전달-05"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-96·M-101"}],"workflowId":"WF03","originalStepId":"WF03_A10_RESULT","actorDetail":"디자인팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF03_A10_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="WF03_AF01" name="신규" sourceRef="WF03_A01" targetRef="WF03_A02">
@@ -231,7 +231,7 @@
       <bpmndi:BPMNShape id="WF03_A_START1_di" bpmnElement="WF03_A_START1">
         <dc:Bounds x="225" y="105" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="165" y="153" width="160" height="33" />
+          <dc:Bounds x="211" y="153" width="68" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF03_A01_di" bpmnElement="WF03_A01" isMarkerVisible="true">
@@ -249,7 +249,7 @@
       <bpmndi:BPMNShape id="J_WF03_A04_di" bpmnElement="J_WF03_A04" isMarkerVisible="true">
         <dc:Bounds x="1118" y="328" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1065" y="287" width="160" height="33" />
+          <dc:Bounds x="1110" y="287" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF03_A04_di" bpmnElement="WF03_A04">
@@ -261,13 +261,13 @@
       <bpmndi:BPMNShape id="WF03_A06_di" bpmnElement="WF03_A06" isMarkerVisible="true">
         <dc:Bounds x="2018" y="328" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1935" y="390" width="220" height="33" />
+          <dc:Bounds x="1939.25" y="390" width="211.5" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="J_WF03_A07_di" bpmnElement="J_WF03_A07" isMarkerVisible="true">
         <dc:Bounds x="2918" y="328" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2865" y="287" width="160" height="33" />
+          <dc:Bounds x="2910" y="287" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF03_A08_di" bpmnElement="WF03_A08">
@@ -279,7 +279,7 @@
       <bpmndi:BPMNShape id="WF03_A09_di" bpmnElement="WF03_A09" isMarkerVisible="true">
         <dc:Bounds x="2618" y="718" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2535" y="780" width="220" height="33" />
+          <dc:Bounds x="2546.25" y="780" width="197.5" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF03_A10_di" bpmnElement="WF03_A10">
@@ -288,7 +288,7 @@
       <bpmndi:BPMNShape id="WF03_A10_RESULT_di" bpmnElement="WF03_A10_RESULT">
         <dc:Bounds x="3225" y="725" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3165" y="773" width="160" height="33" />
+          <dc:Bounds x="3135" y="773" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="WF03_AF01_di" bpmnElement="WF03_AF01">
@@ -311,15 +311,15 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF03_AF03_di" bpmnElement="WF03_AF03">
         <di:waypoint x="950" y="355" />
-        <di:waypoint x="962" y="355" />
-        <di:waypoint x="962" y="344.2" />
+        <di:waypoint x="1106" y="355" />
+        <di:waypoint x="1106" y="344.2" />
         <di:waypoint x="1128.8" y="344.2" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF03_AF04_di" bpmnElement="WF03_AF04">
         <di:waypoint x="950" y="515" />
         <di:waypoint x="962" y="515" />
-        <di:waypoint x="962" y="355" />
-        <di:waypoint x="1118" y="355" />
+        <di:waypoint x="962" y="365.8" />
+        <di:waypoint x="1128.8" y="365.8" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF03_AF05_di" bpmnElement="WF03_AF05">
         <di:waypoint x="1550" y="355" />
@@ -330,42 +330,42 @@
         <di:waypoint x="2018" y="355" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF03_AF07_di" bpmnElement="WF03_AF07">
-        <di:waypoint x="2065.25" y="348.25" />
-        <di:waypoint x="2084" y="348.25" />
+        <di:waypoint x="2065.25" y="361.75" />
+        <di:waypoint x="2084" y="361.75" />
         <di:waypoint x="2084" y="288" />
-        <di:waypoint x="2860" y="288" />
-        <di:waypoint x="2860" y="348.25" />
+        <di:waypoint x="2906" y="288" />
+        <di:waypoint x="2906" y="348.25" />
         <di:waypoint x="2924.75" y="348.25" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2892" y="307" width="53" height="17" />
+          <dc:Bounds x="2843" y="334" width="53" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF03_AF08_di" bpmnElement="WF03_AF08" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
         <di:waypoint x="3350" y="355" />
         <di:waypoint x="3362" y="355" />
         <di:waypoint x="3362" y="234" />
-        <di:waypoint x="1060" y="234" />
-        <di:waypoint x="1060" y="328" />
-        <di:waypoint x="1106" y="328" />
-        <di:waypoint x="1106" y="365.8" />
-        <di:waypoint x="1128.8" y="365.8" />
+        <di:waypoint x="1098" y="234" />
+        <di:waypoint x="1098" y="360" />
+        <di:waypoint x="1106" y="360" />
+        <di:waypoint x="1106" y="355" />
+        <di:waypoint x="1118" y="355" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="3372" y="286" width="69" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF03_AF09_di" bpmnElement="WF03_AF09">
-        <di:waypoint x="2065.25" y="361.75" />
-        <di:waypoint x="2228" y="361.75" />
+        <di:waypoint x="2065.25" y="348.25" />
+        <di:waypoint x="2228" y="348.25" />
         <di:waypoint x="2228" y="355" />
         <di:waypoint x="2240" y="355" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2155" y="335" width="65" height="17" />
+          <dc:Bounds x="2155" y="358" width="65" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF03_AF10_di" bpmnElement="WF03_AF10">
         <di:waypoint x="2450" y="355" />
-        <di:waypoint x="2462" y="355" />
-        <di:waypoint x="2462" y="745" />
+        <di:waypoint x="2606" y="355" />
+        <di:waypoint x="2606" y="745" />
         <di:waypoint x="2618" y="745" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF03_AF11_di" bpmnElement="WF03_AF11">

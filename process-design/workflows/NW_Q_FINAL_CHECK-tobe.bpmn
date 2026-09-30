@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_FINAL_CHECK_T_Collaboration" name="최종 파일의 내용·배치를 확인하고 자재별 검토를 마무리한다 · 도입 후 업무">
+    <bpmn:documentation>파일별 글자 대조 결과와 배치를 QS가 확인하고 완료하거나 수정 유형을 기록한다.
+입력 자료: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork
+전달 자료: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","perspective":"tobe","sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","sourceSteps":["WF08_A05","WF08_A06","WF08_A10","WF08_A07","WF08_A08","WF08_T05","WF08_T06","WF08_T09","WF08_T07","WF08_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_FINAL_CHECK_T_Process" name="최종 파일의 내용·배치를 확인하고 자재별 검토를 마무리한다 · 도입 후 업무" processRef="NW_Q_FINAL_CHECK_T_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_FINAL_CHECK_T_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_FINAL_CHECK_T_Process">
+      <bpmn:lane id="Lane_NW_Q_FINAL_CHECK_T_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T05</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_NW_Q_FINAL_CHECK_T_Process_R1" name="시스템">
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T01_SYS</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_FINAL_CHECK_T04_SYS</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_FINAL_CHECK_T00" name="이 업무에 필요한 자료를 확인한다">
+      <bpmn:documentation>상위 업무에서 전달받은 자료로 이 업무를 시작한다.
+입력 자료: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork
+전달 자료: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T00","actorDetail":"QS팀","sourceSteps":["WF08_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_TF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_Q_FINAL_CHECK_T01" name="최종 파일과 확정 입력본을 연결한다">
+      <bpmn:documentation>확정한 차수의 검토 입력본과 받은 최종 AI·PDF 파일 각각을 확인한다.
+입력 자료: 확정 입력본과 최종 Illustrator·PDF 파일
+전달 자료: 파일별 대조에 사용할 확정 입력본</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확정 입력본과 최종 Illustrator·PDF 파일","outputs":"파일별 대조에 사용할 확정 입력본","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-15","K-대조-11","K-검토-06"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T01","actorDetail":"QS팀","sourceSteps":["WF08_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_TF01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_T01_SYS_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_FINAL_CHECK_T01_SYS" name="각 최종 파일과 확정 입력본을 대조한다">
+      <bpmn:documentation>각 파일의 글자 대조와 나란히 보기를 제공한다. 바이트가 같은 파일도 QS 육안 확인을 거친다.
+입력 자료: 파일별 대조에 사용할 확정 입력본
+전달 자료: 파일별 차이·원문 위치·나란히 보기</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"파일별 대조에 사용할 확정 입력본","outputs":"파일별 차이·원문 위치·나란히 보기","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-15","K-대조-11","K-검토-06"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T01_SYS","actorDetail":"Artwork 시스템","sourceSteps":["WF08_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_T01_SYS_FLOW</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_TF02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="NW_Q_FINAL_CHECK_T02" name="파일별 글자 결과와 나란히 보기를 확인한다">
+      <bpmn:documentation>파일별 글자 대조 결과를 보고 내용·배치는 QS가 나란히 눈으로 확인한다. 바이트가 같아도 자동 통과하지 않는다.
+입력 자료: 확정 입력본과 최종 파일별 대조 결과
+전달 자료: QS가 확인한 글자·내용·배치와 차이</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확정 입력본과 최종 파일별 대조 결과","outputs":"QS가 확인한 글자·내용·배치와 차이","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-15","K-대조-11","K-검토-06"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T02","actorDetail":"QS팀","sourceSteps":["WF08_T05"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_TF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_TF03</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="NW_Q_FINAL_CHECK_T03" name="완료 가능한가, 전환·내용 수정이 필요한가?" gatewayDirection="Diverging" default="NW_Q_FINAL_CHECK_TF07">
+      <bpmn:documentation>단순 전환 오류와 도안 내용 변경을 구분한다. 수정 필요를 완료로 기록하지 않는다.
+입력 자료: QS의 최종 파일 확인 내용
+전달 자료: 완료·재전환·내용 재검토의 구분</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS의 최종 파일 확인 내용","outputs":"완료·재전환·내용 재검토의 구분","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T03","actorDetail":"QS팀","sourceSteps":["WF08_T06"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_TF03</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_TF04</bpmn:outgoing>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_TF06</bpmn:outgoing>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_TF07</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="NW_Q_FINAL_CHECK_T04" name="QS가 최종 파일 확인 후 완료를 결정한다">
+      <bpmn:documentation>권한 있는 QS 담당자가 최종 AI·PDF의 내용·배치를 확인하고 완료를 결정한다.
+입력 자료: 확인을 마친 최종 파일 묶음
+전달 자료: QS의 완료 결정과 확인한 AI·PDF 묶음</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인을 마친 최종 파일 묶음","outputs":"QS의 완료 결정과 확인한 AI·PDF 묶음","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-14","K-검토-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T04","actorDetail":"QS팀","sourceSteps":["WF08_T09"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_TF04</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_T04_SYS_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="NW_Q_FINAL_CHECK_T06" name="같은 확정 기준으로 다시 전환할 파일과 오류 기록">
+      <bpmn:documentation>표시한 파일·자료 또는 확인 내용을 남기고 상위 업무 흐름으로 돌아간다.
+입력 자료: 같은 차수에서 재전환·재대조할 파일과 전환 오류 기록
+전달 자료: 같은 차수에서 재전환·재대조할 파일과 전환 오류 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"같은 차수에서 재전환·재대조할 파일과 전환 오류 기록","outputs":"같은 차수에서 재전환·재대조할 파일과 전환 오류 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T06","actorDetail":"QS팀","sourceSteps":["WF08_T07"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_TF06</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="NW_Q_FINAL_CHECK_T07" name="다음 검토 차수가 필요한 도안과 내용 변경 기록">
+      <bpmn:documentation>표시한 파일·자료 또는 확인 내용을 남기고 상위 업무 흐름으로 돌아간다.
+입력 자료: 확정을 풀고 같은 미완료 개정에서 재검토할 도안·내용 변경 기록
+전달 자료: 확정을 풀고 같은 미완료 개정에서 재검토할 도안·내용 변경 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확정을 풀고 같은 미완료 개정에서 재검토할 도안·내용 변경 기록","outputs":"확정을 풀고 같은 미완료 개정에서 재검토할 도안·내용 변경 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T07","actorDetail":"QS팀","sourceSteps":["WF08_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_TF07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="NW_Q_FINAL_CHECK_T04_SYS" name="승인본을 등록하고 최신 개정·완료 이력을 갱신한다">
+      <bpmn:documentation>QS 완료 결정에 따라 확인한 파일 묶음을 승인본으로 보관한다.
+입력 자료: QS의 완료 결정과 확인한 AI·PDF 묶음
+전달 자료: 등록된 승인본·최신 개정·완료 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS의 완료 결정과 확인한 AI·PDF 묶음","outputs":"등록된 승인본·최신 개정·완료 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-14","K-검토-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T04_SYS","actorDetail":"Artwork 시스템","sourceSteps":["WF08_T09"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_T04_SYS_FLOW</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_FINAL_CHECK_TF05</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="NW_Q_FINAL_CHECK_T05" name="QS 완료 기록과 등록된 최신 승인본 AI·PDF">
+      <bpmn:documentation>표시한 파일·자료 또는 확인 내용을 남기고 상위 업무 흐름으로 돌아간다.
+입력 자료: 완료한 자재의 승인본 AI·PDF와 완료 기록
+전달 자료: 완료한 자재의 승인본 AI·PDF와 완료 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"완료한 자재의 승인본 AI·PDF와 완료 기록","outputs":"완료한 자재의 승인본 AI·PDF와 완료 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_Q_FINAL_CHECK","originalStepId":"NW_Q_FINAL_CHECK_T05","actorDetail":"QS팀","sourceSteps":["WF08_T09"],"level":"node-detail","scope":{"parentNodeId":"Q_FINAL_CHECK","start":"다음 자료를 받은 상태에서 시작한다: 최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","end":"이 업무에서 남길 내용: 문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","inputs":"최종 Illustrator·PDF 파일과 검토 기준이 된 Artwork","outputs":"문제가 없으면 QS 최종 확인을 마친 자재별 Illustrator·PDF 파일, 문제가 있으면 내용 수정 요청 또는 파일 전환 오류 수정 요청","includes":["수령한 최종 AI·PDF와 기준 도안 대조","글자 결과 및 배치의 육안 확인","문제 유형 구분 또는 QS 완료"],"excludes":["내용 확정과 개정번호 부여","전자회람·디자인팀 파일 전환 작업","후속 자료 전달·표준서·발주"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_FINAL_CHECK_TF05</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_TF01" sourceRef="NW_Q_FINAL_CHECK_T00" targetRef="NW_Q_FINAL_CHECK_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_TF02" sourceRef="NW_Q_FINAL_CHECK_T01_SYS" targetRef="NW_Q_FINAL_CHECK_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T01_SYS","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_TF03" sourceRef="NW_Q_FINAL_CHECK_T02" targetRef="NW_Q_FINAL_CHECK_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_TF04" name="완료 가능" sourceRef="NW_Q_FINAL_CHECK_T03" targetRef="NW_Q_FINAL_CHECK_T04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T03","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">완료 가능</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_TF05" sourceRef="NW_Q_FINAL_CHECK_T04_SYS" targetRef="NW_Q_FINAL_CHECK_T05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T04_SYS","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_TF06" name="전환 오류" sourceRef="NW_Q_FINAL_CHECK_T03" targetRef="NW_Q_FINAL_CHECK_T06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T03","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">전환 오류</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_TF07" name="내용 변경" sourceRef="NW_Q_FINAL_CHECK_T03" targetRef="NW_Q_FINAL_CHECK_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_T01_SYS_FLOW" sourceRef="NW_Q_FINAL_CHECK_T01" targetRef="NW_Q_FINAL_CHECK_T01_SYS">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_FINAL_CHECK_T04_SYS_FLOW" sourceRef="NW_Q_FINAL_CHECK_T04" targetRef="NW_Q_FINAL_CHECK_T04_SYS">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_FINAL_CHECK_T04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_FINAL_CHECK_T_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_FINAL_CHECK_T_Process_di" bpmnElement="Participant_NW_Q_FINAL_CHECK_T_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="2520" height="780" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_FINAL_CHECK_T_Process_R1_di" bpmnElement="Lane_NW_Q_FINAL_CHECK_T_Process_R1" isHorizontal="true">
+        <dc:Bounds x="70" y="590" width="2490" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_FINAL_CHECK_T_Process_R0_di" bpmnElement="Lane_NW_Q_FINAL_CHECK_T_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="2490" height="550" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T00_di" bpmnElement="NW_Q_FINAL_CHECK_T00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T01_di" bpmnElement="NW_Q_FINAL_CHECK_T01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T01_SYS_di" bpmnElement="NW_Q_FINAL_CHECK_T01_SYS">
+        <dc:Bounds x="740" y="625" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T02_di" bpmnElement="NW_Q_FINAL_CHECK_T02">
+        <dc:Bounds x="1040" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T03_di" bpmnElement="NW_Q_FINAL_CHECK_T03" isMarkerVisible="true">
+        <dc:Bounds x="1418" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1335" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T04_di" bpmnElement="NW_Q_FINAL_CHECK_T04">
+        <dc:Bounds x="1640" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T06_di" bpmnElement="NW_Q_FINAL_CHECK_T06">
+        <dc:Bounds x="1725" y="265" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1635" y="313" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T07_di" bpmnElement="NW_Q_FINAL_CHECK_T07">
+        <dc:Bounds x="1725" y="425" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1635" y="473" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T04_SYS_di" bpmnElement="NW_Q_FINAL_CHECK_T04_SYS">
+        <dc:Bounds x="1940" y="625" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_FINAL_CHECK_T05_di" bpmnElement="NW_Q_FINAL_CHECK_T05">
+        <dc:Bounds x="2325" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2235" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_TF01_di" bpmnElement="NW_Q_FINAL_CHECK_TF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_TF02_di" bpmnElement="NW_Q_FINAL_CHECK_TF02">
+        <di:waypoint x="950" y="675" />
+        <di:waypoint x="962" y="675" />
+        <di:waypoint x="962" y="125" />
+        <di:waypoint x="1040" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_TF03_di" bpmnElement="NW_Q_FINAL_CHECK_TF03">
+        <di:waypoint x="1250" y="125" />
+        <di:waypoint x="1418" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_TF04_di" bpmnElement="NW_Q_FINAL_CHECK_TF04">
+        <di:waypoint x="1461.2" y="114.2" />
+        <di:waypoint x="1628" y="114.2" />
+        <di:waypoint x="1628" y="125" />
+        <di:waypoint x="1640" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1560" y="138" width="53" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_TF05_di" bpmnElement="NW_Q_FINAL_CHECK_TF05">
+        <di:waypoint x="2150" y="675" />
+        <di:waypoint x="2162" y="675" />
+        <di:waypoint x="2162" y="125" />
+        <di:waypoint x="2325" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_TF06_di" bpmnElement="NW_Q_FINAL_CHECK_TF06">
+        <di:waypoint x="1472" y="125" />
+        <di:waypoint x="1628" y="125" />
+        <di:waypoint x="1628" y="285" />
+        <di:waypoint x="1725" y="285" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1689" y="244" width="53" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_TF07_di" bpmnElement="NW_Q_FINAL_CHECK_TF07">
+        <di:waypoint x="1461.2" y="135.8" />
+        <di:waypoint x="1623" y="135.8" />
+        <di:waypoint x="1623" y="445" />
+        <di:waypoint x="1725" y="445" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1688" y="404" width="53" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_T01_SYS_FLOW_di" bpmnElement="NW_Q_FINAL_CHECK_T01_SYS_FLOW">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="662" y="125" />
+        <di:waypoint x="662" y="675" />
+        <di:waypoint x="740" y="675" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_FINAL_CHECK_T04_SYS_FLOW_di" bpmnElement="NW_Q_FINAL_CHECK_T04_SYS_FLOW">
+        <di:waypoint x="1850" y="125" />
+        <di:waypoint x="1862" y="125" />
+        <di:waypoint x="1862" y="675" />
+        <di:waypoint x="1940" y="675" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

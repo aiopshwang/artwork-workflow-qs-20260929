@@ -3,8 +3,8 @@
   <bpmn:collaboration id="WF11_A_Collaboration" name="늦은 허가증 재검토와 바코드 후속 처리 · 현재 업무">
     <bpmn:documentation>나중에 받은 허가증을 도안과 확인하고, 바코드는 입고 전후 시점에 맞춰 반영한다.
 입력 자료: 추가 허가증 수령 또는 바코드 반영 필요
-전달 자료: 허가 반영 확인·바코드 후속 결과</bpmn:documentation>
-    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"추가 허가증 수령 또는 바코드 반영 필요","outputs":"허가 반영 확인·바코드 후속 결과","perspective":"asis","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11"}</bpmn:documentation>
+전달 자료: 새 허가증의 Artwork 반영 확인 결과 또는 자재의 바코드 반영·후인쇄 처리 및 번호 확인 결과</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"추가 허가증 수령 또는 바코드 반영 필요","outputs":"새 허가증의 Artwork 반영 확인 결과 또는 자재의 바코드 반영·후인쇄 처리 및 번호 확인 결과","perspective":"asis","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
     <bpmn:participant id="Participant_WF11_A_Process" name="늦은 허가증 재검토와 바코드 후속 처리 · 현재 업무" processRef="WF11_A_Process" />
   </bpmn:collaboration>
   <bpmn:process id="WF11_A_Process" isExecutable="false">
@@ -34,24 +34,24 @@
       <bpmn:documentation>해당 품목·자재의 진행 자료에 허가증을 연결한다.
 입력 자료: 새로 확보한 허가증
 전달 자료: 추가로 확보한 허가증</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새로 확보한 허가증","outputs":"추가로 확보한 허가증","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A01","actorDetail":"요청부서 → QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새로 확보한 허가증","outputs":"추가로 확보한 허가증","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A01","actorDetail":"요청부서 → QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:outgoing>WF11_AF01</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:startEvent id="WF11_A07" name="자사 신규 자재의 바코드 반영 필요를 확인한다">
       <bpmn:documentation>자사 신규에서 허가 후 번호를 확보하거나 해당 자재에 바코드를 반영할 필요가 생긴다. 현행 입고 전후 분기는 이 경로의 자료에 근거한다.
 입력 자료: 부여된 번호·반영 요청
-전달 자료: 바코드 후속 작업</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"부여된 번호·반영 요청","outputs":"바코드 후속 작업","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A07","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 바코드를 반영해야 할 자사 신규 자재와 반영할 번호</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"부여된 번호·반영 요청","outputs":"바코드를 반영해야 할 자사 신규 자재와 반영할 번호","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A07","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:outgoing>WF11_AF07</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:userTask id="WF11_A02" name="대상 자재의 현재 Artwork를 준비한다">
       <bpmn:documentation>어느 자재와 판을 다시 확인할지 확인한다.
 입력 자료: 허가증과 대상 품목
 전달 자료: 허가증과 대조할 Artwork</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증과 대상 품목","outputs":"허가증과 대조할 Artwork","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A02","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증과 대상 품목","outputs":"허가증과 대조할 Artwork","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A02","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_AF01</bpmn:incoming>
       <bpmn:outgoing>WF11_AF02</bpmn:outgoing>
     </bpmn:userTask>
@@ -59,8 +59,8 @@
       <bpmn:documentation>입고 전 도안·인쇄 반영인지 입고 뒤 추가 인쇄인지 나눈다.
 입력 자료: 디자인·인쇄·입고 일정
 전달 자료: 반영 시점</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인·인쇄·입고 일정","outputs":"반영 시점","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A08","actorDetail":"QS팀·자재 담당"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인·인쇄·입고 일정","outputs":"반영 시점","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A08","actorDetail":"QS팀·자재 담당","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_AF07</bpmn:incoming>
       <bpmn:outgoing>WF11_AF08</bpmn:outgoing>
       <bpmn:outgoing>WF11_AF09</bpmn:outgoing>
@@ -78,27 +78,27 @@
     <bpmn:userTask id="WF11_A09" name="입고 전 디자인·인쇄 반영을 요청한다">
       <bpmn:documentation>도안 또는 인쇄 일정에 번호가 반영되도록 요청한다.
 입력 자료: 바코드 번호와 해당 자재
-전달 자료: 입고 전 반영 결과</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"바코드 번호와 해당 자재","outputs":"입고 전 반영 결과","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A09","actorDetail":"QS팀 → 디자인팀·자재 담당"}</bpmn:documentation>
+전달 자료: 입고 전에 바코드를 반영한 Artwork·인쇄 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"바코드 번호와 해당 자재","outputs":"입고 전에 바코드를 반영한 Artwork·인쇄 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A09","actorDetail":"QS팀 → 디자인팀·자재 담당","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_AF08</bpmn:incoming>
       <bpmn:outgoing>WF11_AF10</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF11_A10" name="입고 자재의 바코드 후인쇄를 진행한다">
       <bpmn:documentation>입고 후 필요한 추가 인쇄를 진행하고 확인할 결과를 QS에 전달한다.
 입력 자료: 입고 자재와 부여 번호
-전달 자료: 후인쇄 결과</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"해당 자재·인쇄 담당"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"입고 자재와 부여 번호","outputs":"후인쇄 결과","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A10","actorDetail":"해당 자재·인쇄 담당"}</bpmn:documentation>
+전달 자료: 입고된 대상 자재에 바코드를 후인쇄한 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"해당 자재·인쇄 담당","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"입고 자재와 부여 번호","outputs":"입고된 대상 자재에 바코드를 후인쇄한 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A10","actorDetail":"해당 자재·인쇄 담당","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_AF09</bpmn:incoming>
       <bpmn:outgoing>WF11_AF11</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF11_A03" name="허가증과 Artwork 내용을 대조한다">
       <bpmn:documentation>허가 전 자료로 검토했던 내용과 실제 허가 내용이 도안에 맞게 반영됐는지 확인한다.
 입력 자료: 확보 허가증·Artwork
-전달 자료: 추가 차이·수정 내용</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확보 허가증·Artwork","outputs":"추가 차이·수정 내용","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A03","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 새 허가증과 현재 Artwork의 차이 및 추가로 수정할 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확보 허가증·Artwork","outputs":"새 허가증과 현재 Artwork의 차이 및 추가로 수정할 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A03","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_A_JOIN_WF11_A03</bpmn:incoming>
       <bpmn:outgoing>WF11_AF03</bpmn:outgoing>
     </bpmn:userTask>
@@ -116,8 +116,8 @@
       <bpmn:documentation>차이가 있으면 수정 검토를, 없으면 확인 결과 정리를 진행한다.
 입력 자료: 대조 결과
 전달 자료: 수정 또는 확인 결과</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대조 결과","outputs":"수정 또는 확인 결과","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A04","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대조 결과","outputs":"수정 또는 확인 결과","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A04","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_AF03</bpmn:incoming>
       <bpmn:outgoing>WF11_AF04</bpmn:outgoing>
       <bpmn:outgoing>WF11_AF06</bpmn:outgoing>
@@ -125,9 +125,9 @@
     <bpmn:userTask id="WF11_A11" name="바코드가 반영된 결과를 확인한다">
       <bpmn:documentation>해당 번호·대상 자재의 반영을 확인한다.
 입력 자료: 반영 도안 또는 후인쇄 결과
-전달 자료: 바코드 반영 확인</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"반영 도안 또는 후인쇄 결과","outputs":"바코드 반영 확인","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A11","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 대상 자재에 요청한 바코드 번호가 반영됐는지 확인한 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"반영 도안 또는 후인쇄 결과","outputs":"대상 자재에 요청한 바코드 번호가 반영됐는지 확인한 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A11","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_A_JOIN_WF11_A11</bpmn:incoming>
       <bpmn:outgoing>WF11_AF12</bpmn:outgoing>
     </bpmn:userTask>
@@ -135,43 +135,43 @@
       <bpmn:documentation>허가 내용에 맞춰 수정한 도안을 받아 다시 확인한다.
 입력 자료: 허가 반영 수정사항
 전달 자료: 수정된 Artwork</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가 반영 수정사항","outputs":"수정된 Artwork","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A05","actorDetail":"QS팀 ↔ 디자인팀·관련 담당"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가 반영 수정사항","outputs":"수정된 Artwork","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A05","actorDetail":"QS팀 ↔ 디자인팀·관련 담당","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_AF04</bpmn:incoming>
       <bpmn:outgoing>WF11_AF05</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF11_A06" name="허가증 기준의 확인 결과를 남긴다">
       <bpmn:documentation>해당 자료와 확인 결과를 업무 자료로 유지한다.
 입력 자료: 허가증 대조·재검토 결과
-전달 자료: 허가증 반영 확인 결과</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증 대조·재검토 결과","outputs":"허가증 반영 확인 결과","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A06","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 나중에 받은 허가증의 내용이 해당 Artwork에 반영됐는지 확인한 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증 대조·재검토 결과","outputs":"나중에 받은 허가증의 내용이 해당 Artwork에 반영됐는지 확인한 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A06","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_AF06</bpmn:incoming>
       <bpmn:outgoing>WF11_A06_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF11_A12" name="해당 바코드 후속 업무를 마무리한다">
       <bpmn:documentation>바코드 반영 결과와 관련 파일을 남긴다.
 입력 자료: 반영 결과
-전달 자료: 바코드 후속 결과</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"반영 결과","outputs":"바코드 후속 결과","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A12","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 대상 자재의 바코드 반영 또는 후인쇄 처리 결과와 번호 확인 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"반영 결과","outputs":"대상 자재의 바코드 반영 또는 후인쇄 처리 결과와 번호 확인 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A12","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_AF12</bpmn:incoming>
       <bpmn:outgoing>WF11_A12_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="WF11_A06_RESULT" name="허가증 반영 확인 결과">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 허가증 반영 확인 결과
-전달 자료: 허가증 반영 확인 결과</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증 반영 확인 결과","outputs":"허가증 반영 확인 결과","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A06_RESULT","actorDetail":"QS팀"}</bpmn:documentation>
+    <bpmn:endEvent id="WF11_A06_RESULT" name="새 허가증과 Artwork 대조 결과 확인">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 나중에 받은 허가증의 내용이 해당 Artwork에 반영됐는지 확인한 결과
+입력 자료: 나중에 받은 허가증의 내용이 해당 Artwork에 반영됐는지 확인한 결과
+전달 자료: 나중에 받은 허가증의 내용이 해당 Artwork에 반영됐는지 확인한 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"나중에 받은 허가증의 내용이 해당 Artwork에 반영됐는지 확인한 결과","outputs":"나중에 받은 허가증의 내용이 해당 Artwork에 반영됐는지 확인한 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A06_RESULT","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_A06_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:endEvent id="WF11_A12_RESULT" name="바코드 후속 결과">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 바코드 후속 결과
-전달 자료: 바코드 후속 결과</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"바코드 후속 결과","outputs":"바코드 후속 결과","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A12_RESULT","actorDetail":"QS팀"}</bpmn:documentation>
+    <bpmn:endEvent id="WF11_A12_RESULT" name="바코드 반영·후인쇄 및 번호 확인 완료">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 대상 자재의 바코드 반영 또는 후인쇄 처리 결과와 번호 확인 결과
+입력 자료: 대상 자재의 바코드 반영 또는 후인쇄 처리 결과와 번호 확인 결과
+전달 자료: 대상 자재의 바코드 반영 또는 후인쇄 처리 결과와 번호 확인 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재의 바코드 반영 또는 후인쇄 처리 결과와 번호 확인 결과","outputs":"대상 자재의 바코드 반영 또는 후인쇄 처리 결과와 번호 확인 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"WF11","originalStepId":"WF11_A12_RESULT","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF11_A12_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="WF11_AF01" sourceRef="WF11_A01" targetRef="WF11_A02">
@@ -256,13 +256,13 @@
       <bpmndi:BPMNShape id="WF11_A08_di" bpmnElement="WF11_A08" isMarkerVisible="true">
         <dc:Bounds x="518" y="258" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="435" y="320" width="220" height="33" />
+          <dc:Bounds x="451.25" y="320" width="187.5" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="J_WF11_A03_di" bpmnElement="J_WF11_A03" isMarkerVisible="true">
         <dc:Bounds x="818" y="258" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="765" y="217" width="160" height="33" />
+          <dc:Bounds x="810" y="217" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF11_A09_di" bpmnElement="WF11_A09">
@@ -277,13 +277,13 @@
       <bpmndi:BPMNShape id="J_WF11_A11_di" bpmnElement="J_WF11_A11" isMarkerVisible="true">
         <dc:Bounds x="1118" y="258" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1065" y="217" width="160" height="33" />
+          <dc:Bounds x="1110" y="217" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF11_A04_di" bpmnElement="WF11_A04" isMarkerVisible="true">
         <dc:Bounds x="1418" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1335" y="160" width="220" height="33" />
+          <dc:Bounds x="1357" y="160" width="176" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF11_A11_di" bpmnElement="WF11_A11">
@@ -301,13 +301,13 @@
       <bpmndi:BPMNShape id="WF11_A06_RESULT_di" bpmnElement="WF11_A06_RESULT">
         <dc:Bounds x="2025" y="105" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1956" y="153" width="178" height="33" />
+          <dc:Bounds x="1935" y="153" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF11_A12_RESULT_di" bpmnElement="WF11_A12_RESULT">
         <dc:Bounds x="2025" y="265" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1965" y="313" width="160" height="33" />
+          <dc:Bounds x="1935" y="313" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="WF11_AF01_di" bpmnElement="WF11_AF01">
@@ -337,10 +337,10 @@
         <di:waypoint x="1850" y="125" />
         <di:waypoint x="1862" y="125" />
         <di:waypoint x="1862" y="53" />
-        <di:waypoint x="728" y="53" />
-        <di:waypoint x="728" y="185" />
-        <di:waypoint x="760" y="185" />
-        <di:waypoint x="760" y="291.75" />
+        <di:waypoint x="972" y="53" />
+        <di:waypoint x="972" y="185" />
+        <di:waypoint x="806" y="185" />
+        <di:waypoint x="806" y="291.75" />
         <di:waypoint x="824.75" y="291.75" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1889" y="75" width="77" height="17" />
@@ -363,11 +363,11 @@
         <di:waypoint x="565.25" y="278.25" />
         <di:waypoint x="584" y="278.25" />
         <di:waypoint x="584" y="185" />
-        <di:waypoint x="718" y="185" />
-        <di:waypoint x="718" y="125" />
+        <di:waypoint x="728" y="185" />
+        <di:waypoint x="728" y="125" />
         <di:waypoint x="740" y="125" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="684" y="104" width="41" height="17" />
+          <dc:Bounds x="693" y="104" width="41" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF11_AF09_di" bpmnElement="WF11_AF09">
@@ -393,8 +393,8 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF11_AF12_di" bpmnElement="WF11_AF12">
         <di:waypoint x="1550" y="285" />
-        <di:waypoint x="1628" y="285" />
-        <di:waypoint x="1628" y="445" />
+        <di:waypoint x="1562" y="285" />
+        <di:waypoint x="1562" y="445" />
         <di:waypoint x="1640" y="445" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF11_A06_END_FLOW_di" bpmnElement="WF11_A06_END_FLOW">

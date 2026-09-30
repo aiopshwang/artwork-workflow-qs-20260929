@@ -6,15 +6,21 @@
   const workflows = new Map(catalog.workflows.map(w => [w.id, w]));
   const model = JSON.parse(document.getElementById('model-data').textContent);
   const overallNodes = new Map(model.pools.flatMap(p => p.nodes).map(n => [n.id, n]));
+  const isNodeDetail = w => w?.level === 'node-detail';
+  const exactParent = w => isNodeDetail(w) && w.parentNodeIds?.length === 1 && w.scope?.parentNodeId === w.parentNodeIds[0] && overallNodes.has(w.scope.parentNodeId) ? w.scope.parentNodeId : null;
   const modes = { asis: '현재 업무', tobe: '도입 후 업무', compare: '변경점 / 기능' };
   const $ = id => document.getElementById(id);
   const el = (tag, text, cls) => { const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (cls) e.className = cls; return e; };
   const lines = v => Array.isArray(v) ? v.filter(Boolean).join('\n') : v == null ? '' : String(v);
   let current = null, mode = 'asis', stepId = null, parentId = null, returnView = null, zoom = 1, box = [0, 0, 100, 100], svg = null, roleRows = [];
   const shell = el('section', undefined, 'workflow-shell'); shell.id = 'workflow-shell'; shell.hidden = true; shell.setAttribute('aria-label', '하위 업무 흐름');
-  shell.innerHTML = `<header class="wf-header"><nav class="wf-breadcrumb" aria-label="현재 위치"><button id="wf-back">전체 업무 흐름</button><span>›</span><button id="wf-crumb"></button><span id="wf-step-crumb"></span></nav><div class="wf-title-row"><div><h1 id="wf-title"></h1><p id="wf-purpose"></p></div><div class="wf-file-actions"><button id="wf-download">이 흐름 BPMN 내려받기</button><button id="wf-edit" class="primary">이 흐름 편집하기</button></div></div></header><div class="wf-tabs" role="tablist" aria-label="현재와 도입 후 비교"><button id="wf-tab-asis" role="tab">현재 업무</button><button id="wf-tab-tobe" role="tab">도입 후 업무</button><button id="wf-tab-compare" role="tab">변경점 / 기능</button><select id="wf-choose" class="wf-choose" aria-label="다른 하위 업무 흐름 선택"></select></div><div class="wf-toolbar" id="wf-toolbar"><div class="wf-search-wrap"><input id="wf-search" type="search" placeholder="이 흐름의 단계 · 담당 · 설명 검색" aria-label="하위 업무 검색"><div id="wf-results" class="wf-search-results" hidden></div></div><button id="wf-fit">전체 구조</button><button id="wf-read">읽기 크기</button><button id="wf-minus" aria-label="하위 흐름 축소">−</button><span id="wf-zoom" class="zoom-readout">100%</span><button id="wf-plus" aria-label="하위 흐름 확대">＋</button><span class="wf-help">잡아 끌어 이동 · 단계 또는 연결선 선택</span></div><div class="wf-context" id="wf-context"></div><div class="wf-main" id="wf-main"><div class="wf-viewport" id="wf-viewport" tabindex="0" aria-label="하위 순서도"><div class="wf-map" id="wf-map"></div></div><div id="wf-role-labels" class="wf-role-labels" aria-hidden="true"></div><aside class="wf-panel" id="wf-panel" hidden><div class="wf-panel-head"><span id="wf-panel-mode"></span><button id="wf-close-step" aria-label="단계 설명 닫기">×</button></div><div id="wf-step-detail"></div></aside></div><div class="wf-compare" id="wf-compare" hidden></div><div class="wf-status" id="wf-status" role="status"></div>`;
+  shell.innerHTML = `<header class="wf-header"><nav class="wf-breadcrumb" aria-label="현재 위치"><button id="wf-back">전체 업무 흐름</button><span id="wf-parent-wrap" hidden><span>›</span><button id="wf-parent"></button></span><span>›</span><button id="wf-crumb"></button><span id="wf-step-crumb"></span></nav><div class="wf-title-row"><div><span id="wf-kind" class="wf-kind"></span><h1 id="wf-title"></h1><details class="wf-purpose-info"><summary>업무 설명</summary><p id="wf-purpose"></p></details></div><div class="wf-file-actions"><button id="wf-download">이 흐름 BPMN 내려받기</button><button id="wf-edit" class="primary">이 흐름 편집하기</button></div></div></header><div class="wf-tabs" role="tablist" aria-label="현재와 도입 후 비교"><button id="wf-tab-asis" role="tab">현재 업무</button><button id="wf-tab-tobe" role="tab">도입 후 업무</button><button id="wf-tab-compare" role="tab">변경점 / 기능</button><select id="wf-choose" class="wf-choose" aria-label="업무 상세 또는 관련 구간 참고 선택"></select></div><div class="wf-toolbar" id="wf-toolbar"><div class="wf-search-wrap"><input id="wf-search" type="search" placeholder="이 흐름의 단계 · 담당 · 설명 검색" aria-label="하위 업무 검색"><div id="wf-results" class="wf-search-results" hidden></div></div><button id="wf-fit">전체 구조</button><button id="wf-read">읽기 크기</button><button id="wf-minus" aria-label="하위 흐름 축소">−</button><span id="wf-zoom" class="zoom-readout">100%</span><button id="wf-plus" aria-label="하위 흐름 확대">＋</button><span class="wf-help">잡아 끌어 이동 · 단계 또는 연결선 선택</span></div><div class="wf-context" id="wf-context"></div><div class="wf-main" id="wf-main"><div class="wf-viewport" id="wf-viewport" tabindex="0" aria-label="하위 순서도"><div class="wf-map" id="wf-map"></div></div><div id="wf-role-labels" class="wf-role-labels" aria-hidden="true"></div><aside class="wf-panel" id="wf-panel" hidden><div class="wf-panel-head"><span id="wf-panel-mode"></span><button id="wf-close-step" aria-label="단계 설명 닫기">×</button></div><div id="wf-step-detail"></div></aside></div><div class="wf-compare" id="wf-compare" hidden></div><div class="wf-status" id="wf-status" role="status"></div>`;
   document.body.append(shell);
-  for (const w of workflows.values()) { const o = el('option', w.title); o.value = w.id; $('wf-choose').append(o); }
+  for(const [level,label] of [['node-detail','각 업무의 상세 Workflow'],['context','관련 구간 참고 · 여러 업무를 함께 보기']]) {
+    const group=el('optgroup');group.label=label;
+    for(const w of workflows.values())if((w.level||'context')===level){const o=el('option',w.title);o.value=w.id;group.append(o);}
+    if(group.childElementCount)$('wf-choose').append(group);
+  }
   function params() { return new URLSearchParams(location.hash.slice(1)); }
   function hash(replace = true) {
     const p = new URLSearchParams({ workflow: current.id, mode });
@@ -22,7 +28,7 @@
     history[replace ? 'replaceState' : 'pushState'](null, '', location.pathname + location.search + '#' + p);
   }
   function setOverallInert(value) { for(const element of document.body.children)if(element!==shell&&element.matches('header,main,footer,.controls,.stages,.read-hint,.reader-flow-legend'))element.inert=value; }
-  function saveReturn() { try { sessionStorage.setItem('artwork-workflow-return-v4', JSON.stringify({ parentId, view: returnView })); } catch {} }
+  function saveReturn() { try { sessionStorage.setItem('artwork-workflow-return-v6', JSON.stringify({ parentId, view: returnView, workflow: current?.id })); } catch {} }
   function rememberOverall() {
     if (shell.hidden) {
       parentId = window.artworkReader.selected();
@@ -34,6 +40,13 @@
     const target = $('wf-context'); target.replaceChildren();
     target.append(el('strong', mode === 'asis' ? '현재 업무 · 현행 업무 정리 기준' : mode === 'tobe' ? '도입 후 업무 · 개발 완료 표시가 아닙니다' : '현재 업무와 도입 후 업무에서 달라지는 부분'));
     target.append(el('p', mode === 'compare' ? current.purpose : current[mode]?.summary || current.purpose));
+    if(isNodeDetail(current)) {
+      const scope=current.scope||{},node=overallNodes.get(exactParent(current)),facts=el('dl',undefined,'wf-scope-summary');
+      const input=current[mode]?.input||scope.input||scope.inputs||node?.inputs;
+      for(const [label,value] of [['들어오는 자료',input],['시작',scope.start],['완료',scope.end]])if(lines(value)){const row=el('div');row.append(el('dt',label),el('dd',lines(value)));facts.append(row);}
+      target.append(facts);
+      if(scope.includes?.length||scope.excludes?.length){const more=el('details',undefined,'wf-scope-boundary');more.append(el('summary','상세 범위 보기'));for(const [label,value] of [['이 상세에 포함',scope.includes],['다른 업무에서 수행',scope.excludes]])if(lines(value))more.append(el('strong',label),el('p',lines(value)));target.append(more);}
+    } else target.append(el('p','관련된 여러 업무를 함께 보는 참고 흐름입니다. 선택한 한 업무의 세부 절차와 구분합니다.','wf-context-note'));
   }
   function setStatus(text) { $('wf-status').textContent = text; }
   function assetKey(which = mode) { return current.id + '-' + which; }
@@ -43,10 +56,17 @@
     const w = workflows.get(id); if (!w) return false;
     const entering = shell.hidden;
     if (!options.restore) rememberOverall();
-    current = w; mode = modes[which] ? which : 'asis'; stepId = null;
-    if (options.parent) parentId = options.parent;
+    const candidate=options.parent||parentId;
+    const nextParent=isNodeDetail(w)?exactParent(w):(candidate&&overallNodes.has(candidate)&&w.parentNodeIds?.includes(candidate)?candidate:null);
+    if(nextParent!==parentId){parentId=nextParent;returnView=null;}
+    current = w; mode = modes[which] ? which : 'asis'; stepId = null; shell.classList.remove('wf-step-open');
+    saveReturn();
     shell.hidden = false; document.body.classList.add('workflow-open'); setOverallInert(true);
-    $('wf-title').textContent = w.title; $('wf-crumb').textContent = w.title; $('wf-purpose').textContent = w.purpose;
+    $('wf-title').textContent = w.title; $('wf-purpose').textContent = w.purpose;
+    $('wf-kind').textContent=isNodeDetail(w)?'선택한 업무의 상세':'관련 구간 참고';
+    $('wf-parent-wrap').hidden=!isNodeDetail(w)||!parentId;
+    $('wf-parent').textContent=parentId?overallNodes.get(parentId)?.name||'선택한 업무':'';
+    $('wf-crumb').textContent=isNodeDetail(w)?'이 업무의 상세 Workflow':'관련 구간 참고 · '+w.title;
     $('wf-choose').value = w.id;
     for (const key of Object.keys(modes)) { $('wf-tab-' + key).setAttribute('aria-selected', String(mode === key)); $('wf-tab-' + key).disabled = key !== 'compare' && !!w[key]?.steps?.length && !assets[w.id+'-'+key]?.svg; }
     $('wf-step-crumb').textContent = ''; $('wf-panel').hidden = true; $('wf-search').value = ''; $('wf-results').hidden = true;
@@ -56,13 +76,13 @@
     if (mode === 'compare') renderCompare(); else renderGraph();
     if (selected && mode !== 'compare') selectStep(selected);
     if (options.history !== false) hash(!(options.push === true || entering));
+    else if(params().get('parent')!==(parentId||null)||params().get('mode')!==mode||selected&&selected!==stepId)hash(true);
     return true;
   }
   function back() {
     shell.hidden = true; document.body.classList.remove('workflow-open'); setOverallInert(false); current = null; stepId = null;
-    if(parentId&&!overallNodes.has(parentId)){parentId=[...overallNodes.values()].find(n=>n.includedNodeIds?.includes(parentId))?.id||parentId;}
-    if (parentId && overallNodes.has(parentId)) window.artworkReader.select(parentId, { navigate: false });
-    else { history.replaceState(null, '', location.pathname + location.search); }
+    if (parentId && overallNodes.has(parentId)) window.artworkReader.select(parentId, { navigate: !returnView });
+    else { window.artworkReader.clear(); history.replaceState(null, '', location.pathname + location.search); }
     requestAnimationFrame(() => {
       if (returnView && window.artworkReader.setView) window.artworkReader.setView(returnView);
       else if (returnView) $('viewport').scrollTo(returnView.left, returnView.top);
@@ -79,7 +99,7 @@
   function firstTask() { return modeData()?.steps?.find(s=>/task$/i.test(s.type)) || modeData()?.steps?.find(s=>s.type!=='start'&&s.type!=='event') || modeData()?.steps?.[0]; }
   function readSize() { if(!svg)return;zoom=1;setSize();const c=nodeCenter(stepId||firstTask()?.id);if(c)center(c.x,c.y); }
   function worldCenter() { const v = $('wf-viewport'); return { x: box[0] + (v.scrollLeft + v.clientWidth / 2) / zoom, y: box[1] + (v.scrollTop + v.clientHeight / 2) / zoom }; }
-  function center(x, y) { const v = $('wf-viewport'); v.scrollTo(Math.max(0, (x - box[0]) * zoom - v.clientWidth / 2), Math.max(0, (y - box[1]) * zoom - v.clientHeight / 2)); }
+  function center(x, y) { const v = $('wf-viewport'),panel=$('wf-panel'),covered=!panel.hidden&&getComputedStyle(panel).position==='absolute'?panel.offsetHeight:0,visibleHeight=Math.max(100,v.clientHeight-covered); v.scrollTo(Math.max(0, (x - box[0]) * zoom - v.clientWidth / 2), Math.max(0, (y - box[1]) * zoom - visibleHeight / 2)); }
   function scale(value) { if (!svg) return; const c = worldCenter(); zoom = Math.max(.12, Math.min(2.5, value)); setSize(); center(c.x, c.y); }
   function elementFor(id) { return svg?.querySelector('[data-element-id="' + CSS.escape(id) + '"]'); }
   function nodeCenter(id) { const g = elementFor(id); if (!g) return null; const b = g.getBBox(), m = g.transform.baseVal.consolidate()?.matrix; return { x: b.x + b.width / 2 + (m?.e || 0), y: b.y + b.height / 2 + (m?.f || 0) }; }
@@ -106,6 +126,15 @@
       for (const g of groups) { g.dataset.wfEdge = f.id; g.setAttribute('role', 'button'); g.setAttribute('tabindex', '0'); g.setAttribute('aria-label', (f.label || '연결선') + ' · 이어진 단계로 이동'); const move = () => selectStep(stepId === f.target ? f.source : f.target); g.addEventListener('click', e => { e.stopPropagation(); move(); }); g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); move(); } }); }
     }
     const semantic = new DOMParser().parseFromString(xmlAsset(), 'application/xml');
+    // The full Workflow title is already above the diagram. Keep role lanes;
+    // omit only this duplicate participant title in the reading presentation.
+    for(const participant of semantic.getElementsByTagNameNS('*','participant')){
+      const process=[...semantic.getElementsByTagNameNS('*','process')].find(p=>p.getAttribute('id')===participant.getAttribute('processRef'));
+      if(process?.getElementsByTagNameNS('*','lane').length && (participant.getAttribute('name')||'').includes(current.title)){
+        const group=elementFor(participant.getAttribute('id'));group?.classList.add('wf-duplicate-title');
+      }
+    }
+
     for(const lane of semantic.getElementsByTagNameNS('*','lane')){const g=elementFor(lane.getAttribute('id')),rect=g?.querySelector(':scope>.djs-visual>rect'),m=g?.transform.baseVal.consolidate()?.matrix;if(rect)roleRows.push({name:lane.getAttribute('name')||'담당',y:(m?.f||0)+(+rect.getAttribute('y')||0),height:+rect.getAttribute('height')});}
     for (const gateway of [...semantic.getElementsByTagNameNS('*','exclusiveGateway'), ...semantic.getElementsByTagNameNS('*','inclusiveGateway'), ...semantic.getElementsByTagNameNS('*','parallelGateway')]) {
       const group=elementFor(gateway.id||gateway.getAttribute('id')),visual=group?.querySelector(':scope > .djs-visual'),polygon=visual?.querySelector(':scope > polygon');
@@ -149,9 +178,9 @@
   }
   function selectStep(id, navigate = true) {
     const data = modeData(), s = data?.steps?.find(s => s.id === id); if (!s) return false;
-    stepId = id; $('wf-panel').hidden = false; $('wf-panel').scrollTop = 0; $('wf-panel-mode').textContent = modes[mode] + ' · Step';
+    stepId = id; shell.classList.add('wf-step-open'); $('wf-panel').hidden = false; $('wf-panel').scrollTop = 0; $('wf-panel-mode').textContent = modes[mode] + ' · Step';
     $('wf-step-crumb').textContent = '› ' + s.name; const body = $('wf-step-detail'); body.replaceChildren(el('h2', s.name));
-    const phase = s.phase || current.phase; if (phase) body.append(el('span', lines(phase), 'wf-phase'));
+    const phase = Object.prototype.hasOwnProperty.call(s, 'phase') ? s.phase : current.phase; if (phase) body.append(el('span', lines(phase), 'wf-phase'));
     const dl = el('dl');
     for (const [key, raw] of [['담당',s.actor],['입력값',s.input],['하는 일',s.action],['산출물',s.output],['업무 규칙',s.rules],['관련 기능',s.functionIds]]) { dl.append(el('dt',key),el('dd',lines(raw)||'—')); }
     body.append(dl);
@@ -160,7 +189,7 @@
     if (navigate) requestAnimationFrame(() => { if (zoom < .7) { zoom = 1; setSize(); } const c = nodeCenter(id); if (c) center(c.x, c.y); });
     requestAnimationFrame(updateRoles); hash(); setStatus(modes[mode] + ' · ' + s.name); return true;
   }
-  function clearStep() { stepId = null; $('wf-panel').hidden = true; $('wf-step-crumb').textContent = ''; focus(null); requestAnimationFrame(updateRoles); hash(); }
+  function clearStep() { stepId = null; shell.classList.remove('wf-step-open'); $('wf-panel').hidden = true; $('wf-step-crumb').textContent = ''; focus(null); requestAnimationFrame(updateRoles); hash(); }
   function renderCompare() {
     const body = $('wf-compare'); body.replaceChildren();
     for (const [i, c] of (current.comparisons || []).entries()) {
@@ -173,22 +202,24 @@
     setStatus('단계 이름을 누르면 해당 현재 또는 도입 후 Step으로 이동합니다.');
   }
   function updateEntries() {
-    const node = window.artworkReader?.selected(); const host = document.querySelector('#detail-content .business-detail');
-    if (!host || host.querySelector('.workflow-entry-section')) return;
-    const aliases=new Set([node,...(overallNodes.get(node)?.includedNodeIds||[])]);const matches = [...workflows.values()].filter(w => w.parentNodeIds?.some(id=>aliases.has(id)));  if (!matches.length) return;
-    const section = el('section',undefined,'workflow-entry-section'); section.append(el('h3','관련 Workflow'));
-    for (const w of matches) { const b = el('button',w.title,'workflow-entry'); b.dataset.workflow = w.id; b.append(el('small','현재 업무 · 도입 후 업무 · 변경점과 기능')); b.onclick=()=>open(w.id); section.append(b); } host.prepend(section);
+    const id=window.artworkReader?.selected(),node=overallNodes.get(id),host=document.querySelector('#detail-content .business-detail');
+    if(!node||!host||host.dataset.workflowEntries===id)return;
+    host.dataset.workflowEntries=id;
+    const detail=node.solutionSupport?[...workflows.values()].find(w=>exactParent(w)===id):null;
+    if(detail){const section=el('section',undefined,'workflow-entry-section');section.dataset.entryKind='node-detail';const button=el('button','이 업무의 상세 Workflow','workflow-entry workflow-node-entry');button.dataset.workflow=detail.id;button.append(el('small',detail.title));button.onclick=()=>open(detail.id,'asis',null,{parent:id});section.append(button);host.prepend(section);}
+    const references=[...workflows.values()].filter(w=>!isNodeDetail(w)&&w.parentNodeIds?.includes(id));
+    if(references.length){const section=el('details',undefined,'workflow-reference-section');section.dataset.entryKind='context';section.append(el('summary','관련 구간 참고 ('+references.length+')'),el('p','이 업무 전후의 여러 업무를 함께 보는 흐름입니다.','workflow-reference-note'));for(const w of references){const button=el('button',w.title,'workflow-reference');button.dataset.contextWorkflow=w.id;button.onclick=()=>open(w.id,'asis',null,{parent:id});section.append(button);}host.append(section);}
   }
   document.addEventListener('reader:selection',updateEntries); new MutationObserver(updateEntries).observe($('detail-content'),{childList:true,subtree:true}); updateEntries();
   for(const key of Object.keys(modes)) $('wf-tab-'+key).onclick=()=>open(current.id,key);
-  $('wf-back').onclick=back; $('wf-crumb').onclick=()=>mode==='compare'?open(current.id,'asis'):clearStep(); $('wf-close-step').onclick=clearStep;
+  $('wf-back').onclick=back; $('wf-parent').onclick=back; $('wf-crumb').onclick=()=>mode==='compare'?open(current.id,'asis'):clearStep(); $('wf-close-step').onclick=clearStep;
   $('wf-choose').onchange=()=>open($('wf-choose').value,mode);
   $('wf-fit').onclick=()=>{if(svg){const v=$('wf-viewport');zoom=Math.min(v.clientWidth/box[2],v.clientHeight/box[3])*.94;setSize();v.scrollTo(0,0);}};
   $('wf-read').onclick=readSize;$('wf-plus').onclick=()=>scale(zoom*1.2);$('wf-minus').onclick=()=>scale(zoom/1.2);
   $('wf-search').oninput=()=>{const q=$('wf-search').value.trim().toLowerCase(),body=$('wf-results');body.replaceChildren();body.hidden=!q;if(!q)return;const found=(modeData()?.steps||[]).filter(s=>[s.name,s.actor,s.input,s.action,s.output,...(s.rules||[])].join(' ').toLowerCase().includes(q));body.append(el('p',found.length+'개 단계'));for(const s of found){const b=el('button',s.name);b.append(el('small',s.actor||''));b.onclick=()=>selectStep(s.id);body.append(b);}};
   $('wf-search').onkeydown=e=>{if(e.key==='Enter')$('wf-results').querySelector('button')?.click();if(e.key==='Escape')$('wf-results').hidden=true;};
   $('wf-download').onclick=()=>{const xml=xmlAsset();if(!xml)return;const url=URL.createObjectURL(new Blob([xml],{type:'application/xml;charset=utf-8'})),a=el('a');a.href=url;a.download=assetKey()+'.bpmn';a.click();setTimeout(()=>URL.revokeObjectURL(url),1500);setStatus('현재 선택한 '+modes[mode]+' BPMN을 내려받습니다.');};
-  $('wf-edit').onclick=()=>{const target=new URL('./editor/',location.href);target.searchParams.set('v','flow-5');target.searchParams.set('xml','../workflows/'+assetKey()+'.bpmn');target.searchParams.set('return',location.hash.slice(1));if(stepId)target.hash=new URLSearchParams({node:stepId});saveReturn();location.assign(target.href);};
+  $('wf-edit').onclick=()=>{const target=new URL('./editor/',location.href);target.searchParams.set('v','flow-6');target.searchParams.set('xml','../workflows/'+assetKey()+'.bpmn');target.searchParams.set('return',location.hash.slice(1));if(stepId)target.hash=new URLSearchParams({node:stepId});saveReturn();location.assign(target.href);};
   let drag=null,suppress=0;const viewport=$('wf-viewport');viewport.addEventListener('scroll',updateRoles,{passive:true});window.addEventListener('resize',updateRoles);new ResizeObserver(updateRoles).observe(viewport);
   viewport.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;suppress=0;drag={id:e.pointerId,x:e.clientX,y:e.clientY,left:viewport.scrollLeft,top:viewport.scrollTop,moved:false};});
   window.addEventListener('pointermove',e=>{if(!drag||e.pointerId!==drag.id)return;if(!(e.buttons&1)){finish(e);return;}const dx=e.clientX-drag.x,dy=e.clientY-drag.y;if(!drag.moved&&Math.hypot(dx,dy)<5)return;if(!drag.moved){drag.moved=true;viewport.setPointerCapture(e.pointerId);viewport.classList.add('is-dragging');}e.preventDefault();viewport.scrollLeft=drag.left-dx;viewport.scrollTop=drag.top-dy;});
@@ -204,7 +235,7 @@
     if(!edge&&!aux)return;event.preventDefault();event.stopImmediatePropagation();selectStep(aux?.targetStepId||(stepId===edge.target?edge.source:edge.target));
   },true);
   viewport.addEventListener('click',e=>{if(!e.target.closest('[data-wf-step],[data-wf-edge],[data-wf-aux]'))clearStep();});
-  function restore(){const p=params();if(p.has('workflow')){if(!returnView){try{const saved=JSON.parse(sessionStorage.getItem('artwork-workflow-return-v4')||'null');returnView=saved?.view;parentId=p.get('parent')||saved?.parentId;}catch{parentId=p.get('parent');}}open(p.get('workflow'),p.get('mode')||'asis',p.get('step'),{restore:true,history:false,parent:p.get('parent')});}else if(!shell.hidden){shell.hidden=true;document.body.classList.remove('workflow-open');setOverallInert(false);current=null;if(returnView)requestAnimationFrame(()=>window.artworkReader.setView?.(returnView));}}
+  function restore(){const p=params();if(p.has('workflow')){if(!returnView){try{const saved=JSON.parse(sessionStorage.getItem('artwork-workflow-return-v6')||'null');returnView=saved?.view;parentId=p.get('parent')||saved?.parentId;}catch{parentId=p.get('parent');}}open(p.get('workflow'),p.get('mode')||'asis',p.get('step'),{restore:true,history:false,parent:p.get('parent')});}else if(!shell.hidden){shell.hidden=true;document.body.classList.remove('workflow-open');setOverallInert(false);current=null;if(returnView)requestAnimationFrame(()=>window.artworkReader.setView?.(returnView));}}
   window.addEventListener('hashchange',restore);window.addEventListener('popstate',restore);
   window.workflowReader={open,selectStep,back,getState:()=>({workflow:current?.id,mode,step:stepId,parent:parentId,zoom}),catalog};
   window.workflowReaderReady=true;restore();

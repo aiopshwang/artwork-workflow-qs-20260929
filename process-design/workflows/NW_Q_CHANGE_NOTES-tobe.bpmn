@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_CHANGE_NOTES_T_Collaboration" name="기존 Artwork에서 변경할 내용을 검토하고 주석을 작성한다 · 도입 후 업무">
+    <bpmn:documentation>변경 위치·내용의 주석 초안을 제안받고 QS가 확인·수정한다.
+입력 자료: 기존 승인 Artwork와 변경대비표 등 변경 근거
+전달 자료: 기존 Artwork의 변경 주석과 근거자료</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","perspective":"tobe","sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","sourceSteps":["WF02_A07","WF02_A06","WF02_T08","WF02_T02","WF02_T06"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_CHANGE_NOTES_T_Process" name="기존 Artwork에서 변경할 내용을 검토하고 주석을 작성한다 · 도입 후 업무" processRef="NW_Q_CHANGE_NOTES_T_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_CHANGE_NOTES_T_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_CHANGE_NOTES_T_Process">
+      <bpmn:lane id="Lane_NW_Q_CHANGE_NOTES_T_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_CHANGE_NOTES_T00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_CHANGE_NOTES_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_CHANGE_NOTES_T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_CHANGE_NOTES_T03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_CHANGE_NOTES_T04</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_NW_Q_CHANGE_NOTES_T_Process_R1" name="시스템">
+        <bpmn:flowNodeRef>NW_Q_CHANGE_NOTES_T01_SYS</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_CHANGE_NOTES_T02_PRE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_CHANGE_NOTES_T03_SYS</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_CHANGE_NOTES_T00" name="이 업무에 필요한 자료를 확인한다">
+      <bpmn:documentation>상위 업무에서 전달받은 자료로 이 업무를 시작한다.
+입력 자료: 기존 승인 Artwork와 변경대비표 등 변경 근거
+전달 자료: 기존 승인 Artwork와 변경대비표 등 변경 근거</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","originalStepId":"NW_Q_CHANGE_NOTES_T00","actorDetail":"QS팀","sourceSteps":["WF02_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_CHANGE_NOTES_TF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_Q_CHANGE_NOTES_T01" name="기존 승인본과 변경 근거를 연결한다">
+      <bpmn:documentation>이번 변경에 사용할 기존 승인 Artwork와 변경 근거를 확인해 연결한다.
+입력 자료: 기존 승인 Artwork와 변경대비표 등 변경 근거
+전달 자료: 변경 검토의 기준 Artwork와 근거</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"변경 검토의 기준 Artwork와 근거","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-02"],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","originalStepId":"NW_Q_CHANGE_NOTES_T01","actorDetail":"QS팀","sourceSteps":["WF02_T02","WF02_T06"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_CHANGE_NOTES_TF01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_CHANGE_NOTES_T01_SYS_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_CHANGE_NOTES_T01_SYS" name="선택한 승인본·변경 근거를 표시한다">
+      <bpmn:documentation>선택한 파일·판을 검토 기준으로 표시하고 연결한다.
+입력 자료: 변경 검토의 기준 Artwork와 근거
+전달 자료: 연결한 승인본과 변경 근거</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"변경 검토의 기준 Artwork와 근거","outputs":"연결한 승인본과 변경 근거","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-02"],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","originalStepId":"NW_Q_CHANGE_NOTES_T01_SYS","actorDetail":"Artwork 시스템","sourceSteps":["WF02_T02","WF02_T06"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_CHANGE_NOTES_T01_SYS_FLOW</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_CHANGE_NOTES_TF02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="NW_Q_CHANGE_NOTES_T02_PRE" name="변경 위치와 주석 문구의 초안을 제안한다">
+      <bpmn:documentation>AI가 변경 근거에 따른 위치와 문구 초안을 제안으로 표시한다.
+입력 자료: 연결한 기존 승인본과 변경 근거
+전달 자료: 위치·문구·근거가 붙은 주석 초안</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"연결한 기존 승인본과 변경 근거","outputs":"위치·문구·근거가 붙은 주석 초안","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-02","K-검토-04"],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","originalStepId":"NW_Q_CHANGE_NOTES_T02_PRE","actorDetail":"Artwork 시스템","sourceSteps":["WF02_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_CHANGE_NOTES_TF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_CHANGE_NOTES_T02_PRE_FLOW</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="NW_Q_CHANGE_NOTES_T02" name="변경 위치·내용의 주석 초안을 확인한다">
+      <bpmn:documentation>AI가 제안한 변경 위치와 내용을 원문 근거와 확인한다. 유지할 부분과 변경 범위를 구분한다.
+입력 자료: 연결한 기존 승인본과 변경 근거
+전달 자료: QS가 확인한 변경분 주석 초안</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"연결한 기존 승인본과 변경 근거","outputs":"QS가 확인한 변경분 주석 초안","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-02","K-검토-04"],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","originalStepId":"NW_Q_CHANGE_NOTES_T02","actorDetail":"QS팀","sourceSteps":["WF02_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_CHANGE_NOTES_T02_PRE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_CHANGE_NOTES_TF03</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_Q_CHANGE_NOTES_T03" name="변경 주석을 수정해 확정한다">
+      <bpmn:documentation>잘못된 위치·문구를 고치고 필요한 변경 주석을 남긴다. 실제 디자인 작업은 다음 업무에서 한다.
+입력 자료: 변경분 주석 초안
+전달 자료: 기존 Artwork의 확정한 변경 주석과 근거</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"변경분 주석 초안","outputs":"기존 Artwork의 확정한 변경 주석과 근거","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-02","K-검토-04"],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","originalStepId":"NW_Q_CHANGE_NOTES_T03","actorDetail":"QS팀","sourceSteps":["WF02_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_CHANGE_NOTES_TF03</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_CHANGE_NOTES_T03_SYS_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_CHANGE_NOTES_T03_SYS" name="QS가 확인한 변경 주석을 저장한다">
+      <bpmn:documentation>담당자가 고친 위치·내용과 근거를 이번 Artwork에 연결해 보관한다.
+입력 자료: 기존 Artwork의 확정한 변경 주석과 근거
+전달 자료: 확인한 변경 주석·근거 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 Artwork의 확정한 변경 주석과 근거","outputs":"확인한 변경 주석·근거 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-02","K-검토-04"],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","originalStepId":"NW_Q_CHANGE_NOTES_T03_SYS","actorDetail":"Artwork 시스템","sourceSteps":["WF02_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_CHANGE_NOTES_T03_SYS_FLOW</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_CHANGE_NOTES_TF04</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="NW_Q_CHANGE_NOTES_T04" name="QS가 확인한 변경 주석과 근거자료">
+      <bpmn:documentation>표시한 파일·자료 또는 확인 내용을 남기고 상위 업무 흐름으로 돌아간다.
+입력 자료: 기존 Artwork에 연결된 변경 주석과 근거자료
+전달 자료: 기존 Artwork에 연결된 변경 주석과 근거자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 Artwork에 연결된 변경 주석과 근거자료","outputs":"기존 Artwork에 연결된 변경 주석과 근거자료","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"NW_Q_CHANGE_NOTES","originalStepId":"NW_Q_CHANGE_NOTES_T04","actorDetail":"QS팀","sourceSteps":["WF02_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_CHANGE_NOTES","start":"다음 자료를 받은 상태에서 시작한다: 기존 승인 Artwork와 변경대비표 등 변경 근거","end":"이 업무에서 남길 내용: 기존 Artwork의 변경 주석과 근거자료","inputs":"기존 승인 Artwork와 변경대비표 등 변경 근거","outputs":"기존 Artwork의 변경 주석과 근거자료","includes":["기존 승인 Artwork와 변경 근거 확인","바꿀 부분과 유지할 부분 구분","기존 Artwork의 변경 주석 작성"],"excludes":["실제 디자인 수정","디자인팀 자료 전달 절차","수정본 수령 후 재검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_CHANGE_NOTES_TF04</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_CHANGE_NOTES_TF01" sourceRef="NW_Q_CHANGE_NOTES_T00" targetRef="NW_Q_CHANGE_NOTES_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_CHANGE_NOTES_T00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_CHANGE_NOTES_TF02" sourceRef="NW_Q_CHANGE_NOTES_T01_SYS" targetRef="NW_Q_CHANGE_NOTES_T02_PRE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_CHANGE_NOTES_T01_SYS","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_CHANGE_NOTES_TF03" sourceRef="NW_Q_CHANGE_NOTES_T02" targetRef="NW_Q_CHANGE_NOTES_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_CHANGE_NOTES_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_CHANGE_NOTES_TF04" sourceRef="NW_Q_CHANGE_NOTES_T03_SYS" targetRef="NW_Q_CHANGE_NOTES_T04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_CHANGE_NOTES_T03_SYS","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_CHANGE_NOTES_T01_SYS_FLOW" sourceRef="NW_Q_CHANGE_NOTES_T01" targetRef="NW_Q_CHANGE_NOTES_T01_SYS">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_CHANGE_NOTES_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_CHANGE_NOTES_T02_PRE_FLOW" sourceRef="NW_Q_CHANGE_NOTES_T02_PRE" targetRef="NW_Q_CHANGE_NOTES_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_CHANGE_NOTES_T02_PRE","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_CHANGE_NOTES_T03_SYS_FLOW" sourceRef="NW_Q_CHANGE_NOTES_T03" targetRef="NW_Q_CHANGE_NOTES_T03_SYS">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_CHANGE_NOTES_T03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_CHANGE_NOTES_T_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_CHANGE_NOTES_T_Process_di" bpmnElement="Participant_NW_Q_CHANGE_NOTES_T_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="2520" height="460" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_CHANGE_NOTES_T_Process_R1_di" bpmnElement="Lane_NW_Q_CHANGE_NOTES_T_Process_R1" isHorizontal="true">
+        <dc:Bounds x="70" y="270" width="2490" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_CHANGE_NOTES_T_Process_R0_di" bpmnElement="Lane_NW_Q_CHANGE_NOTES_T_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="2490" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_CHANGE_NOTES_T00_di" bpmnElement="NW_Q_CHANGE_NOTES_T00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_CHANGE_NOTES_T01_di" bpmnElement="NW_Q_CHANGE_NOTES_T01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_CHANGE_NOTES_T01_SYS_di" bpmnElement="NW_Q_CHANGE_NOTES_T01_SYS">
+        <dc:Bounds x="740" y="305" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_CHANGE_NOTES_T02_PRE_di" bpmnElement="NW_Q_CHANGE_NOTES_T02_PRE">
+        <dc:Bounds x="1040" y="305" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_CHANGE_NOTES_T02_di" bpmnElement="NW_Q_CHANGE_NOTES_T02">
+        <dc:Bounds x="1340" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_CHANGE_NOTES_T03_di" bpmnElement="NW_Q_CHANGE_NOTES_T03">
+        <dc:Bounds x="1640" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_CHANGE_NOTES_T03_SYS_di" bpmnElement="NW_Q_CHANGE_NOTES_T03_SYS">
+        <dc:Bounds x="1940" y="305" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_CHANGE_NOTES_T04_di" bpmnElement="NW_Q_CHANGE_NOTES_T04">
+        <dc:Bounds x="2325" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2235" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_CHANGE_NOTES_TF01_di" bpmnElement="NW_Q_CHANGE_NOTES_TF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_CHANGE_NOTES_TF02_di" bpmnElement="NW_Q_CHANGE_NOTES_TF02">
+        <di:waypoint x="950" y="355" />
+        <di:waypoint x="1040" y="355" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_CHANGE_NOTES_TF03_di" bpmnElement="NW_Q_CHANGE_NOTES_TF03">
+        <di:waypoint x="1550" y="125" />
+        <di:waypoint x="1640" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_CHANGE_NOTES_TF04_di" bpmnElement="NW_Q_CHANGE_NOTES_TF04">
+        <di:waypoint x="2150" y="355" />
+        <di:waypoint x="2162" y="355" />
+        <di:waypoint x="2162" y="125" />
+        <di:waypoint x="2325" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_CHANGE_NOTES_T01_SYS_FLOW_di" bpmnElement="NW_Q_CHANGE_NOTES_T01_SYS_FLOW">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="728" y="125" />
+        <di:waypoint x="728" y="355" />
+        <di:waypoint x="740" y="355" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_CHANGE_NOTES_T02_PRE_FLOW_di" bpmnElement="NW_Q_CHANGE_NOTES_T02_PRE_FLOW">
+        <di:waypoint x="1250" y="355" />
+        <di:waypoint x="1262" y="355" />
+        <di:waypoint x="1262" y="125" />
+        <di:waypoint x="1340" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_CHANGE_NOTES_T03_SYS_FLOW_di" bpmnElement="NW_Q_CHANGE_NOTES_T03_SYS_FLOW">
+        <di:waypoint x="1850" y="125" />
+        <di:waypoint x="1928" y="125" />
+        <di:waypoint x="1928" y="355" />
+        <di:waypoint x="1940" y="355" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

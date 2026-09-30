@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_DESIGN_REQUEST_A_Collaboration" name="디자인팀에 제작 자료와 신규·수정 요청을 전달한다 · 현재 업무">
+    <bpmn:documentation>현재 업무: 디자인팀에 제작 자료와 신규·수정 요청을 전달한다
+입력 자료: 해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본
+전달 자료: 디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","perspective":"asis","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"디자인팀 자료 전달·반환 / 사용자 순간 22"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"5장 다 디자인팀 받은 일 / C-01~09"},{"path":"docs/23_업무규칙장부.md","ref":"전달-01~06·차수-11"},{"path":"CODEX.md","ref":"디자인팀 다운로드·업로드 중심 원칙"}],"workflowId":"NW_Q_DESIGN_REQUEST","sourceSteps":["WF04_A01","WF04_A02","WF04_T01","WF04_T02"],"level":"node-detail","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_DESIGN_REQUEST_A_Process" name="디자인팀에 제작 자료와 신규·수정 요청을 전달한다 · 현재 업무" processRef="NW_Q_DESIGN_REQUEST_A_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_DESIGN_REQUEST_A_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_DESIGN_REQUEST_A_Process">
+      <bpmn:lane id="Lane_NW_Q_DESIGN_REQUEST_A_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_DESIGN_REQUEST_A00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_DESIGN_REQUEST_A01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_DESIGN_REQUEST_A02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_DESIGN_REQUEST_A03</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_DESIGN_REQUEST_A00" name="이 업무에 필요한 자료를 확인한다">
+      <bpmn:documentation>상위 업무에서 전달받은 자료로 이 업무를 시작한다.
+입력 자료: 해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본
+전달 자료: 해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"디자인팀 자료 전달·반환 / 사용자 순간 22"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"5장 다 디자인팀 받은 일 / C-01~09"},{"path":"docs/23_업무규칙장부.md","ref":"전달-01~06·차수-11"},{"path":"CODEX.md","ref":"디자인팀 다운로드·업로드 중심 원칙"}],"workflowId":"NW_Q_DESIGN_REQUEST","originalStepId":"NW_Q_DESIGN_REQUEST_A00","actorDetail":"QS팀","sourceSteps":["WF04_A01"],"level":"node-detail","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_DESIGN_REQUEST_AF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_Q_DESIGN_REQUEST_A01" name="전달할 자재·파일과 신규·수정 내용을 확인한다">
+      <bpmn:documentation>이번 자재에 적용되는 문안·허가증·칼선·규격 또는 주석본과 전달할 파일판·요청 내용을 확인한다.
+입력 자료: 해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본
+전달 자료: 확인한 파일 묶음·요청 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"확인한 파일 묶음·요청 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"디자인팀 자료 전달·반환 / 사용자 순간 22"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"5장 다 디자인팀 받은 일 / C-01~09"},{"path":"docs/23_업무규칙장부.md","ref":"전달-01~06·차수-11"},{"path":"CODEX.md","ref":"디자인팀 다운로드·업로드 중심 원칙"}],"workflowId":"NW_Q_DESIGN_REQUEST","originalStepId":"NW_Q_DESIGN_REQUEST_A01","actorDetail":"QS팀","sourceSteps":["WF04_A01"],"level":"node-detail","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_DESIGN_REQUEST_AF01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_DESIGN_REQUEST_AF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_Q_DESIGN_REQUEST_A02" name="디자인팀에 자료와 작업 요청을 전달한다">
+      <bpmn:documentation>대상 자재와 제작·수정 내용을 파일과 함께 전달한다.
+입력 자료: 확인한 파일 묶음·요청 내용
+전달 자료: 디자인팀에 전달한 파일·판·작업 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인한 파일 묶음·요청 내용","outputs":"디자인팀에 전달한 파일·판·작업 요청","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"디자인팀 자료 전달·반환 / 사용자 순간 22"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"5장 다 디자인팀 받은 일 / C-01~09"},{"path":"docs/23_업무규칙장부.md","ref":"전달-01~06·차수-11"},{"path":"CODEX.md","ref":"디자인팀 다운로드·업로드 중심 원칙"}],"workflowId":"NW_Q_DESIGN_REQUEST","originalStepId":"NW_Q_DESIGN_REQUEST_A02","actorDetail":"QS팀","sourceSteps":["WF04_A02"],"level":"node-detail","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_DESIGN_REQUEST_AF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_DESIGN_REQUEST_AF03</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="NW_Q_DESIGN_REQUEST_A03" name="디자인팀에 전달한 파일·판·작업 요청">
+      <bpmn:documentation>표시한 파일·자료 또는 확인 내용을 남기고 상위 업무 흐름으로 돌아간다.
+입력 자료: 디자인팀에 전달한 파일·판·작업 요청
+전달 자료: 디자인팀에 전달한 파일·판·작업 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인팀에 전달한 파일·판·작업 요청","outputs":"디자인팀에 전달한 파일·판·작업 요청","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"디자인팀 자료 전달·반환 / 사용자 순간 22"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"5장 다 디자인팀 받은 일 / C-01~09"},{"path":"docs/23_업무규칙장부.md","ref":"전달-01~06·차수-11"},{"path":"CODEX.md","ref":"디자인팀 다운로드·업로드 중심 원칙"}],"workflowId":"NW_Q_DESIGN_REQUEST","originalStepId":"NW_Q_DESIGN_REQUEST_A03","actorDetail":"QS팀","sourceSteps":["WF04_A02"],"level":"node-detail","scope":{"parentNodeId":"Q_DESIGN_REQUEST","start":"다음 자료를 받은 상태에서 시작한다: 자재의 제작 기준자료 또는 기존 Artwork의 변경 주석","end":"이 업무에서 남길 내용: 디자인팀에 전달할 기준자료·주석본과 대상 파일·요청 내용","inputs":"해당 자재의 확보된 문안·허가증·칼선·규격 등 제작자료 또는 기존 Artwork의 변경 주석본","outputs":"디자인팀에 전달한 대상 자재의 제작·수정 요청, 사용할 Artwork와 확보된 문안·허가증·칼선·규격 또는 변경 주석본","includes":["전달할 파일·판·요청 내용 확인","내부 받은 일 전달 또는 외부 메일용 파일 다운로드·사람 전달","전달 기록 확인"],"excludes":["기준자료 취합과 주석 작성","디자인팀의 내려받기·실제 작업·업로드"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_DESIGN_REQUEST_AF03</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_DESIGN_REQUEST_AF01" sourceRef="NW_Q_DESIGN_REQUEST_A00" targetRef="NW_Q_DESIGN_REQUEST_A01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_DESIGN_REQUEST_A00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_DESIGN_REQUEST_AF02" sourceRef="NW_Q_DESIGN_REQUEST_A01" targetRef="NW_Q_DESIGN_REQUEST_A02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_DESIGN_REQUEST_A01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_DESIGN_REQUEST_AF03" sourceRef="NW_Q_DESIGN_REQUEST_A02" targetRef="NW_Q_DESIGN_REQUEST_A03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_DESIGN_REQUEST_A02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_DESIGN_REQUEST_A_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_DESIGN_REQUEST_A_Process_di" bpmnElement="Participant_NW_Q_DESIGN_REQUEST_A_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="1320" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_DESIGN_REQUEST_A_Process_R0_di" bpmnElement="Lane_NW_Q_DESIGN_REQUEST_A_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="1290" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_DESIGN_REQUEST_A00_di" bpmnElement="NW_Q_DESIGN_REQUEST_A00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_DESIGN_REQUEST_A01_di" bpmnElement="NW_Q_DESIGN_REQUEST_A01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_DESIGN_REQUEST_A02_di" bpmnElement="NW_Q_DESIGN_REQUEST_A02">
+        <dc:Bounds x="740" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_DESIGN_REQUEST_A03_di" bpmnElement="NW_Q_DESIGN_REQUEST_A03">
+        <dc:Bounds x="1125" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1035" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_DESIGN_REQUEST_AF01_di" bpmnElement="NW_Q_DESIGN_REQUEST_AF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_DESIGN_REQUEST_AF02_di" bpmnElement="NW_Q_DESIGN_REQUEST_AF02">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="740" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_DESIGN_REQUEST_AF03_di" bpmnElement="NW_Q_DESIGN_REQUEST_AF03">
+        <di:waypoint x="950" y="125" />
+        <di:waypoint x="1125" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

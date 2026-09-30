@@ -3,8 +3,8 @@
   <bpmn:collaboration id="WF06_A_Collaboration" name="이전 주석 반영과 새 오류 재검토 · 현재 업무">
     <bpmn:documentation>반영된 지적은 다시 달지 않고, 남은 지적은 새 도안에 다시 붙여 반복한다.
 입력 자료: 이전 주석에 대한 새 Artwork
-전달 자료: 다음 수정 요청 또는 후속 검토</bpmn:documentation>
-    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 주석에 대한 새 Artwork","outputs":"다음 수정 요청 또는 후속 검토","perspective":"asis","sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06"}</bpmn:documentation>
+전달 자료: 미반영 지적·새 오류를 담은 수정 요청 또는 필요한 부서 검토에 사용할 Artwork와 반영 확인 결과</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 주석에 대한 새 Artwork","outputs":"미반영 지적·새 오류를 담은 수정 요청 또는 필요한 부서 검토에 사용할 Artwork와 반영 확인 결과","perspective":"asis","sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
     <bpmn:participant id="Participant_WF06_A_Process" name="이전 주석 반영과 새 오류 재검토 · 현재 업무" processRef="WF06_A_Process" />
   </bpmn:collaboration>
   <bpmn:process id="WF06_A_Process" isExecutable="false">
@@ -28,8 +28,8 @@
       <bpmn:documentation>해당 업무를 시작할 자료·요청을 받는다.
 입력 자료: 이전 주석에 대한 새 Artwork
 전달 자료: 이전 주석에 대한 새 Artwork</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 주석에 대한 새 Artwork","outputs":"이전 주석에 대한 새 Artwork","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A00","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 주석에 대한 새 Artwork","outputs":"이전 주석에 대한 새 Artwork","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A00","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:outgoing>WF06_A00_START_FLOW</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:exclusiveGateway id="J_WF06_A01" name="경로 합류" gatewayDirection="Converging">
@@ -45,18 +45,18 @@
     <bpmn:userTask id="WF06_A01" name="새 Artwork와 직전 주석본을 준비한다">
       <bpmn:documentation>같은 자재의 이전 검토 자료와 이번 반영본을 나란히 준비한다.
 입력 자료: 디자인팀·의뢰사의 반환 파일과 이전 지적
-전달 자료: 반영 여부를 확인할 두 판</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인팀·의뢰사의 반환 파일과 이전 지적","outputs":"반영 여부를 확인할 두 판","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A01","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 이전 지적의 반영 여부를 비교할 새 Artwork와 직전 주석본</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인팀·의뢰사의 반환 파일과 이전 지적","outputs":"이전 지적의 반영 여부를 비교할 새 Artwork와 직전 주석본","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A01","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_A_JOIN_WF06_A01</bpmn:incoming>
       <bpmn:outgoing>WF06_AF01</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF06_A02" name="지난 지적이 반영됐는지 확인한다">
       <bpmn:documentation>지적한 위치·내용이 새 도안에 반영됐는지 하나씩 확인한다.
 입력 자료: 이전 주석과 새 Artwork
-전달 자료: 지적별 반영 상태</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 주석과 새 Artwork","outputs":"지적별 반영 상태","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A02","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 이전 지적별 반영·미반영 확인 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 주석과 새 Artwork","outputs":"이전 지적별 반영·미반영 확인 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A02","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_AF01</bpmn:incoming>
       <bpmn:outgoing>WF06_AF02</bpmn:outgoing>
     </bpmn:userTask>
@@ -64,8 +64,8 @@
       <bpmn:documentation>남은 수정과 이미 반영된 사항을 구분한다.
 입력 자료: 이전 지적별 확인 결과
 전달 자료: 재지적 필요 여부</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 지적별 확인 결과","outputs":"재지적 필요 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A03","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이전 지적별 확인 결과","outputs":"재지적 필요 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A03","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_AF02</bpmn:incoming>
       <bpmn:outgoing>WF06_AF03</bpmn:outgoing>
       <bpmn:outgoing>WF06_AF04</bpmn:outgoing>
@@ -73,9 +73,9 @@
     <bpmn:userTask id="WF06_A04" name="새 도안에 같은 지적을 다시 단다">
       <bpmn:documentation>이번 도안의 해당 위치에 다시 지적한다. 이미 반영된 지적은 다시 달지 않는다.
 입력 자료: 미반영된 이전 지적
-전달 자료: 남은 지적이 담긴 새 주석</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"미반영된 이전 지적","outputs":"남은 지적이 담긴 새 주석","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A04","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 새 Artwork에서 여전히 고쳐야 할 위치에 이전 지적을 다시 붙인 주석본</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"미반영된 이전 지적","outputs":"새 Artwork에서 여전히 고쳐야 할 위치에 이전 지적을 다시 붙인 주석본","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A04","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_AF03</bpmn:incoming>
       <bpmn:outgoing>WF06_AF05</bpmn:outgoing>
     </bpmn:userTask>
@@ -92,9 +92,9 @@
     <bpmn:userTask id="WF06_A05" name="새 오류와 요청 밖 변경도 확인한다">
       <bpmn:documentation>지적 반영 여부 외에 새로 생긴 오류와 의도하지 않은 변경을 함께 본다.
 입력 자료: 새 도안·기준자료·직전 판
-전달 자료: 추가 수정사항</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새 도안·기준자료·직전 판","outputs":"추가 수정사항","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A05","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 새 Artwork에서 발견한 새 오류와 요청하지 않은 변경 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새 도안·기준자료·직전 판","outputs":"새 Artwork에서 발견한 새 오류와 요청하지 않은 변경 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A05","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_A_JOIN_WF06_A05</bpmn:incoming>
       <bpmn:outgoing>WF06_AF06</bpmn:outgoing>
     </bpmn:userTask>
@@ -102,8 +102,8 @@
       <bpmn:documentation>다시 수정할지 후속 검토로 갈지 결정한다.
 입력 자료: 남은 지적과 새 오류
 전달 자료: 수정 반복 또는 후속 검토</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"남은 지적과 새 오류","outputs":"수정 반복 또는 후속 검토","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A06","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"남은 지적과 새 오류","outputs":"수정 반복 또는 후속 검토","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A06","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_AF06</bpmn:incoming>
       <bpmn:outgoing>WF06_AF07</bpmn:outgoing>
       <bpmn:outgoing>WF06_AF09</bpmn:outgoing>
@@ -111,27 +111,27 @@
     <bpmn:userTask id="WF06_A07" name="수정 요청 후 새 도안을 다시 받는다">
       <bpmn:documentation>새 도안의 수정 내용을 전달하고 반환본을 받는다.
 입력 자료: 이번 주석본
-전달 자료: 다음 검토 파일</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 주석본","outputs":"다음 검토 파일","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A07","actorDetail":"QS팀 ↔ 디자인팀·의뢰사"}</bpmn:documentation>
+전달 자료: 재전달한 수정 요청과 디자인팀에서 다시 받은 Artwork 수정본</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 주석본","outputs":"재전달한 수정 요청과 디자인팀에서 다시 받은 Artwork 수정본","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A07","actorDetail":"QS팀 ↔ 디자인팀·의뢰사","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_AF07</bpmn:incoming>
       <bpmn:outgoing>WF06_AF08</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF06_A08" name="필요한 후속 검토로 이어 간다">
       <bpmn:documentation>생산·관련 부서·의뢰사 결과 확인 또는 최종화로 이어 간다.
 입력 자료: 수정 사항이 정리된 도안
-전달 자료: 후속 검토 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수정 사항이 정리된 도안","outputs":"후속 검토 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A08","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 생산·관련 부서의 검토에 사용할 Artwork와 이전 지적·추가 오류 확인 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수정 사항이 정리된 도안","outputs":"생산·관련 부서의 검토에 사용할 Artwork와 이전 지적·추가 오류 확인 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A08","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_AF09</bpmn:incoming>
       <bpmn:outgoing>WF06_A08_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="WF06_A08_RESULT" name="후속 검토 대상">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 후속 검토 대상
-전달 자료: 후속 검토 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"후속 검토 대상","outputs":"후속 검토 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A08_RESULT","actorDetail":"QS팀"}</bpmn:documentation>
+    <bpmn:endEvent id="WF06_A08_RESULT" name="주석 반영·새 오류 확인을 마친 도안 준비 완료">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 생산·관련 부서의 검토에 사용할 Artwork와 이전 지적·추가 오류 확인 결과
+입력 자료: 생산·관련 부서의 검토에 사용할 Artwork와 이전 지적·추가 오류 확인 결과
+전달 자료: 생산·관련 부서의 검토에 사용할 Artwork와 이전 지적·추가 오류 확인 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"생산·관련 부서의 검토에 사용할 Artwork와 이전 지적·추가 오류 확인 결과","outputs":"생산·관련 부서의 검토에 사용할 Artwork와 이전 지적·추가 오류 확인 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"사용자 인터뷰: 미반영 지적은 새 도안에 다시, 반영된 지적은 달지 않음"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-61"},{"path":"docs/23_업무규칙장부.md","ref":"수정-01·수정-02·차수-11·차수-14·자료-10·자료-11"},{"path":"docs/22_URS원문.md","ref":"CR-34·CR-35·CR-36"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-대조-11·12·15 / K-검토-02~05"}],"workflowId":"WF06","originalStepId":"WF06_A08_RESULT","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF06_A08_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="WF06_A00_START_FLOW" sourceRef="WF06_A00" targetRef="J_WF06_A01">
@@ -195,7 +195,7 @@
       <bpmndi:BPMNShape id="J_WF06_A01_di" bpmnElement="J_WF06_A01" isMarkerVisible="true">
         <dc:Bounds x="518" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="465" y="57" width="160" height="33" />
+          <dc:Bounds x="510" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_A01_di" bpmnElement="WF06_A01">
@@ -216,7 +216,7 @@
       <bpmndi:BPMNShape id="J_WF06_A05_di" bpmnElement="J_WF06_A05" isMarkerVisible="true">
         <dc:Bounds x="2018" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1965" y="57" width="160" height="33" />
+          <dc:Bounds x="2010" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_A05_di" bpmnElement="WF06_A05">
@@ -225,7 +225,7 @@
       <bpmndi:BPMNShape id="WF06_A06_di" bpmnElement="WF06_A06" isMarkerVisible="true">
         <dc:Bounds x="2618" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2535" y="160" width="220" height="33" />
+          <dc:Bounds x="2553.25" y="160" width="183.5" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF06_A07_di" bpmnElement="WF06_A07">
@@ -237,13 +237,13 @@
       <bpmndi:BPMNShape id="WF06_A08_RESULT_di" bpmnElement="WF06_A08_RESULT">
         <dc:Bounds x="3225" y="105" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3165" y="153" width="160" height="33" />
+          <dc:Bounds x="3135" y="153" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="WF06_A00_START_FLOW_di" bpmnElement="WF06_A00_START_FLOW">
         <di:waypoint x="265" y="125" />
-        <di:waypoint x="277" y="125" />
-        <di:waypoint x="277" y="118.25" />
+        <di:waypoint x="506" y="125" />
+        <di:waypoint x="506" y="118.25" />
         <di:waypoint x="524.75" y="118.25" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_AF01_di" bpmnElement="WF06_AF01">
@@ -256,28 +256,28 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_AF03_di" bpmnElement="WF06_AF03">
         <di:waypoint x="1465.25" y="118.25" />
-        <di:waypoint x="1484" y="118.25" />
-        <di:waypoint x="1484" y="125" />
+        <di:waypoint x="1628" y="118.25" />
+        <di:waypoint x="1628" y="125" />
         <di:waypoint x="1640" y="125" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1569" y="98" width="65" height="17" />
+          <dc:Bounds x="1555" y="128" width="65" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_AF04_di" bpmnElement="WF06_AF04">
         <di:waypoint x="1465.25" y="131.75" />
-        <di:waypoint x="1628" y="131.75" />
-        <di:waypoint x="1628" y="185" />
-        <di:waypoint x="2006" y="185" />
+        <di:waypoint x="1484" y="131.75" />
+        <di:waypoint x="1484" y="65" />
+        <di:waypoint x="2006" y="65" />
         <di:waypoint x="2006" y="118.25" />
         <di:waypoint x="2024.75" y="118.25" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1922" y="104" width="93" height="17" />
+          <dc:Bounds x="1967" y="166" width="93" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_AF05_di" bpmnElement="WF06_AF05">
         <di:waypoint x="1850" y="125" />
-        <di:waypoint x="1862" y="125" />
-        <di:waypoint x="1862" y="131.75" />
+        <di:waypoint x="2006" y="125" />
+        <di:waypoint x="2006" y="131.75" />
         <di:waypoint x="2024.75" y="131.75" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_AF06_di" bpmnElement="WF06_AF06">
@@ -286,22 +286,22 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_AF07_di" bpmnElement="WF06_AF07">
         <di:waypoint x="2665.25" y="118.25" />
-        <di:waypoint x="2684" y="118.25" />
-        <di:waypoint x="2684" y="125" />
+        <di:waypoint x="2828" y="118.25" />
+        <di:waypoint x="2828" y="125" />
         <di:waypoint x="2840" y="125" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2775" y="98" width="53" height="17" />
+          <dc:Bounds x="2761" y="91" width="53" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_AF08_di" bpmnElement="WF06_AF08" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
         <di:waypoint x="3050" y="125" />
         <di:waypoint x="3062" y="125" />
         <di:waypoint x="3062" y="53" />
-        <di:waypoint x="460" y="53" />
-        <di:waypoint x="460" y="131.75" />
+        <di:waypoint x="498" y="53" />
+        <di:waypoint x="498" y="131.75" />
         <di:waypoint x="524.75" y="131.75" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1715" y="17" width="92" height="17" />
+          <dc:Bounds x="2375" y="17" width="92" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF06_AF09_di" bpmnElement="WF06_AF09">

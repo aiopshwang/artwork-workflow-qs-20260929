@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_D_FINAL_A_Collaboration" name="확정된 내용으로 최종 Illustrator·PDF 파일을 준비한다 · 현재 업무">
+    <bpmn:documentation>현재 업무: 확정된 내용으로 최종 Illustrator·PDF 파일을 준비한다
+입력 자료: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청
+전달 자료: 최종 Illustrator 원본 파일(.ai)과 PDF</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","perspective":"asis","sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"},{"path":"docs/20_회의록_2026-09-22.md","ref":"디자인팀 자료 전달·반환 / 사용자 순간 22"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"5장 다 디자인팀 받은 일 / C-01~09"},{"path":"docs/23_업무규칙장부.md","ref":"전달-01~06·차수-11"},{"path":"CODEX.md","ref":"디자인팀 다운로드·업로드 중심 원칙"}],"workflowId":"NW_D_FINAL","sourceSteps":["WF08_A04","WF08_T04","WF04_T03","WF04_T07"],"level":"node-detail","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_D_FINAL_A_Process" name="확정된 내용으로 최종 Illustrator·PDF 파일을 준비한다 · 현재 업무" processRef="NW_D_FINAL_A_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_D_FINAL_A_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_D_FINAL_A_Process">
+      <bpmn:lane id="Lane_NW_D_FINAL_A_Process_R0" name="디자인팀">
+        <bpmn:flowNodeRef>NW_D_FINAL_A00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_D_FINAL_A01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_D_FINAL_A02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_D_FINAL_A03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_D_FINAL_A04</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_D_FINAL_A00" name="이 업무에 필요한 자료를 확인한다">
+      <bpmn:documentation>상위 업무에서 전달받은 자료로 이 업무를 시작한다.
+입력 자료: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청
+전달 자료: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_D_FINAL","originalStepId":"NW_D_FINAL_A00","actorDetail":"디자인팀","sourceSteps":["WF08_A04"],"level":"node-detail","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_D_FINAL_AF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_D_FINAL_A01" name="최종 전환할 Artwork와 요청 내용을 확인한다">
+      <bpmn:documentation>검토한 내용을 반영한 도안 또는 단순 전환 오류의 수정 요청을 확인한다.
+입력 자료: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청
+전달 자료: 최종 전환할 Artwork·요청 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 전환할 Artwork·요청 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_D_FINAL","originalStepId":"NW_D_FINAL_A01","actorDetail":"디자인팀","sourceSteps":["WF08_A04"],"level":"node-detail","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_D_FINAL_AF01</bpmn:incoming>
+      <bpmn:outgoing>NW_D_FINAL_AF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_D_FINAL_A02" name="디자인 도구에서 최종 Illustrator·PDF를 준비한다">
+      <bpmn:documentation>같은 확정 내용으로 최종 파일을 준비한다.
+입력 자료: 최종 전환할 Artwork·요청 내용
+전달 자료: 최종 Illustrator(.ai)·PDF 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 전환할 Artwork·요청 내용","outputs":"최종 Illustrator(.ai)·PDF 파일","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_D_FINAL","originalStepId":"NW_D_FINAL_A02","actorDetail":"디자인팀","sourceSteps":["WF08_A04"],"level":"node-detail","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_D_FINAL_AF02</bpmn:incoming>
+      <bpmn:outgoing>NW_D_FINAL_AF03</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_D_FINAL_A03" name="QS가 확인할 최종 파일을 전달한다">
+      <bpmn:documentation>같은 자재·내용의 최종 파일 묶음을 QS에게 전달한다.
+입력 자료: 최종 Illustrator(.ai)·PDF 파일
+전달 자료: QS에 전달한 최종 Illustrator·PDF 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 Illustrator(.ai)·PDF 파일","outputs":"QS에 전달한 최종 Illustrator·PDF 파일","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_D_FINAL","originalStepId":"NW_D_FINAL_A03","actorDetail":"디자인팀","sourceSteps":["WF08_A04"],"level":"node-detail","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_D_FINAL_AF03</bpmn:incoming>
+      <bpmn:outgoing>NW_D_FINAL_AF04</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="NW_D_FINAL_A04" name="QS에 전달한 최종 Illustrator·PDF 파일">
+      <bpmn:documentation>표시한 파일·자료 또는 확인 내용을 남기고 상위 업무 흐름으로 돌아간다.
+입력 자료: QS에 전달한 최종 Illustrator·PDF 파일
+전달 자료: QS에 전달한 최종 Illustrator·PDF 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"디자인팀","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS에 전달한 최종 Illustrator·PDF 파일","outputs":"QS에 전달한 최종 Illustrator·PDF 파일","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 최종화·OO-13·GN 최종안·GO 최종안·AN-23~24·AO 최종화·CR-58"},{"path":"docs/23_업무규칙장부.md","ref":"차수-13·차수-14·차수-23·승인-01·승인-05·승인-06·승인-11·개정-01"},{"path":"CODEX.md","ref":"내용 확정·최종 전환·QS 완료의 구분"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-12~15 / T-14"}],"workflowId":"NW_D_FINAL","originalStepId":"NW_D_FINAL_A04","actorDetail":"디자인팀","sourceSteps":["WF08_A04"],"level":"node-detail","scope":{"parentNodeId":"D_FINAL","start":"다음 자료를 받은 상태에서 시작한다: 검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","end":"이 업무에서 남길 내용: 최종 Illustrator 원본 파일(.ai)과 PDF","inputs":"검토 내용을 반영한 Artwork 또는 파일 전환 오류에 대한 수정 요청","outputs":"최종 Illustrator 원본 파일(.ai)과 PDF","includes":["최종 전환 요청과 확정 입력본 확인","외부 디자인 도구로 최종 AI·PDF 준비","같은 전환 요청으로 최종 파일 반환"],"excludes":["Artwork 내용의 새 수정 판단","QS 최종 파일 대조·완료","발주·후속 담당자 전달"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_D_FINAL_AF04</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_D_FINAL_AF01" sourceRef="NW_D_FINAL_A00" targetRef="NW_D_FINAL_A01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_D_FINAL_A00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_D_FINAL_AF02" sourceRef="NW_D_FINAL_A01" targetRef="NW_D_FINAL_A02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_D_FINAL_A01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_D_FINAL_AF03" sourceRef="NW_D_FINAL_A02" targetRef="NW_D_FINAL_A03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_D_FINAL_A02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_D_FINAL_AF04" sourceRef="NW_D_FINAL_A03" targetRef="NW_D_FINAL_A04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_D_FINAL_A03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_D_FINAL_A_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_D_FINAL_A_Process_di" bpmnElement="Participant_NW_D_FINAL_A_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="1620" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_D_FINAL_A_Process_R0_di" bpmnElement="Lane_NW_D_FINAL_A_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="1590" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_D_FINAL_A00_di" bpmnElement="NW_D_FINAL_A00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_D_FINAL_A01_di" bpmnElement="NW_D_FINAL_A01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_D_FINAL_A02_di" bpmnElement="NW_D_FINAL_A02">
+        <dc:Bounds x="740" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_D_FINAL_A03_di" bpmnElement="NW_D_FINAL_A03">
+        <dc:Bounds x="1040" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_D_FINAL_A04_di" bpmnElement="NW_D_FINAL_A04">
+        <dc:Bounds x="1425" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1335" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_D_FINAL_AF01_di" bpmnElement="NW_D_FINAL_AF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_D_FINAL_AF02_di" bpmnElement="NW_D_FINAL_AF02">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="740" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_D_FINAL_AF03_di" bpmnElement="NW_D_FINAL_AF03">
+        <di:waypoint x="950" y="125" />
+        <di:waypoint x="1040" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_D_FINAL_AF04_di" bpmnElement="NW_D_FINAL_AF04">
+        <di:waypoint x="1250" y="125" />
+        <di:waypoint x="1425" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

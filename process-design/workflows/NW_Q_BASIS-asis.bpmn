@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_BASIS_A_Collaboration" name="문안·허가증·칼선 등 제작과 검토에 쓸 자료를 준비한다 · 현재 업무">
+    <bpmn:documentation>현재 해당 담당자가 수행하는 업무
+입력 자료: 사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork
+전달 자료: 디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","perspective":"asis","sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-04~08 / K-대조-02~04"},{"path":"docs/23_업무규칙장부.md","ref":"자료-01·자료-02·자료-04·자료-10·자료-11"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·기준 자료 / 5장 다 4) 자료 변경과 재전달"}],"workflowId":"NW_Q_BASIS","sourceSteps":["WF02_A05","WF02_A06","WF02_T06","WF02_T07","WF02_T08"],"level":"node-detail","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_BASIS_A_Process" name="문안·허가증·칼선 등 제작과 검토에 쓸 자료를 준비한다 · 현재 업무" processRef="NW_Q_BASIS_A_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_BASIS_A_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_BASIS_A_Process">
+      <bpmn:lane id="Lane_NW_Q_BASIS_A_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_BASIS_A00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_BASIS_A01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_BASIS_A02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_BASIS_A03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_BASIS_A04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_BASIS_A05</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_BASIS_A00" name="대상 자재와 받은 자료를 확인한다">
+      <bpmn:documentation>해당 자재의 이 업무를 시작할 자료를 받는다.
+입력 자료: 사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork
+전달 자료: 사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-04~08 / K-대조-02~04"},{"path":"docs/23_업무규칙장부.md","ref":"자료-01·자료-02·자료-04·자료-10·자료-11"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·기준 자료 / 5장 다 4) 자료 변경과 재전달"}],"workflowId":"NW_Q_BASIS","originalStepId":"NW_Q_BASIS_A00","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_BASIS_AF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_Q_BASIS_A01" name="확보한 문안·허가증·칼선·규격·기존 도안을 모은다">
+      <bpmn:documentation>이번 자재 제작과 검토에 사용할 확보 자료를 모은다. 해당하지 않는 자료를 필수로 요구하지 않는다.
+입력 자료: 사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork
+전달 자료: 확보한 제작·검토 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"확보한 제작·검토 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-04~08 / K-대조-02~04"},{"path":"docs/23_업무규칙장부.md","ref":"자료-01·자료-02·자료-04·자료-10·자료-11"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·기준 자료 / 5장 다 4) 자료 변경과 재전달"}],"workflowId":"NW_Q_BASIS","originalStepId":"NW_Q_BASIS_A01","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_BASIS_AF01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_BASIS_AF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_Q_BASIS_A02" name="자재·자료 종류·판과 적용할 변경 내용을 확인한다">
+      <bpmn:documentation>자료가 이번 품목·자재의 것인지, 어느 판인지 확인한다. 변경 건은 기존 승인본과 변경대비표 등 근거를 구분한다.
+입력 자료: 확보한 파일과 변경 요청
+전달 자료: 대상과 판을 확인한 문안·허가증·도면·Artwork</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확보한 파일과 변경 요청","outputs":"대상과 판을 확인한 문안·허가증·도면·Artwork","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-04~08 / K-대조-02~04"},{"path":"docs/23_업무규칙장부.md","ref":"자료-01·자료-02·자료-04·자료-10·자료-11"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·기준 자료 / 5장 다 4) 자료 변경과 재전달"}],"workflowId":"NW_Q_BASIS","originalStepId":"NW_Q_BASIS_A02","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_BASIS_AF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_BASIS_AF03</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="NW_Q_BASIS_A03" name="미확보 자료나 서로 다른 내용이 있는가?" gatewayDirection="Diverging" default="NW_Q_BASIS_AF05">
+      <bpmn:documentation>추가로 받아야 하거나 확인할 자료를 구분한다.
+입력 자료: 확보 자료와 적용할 검토 범위
+전달 자료: 추가 확인 필요 여부</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확보 자료와 적용할 검토 범위","outputs":"추가 확인 필요 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-04~08 / K-대조-02~04"},{"path":"docs/23_업무규칙장부.md","ref":"자료-01·자료-02·자료-04·자료-10·자료-11"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·기준 자료 / 5장 다 4) 자료 변경과 재전달"}],"workflowId":"NW_Q_BASIS","originalStepId":"NW_Q_BASIS_A03","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_BASIS_AF03</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_BASIS_AF04</bpmn:outgoing>
+      <bpmn:outgoing>NW_Q_BASIS_AF05</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="NW_Q_BASIS_A04" name="추가로 확인할 자료와 내용을 남긴다">
+      <bpmn:documentation>부족하거나 상충하는 자료를 확인할 사항으로 남긴다. 확보된 자료로 할 수 있는 준비는 계속한다.
+입력 자료: 미확보·상충한 자료
+전달 자료: 추가 수령·확인할 자료 목록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"미확보·상충한 자료","outputs":"추가 수령·확인할 자료 목록","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-04~08 / K-대조-02~04"},{"path":"docs/23_업무규칙장부.md","ref":"자료-01·자료-02·자료-04·자료-10·자료-11"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·기준 자료 / 5장 다 4) 자료 변경과 재전달"}],"workflowId":"NW_Q_BASIS","originalStepId":"NW_Q_BASIS_A04","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_BASIS_AF04</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_BASIS_AF06</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="NW_Q_BASIS_A05" name="제작·검토에 사용할 파일과 추가 확인할 자료가 정리됨">
+      <bpmn:documentation>이 결과로 상위 흐름의 다음 판단 또는 담당 업무에 연결한다.
+입력 자료: 문안·허가증·칼선·규격·기존 Artwork와 추가 확인할 자료 목록
+전달 자료: 문안·허가증·칼선·규격·기존 Artwork와 추가 확인할 자료 목록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"문안·허가증·칼선·규격·기존 Artwork와 추가 확인할 자료 목록","outputs":"문안·허가증·칼선·규격·기존 Artwork와 추가 확인할 자료 목록","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-접수-04~08 / K-대조-02~04"},{"path":"docs/23_업무규칙장부.md","ref":"자료-01·자료-02·자료-04·자료-10·자료-11"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·기준 자료 / 5장 다 4) 자료 변경과 재전달"}],"workflowId":"NW_Q_BASIS","originalStepId":"NW_Q_BASIS_A05","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_BASIS","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"사용할 자재 정보, 확보된 문안·허가증·칼선·규격 및 기존 Artwork","outputs":"디자인 제작과 QS 검토에 사용할 문안·허가증·칼선·규격 및 참고 Artwork, 아직 확보하지 못해 나중에 확인할 자료 목록","includes":["확보한 문안·허가증·칼선·규격·기존 Artwork의 확인과 등록","자료 종류·대상·판 연결","확보·미확보·해당없음 구분"],"excludes":["자료 내용을 Artwork와 실제 대조","디자인팀 전달 확정","모든 자료가 모일 때까지 일괄 대기","작업의뢰 자동 연동"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_BASIS_AF05</bpmn:incoming>
+      <bpmn:incoming>NW_Q_BASIS_AF06</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_BASIS_AF01" sourceRef="NW_Q_BASIS_A00" targetRef="NW_Q_BASIS_A01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_BASIS_A00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_BASIS_AF02" sourceRef="NW_Q_BASIS_A01" targetRef="NW_Q_BASIS_A02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_BASIS_A01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_BASIS_AF03" sourceRef="NW_Q_BASIS_A02" targetRef="NW_Q_BASIS_A03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_BASIS_A02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_BASIS_AF04" name="추가 확인 필요" sourceRef="NW_Q_BASIS_A03" targetRef="NW_Q_BASIS_A04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_BASIS_A03","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">추가 확인 필요</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_BASIS_AF05" name="현재 자료로 준비됨" sourceRef="NW_Q_BASIS_A03" targetRef="NW_Q_BASIS_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_BASIS_A03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_BASIS_AF06" sourceRef="NW_Q_BASIS_A04" targetRef="NW_Q_BASIS_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_BASIS_A04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_BASIS_A_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_BASIS_A_Process_di" bpmnElement="Participant_NW_Q_BASIS_A_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="1920" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_BASIS_A_Process_R0_di" bpmnElement="Lane_NW_Q_BASIS_A_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="1890" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_BASIS_A00_di" bpmnElement="NW_Q_BASIS_A00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_BASIS_A01_di" bpmnElement="NW_Q_BASIS_A01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_BASIS_A02_di" bpmnElement="NW_Q_BASIS_A02">
+        <dc:Bounds x="740" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_BASIS_A03_di" bpmnElement="NW_Q_BASIS_A03" isMarkerVisible="true">
+        <dc:Bounds x="1118" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1035" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_BASIS_A04_di" bpmnElement="NW_Q_BASIS_A04">
+        <dc:Bounds x="1340" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_BASIS_A05_di" bpmnElement="NW_Q_BASIS_A05">
+        <dc:Bounds x="1725" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1635" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_BASIS_AF01_di" bpmnElement="NW_Q_BASIS_AF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_BASIS_AF02_di" bpmnElement="NW_Q_BASIS_AF02">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="740" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_BASIS_AF03_di" bpmnElement="NW_Q_BASIS_AF03">
+        <di:waypoint x="950" y="125" />
+        <di:waypoint x="1118" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_BASIS_AF04_di" bpmnElement="NW_Q_BASIS_AF04">
+        <di:waypoint x="1165.25" y="118.25" />
+        <di:waypoint x="1328" y="118.25" />
+        <di:waypoint x="1328" y="125" />
+        <di:waypoint x="1340" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1247" y="128" width="81" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_BASIS_AF05_di" bpmnElement="NW_Q_BASIS_AF05">
+        <di:waypoint x="1165.25" y="131.75" />
+        <di:waypoint x="1184" y="131.75" />
+        <di:waypoint x="1184" y="65" />
+        <di:waypoint x="1713" y="65" />
+        <di:waypoint x="1713" y="120" />
+        <di:waypoint x="1725.635083268963" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1723" y="84" width="105" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_BASIS_AF06_di" bpmnElement="NW_Q_BASIS_AF06">
+        <di:waypoint x="1550" y="125" />
+        <di:waypoint x="1713" y="125" />
+        <di:waypoint x="1713" y="130" />
+        <di:waypoint x="1725.635083268963" y="130" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_REPLY_A_Collaboration" name="사용할 버전 또는 변경 없음을 회신한다 · 현재 업무">
+    <bpmn:documentation>현재 업무: 사용할 버전 또는 변경 없음을 회신한다
+입력 자료: 발주 전 확인 결과와 사용할 Artwork 버전
+전달 자료: 요청자에게 전달할 버전 또는 변경 없음 회신</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","perspective":"asis","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-69·M-86 / 발주 전 버전 확인·위탁 문의"},{"path":"docs/22_URS원문.md","ref":"CF-01~03·CFE/CFN 발주 전 검수"},{"path":"docs/23_업무규칙장부.md","ref":"발주-06·발주-09·발주-11·발주-14·검건-03·차수-22·승인-07"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-07·T-15·C-14·C-17·B-18·B-19·B-45"},{"path":"CODEX.md","ref":"첫 발주와 반복 발주 / 외부 발주 정보·ERP 실제 이력 구분"}],"workflowId":"NW_Q_REPLY","sourceSteps":["WF10_A11","WF10_T11"],"level":"node-detail","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_REPLY_A_Process" name="사용할 버전 또는 변경 없음을 회신한다 · 현재 업무" processRef="NW_Q_REPLY_A_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_REPLY_A_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_REPLY_A_Process">
+      <bpmn:lane id="Lane_NW_Q_REPLY_A_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_REPLY_A00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_REPLY_A01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_REPLY_A02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_REPLY_A03</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_REPLY_A00" name="이 업무에 필요한 자료를 확인한다">
+      <bpmn:documentation>상위 업무에서 전달받은 자료로 이 업무를 시작한다.
+입력 자료: 발주 전 확인 결과와 사용할 Artwork 버전
+전달 자료: 발주 전 확인 결과와 사용할 Artwork 버전</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"발주 전 확인 결과와 사용할 Artwork 버전","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-69·M-86 / 발주 전 버전 확인·위탁 문의"},{"path":"docs/22_URS원문.md","ref":"CF-01~03·CFE/CFN 발주 전 검수"},{"path":"docs/23_업무규칙장부.md","ref":"발주-06·발주-09·발주-11·발주-14·검건-03·차수-22·승인-07"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-07·T-15·C-14·C-17·B-18·B-19·B-45"},{"path":"CODEX.md","ref":"첫 발주와 반복 발주 / 외부 발주 정보·ERP 실제 이력 구분"}],"workflowId":"NW_Q_REPLY","originalStepId":"NW_Q_REPLY_A00","actorDetail":"QS팀","sourceSteps":["WF10_A11"],"level":"node-detail","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_REPLY_AF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_Q_REPLY_A01" name="확인 결과에 맞춰 회신 내용을 정한다">
+      <bpmn:documentation>요청 자재에 사용할 버전 또는 변경 없음의 내용을 확인한다.
+입력 자료: 발주 전 확인 결과와 사용할 Artwork 버전
+전달 자료: QS가 정한 버전·변경 없음 회신 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"QS가 정한 버전·변경 없음 회신 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-69·M-86 / 발주 전 버전 확인·위탁 문의"},{"path":"docs/22_URS원문.md","ref":"CF-01~03·CFE/CFN 발주 전 검수"},{"path":"docs/23_업무규칙장부.md","ref":"발주-06·발주-09·발주-11·발주-14·검건-03·차수-22·승인-07"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-07·T-15·C-14·C-17·B-18·B-19·B-45"},{"path":"CODEX.md","ref":"첫 발주와 반복 발주 / 외부 발주 정보·ERP 실제 이력 구분"}],"workflowId":"NW_Q_REPLY","originalStepId":"NW_Q_REPLY_A01","actorDetail":"QS팀","sourceSteps":["WF10_A11"],"level":"node-detail","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_REPLY_AF01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_REPLY_AF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_Q_REPLY_A02" name="요청한 담당자에게 확인 내용을 회신한다">
+      <bpmn:documentation>버전과 필요한 확인 내용을 요청자에게 전달한다.
+입력 자료: QS가 정한 버전·변경 없음 회신 내용
+전달 자료: 요청자에게 전달한 버전·변경 없음 회신</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 정한 버전·변경 없음 회신 내용","outputs":"요청자에게 전달한 버전·변경 없음 회신","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-69·M-86 / 발주 전 버전 확인·위탁 문의"},{"path":"docs/22_URS원문.md","ref":"CF-01~03·CFE/CFN 발주 전 검수"},{"path":"docs/23_업무규칙장부.md","ref":"발주-06·발주-09·발주-11·발주-14·검건-03·차수-22·승인-07"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-07·T-15·C-14·C-17·B-18·B-19·B-45"},{"path":"CODEX.md","ref":"첫 발주와 반복 발주 / 외부 발주 정보·ERP 실제 이력 구분"}],"workflowId":"NW_Q_REPLY","originalStepId":"NW_Q_REPLY_A02","actorDetail":"QS팀","sourceSteps":["WF10_A11"],"level":"node-detail","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_REPLY_AF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_REPLY_AF03</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="NW_Q_REPLY_A03" name="요청자에게 전달한 버전·변경 없음 회신">
+      <bpmn:documentation>표시한 파일·자료 또는 확인 내용을 남기고 상위 업무 흐름으로 돌아간다.
+입력 자료: 요청자에게 전달한 버전·변경 없음 회신
+전달 자료: 요청자에게 전달한 버전·변경 없음 회신</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"요청자에게 전달한 버전·변경 없음 회신","outputs":"요청자에게 전달한 버전·변경 없음 회신","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-69·M-86 / 발주 전 버전 확인·위탁 문의"},{"path":"docs/22_URS원문.md","ref":"CF-01~03·CFE/CFN 발주 전 검수"},{"path":"docs/23_업무규칙장부.md","ref":"발주-06·발주-09·발주-11·발주-14·검건-03·차수-22·승인-07"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-07·T-15·C-14·C-17·B-18·B-19·B-45"},{"path":"CODEX.md","ref":"첫 발주와 반복 발주 / 외부 발주 정보·ERP 실제 이력 구분"}],"workflowId":"NW_Q_REPLY","originalStepId":"NW_Q_REPLY_A03","actorDetail":"QS팀","sourceSteps":["WF10_A11"],"level":"node-detail","scope":{"parentNodeId":"Q_REPLY","start":"다음 자료를 받은 상태에서 시작한다: 발주 전 확인 결과와 사용할 Artwork 버전","end":"이 업무에서 남길 내용: 요청자에게 전달할 버전 또는 변경 없음 회신","inputs":"발주 전 확인 결과와 사용할 Artwork 버전","outputs":"요청자에게 전달할 버전 또는 변경 없음 회신","includes":["이미 나온 발주 전 확인 결과와 사용할 버전 확인","QS의 회신 내용 결정·전달","회신에 사용한 파일·개정·판단 기록"],"excludes":["파일 대조·버전 조회 수행","Artwork 수정·발주 실행"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_REPLY_AF03</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_REPLY_AF01" sourceRef="NW_Q_REPLY_A00" targetRef="NW_Q_REPLY_A01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_REPLY_A00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_REPLY_AF02" sourceRef="NW_Q_REPLY_A01" targetRef="NW_Q_REPLY_A02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_REPLY_A01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_REPLY_AF03" sourceRef="NW_Q_REPLY_A02" targetRef="NW_Q_REPLY_A03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_REPLY_A02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_REPLY_A_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_REPLY_A_Process_di" bpmnElement="Participant_NW_Q_REPLY_A_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="1320" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_REPLY_A_Process_R0_di" bpmnElement="Lane_NW_Q_REPLY_A_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="1290" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_REPLY_A00_di" bpmnElement="NW_Q_REPLY_A00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_REPLY_A01_di" bpmnElement="NW_Q_REPLY_A01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_REPLY_A02_di" bpmnElement="NW_Q_REPLY_A02">
+        <dc:Bounds x="740" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_REPLY_A03_di" bpmnElement="NW_Q_REPLY_A03">
+        <dc:Bounds x="1125" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1035" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_REPLY_AF01_di" bpmnElement="NW_Q_REPLY_AF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_REPLY_AF02_di" bpmnElement="NW_Q_REPLY_AF02">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="740" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_REPLY_AF03_di" bpmnElement="NW_Q_REPLY_AF03">
+        <di:waypoint x="950" y="125" />
+        <di:waypoint x="1125" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

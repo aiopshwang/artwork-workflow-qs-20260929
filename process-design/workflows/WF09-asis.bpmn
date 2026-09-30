@@ -3,8 +3,8 @@
   <bpmn:collaboration id="WF09_A_Collaboration" name="자재표준서 작성·대조 · 현재 업무">
     <bpmn:documentation>QS가 최종 파일을 근거로 표준서를 작성·개정하고 확인한다.
 입력 자료: 자재별 최종 Artwork와 표준서 자료
-전달 자료: 후속 업무에 사용할 자재표준서</bpmn:documentation>
-    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자재별 최종 Artwork와 표준서 자료","outputs":"후속 업무에 사용할 자재표준서","perspective":"asis","sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09"}</bpmn:documentation>
+전달 자료: 최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자재별 최종 Artwork와 표준서 자료","outputs":"최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서","perspective":"asis","sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
     <bpmn:participant id="Participant_WF09_A_Process" name="자재표준서 작성·대조 · 현재 업무" processRef="WF09_A_Process" />
   </bpmn:collaboration>
   <bpmn:process id="WF09_A_Process" isExecutable="false">
@@ -27,8 +27,8 @@
       <bpmn:documentation>해당 업무를 시작할 자료·요청을 받는다.
 입력 자료: 자재별 최종 Artwork와 표준서 자료
 전달 자료: 자재별 최종 Artwork와 표준서 자료</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자재별 최종 Artwork와 표준서 자료","outputs":"자재별 최종 Artwork와 표준서 자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A00","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자재별 최종 Artwork와 표준서 자료","outputs":"자재별 최종 Artwork와 표준서 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A00","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:outgoing>WF09_A00_START_FLOW</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:exclusiveGateway id="J_WF09_A01" name="경로 합류" gatewayDirection="Converging">
@@ -44,9 +44,9 @@
     <bpmn:userTask id="WF09_A01" name="최종 자재 Artwork와 표준서 관련 자료를 준비한다">
       <bpmn:documentation>작성·개정할 표준서와 대상 자재를 확인한다.
 입력 자료: 최종 Artwork·시방서·기존 자재표준서
-전달 자료: 작성 근거</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 Artwork·시방서·기존 자재표준서","outputs":"작성 근거","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A01","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 표준서 작성에 사용할 해당 자재의 최종 Artwork와 기존 표준서 등 관련 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 Artwork·시방서·기존 자재표준서","outputs":"표준서 작성에 사용할 해당 자재의 최종 Artwork와 기존 표준서 등 관련 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A01","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF09_A_JOIN_WF09_A01</bpmn:incoming>
       <bpmn:outgoing>WF09_AF01</bpmn:outgoing>
     </bpmn:userTask>
@@ -54,8 +54,8 @@
       <bpmn:documentation>현재 자재표준서 업무에서 내용을 작성·개정한다.
 입력 자료: 최종 파일과 자재 규격
 전달 자료: 작성한 자재표준서</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 파일과 자재 규격","outputs":"작성한 자재표준서","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A02","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 파일과 자재 규격","outputs":"작성한 자재표준서","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A02","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF09_AF01</bpmn:incoming>
       <bpmn:outgoing>WF09_AF02</bpmn:outgoing>
     </bpmn:userTask>
@@ -72,9 +72,9 @@
     <bpmn:userTask id="WF09_A03" name="표준서와 최종 Artwork를 확인한다">
       <bpmn:documentation>대상 자재와 필요한 기재·규격이 맞는지 확인한다.
 입력 자료: 자재표준서·최종 파일
-전달 자료: 차이 또는 확인 결과</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자재표준서·최종 파일","outputs":"차이 또는 확인 결과","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A03","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 자재표준서와 최종 Artwork의 내용·규격을 확인한 결과와 차이</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자재표준서·최종 파일","outputs":"자재표준서와 최종 Artwork의 내용·규격을 확인한 결과와 차이","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A03","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF09_A_JOIN_WF09_A03</bpmn:incoming>
       <bpmn:outgoing>WF09_AF03</bpmn:outgoing>
     </bpmn:userTask>
@@ -82,8 +82,8 @@
       <bpmn:documentation>표준서의 오류인지 Artwork 내용 변경인지 구분한다.
 입력 자료: 확인 결과
 전달 자료: 표준서 보완·Artwork 변경·사용</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인 결과","outputs":"표준서 보완·Artwork 변경·사용","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A04","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인 결과","outputs":"표준서 보완·Artwork 변경·사용","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A04","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF09_AF03</bpmn:incoming>
       <bpmn:outgoing>WF09_AF04</bpmn:outgoing>
       <bpmn:outgoing>WF09_AF06</bpmn:outgoing>
@@ -93,35 +93,35 @@
       <bpmn:documentation>표준서를 고친 뒤 해당 Artwork와 다시 확인한다.
 입력 자료: 표준서 수정사항
 전달 자료: 수정된 자재표준서</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"표준서 수정사항","outputs":"수정된 자재표준서","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A05","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"표준서 수정사항","outputs":"수정된 자재표준서","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A05","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF09_AF04</bpmn:incoming>
       <bpmn:outgoing>WF09_AF05</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF09_A06" name="Artwork 변경 검토로 되돌린다">
       <bpmn:documentation>자재 Artwork 변경 검토를 진행한 후 최종 파일과 표준서를 다시 맞춘다.
 입력 자료: 도안을 고쳐야 할 사항
-전달 자료: 변경 후 최종 Artwork</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"도안을 고쳐야 할 사항","outputs":"변경 후 최종 Artwork","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A06","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: Artwork에서 변경할 내용과 표준서 대조에서 확인한 근거</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"도안을 고쳐야 할 사항","outputs":"Artwork에서 변경할 내용과 표준서 대조에서 확인한 근거","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A06","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF09_AF06</bpmn:incoming>
       <bpmn:outgoing>WF09_AF07</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF09_A07" name="후속 자재 업무에 사용할 표준서를 마련한다">
       <bpmn:documentation>대상 자재의 표준서와 최종 파일을 후속 업무에 연결한다.
 입력 자료: 확인한 표준서
-전달 자료: 사용할 자재표준서</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인한 표준서","outputs":"사용할 자재표준서","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A07","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인한 표준서","outputs":"최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A07","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF09_AF08</bpmn:incoming>
       <bpmn:outgoing>WF09_A07_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="WF09_A07_RESULT" name="사용할 자재표준서">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 사용할 자재표준서
-전달 자료: 사용할 자재표준서</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"사용할 자재표준서","outputs":"사용할 자재표준서","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A07_RESULT","actorDetail":"QS팀"}</bpmn:documentation>
+    <bpmn:endEvent id="WF09_A07_RESULT" name="최종 Artwork에 맞춘 자재표준서 준비 완료">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서
+입력 자료: 최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서
+전달 자료: 최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서","outputs":"최종 Artwork와 내용·규격을 확인한 작성·개정 자재표준서","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_A07_RESULT","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF09_A07_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="WF09_A00_START_FLOW" sourceRef="WF09_A00" targetRef="J_WF09_A01">
@@ -182,7 +182,7 @@
       <bpmndi:BPMNShape id="J_WF09_A01_di" bpmnElement="J_WF09_A01" isMarkerVisible="true">
         <dc:Bounds x="518" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="465" y="57" width="160" height="33" />
+          <dc:Bounds x="510" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF09_A01_di" bpmnElement="WF09_A01">
@@ -194,7 +194,7 @@
       <bpmndi:BPMNShape id="J_WF09_A03_di" bpmnElement="J_WF09_A03" isMarkerVisible="true">
         <dc:Bounds x="1418" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1365" y="57" width="160" height="33" />
+          <dc:Bounds x="1410" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF09_A03_di" bpmnElement="WF09_A03">
@@ -203,7 +203,7 @@
       <bpmndi:BPMNShape id="WF09_A04_di" bpmnElement="WF09_A04" isMarkerVisible="true">
         <dc:Bounds x="2018" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1935" y="160" width="220" height="33" />
+          <dc:Bounds x="1953.25" y="160" width="183.5" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF09_A05_di" bpmnElement="WF09_A05">
@@ -218,13 +218,13 @@
       <bpmndi:BPMNShape id="WF09_A07_RESULT_di" bpmnElement="WF09_A07_RESULT">
         <dc:Bounds x="2625" y="105" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2565" y="153" width="160" height="33" />
+          <dc:Bounds x="2535" y="153" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="WF09_A00_START_FLOW_di" bpmnElement="WF09_A00_START_FLOW">
         <di:waypoint x="265" y="125" />
-        <di:waypoint x="277" y="125" />
-        <di:waypoint x="277" y="118.25" />
+        <di:waypoint x="506" y="125" />
+        <di:waypoint x="506" y="118.25" />
         <di:waypoint x="524.75" y="118.25" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_AF01_di" bpmnElement="WF09_AF01">
@@ -233,8 +233,8 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_AF02_di" bpmnElement="WF09_AF02">
         <di:waypoint x="1250" y="125" />
-        <di:waypoint x="1406" y="125" />
-        <di:waypoint x="1406" y="118.25" />
+        <di:waypoint x="1262" y="125" />
+        <di:waypoint x="1262" y="118.25" />
         <di:waypoint x="1424.75" y="118.25" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_AF03_di" bpmnElement="WF09_AF03">
@@ -243,61 +243,59 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_AF04_di" bpmnElement="WF09_AF04">
         <di:waypoint x="2061.2" y="114.2" />
-        <di:waypoint x="2084" y="114.2" />
-        <di:waypoint x="2084" y="125" />
+        <di:waypoint x="2228" y="114.2" />
+        <di:waypoint x="2228" y="125" />
         <di:waypoint x="2240" y="125" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2130" y="98" width="65" height="17" />
+          <dc:Bounds x="2154" y="138" width="65" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_AF05_di" bpmnElement="WF09_AF05" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
         <di:waypoint x="2450" y="125" />
         <di:waypoint x="2462" y="125" />
-        <di:waypoint x="2462" y="197" />
+        <di:waypoint x="2462" y="123" />
+        <di:waypoint x="2472" y="123" />
+        <di:waypoint x="2472" y="197" />
         <di:waypoint x="1406" y="197" />
         <di:waypoint x="1406" y="131.75" />
         <di:waypoint x="1424.75" y="131.75" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2481" y="147" width="37" height="17" />
+          <dc:Bounds x="1921" y="205" width="37" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_AF06_di" bpmnElement="WF09_AF06">
         <di:waypoint x="2072" y="125" />
-        <di:waypoint x="2084" y="125" />
-        <di:waypoint x="2084" y="148" />
-        <di:waypoint x="2218" y="148" />
-        <di:waypoint x="2218" y="285" />
+        <di:waypoint x="2228" y="125" />
+        <di:waypoint x="2228" y="285" />
         <di:waypoint x="2240" y="285" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2228" y="208" width="76" height="17" />
+          <dc:Bounds x="2142" y="261" width="76" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_AF07_di" bpmnElement="WF09_AF07" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
         <di:waypoint x="2450" y="285" />
-        <di:waypoint x="2462" y="285" />
-        <di:waypoint x="2462" y="198" />
-        <di:waypoint x="2228" y="198" />
-        <di:waypoint x="2228" y="53" />
-        <di:waypoint x="460" y="53" />
-        <di:waypoint x="460" y="131.75" />
+        <di:waypoint x="2487" y="285" />
+        <di:waypoint x="2487" y="53" />
+        <di:waypoint x="498" y="53" />
+        <di:waypoint x="498" y="131.75" />
         <di:waypoint x="524.75" y="131.75" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2472" y="233" width="69" height="17" />
+          <dc:Bounds x="1458" y="17" width="69" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_AF08_di" bpmnElement="WF09_AF08">
         <di:waypoint x="2061.2" y="135.8" />
-        <di:waypoint x="2203" y="135.8" />
-        <di:waypoint x="2203" y="445" />
+        <di:waypoint x="2218" y="135.8" />
+        <di:waypoint x="2218" y="445" />
         <di:waypoint x="2240" y="445" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2213" y="359" width="53" height="17" />
+          <dc:Bounds x="2155" y="406" width="53" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_A07_END_FLOW_di" bpmnElement="WF09_A07_END_FLOW">
         <di:waypoint x="2450" y="445" />
-        <di:waypoint x="2553" y="445" />
-        <di:waypoint x="2553" y="125" />
+        <di:waypoint x="2462" y="445" />
+        <di:waypoint x="2462" y="125" />
         <di:waypoint x="2625" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF09_A_JOIN_WF09_A01_di" bpmnElement="WF09_A_JOIN_WF09_A01">

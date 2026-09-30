@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_LATE_PERMIT_T_Collaboration" name="허가증을 현재 Artwork와 비교하고 추가 수정이 필요한지 확인한다 · 도입 후 업무">
+    <bpmn:documentation>도입 후 업무: 허가증을 현재 Artwork와 비교하고 추가 수정이 필요한지 확인한다
+입력 자료: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본
+전달 자료: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","perspective":"tobe","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","sourceSteps":["WF11_A02","WF11_A03","WF11_A04","WF11_A06","WF11_T01","WF11_T02","WF11_T03","WF11_T04","WF11_T05","WF11_T06","WF11_T07"],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_LATE_PERMIT_T_Process" name="허가증을 현재 Artwork와 비교하고 추가 수정이 필요한지 확인한다 · 도입 후 업무" processRef="NW_Q_LATE_PERMIT_T_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_LATE_PERMIT_T_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_LATE_PERMIT_T_Process">
+      <bpmn:lane id="Lane_NW_Q_LATE_PERMIT_T_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T12</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_NW_Q_LATE_PERMIT_T_Process_R1" name="시스템">
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_NW_Q_LATE_PERMIT_T07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T09</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_LATE_PERMIT_T11</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_LATE_PERMIT_T00" name="대상 자재와 받은 자료를 확인한다">
+      <bpmn:documentation>해당 자재의 이 업무를 시작할 자료를 받는다.
+입력 자료: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본
+전달 자료: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T00","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_Q_LATE_PERMIT_T01" name="새 허가증을 올리거나 등록된 수령 파일을 선택한다">
+      <bpmn:documentation>QS가 허가증 파일을 등록하거나 이미 받은 파일을 선택한다. 대상 품목과 받은 날짜·허가증의 판을 확인한다.
+입력 자료: 나중에 받은 허가증과 품목 정보
+전달 자료: 허가증 파일과 대상 품목·수령 정보</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"나중에 받은 허가증과 품목 정보","outputs":"허가증 파일과 대상 품목·수령 정보","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-접수-04","K-접수-08"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T01","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_LATE_PERMIT_T02" name="대상 품목의 진행 중 자재와 완료 승인본을 보여준다">
+      <bpmn:documentation>시스템이 해당 품목에 연결된 자재의 진행 상태와 현재 도안·완료 승인본을 재대조 대상으로 보여준다.
+입력 자료: 등록한 허가증과 품목
+전달 자료: 품목에 연결된 자재·검토 상태·대조 파일 후보</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"등록한 허가증과 품목","outputs":"품목에 연결된 자재·검토 상태·대조 파일 후보","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-대조-21","B-15"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T02","actorDetail":"Artwork 시스템","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF03</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="NW_Q_LATE_PERMIT_T03" name="이번에 비교할 자재·도안과 완료 상태를 확인한다">
+      <bpmn:documentation>QS가 대상 자재와 비교할 도안의 판을 확인한다. 같은 품목의 자재도 각각의 완료 상태에 따라 처리한다.
+입력 자료: 재대조 대상과 도안 후보
+전달 자료: 확인한 대상 자재·허가증·도안·완료 상태</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"재대조 대상과 도안 후보","outputs":"확인한 대상 자재·허가증·도안·완료 상태","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-대조-02","K-대조-21"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T03","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF03</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF04</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="NW_Q_LATE_PERMIT_T04" name="이 자재의 QS 검토가 완료되었는가?" gatewayDirection="Diverging" default="NW_Q_LATE_PERMIT_TF06">
+      <bpmn:documentation>내용 확정만 한 상태와 최종 전환 확인 후 QS가 완료한 상태를 구분한다.
+입력 자료: QS 완료 상태
+전달 자료: 미완료 검토 또는 완료 승인본 대조</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS 완료 상태","outputs":"미완료 검토 또는 완료 승인본 대조","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-검토-12","K-검토-14"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T04","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF04</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF05</bpmn:outgoing>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF06</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="NW_Q_LATE_PERMIT_T05" name="같은 미완료 개정의 허가 검토 차수를 확인한다">
+      <bpmn:documentation>새 허가증을 기존 차수의 고정 자료에 덮어쓰지 않는다. 다음 검토 차수에서 새 기준으로 대조하며, 내용 확정 뒤였다면 확정을 푼다. 이미 부여한 개정번호는 유지한다.
+입력 자료: 미완료 개정·새 허가증·현재 도안
+전달 자료: 같은 미완료 개정에서 허가를 대조할 차수와 고정 입력</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"미완료 개정·새 허가증·현재 도안","outputs":"같은 미완료 개정에서 허가를 대조할 차수와 고정 입력","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-검토-02","K-검토-12","K-대조-21"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T05","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF05</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF07</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_Q_LATE_PERMIT_T06" name="완료 승인본의 허가 대조 실행을 연다">
+      <bpmn:documentation>완료된 개정에는 검토 차수를 붙이지 않는다. 해당 완료 승인본·허가증을 사용한 별도 대조 실행으로 확인한다.
+입력 자료: 완료 승인본과 새 허가증
+전달 자료: 완료 승인본에 연결할 허가 대조 실행</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"완료 승인본과 새 허가증","outputs":"완료 승인본에 연결할 허가 대조 실행","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-대조-21","K-검토-14"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T06","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF06</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF08</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="J_NW_Q_LATE_PERMIT_T07" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 고정한 허가증·도안
+전달 자료: 고정한 허가증·도안</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"고정한 허가증·도안","outputs":"고정한 허가증·도안","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"tobe","workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T07"}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF07</bpmn:incoming>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF08</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_T_JOIN_NW_Q_LATE_PERMIT_T07</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="NW_Q_LATE_PERMIT_T07" name="허가증과 도안의 판독값·원문 위치를 보여준다">
+      <bpmn:documentation>시스템이 두 파일의 판독값과 위치, 읽지 못한 항목을 표시한다.
+입력 자료: 고정한 허가증·도안
+전달 자료: 판독값·원문 위치·판독불가 항목</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"고정한 허가증·도안","outputs":"판독값·원문 위치·판독불가 항목","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-판독-02","K-판독-04"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T07","actorDetail":"Artwork 시스템","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_T_JOIN_NW_Q_LATE_PERMIT_T07</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF09</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="NW_Q_LATE_PERMIT_T08" name="허가증·도안의 판독값을 원문과 확인한다">
+      <bpmn:documentation>QS가 판독 오류를 수정하고 확인하지 못한 항목은 사유로 남긴다.
+입력 자료: 판독값과 원문
+전달 자료: 확인한 값과 미확인 사유</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"판독값과 원문","outputs":"확인한 값과 미확인 사유","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-판독-07","K-검토-04"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T08","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF09</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF10</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_LATE_PERMIT_T09" name="새 허가증과 도안의 차이를 표시한다">
+      <bpmn:documentation>시스템이 허가증 대비 도안의 차이와 위치를 표시하고 직전 결과를 함께 볼 수 있게 한다.
+입력 자료: QS가 확인한 값과 비교 파일
+전달 자료: 허가증 반영 차이·위치·직전 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 확인한 값과 비교 파일","outputs":"허가증 반영 차이·위치·직전 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-대조-07","K-대조-21"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T09","actorDetail":"Artwork 시스템","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF10</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF11</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="NW_Q_LATE_PERMIT_T10" name="추가 수정 필요와 확인하지 못한 내용을 판단한다">
+      <bpmn:documentation>QS가 차이를 확인해 도안의 추가 수정 필요 여부를 정한다. 미확인 항목을 변경 없음으로 간주하지 않는다.
+입력 자료: 허가증 차이와 원문·직전 결과
+전달 자료: QS 판단과 수정할 내용·미확인 항목</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증 차이와 원문·직전 결과","outputs":"QS 판단과 수정할 내용·미확인 항목","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-검토-04","K-검토-06"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T10","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF11</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF12</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="NW_Q_LATE_PERMIT_T11" name="허가증·도안·상태·판단을 해당 대조 기록에 보존한다">
+      <bpmn:documentation>미완료 개정의 해당 검토 차수 또는 완료 승인본의 별도 대조 실행에 사용한 파일·결과·판단을 보존한다. 후속 진행 중 재검토·새 개정·변경 없음 기록 경로는 상위에서 이어 간다.
+입력 자료: 대조 입력과 QS 판단
+전달 자료: 허가증 대조 기록·자재 완료 상태·추가 수정 필요 여부</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대조 입력과 QS 판단","outputs":"허가증 대조 기록·자재 완료 상태·추가 수정 필요 여부","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-대조-21","B-26"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T11","actorDetail":"Artwork 시스템","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF12</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_LATE_PERMIT_TF13</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="NW_Q_LATE_PERMIT_T12" name="허가증 대조 기록과 자재별 수정 필요 여부가 정리됨">
+      <bpmn:documentation>이 결과로 상위 흐름의 다음 판단 또는 담당 업무에 연결한다.
+입력 자료: 사용한 허가증·도안·판, 자재 완료 상태, QS 판단과 추가 수정·미확인 내용
+전달 자료: 사용한 허가증·도안·판, 자재 완료 상태, QS 판단과 추가 수정·미확인 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"사용한 허가증·도안·판, 자재 완료 상태, QS 판단과 추가 수정·미확인 내용","outputs":"사용한 허가증·도안·판, 자재 완료 상태, QS 판단과 추가 수정·미확인 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"허가 후 바코드 부여·입고 전후 후속 조치"},{"path":"docs/23_업무규칙장부.md","ref":"허가-11·차수-13·차수-14·차수-22·바코-07·단계-34"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"T-11·T-13·T-18·K-대조-18·21·K-검토-08~11"},{"path":"CODEX.md","ref":"늦은 허가·바코드는 독립된 후속 업무"}],"workflowId":"NW_Q_LATE_PERMIT","originalStepId":"NW_Q_LATE_PERMIT_T12","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_LATE_PERMIT","start":"다음 자료를 받은 상태에서 시작한다: 나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","end":"이 업무에서 남길 내용: 허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","inputs":"나중에 받은 허가증과 검토 중인 Artwork 또는 완료 승인본","outputs":"허가증 대조 결과와 해당 자재의 추가 수정 필요 여부","includes":["수령한 허가증과 대상 자재·현재 판 확인","허가 내용의 반영 여부 대조","수정 필요와 진행 중·완료 개정의 처리 구분"],"excludes":["뒤 G_LATE의 후속 업무 선택을 중복 실행","완료한 개정에 검토 차수 추가","새 개정 생성·디자인 수정 실행","미합의 수탁 허가증 예외"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_LATE_PERMIT_TF13</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF01" sourceRef="NW_Q_LATE_PERMIT_T00" targetRef="NW_Q_LATE_PERMIT_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF02" sourceRef="NW_Q_LATE_PERMIT_T01" targetRef="NW_Q_LATE_PERMIT_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF03" sourceRef="NW_Q_LATE_PERMIT_T02" targetRef="NW_Q_LATE_PERMIT_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF04" sourceRef="NW_Q_LATE_PERMIT_T03" targetRef="NW_Q_LATE_PERMIT_T04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF05" name="QS 완료 전" sourceRef="NW_Q_LATE_PERMIT_T04" targetRef="NW_Q_LATE_PERMIT_T05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T04","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">QS 완료 전</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF06" name="QS 완료 후" sourceRef="NW_Q_LATE_PERMIT_T04" targetRef="NW_Q_LATE_PERMIT_T06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF07" sourceRef="NW_Q_LATE_PERMIT_T05" targetRef="J_NW_Q_LATE_PERMIT_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T05","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF08" sourceRef="NW_Q_LATE_PERMIT_T06" targetRef="J_NW_Q_LATE_PERMIT_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T06","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF09" sourceRef="NW_Q_LATE_PERMIT_T07" targetRef="NW_Q_LATE_PERMIT_T08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T07","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF10" sourceRef="NW_Q_LATE_PERMIT_T08" targetRef="NW_Q_LATE_PERMIT_T09">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T08","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF11" sourceRef="NW_Q_LATE_PERMIT_T09" targetRef="NW_Q_LATE_PERMIT_T10">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T09","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF12" sourceRef="NW_Q_LATE_PERMIT_T10" targetRef="NW_Q_LATE_PERMIT_T11">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T10","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_TF13" sourceRef="NW_Q_LATE_PERMIT_T11" targetRef="NW_Q_LATE_PERMIT_T12">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_LATE_PERMIT_T11","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_LATE_PERMIT_T_JOIN_NW_Q_LATE_PERMIT_T07" sourceRef="J_NW_Q_LATE_PERMIT_T07" targetRef="NW_Q_LATE_PERMIT_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_NW_Q_LATE_PERMIT_T07"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_LATE_PERMIT_T_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_LATE_PERMIT_T_Process_di" bpmnElement="Participant_NW_Q_LATE_PERMIT_T_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="4020" height="620" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_LATE_PERMIT_T_Process_R1_di" bpmnElement="Lane_NW_Q_LATE_PERMIT_T_Process_R1" isHorizontal="true">
+        <dc:Bounds x="70" y="430" width="3990" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_LATE_PERMIT_T_Process_R0_di" bpmnElement="Lane_NW_Q_LATE_PERMIT_T_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="3990" height="390" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T00_di" bpmnElement="NW_Q_LATE_PERMIT_T00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T01_di" bpmnElement="NW_Q_LATE_PERMIT_T01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T02_di" bpmnElement="NW_Q_LATE_PERMIT_T02">
+        <dc:Bounds x="740" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T03_di" bpmnElement="NW_Q_LATE_PERMIT_T03">
+        <dc:Bounds x="1040" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T04_di" bpmnElement="NW_Q_LATE_PERMIT_T04" isMarkerVisible="true">
+        <dc:Bounds x="1418" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1335" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T05_di" bpmnElement="NW_Q_LATE_PERMIT_T05">
+        <dc:Bounds x="1640" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T06_di" bpmnElement="NW_Q_LATE_PERMIT_T06">
+        <dc:Bounds x="1640" y="235" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_NW_Q_LATE_PERMIT_T07_di" bpmnElement="J_NW_Q_LATE_PERMIT_T07" isMarkerVisible="true">
+        <dc:Bounds x="2018" y="488" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2010" y="447" width="70" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T07_di" bpmnElement="NW_Q_LATE_PERMIT_T07">
+        <dc:Bounds x="2240" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T08_di" bpmnElement="NW_Q_LATE_PERMIT_T08">
+        <dc:Bounds x="2540" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T09_di" bpmnElement="NW_Q_LATE_PERMIT_T09">
+        <dc:Bounds x="2840" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T10_di" bpmnElement="NW_Q_LATE_PERMIT_T10">
+        <dc:Bounds x="3140" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T11_di" bpmnElement="NW_Q_LATE_PERMIT_T11">
+        <dc:Bounds x="3440" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_LATE_PERMIT_T12_di" bpmnElement="NW_Q_LATE_PERMIT_T12">
+        <dc:Bounds x="3825" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3735" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF01_di" bpmnElement="NW_Q_LATE_PERMIT_TF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF02_di" bpmnElement="NW_Q_LATE_PERMIT_TF02">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="662" y="125" />
+        <di:waypoint x="662" y="515" />
+        <di:waypoint x="740" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF03_di" bpmnElement="NW_Q_LATE_PERMIT_TF03">
+        <di:waypoint x="950" y="515" />
+        <di:waypoint x="962" y="515" />
+        <di:waypoint x="962" y="125" />
+        <di:waypoint x="1040" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF04_di" bpmnElement="NW_Q_LATE_PERMIT_TF04">
+        <di:waypoint x="1250" y="125" />
+        <di:waypoint x="1418" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF05_di" bpmnElement="NW_Q_LATE_PERMIT_TF05">
+        <di:waypoint x="1465.25" y="118.25" />
+        <di:waypoint x="1628" y="118.25" />
+        <di:waypoint x="1628" y="125" />
+        <di:waypoint x="1640" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1555" y="91" width="65" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF06_di" bpmnElement="NW_Q_LATE_PERMIT_TF06">
+        <di:waypoint x="1465.25" y="131.75" />
+        <di:waypoint x="1628" y="131.75" />
+        <di:waypoint x="1628" y="285" />
+        <di:waypoint x="1640" y="285" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1555" y="262" width="65" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF07_di" bpmnElement="NW_Q_LATE_PERMIT_TF07">
+        <di:waypoint x="1850" y="125" />
+        <di:waypoint x="1862" y="125" />
+        <di:waypoint x="1862" y="508.25" />
+        <di:waypoint x="2024.75" y="508.25" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF08_di" bpmnElement="NW_Q_LATE_PERMIT_TF08">
+        <di:waypoint x="1850" y="285" />
+        <di:waypoint x="2006" y="285" />
+        <di:waypoint x="2006" y="521.75" />
+        <di:waypoint x="2024.75" y="521.75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF09_di" bpmnElement="NW_Q_LATE_PERMIT_TF09">
+        <di:waypoint x="2450" y="515" />
+        <di:waypoint x="2462" y="515" />
+        <di:waypoint x="2462" y="125" />
+        <di:waypoint x="2540" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF10_di" bpmnElement="NW_Q_LATE_PERMIT_TF10">
+        <di:waypoint x="2750" y="125" />
+        <di:waypoint x="2762" y="125" />
+        <di:waypoint x="2762" y="515" />
+        <di:waypoint x="2840" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF11_di" bpmnElement="NW_Q_LATE_PERMIT_TF11">
+        <di:waypoint x="3050" y="515" />
+        <di:waypoint x="3062" y="515" />
+        <di:waypoint x="3062" y="125" />
+        <di:waypoint x="3140" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF12_di" bpmnElement="NW_Q_LATE_PERMIT_TF12">
+        <di:waypoint x="3350" y="125" />
+        <di:waypoint x="3362" y="125" />
+        <di:waypoint x="3362" y="515" />
+        <di:waypoint x="3440" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_TF13_di" bpmnElement="NW_Q_LATE_PERMIT_TF13">
+        <di:waypoint x="3650" y="515" />
+        <di:waypoint x="3662" y="515" />
+        <di:waypoint x="3662" y="125" />
+        <di:waypoint x="3825" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_LATE_PERMIT_T_JOIN_NW_Q_LATE_PERMIT_T07_di" bpmnElement="NW_Q_LATE_PERMIT_T_JOIN_NW_Q_LATE_PERMIT_T07">
+        <di:waypoint x="2072" y="515" />
+        <di:waypoint x="2240" y="515" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

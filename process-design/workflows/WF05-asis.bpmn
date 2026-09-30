@@ -3,8 +3,8 @@
   <bpmn:collaboration id="WF05_A_Collaboration" name="허가·문안 대조와 주석 작성 · 현재 업무">
     <bpmn:documentation>QS가 허가증 또는 확보 문안과 도안을 직접 확인하고 수정 주석을 작성한다.
 입력 자료: 초안·수정본과 확보된 기준자료
-전달 자료: 주석 수정 요청 또는 후속 검토 대상</bpmn:documentation>
-    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"초안·수정본과 확보된 기준자료","outputs":"주석 수정 요청 또는 후속 검토 대상","perspective":"asis","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05"}</bpmn:documentation>
+전달 자료: 디자인팀 수정 요청용 주석본 또는 생산·관련 부서 검토에 사용할 Artwork와 QS 확인 결과</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"초안·수정본과 확보된 기준자료","outputs":"디자인팀 수정 요청용 주석본 또는 생산·관련 부서 검토에 사용할 Artwork와 QS 확인 결과","perspective":"asis","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
     <bpmn:participant id="Participant_WF05_A_Process" name="허가·문안 대조와 주석 작성 · 현재 업무" processRef="WF05_A_Process" />
   </bpmn:collaboration>
   <bpmn:process id="WF05_A_Process" isExecutable="false">
@@ -41,9 +41,9 @@
     <bpmn:userTask id="WF05_A01" name="이번에 볼 Artwork와 검토 목적을 확인한다">
       <bpmn:documentation>해당 자재의 파일인지, 처음 보는 도안인지 어떤 변경을 검토하는지 확인한다.
 입력 자료: 초안·수정본과 요청 내용
-전달 자료: 검토할 Artwork</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"초안·수정본과 요청 내용","outputs":"검토할 Artwork","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A01","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 이번 검토 대상 자재의 Artwork와 확인할 검토 목적</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"초안·수정본과 요청 내용","outputs":"이번 검토 대상 자재의 Artwork와 확인할 검토 목적","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A01","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_A_START_FLOW1</bpmn:incoming>
       <bpmn:outgoing>WF05_AF01</bpmn:outgoing>
     </bpmn:userTask>
@@ -51,8 +51,8 @@
       <bpmn:documentation>이번 변경에서 허가 내용을 볼 필요가 있는지 먼저 정한다. 허가증이 있어도 허가와 무관한 개정은 해당 변경 근거로 본다.
 입력 자료: 이번 검토 목적과 변경 범위
 전달 자료: 허가 내용 검토 또는 다른 변경 근거 검토</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 검토 목적과 변경 범위","outputs":"허가 내용 검토 또는 다른 변경 근거 검토","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A02","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 검토 목적과 변경 범위","outputs":"허가 내용 검토 또는 다른 변경 근거 검토","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A02","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_AF01</bpmn:incoming>
       <bpmn:outgoing>WF05_AF20</bpmn:outgoing>
       <bpmn:outgoing>WF05_AF21</bpmn:outgoing>
@@ -61,8 +61,8 @@
       <bpmn:documentation>허가증이 있으면 해당 허가증을, 없으면 확보 문안·신청 관련 자료를 기준으로 본다.
 입력 자료: 허가 내용을 볼 대상과 확보 자료
 전달 자료: 허가증 또는 확보 문안</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가 내용을 볼 대상과 확보 자료","outputs":"허가증 또는 확보 문안","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A10","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가 내용을 볼 대상과 확보 자료","outputs":"허가증 또는 확보 문안","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A10","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_AF20</bpmn:incoming>
       <bpmn:outgoing>WF05_AF22</bpmn:outgoing>
       <bpmn:outgoing>WF05_AF23</bpmn:outgoing>
@@ -90,18 +90,18 @@
     <bpmn:userTask id="WF05_A04" name="확보 문안·변경 근거와 Artwork를 대조한다">
       <bpmn:documentation>글 중심 기준 내용이 Artwork에 잘 반영됐는지 본다. 허가증을 받으면 그 기준으로 다시 확인한다.
 입력 자료: 문안·허가 신청 자료·변경대비표
-전달 자료: 확보 문안 반영 검토</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"문안·허가 신청 자료·변경대비표","outputs":"확보 문안 반영 검토","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A04","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 확보한 문안·허가 신청자료 또는 변경 근거가 Artwork에 반영됐는지 확인한 결과와 차이</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"문안·허가 신청 자료·변경대비표","outputs":"확보한 문안·허가 신청자료 또는 변경 근거가 Artwork에 반영됐는지 확인한 결과와 차이","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A04","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_A_JOIN_WF05_A04</bpmn:incoming>
       <bpmn:outgoing>WF05_AF05</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF05_A03" name="허가증과 Artwork를 대조한다">
       <bpmn:documentation>해당 허가 내용이 자재 디자인에 빠지거나 다르게 들어간 곳이 있는지 본다.
 입력 자료: 허가증 원본과 Artwork
-전달 자료: 허가 내용 반영 검토</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증 원본과 Artwork","outputs":"허가 내용 반영 검토","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A03","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 허가증의 표시 내용이 Artwork에 반영됐는지 확인한 결과와 차이</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증 원본과 Artwork","outputs":"허가증의 표시 내용이 Artwork에 반영됐는지 확인한 결과와 차이","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A03","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_A_JOIN_WF05_A03</bpmn:incoming>
       <bpmn:outgoing>WF05_AF04</bpmn:outgoing>
     </bpmn:userTask>
@@ -118,9 +118,9 @@
     <bpmn:userTask id="WF05_A05" name="자재 규격·표시와 관련 자료를 함께 확인한다">
       <bpmn:documentation>이번 자재에 필요한 기재사항·규격·바코드 등을 관련 자료와 확인한다.
 입력 자료: 시방서·칼선·기준자료·Artwork
-전달 자료: 추가 지적사항</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"시방서·칼선·기준자료·Artwork","outputs":"추가 지적사항","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A05","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 해당 자재에 적용되는 규격·표시사항 검토에서 확인한 추가 수정 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"시방서·칼선·기준자료·Artwork","outputs":"해당 자재에 적용되는 규격·표시사항 검토에서 확인한 추가 수정 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A05","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_A_JOIN_WF05_A05</bpmn:incoming>
       <bpmn:outgoing>WF05_AF06</bpmn:outgoing>
     </bpmn:userTask>
@@ -128,8 +128,8 @@
       <bpmn:documentation>도안에서 반영할 수정이 있는지 결정한다.
 입력 자료: 검토 결과
 전달 자료: 수정 요청 또는 다음 검토</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토 결과","outputs":"수정 요청 또는 다음 검토","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A06","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토 결과","outputs":"수정 요청 또는 다음 검토","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A06","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_AF06</bpmn:incoming>
       <bpmn:outgoing>WF05_AF07</bpmn:outgoing>
       <bpmn:outgoing>WF05_AF09</bpmn:outgoing>
@@ -138,8 +138,8 @@
       <bpmn:documentation>디자인팀이 바꿀 위치와 내용을 주석으로 남긴다.
 입력 자료: 수정할 내용과 Artwork
 전달 자료: 주석본과 수정 내용</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수정할 내용과 Artwork","outputs":"주석본과 수정 내용","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A07","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수정할 내용과 Artwork","outputs":"주석본과 수정 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A07","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_AF07</bpmn:incoming>
       <bpmn:outgoing>WF05_AF08</bpmn:outgoing>
     </bpmn:userTask>
@@ -147,8 +147,8 @@
       <bpmn:documentation>자사 신규는 허가증 검토를 마친 도안으로 생산 관련 확인을 진행한다. 다른 경로는 해당 경로의 후속 검토 조건에 따른다.
 입력 자료: 업무 경로와 허가증 검토 상태
 전달 자료: 후속 검토 또는 허가증 수령 대기</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"업무 경로와 허가증 검토 상태","outputs":"후속 검토 또는 허가증 수령 대기","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A11","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"업무 경로와 허가증 검토 상태","outputs":"후속 검토 또는 허가증 수령 대기","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A11","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_AF09</bpmn:incoming>
       <bpmn:outgoing>WF05_AG1</bpmn:outgoing>
       <bpmn:outgoing>WF05_AG2</bpmn:outgoing>
@@ -156,44 +156,44 @@
     <bpmn:userTask id="WF05_A08" name="디자인팀 수정·반영 검토로 이어 간다">
       <bpmn:documentation>주석을 전달하고 새 Artwork의 반영 여부를 확인하는 반복으로 간다.
 입력 자료: 주석본
-전달 자료: 디자인 수정 요청</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"주석본","outputs":"디자인 수정 요청","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A08","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 디자인팀에 전달할 Artwork 주석본, 수정 내용과 해당 문안·허가증 등 비교 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"주석본","outputs":"디자인팀에 전달할 Artwork 주석본, 수정 내용과 해당 문안·허가증 등 비교 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A08","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_AF08</bpmn:incoming>
       <bpmn:outgoing>WF05_A08_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF05_A09" name="해당 경로의 생산·관련 부서 검토로 이어 간다">
       <bpmn:documentation>후속 검토에 사용할 파일을 해당 담당자에게 연결한다.
 입력 자료: 수정할 사항이 정리된 Artwork
-전달 자료: 후속 검토 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수정할 사항이 정리된 Artwork","outputs":"후속 검토 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A09","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 생산·관련 부서에 검토를 요청할 Artwork와 QS 검토 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수정할 사항이 정리된 Artwork","outputs":"생산·관련 부서에 검토를 요청할 Artwork와 QS 검토 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A09","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_AG1</bpmn:incoming>
       <bpmn:outgoing>WF05_A09_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF05_A12" name="허가증을 기다려 해당 도안을 다시 검토한다">
       <bpmn:documentation>허가증을 받으면 해당 도안과 대조한다. 다른 자재의 준비 업무는 계속한다.
 입력 자료: 허가 전 자료로 검토한 자사 신규 도안
-전달 자료: 허가증을 받은 검토 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가 전 자료로 검토한 자사 신규 도안","outputs":"허가증을 받은 검토 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A12","actorDetail":"QS팀"}</bpmn:documentation>
+전달 자료: 나중에 수령한 허가증과 다시 대조할 해당 자재의 Artwork</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가 전 자료로 검토한 자사 신규 도안","outputs":"나중에 수령한 허가증과 다시 대조할 해당 자재의 Artwork","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A12","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_AG2</bpmn:incoming>
       <bpmn:outgoing>WF05_AG3</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="WF05_A08_RESULT" name="디자인 수정 요청">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 디자인 수정 요청
-전달 자료: 디자인 수정 요청</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인 수정 요청","outputs":"디자인 수정 요청","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A08_RESULT","actorDetail":"QS팀"}</bpmn:documentation>
+    <bpmn:endEvent id="WF05_A08_RESULT" name="디자인팀에 전달할 주석본·수정 요청 준비 완료">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 디자인팀에 전달할 Artwork 주석본, 수정 내용과 해당 문안·허가증 등 비교 자료
+입력 자료: 디자인팀에 전달할 Artwork 주석본, 수정 내용과 해당 문안·허가증 등 비교 자료
+전달 자료: 디자인팀에 전달할 Artwork 주석본, 수정 내용과 해당 문안·허가증 등 비교 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인팀에 전달할 Artwork 주석본, 수정 내용과 해당 문안·허가증 등 비교 자료","outputs":"디자인팀에 전달할 Artwork 주석본, 수정 내용과 해당 문안·허가증 등 비교 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A08_RESULT","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_A08_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:endEvent id="WF05_A09_RESULT" name="후속 검토 대상">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 후속 검토 대상
-전달 자료: 후속 검토 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"후속 검토 대상","outputs":"후속 검토 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A09_RESULT","actorDetail":"QS팀"}</bpmn:documentation>
+    <bpmn:endEvent id="WF05_A09_RESULT" name="생산·관련 부서에 검토 요청할 도안 준비 완료">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 생산·관련 부서에 검토를 요청할 Artwork와 QS 검토 결과
+입력 자료: 생산·관련 부서에 검토를 요청할 Artwork와 QS 검토 결과
+전달 자료: 생산·관련 부서에 검토를 요청할 Artwork와 QS 검토 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"생산·관련 부서에 검토를 요청할 Artwork와 QS 검토 결과","outputs":"생산·관련 부서에 검토를 요청할 Artwork와 QS 검토 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_A09_RESULT","actorDetail":"QS팀","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_A09_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="WF05_AF01" sourceRef="WF05_A01" targetRef="WF05_A02">
@@ -275,7 +275,7 @@
       <bpmndi:BPMNShape id="WF05_A_START1_di" bpmnElement="WF05_A_START1">
         <dc:Bounds x="225" y="105" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="165" y="153" width="160" height="33" />
+          <dc:Bounds x="211" y="153" width="68" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_A01_di" bpmnElement="WF05_A01">
@@ -296,13 +296,13 @@
       <bpmndi:BPMNShape id="J_WF05_A04_di" bpmnElement="J_WF05_A04" isMarkerVisible="true">
         <dc:Bounds x="1418" y="258" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1365" y="217" width="160" height="33" />
+          <dc:Bounds x="1410" y="217" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="J_WF05_A03_di" bpmnElement="J_WF05_A03" isMarkerVisible="true">
         <dc:Bounds x="1418" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1365" y="57" width="160" height="33" />
+          <dc:Bounds x="1410" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_A04_di" bpmnElement="WF05_A04">
@@ -314,7 +314,7 @@
       <bpmndi:BPMNShape id="J_WF05_A05_di" bpmnElement="J_WF05_A05" isMarkerVisible="true">
         <dc:Bounds x="2018" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1965" y="57" width="160" height="33" />
+          <dc:Bounds x="2010" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_A05_di" bpmnElement="WF05_A05">
@@ -323,7 +323,7 @@
       <bpmndi:BPMNShape id="WF05_A06_di" bpmnElement="WF05_A06" isMarkerVisible="true">
         <dc:Bounds x="2618" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2556" y="160" width="178" height="33" />
+          <dc:Bounds x="2569.25" y="160" width="151.5" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_A07_di" bpmnElement="WF05_A07">
@@ -347,13 +347,13 @@
       <bpmndi:BPMNShape id="WF05_A08_RESULT_di" bpmnElement="WF05_A08_RESULT">
         <dc:Bounds x="3525" y="105" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3465" y="153" width="160" height="33" />
+          <dc:Bounds x="3435" y="153" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_A09_RESULT_di" bpmnElement="WF05_A09_RESULT">
         <dc:Bounds x="3525" y="265" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3465" y="313" width="160" height="33" />
+          <dc:Bounds x="3435" y="313" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="WF05_AF01_di" bpmnElement="WF05_AF01">
@@ -413,20 +413,20 @@
         <di:waypoint x="1023" y="278.25" />
         <di:waypoint x="1424.75" y="278.25" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1270" y="302" width="109" height="17" />
+          <dc:Bounds x="1270" y="288" width="109" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_AF22_di" bpmnElement="WF05_AF22">
         <di:waypoint x="1165.25" y="118.25" />
         <di:waypoint x="1424.75" y="118.25" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1367" y="166" width="93" height="17" />
+          <dc:Bounds x="1313" y="91" width="93" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_AF23_di" bpmnElement="WF05_AF23">
         <di:waypoint x="1165.25" y="131.75" />
-        <di:waypoint x="1360" y="131.75" />
-        <di:waypoint x="1360" y="291.75" />
+        <di:waypoint x="1406" y="131.75" />
+        <di:waypoint x="1406" y="291.75" />
         <di:waypoint x="1424.75" y="291.75" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1350" y="326" width="110" height="17" />
@@ -462,11 +462,11 @@
         <di:waypoint x="3350" y="445" />
         <di:waypoint x="3362" y="445" />
         <di:waypoint x="3362" y="53" />
-        <di:waypoint x="1360" y="53" />
-        <di:waypoint x="1360" y="131.75" />
+        <di:waypoint x="1406" y="53" />
+        <di:waypoint x="1406" y="131.75" />
         <di:waypoint x="1424.75" y="131.75" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2307" y="17" width="109" height="17" />
+          <dc:Bounds x="2330" y="17" width="109" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_A_JOIN_WF05_A03_di" bpmnElement="WF05_A_JOIN_WF05_A03">

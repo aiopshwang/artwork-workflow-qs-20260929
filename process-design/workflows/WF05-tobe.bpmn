@@ -3,8 +3,8 @@
   <bpmn:collaboration id="WF05_T_Collaboration" name="허가·문안 대조와 주석 작성 · 도입 후 업무">
     <bpmn:documentation>AI 판독·제안, 규칙 대조, 담당자 판단을 구분하고 자재별 차수에 남긴다.
 입력 자료: QS가 검토를 시작할 파일
-전달 자료: 보존된 차수와 주석 또는 후속 검토</bpmn:documentation>
-    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 검토를 시작할 파일","outputs":"보존된 차수와 주석 또는 후속 검토","perspective":"tobe","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05"}</bpmn:documentation>
+전달 자료: 마감한 검토 차수와 디자인팀에 전달한 주석본·수정 요청, 또는 결과 취합·내용 확정에 사용할 Artwork와 QS 판단 기록</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 검토를 시작할 파일","outputs":"마감한 검토 차수와 디자인팀에 전달한 주석본·수정 요청, 또는 결과 취합·내용 확정에 사용할 Artwork와 QS 판단 기록","perspective":"tobe","sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
     <bpmn:participant id="Participant_WF05_T_Process" name="허가·문안 대조와 주석 작성 · 도입 후 업무" processRef="WF05_T_Process" />
   </bpmn:collaboration>
   <bpmn:process id="WF05_T_Process" isExecutable="false">
@@ -22,22 +22,29 @@
         <bpmn:flowNodeRef>WF05_T08</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>WF05_T09</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>WF05_T12</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>WF05_T10</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>WF05_T11</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>WF05_T13</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>WF05_T10_RESULT</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF05_T10</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>WF05_T11_RESULT</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF05_T10_RESULT</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_WF05_T_Process_R1" name="시스템">
+        <bpmn:flowNodeRef>WF05_T01_SYS_RESPONSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF05_T02_SYS_RESPONSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF05_T03_SYS_DISPLAY</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF05_T03_SYS_RESPONSE</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>WF05_T06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF05_T07_SYS_RESPONSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF05_T09_SYS_RESPONSE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF05_T10_SYS_RESPONSE</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="WF05_T00" name="QS가 해당 자재의 검토를 시작한다">
       <bpmn:documentation>검토할 파일과 목적을 확인하고 검토 차수 시작으로 이어 간다.
 입력 자료: 수령한 도안과 이번 검토 목적
 전달 자료: 검토할 자재별 도안</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수령한 도안과 이번 검토 목적","outputs":"검토할 자재별 도안","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T00","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수령한 도안과 이번 검토 목적","outputs":"검토할 자재별 도안","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T00","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:outgoing>WF05_T00_START_FLOW</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:exclusiveGateway id="J_WF05_T01" name="경로 합류" gatewayDirection="Converging">
@@ -53,12 +60,21 @@
     <bpmn:userTask id="WF05_T01" name="QS가 검토 차수를 시작하고 이유를 남긴다">
       <bpmn:documentation>초안·수정 반영·생산 의견·허가증 도착 등 검토 목적을 기록한다. 자재별로 차수를 관리한다.
 입력 자료: 검토할 Artwork와 수령 내용
-전달 자료: 해당 자재의 검토 차수</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토할 Artwork와 수령 내용","outputs":"해당 자재의 검토 차수","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-02","K-검토-03"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T01","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: QS 담당자가 시작한 해당 자재의 검토 차수와 검토를 시작한 이유</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토할 Artwork와 수령 내용","outputs":"QS 담당자가 시작한 해당 자재의 검토 차수와 검토를 시작한 이유","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-02","K-검토-03"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T01","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_T_JOIN_WF05_T01</bpmn:incoming>
-      <bpmn:outgoing>WF05_TF01</bpmn:outgoing>
+      <bpmn:outgoing>WF05_T01_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:serviceTask id="WF05_T01_SYS_RESPONSE" name="QS가 시작한 검토 차수와 시작 이유를 기록한다">
+      <bpmn:documentation>담당자가 검토 시작을 선택한 자재에 차수·시작한 사람·이유를 기록한다. 단순 파일 업로드와 검토 시작을 구분한다.
+입력 자료: QS 담당자가 시작한 해당 자재의 검토 차수와 검토를 시작한 이유
+전달 자료: QS 담당자가 시작한 해당 자재의 검토 차수와 검토를 시작한 이유</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS 담당자가 시작한 해당 자재의 검토 차수와 검토를 시작한 이유","outputs":"QS 담당자가 시작한 해당 자재의 검토 차수와 검토를 시작한 이유","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-02","K-검토-03"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T01_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T01"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_T01_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF05_TF01</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="J_WF05_T02" name="경로 합류" gatewayDirection="Converging">
       <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
 입력 자료: 허가증·문안·시방서·칼선·품목정보
@@ -72,27 +88,54 @@
     <bpmn:userTask id="WF05_T02" name="이번 차수의 기준자료와 적용 범위를 정한다">
       <bpmn:documentation>이번 검토 목적과 변경 범위에서 허가 대조가 필요한지 먼저 정한다. 해당 범위의 허가증·문안·변경 근거와 자재 유형·제형·표시면적 등의 적용 조건 및 자료 판을 확인한다.
 입력 자료: 허가증·문안·시방서·칼선·품목정보
-전달 자료: 고정된 기준자료와 적용 조건</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증·문안·시방서·칼선·품목정보","outputs":"고정된 기준자료와 적용 조건","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-01","K-대조-02","K-대조-03","K-대조-05"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T02","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: 이번 검토 차수에 사용할 문안·허가증·변경 근거의 판과 항목별 적용 조건</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가증·문안·시방서·칼선·품목정보","outputs":"이번 검토 차수에 사용할 문안·허가증·변경 근거의 판과 항목별 적용 조건","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-01","K-대조-02","K-대조-03","K-대조-05"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T02","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_T_JOIN_WF05_T02</bpmn:incoming>
-      <bpmn:outgoing>WF05_TF02</bpmn:outgoing>
+      <bpmn:outgoing>WF05_T02_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:serviceTask id="WF05_T02_SYS_RESPONSE" name="이번 차수의 문안·허가증·변경 근거와 적용 범위를 고정한다">
+      <bpmn:documentation>QS가 선택한 비교 자료의 판과 항목별 적용 조건을 대조 실행에 연결한다. 새 자료가 과거 검토 기준을 자동으로 바꾸지 않는다.
+입력 자료: 이번 검토 차수에 사용할 문안·허가증·변경 근거의 판과 항목별 적용 조건
+전달 자료: 이번 검토 차수에 사용할 문안·허가증·변경 근거의 판과 항목별 적용 조건</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 검토 차수에 사용할 문안·허가증·변경 근거의 판과 항목별 적용 조건","outputs":"이번 검토 차수에 사용할 문안·허가증·변경 근거의 판과 항목별 적용 조건","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-01","K-대조-02","K-대조-03","K-대조-05"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T02_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T02"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_T02_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF05_TF02</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="WF05_T03_SYS_DISPLAY" name="Artwork와 선택한 비교 자료를 판독해 원문과 함께 보여준다">
+      <bpmn:documentation>AI 기반 판독의 값과 위치를 원문과 함께 보여준다. 읽지 못한 부분을 구분해 QS가 보완할 수 있게 한다.
+입력 자료: 선택한 파일
+전달 자료: QS 담당자가 원문과 확인할 선택한 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"선택한 파일","outputs":"QS 담당자가 원문과 확인할 선택한 파일","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-판독-02","K-판독-03","K-판독-04","K-판독-06","K-판독-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T03_SYS_DISPLAY","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T03"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_TF02</bpmn:incoming>
+      <bpmn:outgoing>WF05_T03_SYS_DISPLAY_FLOW</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:userTask id="WF05_T03" name="도안·기준자료의 판독값을 확인한다">
       <bpmn:documentation>AI 판독 결과를 사용하되 QS가 값과 위치를 확인한다. 글자·위치·규격의 판독값을 확인하고 오류를 고친다. 작업의뢰 본문과 결재 의견이 다르면 유효값을 확인한다.
 입력 자료: 선택한 파일
-전달 자료: 확인한 판독값</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"선택한 파일","outputs":"확인한 판독값","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-판독-02","K-판독-03","K-판독-04","K-판독-06","K-판독-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T03","actorDetail":"QS 담당자"}</bpmn:documentation>
-      <bpmn:incoming>WF05_TF02</bpmn:incoming>
-      <bpmn:outgoing>WF05_TF03</bpmn:outgoing>
+전달 자료: QS 담당자가 원문과 확인한 Artwork 및 비교 자료의 판독값</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"선택한 파일","outputs":"QS 담당자가 원문과 확인한 Artwork 및 비교 자료의 판독값","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-판독-02","K-판독-03","K-판독-04","K-판독-06","K-판독-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T03","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_T03_SYS_DISPLAY_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF05_T03_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:serviceTask id="WF05_T03_SYS_RESPONSE" name="확인·수정한 판독값과 원문 위치를 저장한다">
+      <bpmn:documentation>담당자의 판독 보완 내용을 저장하고 해당 값이 쓰이는 대조 항목에 반영한다.
+입력 자료: QS 담당자가 원문과 확인한 Artwork 및 비교 자료의 판독값
+전달 자료: QS 담당자가 원문과 확인한 Artwork 및 비교 자료의 판독값</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS 담당자가 원문과 확인한 Artwork 및 비교 자료의 판독값","outputs":"QS 담당자가 원문과 확인한 Artwork 및 비교 자료의 판독값","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-판독-02","K-판독-03","K-판독-04","K-판독-06","K-판독-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T03_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T03"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_T03_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF05_TF03</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="WF05_T04" name="이번 항목에 비교할 근거가 있는가?" gatewayDirection="Diverging" default="WF05_TF06">
       <bpmn:documentation>대조 항목별로 누락·판독불가·기준 상충을 확인한다. 근거가 없는 항목은 자료 대기로 남기고 확보 자료로 가능한 다른 항목·자재의 검토는 계속한다.
 입력 자료: 판독값과 자료 현황
 전달 자료: 대조 가능 범위와 자료 대기</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"판독값과 자료 현황","outputs":"대조 가능 범위와 자료 대기","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-06","K-대조-09"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T04","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"판독값과 자료 현황","outputs":"대조 가능 범위와 자료 대기","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-06","K-대조-09"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T04","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TF03</bpmn:incoming>
       <bpmn:outgoing>WF05_TF04</bpmn:outgoing>
       <bpmn:outgoing>WF05_TF06</bpmn:outgoing>
@@ -100,115 +143,143 @@
     <bpmn:userTask id="WF05_T05" name="해당 항목의 자료를 기다리거나 근거를 확인한다">
       <bpmn:documentation>부족한 항목의 자료·이유를 남긴다. 요청한 자료가 오면 그 항목의 비교 기준을 다시 확인한다. 다른 항목과 자재 전체를 중단시키지 않는다.
 입력 자료: 부족하거나 상충한 자료
-전달 자료: 보완한 기준자료</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"부족하거나 상충한 자료","outputs":"보완한 기준자료","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-08","K-판독-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T05","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: 대조할 항목에 사용할 수 있도록 추가 수령하거나 적용 근거를 확인한 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"부족하거나 상충한 자료","outputs":"대조할 항목에 사용할 수 있도록 추가 수령하거나 적용 근거를 확인한 자료","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-08","K-판독-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T05","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TF04</bpmn:incoming>
       <bpmn:outgoing>WF05_TF05</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="WF05_T06" name="적용 대상 항목을 규칙으로 대조한다">
+    <bpmn:serviceTask id="WF05_T06" name="적용 대상 항목을 규칙으로 대조한다">
       <bpmn:documentation>이번 검토 목적과 적용 범위의 항목을 대조한다. 허가 대조 대상은 허가·문안을, 다른 개정은 해당 변경 근거를 사용한다. 규격·표준표시·바코드 등 적용 항목을 확인하며 미확보 항목은 자료 대기로 표시한다. 공용 자재는 해당 품목별 기준을 확인한다.
 입력 자료: 확인된 판독값·적용 조건·기준
 전달 자료: 항목별 규칙 결과와 위치
 업무 규칙: 허가증 원본 없는 항목은 허가 대조를 확정하지 않는다. / 공개 허가정보는 참고용이다.</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인된 판독값·적용 조건·기준","outputs":"항목별 규칙 결과와 위치","businessRules":["허가증 원본 없는 항목은 허가 대조를 확정하지 않는다.","공개 허가정보는 참고용이다."],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-06","K-대조-07","K-대조-08","K-대조-09","K-대조-10","K-대조-14","K-대조-18","K-대조-24"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T06","actorDetail":"시스템"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인된 판독값·적용 조건·기준","outputs":"항목별 규칙 결과와 위치","businessRules":["허가증 원본 없는 항목은 허가 대조를 확정하지 않는다.","공개 허가정보는 참고용이다."],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-06","K-대조-07","K-대조-08","K-대조-09","K-대조-10","K-대조-14","K-대조-18","K-대조-24"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T06","actorDetail":"Artwork 시스템","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TF06</bpmn:incoming>
       <bpmn:outgoing>WF05_TF07</bpmn:outgoing>
-    </bpmn:userTask>
+    </bpmn:serviceTask>
     <bpmn:userTask id="WF05_T07" name="규칙 결과·AI 제안과 원문을 보고 판단한다">
       <bpmn:documentation>AI 의견은 제안으로 구분한다. QS가 확인·수정요청·해당없음과 필요한 사유를 남긴다.
 입력 자료: 규칙 결과·원문·AI 의견 제안
-전달 자료: 담당자 판단
+전달 자료: 원문과 규칙 결과·AI 제안을 확인한 QS 담당자의 항목별 판단
 업무 규칙: 규칙 결과와 담당자 판단을 각각 보존한다. / 판정 기준 잠정 — QS팀 확정 전</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"규칙 결과·원문·AI 의견 제안","outputs":"담당자 판단","businessRules":["규칙 결과와 담당자 판단을 각각 보존한다.","판정 기준 잠정 — QS팀 확정 전"],"perspective":"tobe","phase":"Phase 1","functionIds":["K-에이전트-06","K-검토-04","K-검토-06"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T07","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"규칙 결과·원문·AI 의견 제안","outputs":"원문과 규칙 결과·AI 제안을 확인한 QS 담당자의 항목별 판단","businessRules":["규칙 결과와 담당자 판단을 각각 보존한다.","판정 기준 잠정 — QS팀 확정 전"],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-에이전트-06","K-검토-04","K-검토-06"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T07","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TF07</bpmn:incoming>
-      <bpmn:outgoing>WF05_TF08</bpmn:outgoing>
+      <bpmn:outgoing>WF05_T07_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:serviceTask id="WF05_T07_SYS_RESPONSE" name="항목별 QS 판단과 사유를 검토 차수에 보존한다">
+      <bpmn:documentation>규칙 결과와 AI 제안을 별도로 유지하며 담당자의 확인·수정요청·해당없음과 사유를 기록한다.
+입력 자료: 원문과 규칙 결과·AI 제안을 확인한 QS 담당자의 항목별 판단
+전달 자료: 원문과 규칙 결과·AI 제안을 확인한 QS 담당자의 항목별 판단
+업무 규칙: 규칙 결과와 담당자 판단을 각각 보존한다. / 판정 기준 잠정 — QS팀 확정 전</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"원문과 규칙 결과·AI 제안을 확인한 QS 담당자의 항목별 판단","outputs":"원문과 규칙 결과·AI 제안을 확인한 QS 담당자의 항목별 판단","businessRules":["규칙 결과와 담당자 판단을 각각 보존한다.","판정 기준 잠정 — QS팀 확정 전"],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-에이전트-06","K-검토-04","K-검토-06"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T07_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T07"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_T07_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF05_TF08</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="WF05_T08" name="수정요청이 남아 있는가?" gatewayDirection="Diverging" default="WF05_TF11">
       <bpmn:documentation>주석으로 전달할 수정이 남아 있는지 확인한다.
 입력 자료: 담당자 판단과 미해소 항목
 전달 자료: 수정 또는 후속 검토</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"담당자 판단과 미해소 항목","outputs":"수정 또는 후속 검토","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-05"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T08","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"담당자 판단과 미해소 항목","outputs":"수정 또는 후속 검토","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-05"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T08","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TF08</bpmn:incoming>
       <bpmn:outgoing>WF05_TF09</bpmn:outgoing>
       <bpmn:outgoing>WF05_TF11</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:userTask id="WF05_T09" name="수정 주석과 보낼 내용을 확인한다">
-      <bpmn:documentation>수정 위치·내용을 주석에 정리하고 보내기 전 확인 표시를 검토한다. AI 초안은 QS가 고친 뒤 사용한다.
+      <bpmn:documentation>확인한 수정 위치·내용과 남은 이전 지적을 주석으로 작성·수정하고 전달할 내용을 확인한다.
 입력 자료: 검출 위치와 직접 지적
 전달 자료: QS가 확인한 주석·수정 목록</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검출 위치와 직접 지적","outputs":"QS가 확인한 주석·수정 목록","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-01","K-주석-03","K-검토-04"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T09","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검출 위치와 직접 지적","outputs":"QS가 확인한 주석·수정 목록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-01","K-주석-03","K-검토-04"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T09","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TF09</bpmn:incoming>
-      <bpmn:outgoing>WF05_TF10</bpmn:outgoing>
+      <bpmn:outgoing>WF05_T09_SYS_RESPONSE_FLOW</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="WF05_T12" name="자사 신규라면 허가증 검토까지 마쳤는가?" gatewayDirection="Diverging" default="WF05_TG2">
       <bpmn:documentation>자사 신규는 허가증 검토를 마친 도안으로 생산 관련 확인을 진행한다. 다른 경로는 해당 경로의 후속 검토 조건에 따른다.
 입력 자료: 업무 경로와 허가증 검토 상태
 전달 자료: 후속 검토 또는 허가증 수령 대기</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"업무 경로와 허가증 검토 상태","outputs":"후속 검토 또는 허가증 수령 대기","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-01","K-대조-21","B-04"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T12","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"업무 경로와 허가증 검토 상태","outputs":"후속 검토 또는 허가증 수령 대기","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-01","K-대조-21","B-04"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T12","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TF11</bpmn:incoming>
       <bpmn:outgoing>WF05_TG1</bpmn:outgoing>
       <bpmn:outgoing>WF05_TG2</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="WF05_T10" name="차수를 마감하고 수정 요청을 전달한다">
-      <bpmn:documentation>차수의 판단·기준자료·남은 요청을 보존하고 디자인팀에 전달한다.
-입력 자료: 확인된 주석
-전달 자료: 다음 반영 검토로 이어질 요청</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인된 주석","outputs":"다음 반영 검토로 이어질 요청","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-05","C-05","C-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T10","actorDetail":"QS 담당자"}</bpmn:documentation>
-      <bpmn:incoming>WF05_TF10</bpmn:incoming>
-      <bpmn:outgoing>WF05_T10_END_FLOW</bpmn:outgoing>
-    </bpmn:userTask>
+    <bpmn:serviceTask id="WF05_T09_SYS_RESPONSE" name="확인한 수정 위치와 내용으로 주석본을 준비한다">
+      <bpmn:documentation>QS가 확인한 위치·문구로 주석 PDF를 만들고 대상 Artwork·근거와 연결해 보관한다.
+입력 자료: QS가 확인한 주석·수정 목록
+전달 자료: QS가 확인한 주석 PDF·수정 목록·근거 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 확인한 주석·수정 목록","outputs":"QS가 확인한 주석 PDF·수정 목록·근거 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-주석-01","K-주석-03","K-검토-04"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T09_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T09"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_T09_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF05_TF10</bpmn:outgoing>
+    </bpmn:serviceTask>
     <bpmn:userTask id="WF05_T11" name="후속 결과 취합·내용 확정으로 이어 간다">
       <bpmn:documentation>해당 경로의 후속 검토 조건을 확인한다. 자사 신규의 생산 관련 검토는 허가증 검토를 마친 파일로 연결한다. 조건이 남았으면 그 자료·항목의 대기를 유지한다.
 입력 자료: 이번 차수의 판단
-전달 자료: 후속 검토 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 차수의 판단","outputs":"후속 검토 대상","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-12","C-10","C-15"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T11","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: 생산·관련 부서의 결과 취합과 내용 확정 검토에 사용할 Artwork, 적용 자료와 QS 판단 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"이번 차수의 판단","outputs":"생산·관련 부서의 결과 취합과 내용 확정 검토에 사용할 Artwork, 적용 자료와 QS 판단 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-12","C-10","C-15"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T11","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TG1</bpmn:incoming>
       <bpmn:outgoing>WF05_T11_END_FLOW</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:userTask id="WF05_T13" name="허가증을 기다려 해당 도안을 다시 검토한다">
       <bpmn:documentation>허가증을 받으면 해당 도안과 대조한다. 도입 후에는 QS가 같은 미완료 개정의 다음 검토 차수를 연다. 다른 자재의 준비 업무는 계속한다.
 입력 자료: 허가 전 자료로 검토한 자사 신규 도안
-전달 자료: 허가증을 받은 검토 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가 전 자료로 검토한 자사 신규 도안","outputs":"허가증을 받은 검토 대상","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-08","K-검토-02","K-대조-21"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T13","actorDetail":"QS 담당자"}</bpmn:documentation>
+전달 자료: 새로 받은 허가증과 재검토할 해당 자재의 Artwork·검토 차수</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"허가 전 자료로 검토한 자사 신규 도안","outputs":"새로 받은 허가증과 재검토할 해당 자재의 Artwork·검토 차수","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":null,"functionIds":["K-접수-08","K-검토-02","K-대조-21"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T13","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_TG2</bpmn:incoming>
       <bpmn:outgoing>WF05_TG3</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:endEvent id="WF05_T10_RESULT" name="다음 반영 검토로 이어질 요청">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 다음 반영 검토로 이어질 요청
-전달 자료: 다음 반영 검토로 이어질 요청</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"다음 반영 검토로 이어질 요청","outputs":"다음 반영 검토로 이어질 요청","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T10_RESULT","actorDetail":"QS 담당자"}</bpmn:documentation>
-      <bpmn:incoming>WF05_T10_END_FLOW</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:endEvent id="WF05_T11_RESULT" name="후속 검토 대상">
-      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
-입력 자료: 후속 검토 대상
-전달 자료: 후속 검토 대상</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"후속 검토 대상","outputs":"후속 검토 대상","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T11_RESULT","actorDetail":"QS 담당자"}</bpmn:documentation>
+    <bpmn:userTask id="WF05_T10" name="차수를 마감하고 수정 요청을 전달한다">
+      <bpmn:documentation>차수의 판단·기준자료·남은 요청을 보존하고 디자인팀에 전달한다.
+입력 자료: 확인된 주석
+전달 자료: 마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인된 주석","outputs":"마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-05","C-05","C-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T10","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_TF10</bpmn:incoming>
+      <bpmn:outgoing>WF05_T10_SYS_RESPONSE_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="WF05_T11_RESULT" name="결과 취합·내용 확정에 쓸 도안과 검토 기록 준비 완료">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 생산·관련 부서의 결과 취합과 내용 확정 검토에 사용할 Artwork, 적용 자료와 QS 판단 기록
+입력 자료: 생산·관련 부서의 결과 취합과 내용 확정 검토에 사용할 Artwork, 적용 자료와 QS 판단 기록
+전달 자료: 생산·관련 부서의 결과 취합과 내용 확정 검토에 사용할 Artwork, 적용 자료와 QS 판단 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"생산·관련 부서의 결과 취합과 내용 확정 검토에 사용할 Artwork, 적용 자료와 QS 판단 기록","outputs":"생산·관련 부서의 결과 취합과 내용 확정 검토에 사용할 Artwork, 적용 자료와 QS 판단 기록","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T11_RESULT","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
       <bpmn:incoming>WF05_T11_END_FLOW</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="WF05_T10_SYS_RESPONSE" name="마감한 차수와 디자인팀에 전달한 요청을 보존한다">
+      <bpmn:documentation>차수의 판단·사용 자료·남은 요청과 전달한 주석본의 판을 저장해 다음 반영 검토에서 이어 볼 수 있게 한다.
+입력 자료: 마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청
+전달 자료: 마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청","outputs":"마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-05","C-05","C-07"],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T10_SYS_RESPONSE","actorDetail":"Artwork 시스템","sourceSteps":["WF05_T10"],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_T10_SYS_RESPONSE_FLOW</bpmn:incoming>
+      <bpmn:outgoing>WF05_T10_END_FLOW</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="WF05_T10_RESULT" name="디자인팀에 주석본·수정 요청 전달 완료">
+      <bpmn:documentation>이 구간을 마치며 남기는 자료와 확인 결과: 마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청
+입력 자료: 마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청
+전달 자료: 마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":null}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청","outputs":"마감한 검토 차수와 디자인팀에 전달한 Artwork 주석본·수정 요청","businessRules":[],"approvedQuestionIds":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/20_회의록_2026-09-22.md","ref":"M-42·M-58·M-61 / 허가 전 자료로 검토·주석"},{"path":"docs/23_업무규칙장부.md","ref":"허가-08·자료-01·자료-04·기준-06·차수-08·차수-11·수정-01"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 판독·대조·검토·주석"},{"path":"CODEX.md","ref":"문안은 글 중심 기준자료, QS는 Artwork 반영 여부 검토"}],"workflowId":"WF05","originalStepId":"WF05_T10_RESULT","actorDetail":"QS 담당자","sourceSteps":[],"level":"context","scope":null}</bpmn:documentation>
+      <bpmn:incoming>WF05_T10_END_FLOW</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="WF05_T00_START_FLOW" sourceRef="WF05_T00" targetRef="J_WF05_T01">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T00","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF05_TF01" sourceRef="WF05_T01" targetRef="J_WF05_T02">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T01","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF05_TF01" sourceRef="WF05_T01_SYS_RESPONSE" targetRef="J_WF05_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T01_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF05_TF02" sourceRef="WF05_T02" targetRef="WF05_T03">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T02","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF05_TF02" sourceRef="WF05_T02_SYS_RESPONSE" targetRef="WF05_T03_SYS_DISPLAY">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T02_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF05_TF03" sourceRef="WF05_T03" targetRef="WF05_T04">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T03","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF05_TF03" sourceRef="WF05_T03_SYS_RESPONSE" targetRef="WF05_T04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T03_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF05_TF04" name="필요한 근거 부족" sourceRef="WF05_T04" targetRef="WF05_T05">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T04","kind":"normal"}</bpmn:documentation>
@@ -223,21 +294,21 @@
     <bpmn:sequenceFlow id="WF05_TF07" sourceRef="WF05_T06" targetRef="WF05_T07">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T06","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF05_TF08" sourceRef="WF05_T07" targetRef="WF05_T08">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T07","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF05_TF08" sourceRef="WF05_T07_SYS_RESPONSE" targetRef="WF05_T08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T07_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF05_TF09" name="수정 필요" sourceRef="WF05_T08" targetRef="WF05_T09">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T08","kind":"normal"}</bpmn:documentation>
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">수정 필요</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF05_TF10" sourceRef="WF05_T09" targetRef="WF05_T10">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T09","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF05_TF10" sourceRef="WF05_T09_SYS_RESPONSE" targetRef="WF05_T10">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T09_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF05_TF11" name="수정 불필요" sourceRef="WF05_T08" targetRef="WF05_T12">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T08","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="WF05_T10_END_FLOW" sourceRef="WF05_T10" targetRef="WF05_T10_RESULT">
-      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T10","kind":"normal"}</bpmn:documentation>
+    <bpmn:sequenceFlow id="WF05_T10_END_FLOW" sourceRef="WF05_T10_SYS_RESPONSE" targetRef="WF05_T10_RESULT">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T10_SYS_RESPONSE","kind":"normal"}</bpmn:documentation>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF05_T11_END_FLOW" sourceRef="WF05_T11" targetRef="WF05_T11_RESULT">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T11","kind":"normal"}</bpmn:documentation>
@@ -252,6 +323,27 @@
     <bpmn:sequenceFlow id="WF05_TG3" name="허가증 수령 후 검토" sourceRef="WF05_T13" targetRef="J_WF05_T01">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T13","kind":"return"}</bpmn:documentation>
     </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF05_T01_SYS_RESPONSE_FLOW" sourceRef="WF05_T01" targetRef="WF05_T01_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF05_T02_SYS_RESPONSE_FLOW" sourceRef="WF05_T02" targetRef="WF05_T02_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF05_T03_SYS_RESPONSE_FLOW" sourceRef="WF05_T03" targetRef="WF05_T03_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF05_T07_SYS_RESPONSE_FLOW" sourceRef="WF05_T07" targetRef="WF05_T07_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T07","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF05_T09_SYS_RESPONSE_FLOW" sourceRef="WF05_T09" targetRef="WF05_T09_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T09","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF05_T10_SYS_RESPONSE_FLOW" sourceRef="WF05_T10" targetRef="WF05_T10_SYS_RESPONSE">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T10","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF05_T03_SYS_DISPLAY_FLOW" sourceRef="WF05_T03_SYS_DISPLAY" targetRef="WF05_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF05_T03_SYS_DISPLAY","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="WF05_T_JOIN_WF05_T01" sourceRef="J_WF05_T01" targetRef="WF05_T01">
       <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF05_T01"}</bpmn:documentation>
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
@@ -264,13 +356,13 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WF05_T_Collaboration">
       <bpmndi:BPMNShape id="Participant_WF05_T_Process_di" bpmnElement="Participant_WF05_T_Process" isHorizontal="true">
-        <dc:Bounds x="40" y="40" width="4020" height="780" />
+        <dc:Bounds x="40" y="40" width="6120" height="620" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_WF05_T_Process_R1_di" bpmnElement="Lane_WF05_T_Process_R1" isHorizontal="true">
-        <dc:Bounds x="70" y="590" width="3990" height="230" />
+        <dc:Bounds x="70" y="430" width="6090" height="230" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_WF05_T_Process_R0_di" bpmnElement="Lane_WF05_T_Process_R0" isHorizontal="true">
-        <dc:Bounds x="70" y="40" width="3990" height="550" />
+        <dc:Bounds x="70" y="40" width="6090" height="390" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T00_di" bpmnElement="WF05_T00">
         <dc:Bounds x="225" y="105" width="40" height="40" />
@@ -281,200 +373,277 @@
       <bpmndi:BPMNShape id="J_WF05_T01_di" bpmnElement="J_WF05_T01" isMarkerVisible="true">
         <dc:Bounds x="518" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="465" y="57" width="160" height="33" />
+          <dc:Bounds x="510" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T01_di" bpmnElement="WF05_T01">
         <dc:Bounds x="740" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF05_T01_SYS_RESPONSE_di" bpmnElement="WF05_T01_SYS_RESPONSE">
+        <dc:Bounds x="1040" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="J_WF05_T02_di" bpmnElement="J_WF05_T02" isMarkerVisible="true">
-        <dc:Bounds x="1118" y="98" width="54" height="54" />
+        <dc:Bounds x="1418" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1065" y="57" width="160" height="33" />
+          <dc:Bounds x="1410" y="57" width="70" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T02_di" bpmnElement="WF05_T02">
-        <dc:Bounds x="1340" y="75" width="210" height="100" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="WF05_T03_di" bpmnElement="WF05_T03">
         <dc:Bounds x="1640" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF05_T02_SYS_RESPONSE_di" bpmnElement="WF05_T02_SYS_RESPONSE">
+        <dc:Bounds x="1940" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF05_T03_SYS_DISPLAY_di" bpmnElement="WF05_T03_SYS_DISPLAY">
+        <dc:Bounds x="2240" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF05_T03_di" bpmnElement="WF05_T03">
+        <dc:Bounds x="2540" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF05_T03_SYS_RESPONSE_di" bpmnElement="WF05_T03_SYS_RESPONSE">
+        <dc:Bounds x="2840" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T04_di" bpmnElement="WF05_T04" isMarkerVisible="true">
-        <dc:Bounds x="2018" y="98" width="54" height="54" />
+        <dc:Bounds x="3218" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1935" y="160" width="220" height="33" />
+          <dc:Bounds x="3135" y="160" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T05_di" bpmnElement="WF05_T05">
-        <dc:Bounds x="2240" y="75" width="210" height="100" />
+        <dc:Bounds x="3440" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T06_di" bpmnElement="WF05_T06">
-        <dc:Bounds x="2240" y="625" width="210" height="100" />
+        <dc:Bounds x="3440" y="465" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T07_di" bpmnElement="WF05_T07">
-        <dc:Bounds x="2540" y="75" width="210" height="100" />
+        <dc:Bounds x="3740" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF05_T07_SYS_RESPONSE_di" bpmnElement="WF05_T07_SYS_RESPONSE">
+        <dc:Bounds x="4040" y="465" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T08_di" bpmnElement="WF05_T08" isMarkerVisible="true">
-        <dc:Bounds x="2918" y="98" width="54" height="54" />
+        <dc:Bounds x="4418" y="98" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2849" y="160" width="192" height="33" />
+          <dc:Bounds x="4362.25" y="160" width="165.5" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T09_di" bpmnElement="WF05_T09">
-        <dc:Bounds x="3140" y="75" width="210" height="100" />
+        <dc:Bounds x="4640" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T12_di" bpmnElement="WF05_T12" isMarkerVisible="true">
-        <dc:Bounds x="3218" y="258" width="54" height="54" />
+        <dc:Bounds x="4718" y="258" width="54" height="54" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3135" y="320" width="220" height="33" />
+          <dc:Bounds x="4635" y="320" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="WF05_T10_di" bpmnElement="WF05_T10">
-        <dc:Bounds x="3440" y="75" width="210" height="100" />
+      <bpmndi:BPMNShape id="WF05_T09_SYS_RESPONSE_di" bpmnElement="WF05_T09_SYS_RESPONSE">
+        <dc:Bounds x="4940" y="465" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T11_di" bpmnElement="WF05_T11">
-        <dc:Bounds x="3440" y="235" width="210" height="100" />
+        <dc:Bounds x="4940" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T13_di" bpmnElement="WF05_T13">
-        <dc:Bounds x="3440" y="395" width="210" height="100" />
+        <dc:Bounds x="4940" y="235" width="210" height="100" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="WF05_T10_RESULT_di" bpmnElement="WF05_T10_RESULT">
-        <dc:Bounds x="3825" y="105" width="40" height="40" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="3735" y="153" width="220" height="33" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="WF05_T10_di" bpmnElement="WF05_T10">
+        <dc:Bounds x="5240" y="75" width="210" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="WF05_T11_RESULT_di" bpmnElement="WF05_T11_RESULT">
-        <dc:Bounds x="3825" y="265" width="40" height="40" />
+        <dc:Bounds x="5325" y="265" width="40" height="40" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3765" y="313" width="160" height="33" />
+          <dc:Bounds x="5235" y="313" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF05_T10_SYS_RESPONSE_di" bpmnElement="WF05_T10_SYS_RESPONSE">
+        <dc:Bounds x="5540" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF05_T10_RESULT_di" bpmnElement="WF05_T10_RESULT">
+        <dc:Bounds x="5925" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="5835" y="153" width="220" height="33" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="WF05_T00_START_FLOW_di" bpmnElement="WF05_T00_START_FLOW">
         <di:waypoint x="265" y="125" />
-        <di:waypoint x="277" y="125" />
-        <di:waypoint x="277" y="118.25" />
+        <di:waypoint x="506" y="125" />
+        <di:waypoint x="506" y="118.25" />
         <di:waypoint x="524.75" y="118.25" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF01_di" bpmnElement="WF05_TF01">
-        <di:waypoint x="950" y="125" />
-        <di:waypoint x="1106" y="125" />
-        <di:waypoint x="1106" y="118.25" />
-        <di:waypoint x="1124.75" y="118.25" />
+        <di:waypoint x="1250" y="515" />
+        <di:waypoint x="1406" y="515" />
+        <di:waypoint x="1406" y="131.75" />
+        <di:waypoint x="1424.75" y="131.75" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF02_di" bpmnElement="WF05_TF02">
-        <di:waypoint x="1550" y="125" />
-        <di:waypoint x="1640" y="125" />
+        <di:waypoint x="2150" y="515" />
+        <di:waypoint x="2240" y="515" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF03_di" bpmnElement="WF05_TF03">
-        <di:waypoint x="1850" y="125" />
-        <di:waypoint x="2018" y="125" />
+        <di:waypoint x="3050" y="515" />
+        <di:waypoint x="3062" y="515" />
+        <di:waypoint x="3062" y="125" />
+        <di:waypoint x="3218" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF04_di" bpmnElement="WF05_TF04">
-        <di:waypoint x="2065.25" y="118.25" />
-        <di:waypoint x="2084" y="118.25" />
-        <di:waypoint x="2084" y="125" />
-        <di:waypoint x="2240" y="125" />
+        <di:waypoint x="3265.25" y="118.25" />
+        <di:waypoint x="3428" y="118.25" />
+        <di:waypoint x="3428" y="125" />
+        <di:waypoint x="3440" y="125" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2116" y="98" width="93" height="17" />
+          <dc:Bounds x="3341" y="91" width="93" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF05_di" bpmnElement="WF05_TF05" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
-        <di:waypoint x="2450" y="125" />
-        <di:waypoint x="2462" y="125" />
-        <di:waypoint x="2462" y="197" />
-        <di:waypoint x="1106" y="197" />
-        <di:waypoint x="1106" y="131.75" />
-        <di:waypoint x="1124.75" y="131.75" />
+        <di:waypoint x="3650" y="125" />
+        <di:waypoint x="3662" y="125" />
+        <di:waypoint x="3662" y="123" />
+        <di:waypoint x="3672" y="123" />
+        <di:waypoint x="3672" y="197" />
+        <di:waypoint x="1398" y="197" />
+        <di:waypoint x="1398" y="118.25" />
+        <di:waypoint x="1424.75" y="118.25" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1746" y="205" width="77" height="17" />
+          <dc:Bounds x="2497" y="205" width="77" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF06_di" bpmnElement="WF05_TF06">
-        <di:waypoint x="2065.25" y="131.75" />
-        <di:waypoint x="2228" y="131.75" />
-        <di:waypoint x="2228" y="675" />
-        <di:waypoint x="2240" y="675" />
+        <di:waypoint x="3265.25" y="131.75" />
+        <di:waypoint x="3428" y="131.75" />
+        <di:waypoint x="3428" y="515" />
+        <di:waypoint x="3440" y="515" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2137" y="612" width="81" height="17" />
+          <dc:Bounds x="3337" y="468" width="81" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF07_di" bpmnElement="WF05_TF07">
-        <di:waypoint x="2450" y="675" />
-        <di:waypoint x="2528" y="675" />
-        <di:waypoint x="2528" y="125" />
-        <di:waypoint x="2540" y="125" />
+        <di:waypoint x="3650" y="515" />
+        <di:waypoint x="3662" y="515" />
+        <di:waypoint x="3662" y="125" />
+        <di:waypoint x="3740" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF08_di" bpmnElement="WF05_TF08">
-        <di:waypoint x="2750" y="125" />
-        <di:waypoint x="2918" y="125" />
+        <di:waypoint x="4250" y="515" />
+        <di:waypoint x="4262" y="515" />
+        <di:waypoint x="4262" y="125" />
+        <di:waypoint x="4418" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF09_di" bpmnElement="WF05_TF09">
-        <di:waypoint x="2965.25" y="118.25" />
-        <di:waypoint x="3128" y="118.25" />
-        <di:waypoint x="3128" y="125" />
-        <di:waypoint x="3140" y="125" />
+        <di:waypoint x="4465.25" y="118.25" />
+        <di:waypoint x="4628" y="118.25" />
+        <di:waypoint x="4628" y="125" />
+        <di:waypoint x="4640" y="125" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3061" y="91" width="53" height="17" />
+          <dc:Bounds x="4561" y="91" width="53" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF10_di" bpmnElement="WF05_TF10">
-        <di:waypoint x="3350" y="125" />
-        <di:waypoint x="3440" y="125" />
+        <di:waypoint x="5150" y="515" />
+        <di:waypoint x="5162" y="515" />
+        <di:waypoint x="5162" y="125" />
+        <di:waypoint x="5240" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TF11_di" bpmnElement="WF05_TF11">
-        <di:waypoint x="2965.25" y="131.75" />
-        <di:waypoint x="3128" y="131.75" />
-        <di:waypoint x="3128" y="285" />
-        <di:waypoint x="3218" y="285" />
+        <di:waypoint x="4465.25" y="131.75" />
+        <di:waypoint x="4628" y="131.75" />
+        <di:waypoint x="4628" y="285" />
+        <di:waypoint x="4718" y="285" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3141" y="258" width="65" height="17" />
+          <dc:Bounds x="4641" y="258" width="65" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_T10_END_FLOW_di" bpmnElement="WF05_T10_END_FLOW">
-        <di:waypoint x="3650" y="125" />
-        <di:waypoint x="3825" y="125" />
+        <di:waypoint x="5750" y="515" />
+        <di:waypoint x="5762" y="515" />
+        <di:waypoint x="5762" y="125" />
+        <di:waypoint x="5925" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_T11_END_FLOW_di" bpmnElement="WF05_T11_END_FLOW">
-        <di:waypoint x="3650" y="285" />
-        <di:waypoint x="3825" y="285" />
+        <di:waypoint x="5150" y="125" />
+        <di:waypoint x="5162" y="125" />
+        <di:waypoint x="5162" y="123" />
+        <di:waypoint x="5228" y="123" />
+        <di:waypoint x="5228" y="285" />
+        <di:waypoint x="5325" y="285" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TG1_di" bpmnElement="WF05_TG1">
-        <di:waypoint x="3265.25" y="278.25" />
-        <di:waypoint x="3428" y="278.25" />
-        <di:waypoint x="3428" y="285" />
-        <di:waypoint x="3440" y="285" />
+        <di:waypoint x="4765.25" y="278.25" />
+        <di:waypoint x="4928" y="278.25" />
+        <di:waypoint x="4928" y="125" />
+        <di:waypoint x="4940" y="125" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3345" y="180" width="134" height="34" />
+          <dc:Bounds x="4938" y="185" width="134" height="34" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TG2_di" bpmnElement="WF05_TG2">
-        <di:waypoint x="3265.25" y="291.75" />
-        <di:waypoint x="3428" y="291.75" />
-        <di:waypoint x="3428" y="445" />
-        <di:waypoint x="3440" y="445" />
+        <di:waypoint x="4765.25" y="291.75" />
+        <di:waypoint x="4928" y="291.75" />
+        <di:waypoint x="4928" y="285" />
+        <di:waypoint x="4940" y="285" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="3312" y="421" width="106" height="17" />
+          <dc:Bounds x="4952" y="349" width="106" height="17" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_TG3_di" bpmnElement="WF05_TG3" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
-        <di:waypoint x="3650" y="445" />
-        <di:waypoint x="3662" y="445" />
-        <di:waypoint x="3662" y="53" />
-        <di:waypoint x="460" y="53" />
-        <di:waypoint x="460" y="131.75" />
+        <di:waypoint x="5150" y="285" />
+        <di:waypoint x="5172" y="285" />
+        <di:waypoint x="5172" y="53" />
+        <di:waypoint x="498" y="53" />
+        <di:waypoint x="498" y="131.75" />
         <di:waypoint x="524.75" y="131.75" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2007" y="17" width="109" height="17" />
+          <dc:Bounds x="2781" y="17" width="109" height="17" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF05_T01_SYS_RESPONSE_FLOW_di" bpmnElement="WF05_T01_SYS_RESPONSE_FLOW">
+        <di:waypoint x="950" y="125" />
+        <di:waypoint x="1028" y="125" />
+        <di:waypoint x="1028" y="515" />
+        <di:waypoint x="1040" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF05_T02_SYS_RESPONSE_FLOW_di" bpmnElement="WF05_T02_SYS_RESPONSE_FLOW">
+        <di:waypoint x="1850" y="125" />
+        <di:waypoint x="1928" y="125" />
+        <di:waypoint x="1928" y="515" />
+        <di:waypoint x="1940" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF05_T03_SYS_RESPONSE_FLOW_di" bpmnElement="WF05_T03_SYS_RESPONSE_FLOW">
+        <di:waypoint x="2750" y="125" />
+        <di:waypoint x="2828" y="125" />
+        <di:waypoint x="2828" y="515" />
+        <di:waypoint x="2840" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF05_T07_SYS_RESPONSE_FLOW_di" bpmnElement="WF05_T07_SYS_RESPONSE_FLOW">
+        <di:waypoint x="3950" y="125" />
+        <di:waypoint x="4028" y="125" />
+        <di:waypoint x="4028" y="515" />
+        <di:waypoint x="4040" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF05_T09_SYS_RESPONSE_FLOW_di" bpmnElement="WF05_T09_SYS_RESPONSE_FLOW">
+        <di:waypoint x="4850" y="125" />
+        <di:waypoint x="4862" y="125" />
+        <di:waypoint x="4862" y="515" />
+        <di:waypoint x="4940" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF05_T10_SYS_RESPONSE_FLOW_di" bpmnElement="WF05_T10_SYS_RESPONSE_FLOW">
+        <di:waypoint x="5450" y="125" />
+        <di:waypoint x="5462" y="125" />
+        <di:waypoint x="5462" y="515" />
+        <di:waypoint x="5540" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF05_T03_SYS_DISPLAY_FLOW_di" bpmnElement="WF05_T03_SYS_DISPLAY_FLOW">
+        <di:waypoint x="2450" y="515" />
+        <di:waypoint x="2462" y="515" />
+        <di:waypoint x="2462" y="125" />
+        <di:waypoint x="2540" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_T_JOIN_WF05_T01_di" bpmnElement="WF05_T_JOIN_WF05_T01">
         <di:waypoint x="572" y="125" />
         <di:waypoint x="740" y="125" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="WF05_T_JOIN_WF05_T02_di" bpmnElement="WF05_T_JOIN_WF05_T02">
-        <di:waypoint x="1172" y="125" />
-        <di:waypoint x="1340" y="125" />
+        <di:waypoint x="1472" y="125" />
+        <di:waypoint x="1640" y="125" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="NW_Q_VENDOR_REVIEW_A_Collaboration" name="의뢰사 Artwork를 칼선·규격과 대조하고 개정이면 기존 승인본·변경 내용도 검토한다 · 현재 업무">
+    <bpmn:documentation>현재 해당 담당자가 수행하는 업무
+입력 자료: 의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료
+전달 자료: 의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","perspective":"asis","sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-대조-20① / K-대조-02·04·11 / K-검토-04"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-95·M-98·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"단계-21·단계-22 / AN-03~04·AO-03~04"}],"workflowId":"NW_Q_VENDOR_REVIEW","sourceSteps":["WF03_A04","WF03_A05","WF03_T02","WF03_T03","WF03_T05","WF03_T06"],"level":"node-detail","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+    <bpmn:participant id="Participant_NW_Q_VENDOR_REVIEW_A_Process" name="의뢰사 Artwork를 칼선·규격과 대조하고 개정이면 기존 승인본·변경 내용도 검토한다 · 현재 업무" processRef="NW_Q_VENDOR_REVIEW_A_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="NW_Q_VENDOR_REVIEW_A_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_NW_Q_VENDOR_REVIEW_A_Process">
+      <bpmn:lane id="Lane_NW_Q_VENDOR_REVIEW_A_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>NW_Q_VENDOR_REVIEW_A00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_VENDOR_REVIEW_A01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_VENDOR_REVIEW_A02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_VENDOR_REVIEW_A03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_NW_Q_VENDOR_REVIEW_A04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_VENDOR_REVIEW_A04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_VENDOR_REVIEW_A05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>NW_Q_VENDOR_REVIEW_A06</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="NW_Q_VENDOR_REVIEW_A00" name="대상 자재와 받은 자료를 확인한다">
+      <bpmn:documentation>해당 자재의 이 업무를 시작할 자료를 받는다.
+입력 자료: 의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료
+전달 자료: 의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-대조-20① / K-대조-02·04·11 / K-검토-04"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-95·M-98·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"단계-21·단계-22 / AN-03~04·AO-03~04"}],"workflowId":"NW_Q_VENDOR_REVIEW","originalStepId":"NW_Q_VENDOR_REVIEW_A00","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:outgoing>NW_Q_VENDOR_REVIEW_AF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="NW_Q_VENDOR_REVIEW_A01" name="의뢰사 Artwork와 해당 자재의 칼선·규격을 확인한다">
+      <bpmn:documentation>검토할 파일의 대상 품목·자재와 사용할 칼선·규격을 확인한다.
+입력 자료: 받은 의뢰사 Artwork와 칼선·규격
+전달 자료: 검토할 의뢰사 파일과 칼선·규격</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"받은 의뢰사 Artwork와 칼선·규격","outputs":"검토할 의뢰사 파일과 칼선·규격","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-대조-20① / K-대조-02·04·11 / K-검토-04"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-95·M-98·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"단계-21·단계-22 / AN-03~04·AO-03~04"}],"workflowId":"NW_Q_VENDOR_REVIEW","originalStepId":"NW_Q_VENDOR_REVIEW_A01","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_VENDOR_REVIEW_AF01</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_VENDOR_REVIEW_AF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="NW_Q_VENDOR_REVIEW_A02" name="기존 수탁 자재의 개정인가?" gatewayDirection="Diverging" default="NW_Q_VENDOR_REVIEW_AF04">
+      <bpmn:documentation>개정이면 해당 수탁 자재의 기존 동국제약용 승인본과 변경 내용도 확인한다.
+입력 자료: 신규·개정 구분
+전달 자료: 개정 비교 적용 여부</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"신규·개정 구분","outputs":"개정 비교 적용 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-대조-20① / K-대조-02·04·11 / K-검토-04"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-95·M-98·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"단계-21·단계-22 / AN-03~04·AO-03~04"}],"workflowId":"NW_Q_VENDOR_REVIEW","originalStepId":"NW_Q_VENDOR_REVIEW_A02","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_VENDOR_REVIEW_AF02</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_VENDOR_REVIEW_AF03</bpmn:outgoing>
+      <bpmn:outgoing>NW_Q_VENDOR_REVIEW_AF04</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="NW_Q_VENDOR_REVIEW_A03" name="해당 자재의 기존 승인본과 변경 내용을 확인한다">
+      <bpmn:documentation>다른 자사 품목을 새 기준으로 골라 바꾸지 않고 해당 수탁 자재의 이전 승인본과 변경할 부분을 확인한다.
+입력 자료: 기존 동국제약용 승인본·변경 요청
+전달 자료: 개정에서 비교할 승인본·변경 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 동국제약용 승인본·변경 요청","outputs":"개정에서 비교할 승인본·변경 내용","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-대조-20① / K-대조-02·04·11 / K-검토-04"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-95·M-98·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"단계-21·단계-22 / AN-03~04·AO-03~04"}],"workflowId":"NW_Q_VENDOR_REVIEW","originalStepId":"NW_Q_VENDOR_REVIEW_A03","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_VENDOR_REVIEW_AF03</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_VENDOR_REVIEW_AF05</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="J_NW_Q_VENDOR_REVIEW_A04" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 의뢰사 Artwork·칼선·규격, 개정이면 기존 승인본·변경 근거
+전달 자료: 의뢰사 Artwork·칼선·규격, 개정이면 기존 승인본·변경 근거</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사 Artwork·칼선·규격, 개정이면 기존 승인본·변경 근거","outputs":"의뢰사 Artwork·칼선·규격, 개정이면 기존 승인본·변경 근거","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"asis","workflowId":"NW_Q_VENDOR_REVIEW","originalStepId":"NW_Q_VENDOR_REVIEW_A04"}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_VENDOR_REVIEW_AF04</bpmn:incoming>
+      <bpmn:incoming>NW_Q_VENDOR_REVIEW_AF05</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_VENDOR_REVIEW_A_JOIN_NW_Q_VENDOR_REVIEW_A04</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="NW_Q_VENDOR_REVIEW_A04" name="의뢰사 도안의 규격과 변경 내용을 대조한다">
+      <bpmn:documentation>의뢰사 도안이 해당 규격과 맞는지 확인한다. 개정이면 변경할 내용과 기존 승인본의 차이도 확인한다. 생산 설비에서 사용 가능한지는 이 QS 업무에서 판정하지 않는다.
+입력 자료: 의뢰사 Artwork·칼선·규격, 개정이면 기존 승인본·변경 근거
+전달 자료: 규격·변경 내용의 차이와 수정 의견</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사 Artwork·칼선·규격, 개정이면 기존 승인본·변경 근거","outputs":"규격·변경 내용의 차이와 수정 의견","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-대조-20① / K-대조-02·04·11 / K-검토-04"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-95·M-98·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"단계-21·단계-22 / AN-03~04·AO-03~04"}],"workflowId":"NW_Q_VENDOR_REVIEW","originalStepId":"NW_Q_VENDOR_REVIEW_A04","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_VENDOR_REVIEW_A_JOIN_NW_Q_VENDOR_REVIEW_A04</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_VENDOR_REVIEW_AF06</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="NW_Q_VENDOR_REVIEW_A05" name="QS 수정 의견과 확인하지 못한 항목을 정리한다">
+      <bpmn:documentation>의뢰사 도안에서 수정할 위치·내용과 부족한 근거를 구분해 다음 취합·판단에 전달한다.
+입력 자료: 대조한 차이와 확인하지 못한 항목
+전달 자료: 의뢰사 도안에 대한 QS 대조 결과·수정 의견</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대조한 차이와 확인하지 못한 항목","outputs":"의뢰사 도안에 대한 QS 대조 결과·수정 의견","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-대조-20① / K-대조-02·04·11 / K-검토-04"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-95·M-98·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"단계-21·단계-22 / AN-03~04·AO-03~04"}],"workflowId":"NW_Q_VENDOR_REVIEW","originalStepId":"NW_Q_VENDOR_REVIEW_A05","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_VENDOR_REVIEW_AF06</bpmn:incoming>
+      <bpmn:outgoing>NW_Q_VENDOR_REVIEW_AF07</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="NW_Q_VENDOR_REVIEW_A06" name="의뢰사 도안의 규격 대조 결과와 QS 수정 의견이 정리됨">
+      <bpmn:documentation>이 결과로 상위 흐름의 다음 판단 또는 담당 업무에 연결한다.
+입력 자료: 검토한 의뢰사 파일·칼선·규격과 QS 수정 의견, 개정의 기존 승인본·변경 내용 확인 결과
+전달 자료: 검토한 의뢰사 파일·칼선·규격과 QS 수정 의견, 개정의 기존 승인본·변경 내용 확인 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토한 의뢰사 파일·칼선·규격과 QS 수정 의견, 개정의 기존 승인본·변경 내용 확인 결과","outputs":"검토한 의뢰사 파일·칼선·규격과 QS 수정 의견, 개정의 기존 승인본·변경 내용 확인 결과","businessRules":[],"approvedQuestionIds":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"docs/기능설계/조사_2026-09-25/08_기능지도_2판.md","ref":"K-대조-20① / K-대조-02·04·11 / K-검토-04"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-95·M-98·M-101"},{"path":"docs/23_업무규칙장부.md","ref":"단계-21·단계-22 / AN-03~04·AO-03~04"}],"workflowId":"NW_Q_VENDOR_REVIEW","originalStepId":"NW_Q_VENDOR_REVIEW_A06","actorDetail":"QS팀","sourceSteps":[],"level":"node-detail","scope":{"parentNodeId":"Q_VENDOR_REVIEW","start":"상위 흐름에서 아래 입력 자료를 받은 때","end":"아래 결과를 정리하여 상위 흐름의 다음 업무에 전달한 때","inputs":"의뢰사 Artwork와 해당 자재의 칼선·규격, 수탁 개정이면 기존 동국제약용 승인 Artwork와 변경 근거자료","outputs":"의뢰사 Artwork의 칼선·규격 대조 결과와 수정 의견, 개정이면 기존 동국제약용 승인본·변경 내용 대조 결과","includes":["의뢰사 원본과 동국 칼선·규격의 대조","수탁 개정의 기존 동국제약용 승인본·변경 내용 확인","QS의 수정 의견 정리"],"excludes":["생산 적합성 판정","의뢰사 허가증 대조를 확정 경로로 추가","의뢰사에 수정 요청을 실제 발송","디자인팀의 편집 가능 판단","동국제약용 재제작본 검토"]}}</bpmn:documentation>
+      <bpmn:incoming>NW_Q_VENDOR_REVIEW_AF07</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="NW_Q_VENDOR_REVIEW_AF01" sourceRef="NW_Q_VENDOR_REVIEW_A00" targetRef="NW_Q_VENDOR_REVIEW_A01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_VENDOR_REVIEW_A00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_VENDOR_REVIEW_AF02" sourceRef="NW_Q_VENDOR_REVIEW_A01" targetRef="NW_Q_VENDOR_REVIEW_A02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_VENDOR_REVIEW_A01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_VENDOR_REVIEW_AF03" name="수탁 개정" sourceRef="NW_Q_VENDOR_REVIEW_A02" targetRef="NW_Q_VENDOR_REVIEW_A03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_VENDOR_REVIEW_A02","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">수탁 개정</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_VENDOR_REVIEW_AF04" name="수탁 신규" sourceRef="NW_Q_VENDOR_REVIEW_A02" targetRef="J_NW_Q_VENDOR_REVIEW_A04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_VENDOR_REVIEW_A02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_VENDOR_REVIEW_AF05" sourceRef="NW_Q_VENDOR_REVIEW_A03" targetRef="J_NW_Q_VENDOR_REVIEW_A04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_VENDOR_REVIEW_A03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_VENDOR_REVIEW_AF06" sourceRef="NW_Q_VENDOR_REVIEW_A04" targetRef="NW_Q_VENDOR_REVIEW_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_VENDOR_REVIEW_A04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_VENDOR_REVIEW_AF07" sourceRef="NW_Q_VENDOR_REVIEW_A05" targetRef="NW_Q_VENDOR_REVIEW_A06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"NW_Q_VENDOR_REVIEW_A05","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="NW_Q_VENDOR_REVIEW_A_JOIN_NW_Q_VENDOR_REVIEW_A04" sourceRef="J_NW_Q_VENDOR_REVIEW_A04" targetRef="NW_Q_VENDOR_REVIEW_A04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_NW_Q_VENDOR_REVIEW_A04"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="NW_Q_VENDOR_REVIEW_A_Collaboration">
+      <bpmndi:BPMNShape id="Participant_NW_Q_VENDOR_REVIEW_A_Process_di" bpmnElement="Participant_NW_Q_VENDOR_REVIEW_A_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="2520" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_NW_Q_VENDOR_REVIEW_A_Process_R0_di" bpmnElement="Lane_NW_Q_VENDOR_REVIEW_A_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="2490" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_VENDOR_REVIEW_A00_di" bpmnElement="NW_Q_VENDOR_REVIEW_A00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_VENDOR_REVIEW_A01_di" bpmnElement="NW_Q_VENDOR_REVIEW_A01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_VENDOR_REVIEW_A02_di" bpmnElement="NW_Q_VENDOR_REVIEW_A02" isMarkerVisible="true">
+        <dc:Bounds x="818" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="753.25" y="160" width="183.5" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_VENDOR_REVIEW_A03_di" bpmnElement="NW_Q_VENDOR_REVIEW_A03">
+        <dc:Bounds x="1040" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_NW_Q_VENDOR_REVIEW_A04_di" bpmnElement="J_NW_Q_VENDOR_REVIEW_A04" isMarkerVisible="true">
+        <dc:Bounds x="1418" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1410" y="57" width="70" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_VENDOR_REVIEW_A04_di" bpmnElement="NW_Q_VENDOR_REVIEW_A04">
+        <dc:Bounds x="1640" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_VENDOR_REVIEW_A05_di" bpmnElement="NW_Q_VENDOR_REVIEW_A05">
+        <dc:Bounds x="1940" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="NW_Q_VENDOR_REVIEW_A06_di" bpmnElement="NW_Q_VENDOR_REVIEW_A06">
+        <dc:Bounds x="2325" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2235" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="NW_Q_VENDOR_REVIEW_AF01_di" bpmnElement="NW_Q_VENDOR_REVIEW_AF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_VENDOR_REVIEW_AF02_di" bpmnElement="NW_Q_VENDOR_REVIEW_AF02">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="818" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_VENDOR_REVIEW_AF03_di" bpmnElement="NW_Q_VENDOR_REVIEW_AF03">
+        <di:waypoint x="865.25" y="118.25" />
+        <di:waypoint x="1028" y="118.25" />
+        <di:waypoint x="1028" y="125" />
+        <di:waypoint x="1040" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="961" y="128" width="53" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_VENDOR_REVIEW_AF04_di" bpmnElement="NW_Q_VENDOR_REVIEW_AF04">
+        <di:waypoint x="865.25" y="131.75" />
+        <di:waypoint x="884" y="131.75" />
+        <di:waypoint x="884" y="65" />
+        <di:waypoint x="1406" y="65" />
+        <di:waypoint x="1406" y="118.25" />
+        <di:waypoint x="1424.75" y="118.25" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1343" y="104" width="53" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_VENDOR_REVIEW_AF05_di" bpmnElement="NW_Q_VENDOR_REVIEW_AF05">
+        <di:waypoint x="1250" y="125" />
+        <di:waypoint x="1406" y="125" />
+        <di:waypoint x="1406" y="131.75" />
+        <di:waypoint x="1424.75" y="131.75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_VENDOR_REVIEW_AF06_di" bpmnElement="NW_Q_VENDOR_REVIEW_AF06">
+        <di:waypoint x="1850" y="125" />
+        <di:waypoint x="1940" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_VENDOR_REVIEW_AF07_di" bpmnElement="NW_Q_VENDOR_REVIEW_AF07">
+        <di:waypoint x="2150" y="125" />
+        <di:waypoint x="2325" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="NW_Q_VENDOR_REVIEW_A_JOIN_NW_Q_VENDOR_REVIEW_A04_di" bpmnElement="NW_Q_VENDOR_REVIEW_A_JOIN_NW_Q_VENDOR_REVIEW_A04">
+        <di:waypoint x="1472" y="125" />
+        <di:waypoint x="1640" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
