@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="WF02_A_Collaboration" name="기존 자재 사용과 기준자료 준비 · 현재 업무">
+    <bpmn:documentation>QS가 기존 자재와 자료를 찾고 개정은 기존 도안에 변경 주석을 작성한다.
+입력 자료: 대상 자재가 확인된 요청
+전달 자료: 디자인팀에 전달할 자재·기준자료·해당 주석</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재가 확인된 요청","outputs":"디자인팀에 전달할 자재·기준자료·해당 주석","perspective":"asis","sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02"}</bpmn:documentation>
+    <bpmn:participant id="Participant_WF02_A_Process" name="기존 자재 사용과 기준자료 준비 · 현재 업무" processRef="WF02_A_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="WF02_A_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_WF02_A_Process">
+      <bpmn:lane id="Lane_WF02_A_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>WF02_A09</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_WF02_A05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_WF02_A08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF02_A08_RESULT</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="WF02_A09" name="자사 또는 기존 자재의 준비 업무가 시작된다">
+      <bpmn:documentation>자사·개정은 자재 조건을 확인하고, 위탁 신규는 개발부의 자료 취합과 QS의 표준코드 관련 업무에서 시작한다.
+입력 자료: 확인된 대상 자재
+전달 자료: 경로별 준비 업무</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인된 대상 자재","outputs":"경로별 준비 업무","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A09","actorDetail":"QS팀·개발부"}</bpmn:documentation>
+      <bpmn:outgoing>WF02_AFA09</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:startEvent id="WF02_A10" name="위탁 신규의 제작 자료 준비가 시작된다">
+      <bpmn:documentation>자사·개정은 자재 조건을 확인하고, 위탁 신규는 개발부의 자료 취합과 QS의 표준코드 관련 업무에서 시작한다.
+입력 자료: 확인된 대상 자재
+전달 자료: 경로별 준비 업무</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인된 대상 자재","outputs":"경로별 준비 업무","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A10","actorDetail":"QS팀·개발부"}</bpmn:documentation>
+      <bpmn:outgoing>WF02_AFA10</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="WF02_A01" name="요청에 필요한 자재 조건을 확인한다">
+      <bpmn:documentation>알려진 자재 종류·규격·기존 코드로 찾을 조건을 정한다.
+입력 자료: 대상 자재와 작업의뢰·변경 요청
+전달 자료: 기존 자재를 찾을 조건</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재와 작업의뢰·변경 요청","outputs":"기존 자재를 찾을 조건","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A01","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF02_AFA09</bpmn:incoming>
+      <bpmn:outgoing>WF02_AF01</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="J_WF02_A05" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 문안·허가증·시방서·칼선·참고 Artwork
+전달 자료: 문안·허가증·시방서·칼선·참고 Artwork</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"문안·허가증·시방서·칼선·참고 Artwork","outputs":"문안·허가증·시방서·칼선·참고 Artwork","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"asis","workflowId":"WF02","originalStepId":"WF02_A05"}</bpmn:documentation>
+      <bpmn:incoming>WF02_AF04</bpmn:incoming>
+      <bpmn:incoming>WF02_AF05</bpmn:incoming>
+      <bpmn:incoming>WF02_AFA10</bpmn:incoming>
+      <bpmn:outgoing>WF02_A_JOIN_WF02_A05</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF02_A02" name="사용할 기존 자재와 도안·규격을 찾는다">
+      <bpmn:documentation>동일하거나 참고할 규격의 사용 중 자재와 최신 승인 Artwork·시방서·칼선을 확인한다.
+입력 자료: 기존 자재와 관련 파일
+전달 자료: 기존 자재와 기준파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 자재와 관련 파일","outputs":"기존 자재와 기준파일","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A02","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF02_AF01</bpmn:incoming>
+      <bpmn:outgoing>WF02_AF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF02_A05" name="현재 확보한 제작·검토 기준자료를 모은다">
+      <bpmn:documentation>사용할 자료를 모으고 기준이 서로 다르면 요청부서와 유효한 내용을 확인한다.
+입력 자료: 문안·허가증·시방서·칼선·참고 Artwork
+전달 자료: 디자인과 검토에 쓸 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"문안·허가증·시방서·칼선·참고 Artwork","outputs":"디자인과 검토에 쓸 자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A05","actorDetail":"QS팀; 위탁 신규는 개발부와 함께"}</bpmn:documentation>
+      <bpmn:incoming>WF02_A_JOIN_WF02_A05</bpmn:incoming>
+      <bpmn:outgoing>WF02_AF06</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="WF02_A03" name="그 자재를 그대로 사용할 수 있는가?" gatewayDirection="Diverging" default="WF02_AF04">
+      <bpmn:documentation>재사용인지 신규 자재 등록·규격 변경이 필요한지 구분한다.
+입력 자료: 요청 조건과 기존 자재
+전달 자료: 재사용 또는 등록·변경</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"요청 조건과 기존 자재","outputs":"재사용 또는 등록·변경","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A03","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF02_AF02</bpmn:incoming>
+      <bpmn:outgoing>WF02_AF03</bpmn:outgoing>
+      <bpmn:outgoing>WF02_AF04</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="WF02_A06" name="기존 도안에 변경 지시를 먼저 달아야 하는가?" gatewayDirection="Diverging" default="WF02_AF08">
+      <bpmn:documentation>기존 Artwork를 고치는 개정이면 변경할 위치와 유지할 부분을 먼저 확인한다.
+입력 자료: 개정 요청과 변경 근거
+전달 자료: 변경 주석 필요 여부</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"개정 요청과 변경 근거","outputs":"변경 주석 필요 여부","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A06","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF02_AF06</bpmn:incoming>
+      <bpmn:outgoing>WF02_AF07</bpmn:outgoing>
+      <bpmn:outgoing>WF02_AF08</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF02_A04" name="신규 등록·규격 변경 업무를 연결한다">
+      <bpmn:documentation>ERP 관련 등록 절차로 전달하고 등록된 자재정보를 받는다. ERP 내부 입력 절차는 이 흐름에서 다루지 않는다.
+입력 자료: 새 자재 또는 달라진 규격
+전달 자료: 등록·변경된 자재정보</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새 자재 또는 달라진 규격","outputs":"등록·변경된 자재정보","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A04","actorDetail":"QS팀 ↔ ERP 관련 담당"}</bpmn:documentation>
+      <bpmn:incoming>WF02_AF03</bpmn:incoming>
+      <bpmn:outgoing>WF02_AF05</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF02_A07" name="직전 Artwork에 변경 주석을 작성한다">
+      <bpmn:documentation>바꿀 위치와 내용을 표시해 디자인팀에 전달할 주석을 만든다.
+입력 자료: 기존 승인 Artwork와 변경대비표·요청 내용
+전달 자료: 개정 제작용 변경 주석</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"기존 승인 Artwork와 변경대비표·요청 내용","outputs":"개정 제작용 변경 주석","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A07","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF02_AF07</bpmn:incoming>
+      <bpmn:outgoing>WF02_AF09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="J_WF02_A08" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 선택 자재·기준자료·해당 시 변경 주석
+전달 자료: 선택 자재·기준자료·해당 시 변경 주석</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"선택 자재·기준자료·해당 시 변경 주석","outputs":"선택 자재·기준자료·해당 시 변경 주석","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"asis","workflowId":"WF02","originalStepId":"WF02_A08"}</bpmn:documentation>
+      <bpmn:incoming>WF02_AF08</bpmn:incoming>
+      <bpmn:incoming>WF02_AF09</bpmn:incoming>
+      <bpmn:outgoing>WF02_A_JOIN_WF02_A08</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF02_A08" name="기준자료와 제작·수정 요청을 전달할 준비를 한다">
+      <bpmn:documentation>자재별 자료와 요청 내용을 모아 디자인팀 전달로 이어 간다.
+입력 자료: 선택 자재·기준자료·해당 시 변경 주석
+전달 자료: 디자인팀에 넘길 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"선택 자재·기준자료·해당 시 변경 주석","outputs":"디자인팀에 넘길 자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A08","actorDetail":"QS팀; 위탁 신규는 개발부"}</bpmn:documentation>
+      <bpmn:incoming>WF02_A_JOIN_WF02_A08</bpmn:incoming>
+      <bpmn:outgoing>WF02_A08_END_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="WF02_A08_RESULT" name="디자인팀에 넘길 자료">
+      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
+입력 자료: 디자인팀에 넘길 자료
+전달 자료: 디자인팀에 넘길 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"디자인팀에 넘길 자료","outputs":"디자인팀에 넘길 자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"기존 자재·등록정보·기준자료 준비와 ERP Phase 2 결정"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-22·M-30·M-78~80"},{"path":"docs/23_업무규칙장부.md","ref":"자재-13·단계-08·단계-09·단계-10·단계-16·자료-02·자료-04"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"2장 접수·대조·주석 / 6장 자재·기준 자료"}],"workflowId":"WF02","originalStepId":"WF02_A08_RESULT","actorDetail":"QS팀; 위탁 신규는 개발부"}</bpmn:documentation>
+      <bpmn:incoming>WF02_A08_END_FLOW</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="WF02_AF01" sourceRef="WF02_A01" targetRef="WF02_A02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AF02" sourceRef="WF02_A02" targetRef="WF02_A03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AF03" name="등록·변경 필요" sourceRef="WF02_A03" targetRef="WF02_A04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A03","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">등록·변경 필요</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AF04" name="기존 자재 사용" sourceRef="WF02_A03" targetRef="J_WF02_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AF05" sourceRef="WF02_A04" targetRef="J_WF02_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AF06" sourceRef="WF02_A05" targetRef="WF02_A06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A05","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AF07" name="개정 변경 주석 필요" sourceRef="WF02_A06" targetRef="WF02_A07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A06","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">개정 변경 주석 필요</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AF08" name="신규 또는 주석 준비됨" sourceRef="WF02_A06" targetRef="J_WF02_A08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A06","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AF09" sourceRef="WF02_A07" targetRef="J_WF02_A08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A07","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AFA09" sourceRef="WF02_A09" targetRef="WF02_A01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A09","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_AFA10" sourceRef="WF02_A10" targetRef="J_WF02_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A10","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_A08_END_FLOW" sourceRef="WF02_A08" targetRef="WF02_A08_RESULT">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF02_A08","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_A_JOIN_WF02_A05" sourceRef="J_WF02_A05" targetRef="WF02_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF02_A05"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF02_A_JOIN_WF02_A08" sourceRef="J_WF02_A08" targetRef="WF02_A08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF02_A08"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WF02_A_Collaboration">
+      <bpmndi:BPMNShape id="Participant_WF02_A_Process_di" bpmnElement="Participant_WF02_A_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="3720" height="390" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_WF02_A_Process_R0_di" bpmnElement="Lane_WF02_A_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="3690" height="390" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A09_di" bpmnElement="WF02_A09">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A10_di" bpmnElement="WF02_A10">
+        <dc:Bounds x="225" y="265" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="313" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A01_di" bpmnElement="WF02_A01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_WF02_A05_di" bpmnElement="J_WF02_A05" isMarkerVisible="true">
+        <dc:Bounds x="1718" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1665" y="57" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A02_di" bpmnElement="WF02_A02">
+        <dc:Bounds x="740" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A05_di" bpmnElement="WF02_A05">
+        <dc:Bounds x="1940" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A03_di" bpmnElement="WF02_A03" isMarkerVisible="true">
+        <dc:Bounds x="1118" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1035" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A06_di" bpmnElement="WF02_A06" isMarkerVisible="true">
+        <dc:Bounds x="2318" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2235" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A04_di" bpmnElement="WF02_A04">
+        <dc:Bounds x="1340" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A07_di" bpmnElement="WF02_A07">
+        <dc:Bounds x="2540" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_WF02_A08_di" bpmnElement="J_WF02_A08" isMarkerVisible="true">
+        <dc:Bounds x="2918" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2865" y="57" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A08_di" bpmnElement="WF02_A08">
+        <dc:Bounds x="3140" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF02_A08_RESULT_di" bpmnElement="WF02_A08_RESULT">
+        <dc:Bounds x="3525" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3463" y="153" width="164" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="WF02_AF01_di" bpmnElement="WF02_AF01">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="740" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AF02_di" bpmnElement="WF02_AF02">
+        <di:waypoint x="950" y="125" />
+        <di:waypoint x="1118" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AF03_di" bpmnElement="WF02_AF03">
+        <di:waypoint x="1165.25" y="118.25" />
+        <di:waypoint x="1184" y="118.25" />
+        <di:waypoint x="1184" y="125" />
+        <di:waypoint x="1340" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1283" y="44" width="82" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AF04_di" bpmnElement="WF02_AF04">
+        <di:waypoint x="1165.25" y="131.75" />
+        <di:waypoint x="1328" y="131.75" />
+        <di:waypoint x="1328" y="185" />
+        <di:waypoint x="1706" y="185" />
+        <di:waypoint x="1706" y="114.2" />
+        <di:waypoint x="1728.8" y="114.2" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1628" y="104" width="81" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AF05_di" bpmnElement="WF02_AF05">
+        <di:waypoint x="1550" y="125" />
+        <di:waypoint x="1718" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AF06_di" bpmnElement="WF02_AF06">
+        <di:waypoint x="2150" y="125" />
+        <di:waypoint x="2318" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AF07_di" bpmnElement="WF02_AF07">
+        <di:waypoint x="2365.25" y="118.25" />
+        <di:waypoint x="2384" y="118.25" />
+        <di:waypoint x="2384" y="125" />
+        <di:waypoint x="2540" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2470" y="44" width="109" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AF08_di" bpmnElement="WF02_AF08">
+        <di:waypoint x="2365.25" y="131.75" />
+        <di:waypoint x="2528" y="131.75" />
+        <di:waypoint x="2528" y="185" />
+        <di:waypoint x="2906" y="185" />
+        <di:waypoint x="2906" y="118.25" />
+        <di:waypoint x="2924.75" y="118.25" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2916" y="160" width="121" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AF09_di" bpmnElement="WF02_AF09">
+        <di:waypoint x="2750" y="125" />
+        <di:waypoint x="2762" y="125" />
+        <di:waypoint x="2762" y="131.75" />
+        <di:waypoint x="2924.75" y="131.75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AFA09_di" bpmnElement="WF02_AFA09">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_AFA10_di" bpmnElement="WF02_AFA10">
+        <di:waypoint x="265" y="285" />
+        <di:waypoint x="1696" y="285" />
+        <di:waypoint x="1696" y="135.8" />
+        <di:waypoint x="1728.8" y="135.8" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_A08_END_FLOW_di" bpmnElement="WF02_A08_END_FLOW">
+        <di:waypoint x="3350" y="125" />
+        <di:waypoint x="3525" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_A_JOIN_WF02_A05_di" bpmnElement="WF02_A_JOIN_WF02_A05">
+        <di:waypoint x="1772" y="125" />
+        <di:waypoint x="1940" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF02_A_JOIN_WF02_A08_di" bpmnElement="WF02_A_JOIN_WF02_A08">
+        <di:waypoint x="2972" y="125" />
+        <di:waypoint x="3140" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

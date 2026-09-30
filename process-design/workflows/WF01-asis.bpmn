@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="WF01_A_Collaboration" name="의뢰·변경 요청과 대상 자재 확인 · 현재 업무">
+    <bpmn:documentation>새 요청은 경로별로 받고, QS가 품목·대상 자재와 현재 확보 자료를 확인한다.
+입력 자료: 신규 제작 요청 또는 기존 Artwork의 변경 필요
+전달 자료: 자재별 준비 대상 또는 기존 업무의 추가 요청</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"신규 제작 요청 또는 기존 Artwork의 변경 필요","outputs":"자재별 준비 대상 또는 기존 업무의 추가 요청","perspective":"asis","sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01"}</bpmn:documentation>
+    <bpmn:participant id="Participant_WF01_A_Process" name="의뢰·변경 요청과 대상 자재 확인 · 현재 업무" processRef="WF01_A_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="WF01_A_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_WF01_A_Process">
+      <bpmn:lane id="Lane_WF01_A_Process_R2" name="수탁 의뢰사">
+        <bpmn:flowNodeRef>WF01_A11</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_WF01_A_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>WF01_A01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_WF01_A05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A12</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_WF01_A06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A09</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF01_A09_RESULT</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_WF01_A_Process_R1" name="수탁담당">
+        <bpmn:flowNodeRef>WF01_A04</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="WF01_A01" name="자사·위탁 신규 제작 요청이 접수된다">
+      <bpmn:documentation>신규 제작 요청과 첨부자료가 QS 업무로 들어온다.
+입력 자료: 결재된 작업의뢰서
+전달 자료: 신규 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"결재된 작업의뢰서","outputs":"신규 요청","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A01","actorDetail":"요청부서 → QS팀"}</bpmn:documentation>
+      <bpmn:outgoing>WF01_AF01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:startEvent id="WF01_A10" name="기존 Artwork의 변경 요청·필요가 발생한다">
+      <bpmn:documentation>기존 Artwork를 변경할 필요가 생긴다.
+입력 자료: 변경 요청·통지 또는 QS의 발견
+전달 자료: 변경 업무</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"변경 요청·통지 또는 QS의 발견","outputs":"변경 업무","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A10","actorDetail":"요청부서 또는 QS팀"}</bpmn:documentation>
+      <bpmn:outgoing>WF01_AF20</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:startEvent id="WF01_A11" name="수탁 의뢰사의 신규·개정 요청이 들어온다">
+      <bpmn:documentation>의뢰사 요청을 QS 검토로 연결한다.
+입력 자료: 수탁 의뢰
+전달 자료: 수탁 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"수탁 의뢰사"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"수탁 의뢰","outputs":"수탁 요청","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A11","actorDetail":"의뢰사 → 수탁팀 또는 개발부"}</bpmn:documentation>
+      <bpmn:outgoing>WF01_AF21</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="WF01_A02" name="결재된 작업의뢰서와 첨부자료를 내려받는다">
+      <bpmn:documentation>완료된 작업의뢰서와 첨부된 문안·제작 자료를 확보한다.
+입력 자료: 자사·위탁 신규의 전자결재
+전달 자료: 작업의뢰서와 첨부자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자사·위탁 신규의 전자결재","outputs":"작업의뢰서와 첨부자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A02","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF01</bpmn:incoming>
+      <bpmn:outgoing>WF01_AF04</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF01_A03" name="변경 요청과 변경 근거를 받는다">
+      <bpmn:documentation>누가 무엇을 왜 바꾸려는지와 적용 시점을 확인한다.
+입력 자료: 메일·메신저 요청 또는 QS가 확인한 변경 필요
+전달 자료: 변경 내용·사유·근거</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"메일·메신저 요청 또는 QS가 확인한 변경 필요","outputs":"변경 내용·사유·근거","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A03","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF20</bpmn:incoming>
+      <bpmn:outgoing>WF01_AF05</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF01_A04" name="수탁 의뢰 내용과 업체 자료를 받는다">
+      <bpmn:documentation>의뢰 대상과 업체가 보낸 파일을 QS에 전달한다.
+입력 자료: 의뢰사의 신규·개정 요청
+전달 자료: 수탁 의뢰 내용과 수령 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"수탁담당"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사의 신규·개정 요청","outputs":"수탁 의뢰 내용과 수령 자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A04","actorDetail":"수탁팀 또는 개발부 → QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF21</bpmn:incoming>
+      <bpmn:outgoing>WF01_AF06</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="J_WF01_A05" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 작업의뢰서·변경 요청·수탁 의뢰
+전달 자료: 작업의뢰서·변경 요청·수탁 의뢰</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"작업의뢰서·변경 요청·수탁 의뢰","outputs":"작업의뢰서·변경 요청·수탁 의뢰","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"asis","workflowId":"WF01","originalStepId":"WF01_A05"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF04</bpmn:incoming>
+      <bpmn:incoming>WF01_AF05</bpmn:incoming>
+      <bpmn:incoming>WF01_AF06</bpmn:incoming>
+      <bpmn:outgoing>WF01_A_JOIN_WF01_A05</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF01_A05" name="어느 품목에 어떤 Artwork 작업을 요청했는지 확인한다">
+      <bpmn:documentation>대상 품목과 신규 제작·변경 요청 내용을 확인한다.
+입력 자료: 작업의뢰서·변경 요청·수탁 의뢰
+전달 자료: 요청 품목과 업무 내용</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"작업의뢰서·변경 요청·수탁 의뢰","outputs":"요청 품목과 업무 내용","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A05","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_A_JOIN_WF01_A05</bpmn:incoming>
+      <bpmn:outgoing>WF01_AF22</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF01_A12" name="이번에 작업할 대상 표시자재를 확인한다">
+      <bpmn:documentation>케이스·설명서·라벨 등 요청에 포함된 표시자재를 확인한다.
+입력 자료: 요청 품목과 작업 내용
+전달 자료: 대상 자재 범위</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"요청 품목과 작업 내용","outputs":"대상 자재 범위","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A12","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF22</bpmn:incoming>
+      <bpmn:outgoing>WF01_AF23</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="J_WF01_A06" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 대상 자재와 첨부자료
+전달 자료: 대상 자재와 첨부자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재와 첨부자료","outputs":"대상 자재와 첨부자료","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"asis","workflowId":"WF01","originalStepId":"WF01_A06"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF10</bpmn:incoming>
+      <bpmn:incoming>WF01_AF23</bpmn:incoming>
+      <bpmn:outgoing>WF01_A_JOIN_WF01_A06</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF01_A06" name="자재별로 확보 자료와 부족한 자료를 정리한다">
+      <bpmn:documentation>문안·허가증·기존 도안·칼선 등 현재 확보된 자료를 구분한다.
+입력 자료: 대상 자재와 첨부자료
+전달 자료: 자재별 확보·미확보 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재와 첨부자료","outputs":"자재별 확보·미확보 자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A06","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_A_JOIN_WF01_A06</bpmn:incoming>
+      <bpmn:outgoing>WF01_AF08</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="WF01_A07" name="확보한 자료로 업무를 시작할 수 있는가?" gatewayDirection="Diverging" default="WF01_AF11">
+      <bpmn:documentation>검토·제작을 시작할 근거가 있는지 확인한다. 허가증이 없다는 이유만으로 전체를 멈추지 않는다.
+입력 자료: 자재별 자료 현황
+전달 자료: 착수 또는 필요한 자료 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자재별 자료 현황","outputs":"착수 또는 필요한 자료 요청","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A07","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF08</bpmn:incoming>
+      <bpmn:outgoing>WF01_AF09</bpmn:outgoing>
+      <bpmn:outgoing>WF01_AF11</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF01_A08" name="착수에 필요한 자료를 요청해 받는다">
+      <bpmn:documentation>부족한 내용만 요청하고 도착한 자료를 다시 확인한다.
+입력 자료: 식별할 수 없는 요청 또는 필요한 기준자료
+전달 자료: 보완된 요청과 자료</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"식별할 수 없는 요청 또는 필요한 기준자료","outputs":"보완된 요청과 자료","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A08","actorDetail":"QS팀 ↔ 요청부서·의뢰사"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF09</bpmn:incoming>
+      <bpmn:outgoing>WF01_AF10</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF01_A09" name="자재별 준비 업무로 이어 간다">
+      <bpmn:documentation>자사·위탁은 자재·기준자료 준비, 수탁은 의뢰사 도안 검토로 이어 간다.
+입력 자료: 식별된 대상 자재와 확보 자료
+전달 자료: 자재별 준비 대상</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"식별된 대상 자재와 확보 자료","outputs":"자재별 준비 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A09","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_AF11</bpmn:incoming>
+      <bpmn:outgoing>WF01_A09_END_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="WF01_A09_RESULT" name="자재별 준비 대상">
+      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
+입력 자료: 자재별 준비 대상
+전달 자료: 자재별 준비 대상</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"자재별 준비 대상","outputs":"자재별 준비 대상","businessRules":[],"perspective":"asis","phase":"현행","functionIds":[],"sourceRefs":[{"path":"CODEX.md","ref":"현행 업무의 시작·대상 자재 확인: 사용자 승인 4단계"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-18·M-22·M-30·M-77·M-96"},{"path":"docs/22_URS원문.md","ref":"O-01·A-01·G-01"},{"path":"docs/23_업무규칙장부.md","ref":"접수-02·접수-04·접수-07·접수-08·접수-12·접수-13"}],"workflowId":"WF01","originalStepId":"WF01_A09_RESULT","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF01_A09_END_FLOW</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="WF01_AF01" name="자사·위탁 신규" sourceRef="WF01_A01" targetRef="WF01_A02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF04" sourceRef="WF01_A02" targetRef="J_WF01_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF05" sourceRef="WF01_A03" targetRef="J_WF01_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF06" sourceRef="WF01_A04" targetRef="J_WF01_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF08" sourceRef="WF01_A06" targetRef="WF01_A07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A06","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF09" name="착수할 근거가 부족함" sourceRef="WF01_A07" targetRef="WF01_A08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A07","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">착수할 근거가 부족함</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF10" name="자료 수령" sourceRef="WF01_A08" targetRef="J_WF01_A06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A08","kind":"return"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF11" name="확보 자료로 시작" sourceRef="WF01_A07" targetRef="WF01_A09">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A07","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF20" sourceRef="WF01_A10" targetRef="WF01_A03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A10","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF21" sourceRef="WF01_A11" targetRef="WF01_A04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A11","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF22" sourceRef="WF01_A05" targetRef="WF01_A12">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A05","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_AF23" sourceRef="WF01_A12" targetRef="J_WF01_A06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A12","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_A09_END_FLOW" sourceRef="WF01_A09" targetRef="WF01_A09_RESULT">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF01_A09","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_A_JOIN_WF01_A05" sourceRef="J_WF01_A05" targetRef="WF01_A05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF01_A05"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF01_A_JOIN_WF01_A06" sourceRef="J_WF01_A06" targetRef="WF01_A06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF01_A06"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WF01_A_Collaboration">
+      <bpmndi:BPMNShape id="Participant_WF01_A_Process_di" bpmnElement="Participant_WF01_A_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="3120" height="850" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_WF01_A_Process_R1_di" bpmnElement="Lane_WF01_A_Process_R1" isHorizontal="true">
+        <dc:Bounds x="70" y="430" width="3090" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_WF01_A_Process_R0_di" bpmnElement="Lane_WF01_A_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="3090" height="390" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_WF01_A_Process_R2_di" bpmnElement="Lane_WF01_A_Process_R2" isHorizontal="true">
+        <dc:Bounds x="70" y="660" width="3090" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A01_di" bpmnElement="WF01_A01">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A10_di" bpmnElement="WF01_A10">
+        <dc:Bounds x="225" y="265" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="313" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A11_di" bpmnElement="WF01_A11">
+        <dc:Bounds x="225" y="725" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="773" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A02_di" bpmnElement="WF01_A02">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A03_di" bpmnElement="WF01_A03">
+        <dc:Bounds x="440" y="235" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A04_di" bpmnElement="WF01_A04">
+        <dc:Bounds x="440" y="465" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_WF01_A05_di" bpmnElement="J_WF01_A05" isMarkerVisible="true">
+        <dc:Bounds x="818" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="765" y="57" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A05_di" bpmnElement="WF01_A05">
+        <dc:Bounds x="1040" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A12_di" bpmnElement="WF01_A12">
+        <dc:Bounds x="1340" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_WF01_A06_di" bpmnElement="J_WF01_A06" isMarkerVisible="true">
+        <dc:Bounds x="1718" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1665" y="57" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A06_di" bpmnElement="WF01_A06">
+        <dc:Bounds x="1940" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A07_di" bpmnElement="WF01_A07" isMarkerVisible="true">
+        <dc:Bounds x="2318" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2235" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A08_di" bpmnElement="WF01_A08">
+        <dc:Bounds x="2540" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A09_di" bpmnElement="WF01_A09">
+        <dc:Bounds x="2540" y="235" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF01_A09_RESULT_di" bpmnElement="WF01_A09_RESULT">
+        <dc:Bounds x="2925" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2865" y="153" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="WF01_AF01_di" bpmnElement="WF01_AF01">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="290.5" y="89" width="124" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF04_di" bpmnElement="WF01_AF04">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="662" y="125" />
+        <di:waypoint x="662" y="114.2" />
+        <di:waypoint x="828.8" y="114.2" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF05_di" bpmnElement="WF01_AF05">
+        <di:waypoint x="650" y="285" />
+        <di:waypoint x="662" y="285" />
+        <di:waypoint x="662" y="125" />
+        <di:waypoint x="818" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF06_di" bpmnElement="WF01_AF06">
+        <di:waypoint x="650" y="515" />
+        <di:waypoint x="806" y="515" />
+        <di:waypoint x="806" y="135.8" />
+        <di:waypoint x="828.8" y="135.8" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF08_di" bpmnElement="WF01_AF08">
+        <di:waypoint x="2150" y="125" />
+        <di:waypoint x="2318" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF09_di" bpmnElement="WF01_AF09">
+        <di:waypoint x="2365.25" y="118.25" />
+        <di:waypoint x="2384" y="118.25" />
+        <di:waypoint x="2384" y="125" />
+        <di:waypoint x="2540" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2404" y="98" width="117" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF10_di" bpmnElement="WF01_AF10" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
+        <di:waypoint x="2750" y="125" />
+        <di:waypoint x="2762" y="125" />
+        <di:waypoint x="2762" y="53" />
+        <di:waypoint x="1660" y="53" />
+        <di:waypoint x="1660" y="118.25" />
+        <di:waypoint x="1724.75" y="118.25" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2787" y="75" width="53" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF11_di" bpmnElement="WF01_AF11">
+        <di:waypoint x="2365.25" y="131.75" />
+        <di:waypoint x="2528" y="131.75" />
+        <di:waypoint x="2528" y="285" />
+        <di:waypoint x="2540" y="285" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2441" y="312" width="93" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF20_di" bpmnElement="WF01_AF20">
+        <di:waypoint x="265" y="285" />
+        <di:waypoint x="440" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF21_di" bpmnElement="WF01_AF21">
+        <di:waypoint x="265" y="745" />
+        <di:waypoint x="428" y="745" />
+        <di:waypoint x="428" y="515" />
+        <di:waypoint x="440" y="515" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF22_di" bpmnElement="WF01_AF22">
+        <di:waypoint x="1250" y="125" />
+        <di:waypoint x="1340" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_AF23_di" bpmnElement="WF01_AF23">
+        <di:waypoint x="1550" y="125" />
+        <di:waypoint x="1706" y="125" />
+        <di:waypoint x="1706" y="131.75" />
+        <di:waypoint x="1724.75" y="131.75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_A09_END_FLOW_di" bpmnElement="WF01_A09_END_FLOW">
+        <di:waypoint x="2750" y="285" />
+        <di:waypoint x="2762" y="285" />
+        <di:waypoint x="2762" y="125" />
+        <di:waypoint x="2925" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_A_JOIN_WF01_A05_di" bpmnElement="WF01_A_JOIN_WF01_A05">
+        <di:waypoint x="872" y="125" />
+        <di:waypoint x="1040" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF01_A_JOIN_WF01_A06_di" bpmnElement="WF01_A_JOIN_WF01_A06">
+        <di:waypoint x="1772" y="125" />
+        <di:waypoint x="1940" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

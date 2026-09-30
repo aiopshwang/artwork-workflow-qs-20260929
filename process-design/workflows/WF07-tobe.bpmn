@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="WF07_T_Collaboration" name="생산·관련 부서와 수탁 양측 결과 취합 · 도입 후 업무">
+    <bpmn:documentation>요청·보낸 판·회신·반환 파일을 기록하고 수탁은 동일 판에 대한 양측 결과를 모은다.
+입력 자료: QS가 연결한 후속 검토 요청
+전달 자료: 재검토 이력 또는 최종화할 기준판</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 연결한 후속 검토 요청","outputs":"재검토 이력 또는 최종화할 기준판","perspective":"tobe","sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07"}</bpmn:documentation>
+    <bpmn:participant id="Participant_WF07_T_Process" name="생산·관련 부서와 수탁 양측 결과 취합 · 도입 후 업무" processRef="WF07_T_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="WF07_T_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_WF07_T_Process">
+      <bpmn:lane id="Lane_WF07_T_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>WF07_T00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_WF07_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_WF07_T12</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T12</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_WF07_T08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T09</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T11</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF07_T11_RESULT</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_WF07_T_Process_R1" name="수탁담당">
+        <bpmn:flowNodeRef>WF07_T06</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="WF07_T00" name="후속 검토를 요청할 파일과 범위가 마련된다">
+      <bpmn:documentation>해당 업무를 시작할 자료·요청을 받는다.
+입력 자료: QS가 연결한 후속 검토 요청
+전달 자료: QS가 연결한 후속 검토 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS가 연결한 후속 검토 요청","outputs":"QS가 연결한 후속 검토 요청","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T00","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:outgoing>WF07_T00_START_FLOW</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="J_WF07_T01" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: QS 검토한 자재 Artwork
+전달 자료: QS 검토한 자재 Artwork</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS 검토한 자재 Artwork","outputs":"QS 검토한 자재 Artwork","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"tobe","workflowId":"WF07","originalStepId":"WF07_T01"}</bpmn:documentation>
+      <bpmn:incoming>WF07_T00_START_FLOW</bpmn:incoming>
+      <bpmn:incoming>WF07_TF14</bpmn:incoming>
+      <bpmn:outgoing>WF07_T_JOIN_WF07_T01</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="WF07_T01" name="해당 경로의 후속 검토를 정한다" gatewayDirection="Diverging" default="WF07_TF03">
+      <bpmn:documentation>자사 생산부, 위탁 제조사, 수탁 양측 검토 중 필요한 경로로 보낸다.
+입력 자료: QS 검토한 자재 Artwork
+전달 자료: 후속 검토 경로</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"QS 검토한 자재 Artwork","outputs":"후속 검토 경로","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"tobe","phase":"Phase 1","functionIds":["C-10","C-12","C-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T01","actorDetail":"QS팀·경로별 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF07_T_JOIN_WF07_T01</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF01</bpmn:outgoing>
+      <bpmn:outgoing>WF07_TF02</bpmn:outgoing>
+      <bpmn:outgoing>WF07_TF03</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF07_T02" name="생산·관련 부서에 파일을 보내 확인을 요청한다">
+      <bpmn:documentation>요청 파일과 검토할 내용을 전달한다. 생산부 내부 검사 방법은 여기서 상세화하지 않는다.
+입력 자료: 검토할 Artwork와 요청 내용
+전달 자료: 보낸 파일과 검토 요청
+업무 규칙: 자사 신규는 허가증 검토가 끝난 도안을 생산 관련 확인에 전달한다.</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"검토할 Artwork와 요청 내용","outputs":"보낸 파일과 검토 요청","businessRules":["자사 신규는 허가증 검토가 끝난 도안을 생산 관련 확인에 전달한다."],"perspective":"tobe","phase":"Phase 1","functionIds":["C-10","C-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T02","actorDetail":"QS팀 → 생산·관련 부서"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF01</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF04</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF07_T03" name="위탁 제조사에 검토를 요청한다">
+      <bpmn:documentation>경로별 담당자가 위탁 제조사에 파일을 보내고 생산 관련 결과를 요청한다.
+입력 자료: 해당 Artwork와 확인 내용
+전달 자료: 제조사에 보낸 파일과 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"해당 Artwork와 확인 내용","outputs":"제조사에 보낸 파일과 요청","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["C-10","C-12"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T03","actorDetail":"위탁 신규: 개발부 / 위탁 개정: QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF02</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF05</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:parallelGateway id="WF07_T04" name="같은 동국용 확인본을 양측 검토로 나눈다" gatewayDirection="Diverging">
+      <bpmn:documentation>의뢰사와 동국 측이 동일한 판을 각자 검토하도록 전달한다.
+입력 자료: 동국용 확인 PDF
+전달 자료: 양측에 전달한 같은 판</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"동국용 확인 PDF","outputs":"양측에 전달한 같은 판","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"함께 진행","perspective":"tobe","phase":"Phase 1","functionIds":["C-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T04","actorDetail":"QS팀·수탁 연락 담당"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF03</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF07</bpmn:outgoing>
+      <bpmn:outgoing>WF07_TF08</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:exclusiveGateway id="J_WF07_T12" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 전달한 파일과 검토 요청
+전달 자료: 전달한 파일과 검토 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"전달한 파일과 검토 요청","outputs":"전달한 파일과 검토 요청","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"tobe","workflowId":"WF07","originalStepId":"WF07_T12"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF04</bpmn:incoming>
+      <bpmn:incoming>WF07_TF05</bpmn:incoming>
+      <bpmn:outgoing>WF07_T_JOIN_WF07_T12</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF07_T05" name="동국 QS 검토와 생산 결과를 확인한다">
+      <bpmn:documentation>QS가 표시사항·이전 주석을 보고 생산 관련 결과와 파일을 받는다.
+입력 자료: 동국용 파일·의뢰사 원본·생산 회신
+전달 자료: 동국 측 의견과 확인 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"동국용 파일·의뢰사 원본·생산 회신","outputs":"동국 측 의견과 확인 파일","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-대조-20","C-11","T-12"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T05","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF07</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF09</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF07_T06" name="의뢰사 의견과 확인 파일을 받는다">
+      <bpmn:documentation>의뢰사 검토 결과와 대상 파일의 판을 받아 연결한다.
+입력 자료: 의뢰사가 받은 동일 확인본
+전달 자료: 의뢰사 의견과 확인 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"수탁담당"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"의뢰사가 받은 동일 확인본","outputs":"의뢰사 의견과 확인 파일","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["C-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T06","actorDetail":"수탁팀 또는 개발부 → QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF08</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF10</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF07_T12" name="회신을 기다려 결과와 파일을 받는다">
+      <bpmn:documentation>해당 상대의 결과·반환 파일을 받아 QS 취합으로 연결한다.
+입력 자료: 전달한 파일과 검토 요청
+전달 자료: 수령한 회신과 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"전달한 파일과 검토 요청","outputs":"수령한 회신과 파일","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["C-10","C-11","C-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T12","actorDetail":"QS팀 또는 개발부"}</bpmn:documentation>
+      <bpmn:incoming>WF07_T_JOIN_WF07_T12</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF06</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:parallelGateway id="WF07_T07" name="양측의 결과를 같은 판 기준으로 모은다" gatewayDirection="Converging">
+      <bpmn:documentation>양측이 확인한 파일을 모은다. 서로 다른 판에 대한 결과는 같은 판의 결과로 취급하지 않는다.
+입력 자료: 동국 결과와 의뢰사 결과
+전달 자료: 양측의 검토 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"동국 결과와 의뢰사 결과","outputs":"양측의 검토 결과","gatewayDirection":"Converging","businessRules":[],"gatewayMeaning":"모두 대기","perspective":"tobe","phase":"Phase 1","functionIds":["C-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T07","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF09</bpmn:incoming>
+      <bpmn:incoming>WF07_TF10</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF11</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:exclusiveGateway id="J_WF07_T08" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 생산·관련 부서 또는 양측 회신
+전달 자료: 생산·관련 부서 또는 양측 회신</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"생산·관련 부서 또는 양측 회신","outputs":"생산·관련 부서 또는 양측 회신","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"tobe","workflowId":"WF07","originalStepId":"WF07_T08"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF06</bpmn:incoming>
+      <bpmn:incoming>WF07_TF11</bpmn:incoming>
+      <bpmn:outgoing>WF07_T_JOIN_WF07_T08</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF07_T08" name="결과·파일과 수정 내용을 취합한다">
+      <bpmn:documentation>회신한 상대·대상 판·내용을 확인한다. 수탁은 의뢰사·동국 요구를 구분해 디자인팀에 줄 내용을 정리한다. 시스템에서는 요청일·요청 사유·보낸 판·회신일·기록자를 보존한다. 수정 출처의 구조화와 부서 대응표·알림 확장은 Phase 2이다.
+입력 자료: 생산·관련 부서 또는 양측 회신
+전달 자료: 취합된 수정사항과 회신</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"생산·관련 부서 또는 양측 회신","outputs":"취합된 수정사항과 회신","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["C-11","C-12","C-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T08","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF07_T_JOIN_WF07_T08</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF12</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="WF07_T09" name="반영하거나 다시 검토할 수정이 있는가?" gatewayDirection="Diverging" default="WF07_TF15">
+      <bpmn:documentation>생산 관련 의견도 Artwork를 바꾸면 QS 재검토 대상으로 보낸다.
+입력 자료: 취합 결과
+전달 자료: 수정 반복 또는 최종화</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"취합 결과","outputs":"수정 반복 또는 최종화","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-04","T-12"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T09","actorDetail":"QS팀"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF12</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF13</bpmn:outgoing>
+      <bpmn:outgoing>WF07_TF15</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF07_T10" name="수정 내용을 전달하고 반영본을 다시 받는다">
+      <bpmn:documentation>수탁에서 동국 생산 조건으로 바꾸는 내용은 필요한 경우 의뢰사에 공유한다. 디자인 반영 후 같은 범위의 검토를 다시 요청한다.
+입력 자료: 정리한 수정사항
+전달 자료: 수정된 Artwork와 재검토 요청</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"정리한 수정사항","outputs":"수정된 Artwork와 재검토 요청","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["C-05","C-06","C-15"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T10","actorDetail":"QS팀 ↔ 디자인팀·경로별 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF13</bpmn:incoming>
+      <bpmn:outgoing>WF07_TF14</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF07_T11" name="최종 내용·파일 준비로 이어 간다">
+      <bpmn:documentation>각 경로의 최종 파일 준비와 최종 확인으로 연결한다.
+입력 자료: 취합된 검토 결과와 해당 Artwork
+전달 자료: 최종화에 쓸 파일과 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"취합된 검토 결과와 해당 Artwork","outputs":"최종화에 쓸 파일과 결과","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-12"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T11","actorDetail":"QS팀·경로별 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF07_TF15</bpmn:incoming>
+      <bpmn:outgoing>WF07_T11_END_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="WF07_T11_RESULT" name="최종화에 쓸 파일과 결과">
+      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
+입력 자료: 최종화에 쓸 파일과 결과
+전달 자료: 최종화에 쓸 파일과 결과</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최종화에 쓸 파일과 결과","outputs":"최종화에 쓸 파일과 결과","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"ON 생산 검토·GN-08·GO-07·AN-14~22·AO 양측 검토"},{"path":"docs/20_회의록_2026-09-22.md","ref":"M-58"},{"path":"docs/23_업무규칙장부.md","ref":"주체-05·주체-06·주체-11·단계-21·단계-22·단계-28·단계-29"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"C-10~12·C-15·K-검토-17·T-12·T-19"},{"path":"CODEX.md","ref":"생산 내부 절차 범위 밖, 결과와 파일을 QS가 받아 재검토"}],"workflowId":"WF07","originalStepId":"WF07_T11_RESULT","actorDetail":"QS팀·경로별 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF07_T11_END_FLOW</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="WF07_T00_START_FLOW" sourceRef="WF07_T00" targetRef="J_WF07_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T00","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF01" name="자사" sourceRef="WF07_T01" targetRef="WF07_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T01","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">자사</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF02" name="위탁" sourceRef="WF07_T01" targetRef="WF07_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T01","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">위탁</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF03" name="수탁" sourceRef="WF07_T01" targetRef="WF07_T04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF04" sourceRef="WF07_T02" targetRef="J_WF07_T12">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF05" sourceRef="WF07_T03" targetRef="J_WF07_T12">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF06" sourceRef="WF07_T12" targetRef="J_WF07_T08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T12","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF07" name="동국 측" sourceRef="WF07_T04" targetRef="WF07_T05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF08" name="의뢰사" sourceRef="WF07_T04" targetRef="WF07_T06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF09" sourceRef="WF07_T05" targetRef="WF07_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T05","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF10" sourceRef="WF07_T06" targetRef="WF07_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T06","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF11" sourceRef="WF07_T07" targetRef="J_WF07_T08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T07","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF12" sourceRef="WF07_T08" targetRef="WF07_T09">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T08","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF13" name="수정 필요" sourceRef="WF07_T09" targetRef="WF07_T10">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T09","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">수정 필요</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF14" name="반영본 재검토" sourceRef="WF07_T10" targetRef="J_WF07_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T10","kind":"return"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_TF15" name="수정 불필요" sourceRef="WF07_T09" targetRef="WF07_T11">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T09","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_T11_END_FLOW" sourceRef="WF07_T11" targetRef="WF07_T11_RESULT">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF07_T11","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_T_JOIN_WF07_T01" sourceRef="J_WF07_T01" targetRef="WF07_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF07_T01"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_T_JOIN_WF07_T08" sourceRef="J_WF07_T08" targetRef="WF07_T08">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF07_T08"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF07_T_JOIN_WF07_T12" sourceRef="J_WF07_T12" targetRef="WF07_T12">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF07_T12"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WF07_T_Collaboration">
+      <bpmndi:BPMNShape id="Participant_WF07_T_Process_di" bpmnElement="Participant_WF07_T_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="3420" height="780" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_WF07_T_Process_R1_di" bpmnElement="Lane_WF07_T_Process_R1" isHorizontal="true">
+        <dc:Bounds x="70" y="590" width="3390" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_WF07_T_Process_R0_di" bpmnElement="Lane_WF07_T_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="3390" height="550" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T00_di" bpmnElement="WF07_T00">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="135" y="153" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_WF07_T01_di" bpmnElement="J_WF07_T01" isMarkerVisible="true">
+        <dc:Bounds x="518" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="465" y="57" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T01_di" bpmnElement="WF07_T01" isMarkerVisible="true">
+        <dc:Bounds x="818" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="735" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T02_di" bpmnElement="WF07_T02">
+        <dc:Bounds x="1040" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T03_di" bpmnElement="WF07_T03">
+        <dc:Bounds x="1040" y="235" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T04_di" bpmnElement="WF07_T04">
+        <dc:Bounds x="1118" y="418" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1035" y="480" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_WF07_T12_di" bpmnElement="J_WF07_T12" isMarkerVisible="true">
+        <dc:Bounds x="1418" y="258" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1365" y="217" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T05_di" bpmnElement="WF07_T05">
+        <dc:Bounds x="1340" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T06_di" bpmnElement="WF07_T06">
+        <dc:Bounds x="1340" y="625" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T12_di" bpmnElement="WF07_T12">
+        <dc:Bounds x="1640" y="235" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T07_di" bpmnElement="WF07_T07">
+        <dc:Bounds x="1718" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1635" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_WF07_T08_di" bpmnElement="J_WF07_T08" isMarkerVisible="true">
+        <dc:Bounds x="2018" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1965" y="57" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T08_di" bpmnElement="WF07_T08">
+        <dc:Bounds x="2240" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T09_di" bpmnElement="WF07_T09" isMarkerVisible="true">
+        <dc:Bounds x="2618" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2535" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T10_di" bpmnElement="WF07_T10">
+        <dc:Bounds x="2840" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T11_di" bpmnElement="WF07_T11">
+        <dc:Bounds x="2840" y="235" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF07_T11_RESULT_di" bpmnElement="WF07_T11_RESULT">
+        <dc:Bounds x="3225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3149" y="153" width="192" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="WF07_T00_START_FLOW_di" bpmnElement="WF07_T00_START_FLOW">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="277" y="125" />
+        <di:waypoint x="277" y="118.25" />
+        <di:waypoint x="524.75" y="118.25" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF01_di" bpmnElement="WF07_TF01">
+        <di:waypoint x="861.2" y="114.2" />
+        <di:waypoint x="1028" y="114.2" />
+        <di:waypoint x="1028" y="125" />
+        <di:waypoint x="1040" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="999" y="138" width="25" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF02_di" bpmnElement="WF07_TF02">
+        <di:waypoint x="872" y="125" />
+        <di:waypoint x="1028" y="125" />
+        <di:waypoint x="1028" y="285" />
+        <di:waypoint x="1040" y="285" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1000" y="255" width="25" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF03_di" bpmnElement="WF07_TF03">
+        <di:waypoint x="861.2" y="135.8" />
+        <di:waypoint x="1023" y="135.8" />
+        <di:waypoint x="1023" y="445" />
+        <di:waypoint x="1118" y="445" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1082" y="418" width="25" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF04_di" bpmnElement="WF07_TF04">
+        <di:waypoint x="1250" y="125" />
+        <di:waypoint x="1262" y="125" />
+        <di:waypoint x="1262" y="278.25" />
+        <di:waypoint x="1424.75" y="278.25" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF05_di" bpmnElement="WF07_TF05">
+        <di:waypoint x="1250" y="285" />
+        <di:waypoint x="1406" y="285" />
+        <di:waypoint x="1406" y="291.75" />
+        <di:waypoint x="1424.75" y="291.75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF06_di" bpmnElement="WF07_TF06">
+        <di:waypoint x="1850" y="285" />
+        <di:waypoint x="1862" y="285" />
+        <di:waypoint x="1862" y="118.25" />
+        <di:waypoint x="2024.75" y="118.25" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF07_di" bpmnElement="WF07_TF07">
+        <di:waypoint x="1165.25" y="438.25" />
+        <di:waypoint x="1328" y="438.25" />
+        <di:waypoint x="1328" y="125" />
+        <di:waypoint x="1340" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1277" y="148" width="41" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF08_di" bpmnElement="WF07_TF08">
+        <di:waypoint x="1165.25" y="451.75" />
+        <di:waypoint x="1328" y="451.75" />
+        <di:waypoint x="1328" y="675" />
+        <di:waypoint x="1340" y="675" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1293" y="692" width="37" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF09_di" bpmnElement="WF07_TF09">
+        <di:waypoint x="1550" y="125" />
+        <di:waypoint x="1706" y="125" />
+        <di:waypoint x="1706" y="118.25" />
+        <di:waypoint x="1724.75" y="118.25" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF10_di" bpmnElement="WF07_TF10">
+        <di:waypoint x="1550" y="675" />
+        <di:waypoint x="1562" y="675" />
+        <di:waypoint x="1562" y="131.75" />
+        <di:waypoint x="1724.75" y="131.75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF11_di" bpmnElement="WF07_TF11">
+        <di:waypoint x="1772" y="125" />
+        <di:waypoint x="2006" y="125" />
+        <di:waypoint x="2006" y="131.75" />
+        <di:waypoint x="2024.75" y="131.75" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF12_di" bpmnElement="WF07_TF12">
+        <di:waypoint x="2450" y="125" />
+        <di:waypoint x="2618" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF13_di" bpmnElement="WF07_TF13">
+        <di:waypoint x="2665.25" y="118.25" />
+        <di:waypoint x="2684" y="118.25" />
+        <di:waypoint x="2684" y="125" />
+        <di:waypoint x="2840" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2775" y="98" width="53" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF14_di" bpmnElement="WF07_TF14" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
+        <di:waypoint x="3050" y="125" />
+        <di:waypoint x="3062" y="125" />
+        <di:waypoint x="3062" y="53" />
+        <di:waypoint x="460" y="53" />
+        <di:waypoint x="460" y="131.75" />
+        <di:waypoint x="524.75" y="131.75" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="3089" y="75" width="77" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_TF15_di" bpmnElement="WF07_TF15">
+        <di:waypoint x="2665.25" y="131.75" />
+        <di:waypoint x="2828" y="131.75" />
+        <di:waypoint x="2828" y="285" />
+        <di:waypoint x="2840" y="285" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2755" y="262" width="65" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_T11_END_FLOW_di" bpmnElement="WF07_T11_END_FLOW">
+        <di:waypoint x="3050" y="285" />
+        <di:waypoint x="3062" y="285" />
+        <di:waypoint x="3062" y="125" />
+        <di:waypoint x="3225" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_T_JOIN_WF07_T01_di" bpmnElement="WF07_T_JOIN_WF07_T01">
+        <di:waypoint x="572" y="125" />
+        <di:waypoint x="818" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_T_JOIN_WF07_T08_di" bpmnElement="WF07_T_JOIN_WF07_T08">
+        <di:waypoint x="2072" y="125" />
+        <di:waypoint x="2240" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF07_T_JOIN_WF07_T12_di" bpmnElement="WF07_T_JOIN_WF07_T12">
+        <di:waypoint x="1472" y="285" />
+        <di:waypoint x="1640" y="285" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -19,7 +19,7 @@
     };
   });
 
-  viewport.addEventListener('pointermove', event => {
+  window.addEventListener('pointermove', event => {
     if (!drag || event.pointerId !== drag.id) return;
     if (!(event.buttons & 1)) { finish(event); return; }
     const dx = event.clientX - drag.x;
@@ -56,6 +56,7 @@
 
   document.getElementById('edit-workflow').addEventListener('click', () => {
     const target = new URL('./editor/', location.href);
+    target.searchParams.set('v', new URLSearchParams(location.search).get('v') || 'flow-4');
     const node = new URLSearchParams(location.hash.slice(1)).get('node');
     if (node) target.hash = new URLSearchParams({ node }).toString();
     location.assign(target.href);
@@ -70,6 +71,7 @@
   const panel = document.getElementById('detail-content');
   if (!data || !svg || !panel) return;
   const model = JSON.parse(data.textContent);
+  const approvedQuestions = new Map((model.questionsApproved || []).map(question => [question.id, question]));
   const nodes = new Map(model.pools.flatMap(pool => pool.nodes.map(node => [node.id, { ...node, pool: pool.name }])));
   const sequence = model.pools.flatMap(pool => pool.edges || []);
   const messages = model.messageFlows || [];
@@ -116,9 +118,11 @@
       group.classList.toggle('reader-muted-element', !!id && !active);
       group.classList.toggle('reader-related-element', !!id && active);
       group.classList.toggle('reader-selected-element', !!id && elementId === id);
+      if (isEdge && group.hasAttribute('data-reader-edge')) group.setAttribute('tabindex', !id || active ? '0' : '-1');
     }
   }
   function clearSelection() {
+    if (window.artworkReader?.clear) { window.artworkReader.clear(); return; }
     document.getElementById('close-detail').click();
     document.getElementById('reader-highlight')?.setAttribute('hidden', '');
     focusSelection(null);
@@ -185,96 +189,116 @@
     item.title = description;
     legend.append(item);
   }
-  const help = make('span', '업무를 누르면 순서와 자료 전달을 나누어 보여줍니다.', 'flow-legend-help');
+  const help = make('span', '연결선을 누르면 이어진 업무로 이동합니다.', 'flow-legend-help');
   legend.append(help);
   document.getElementById('hint').after(legend);
 
   function navigate(id) {
+    if (window.artworkReader?.select) { window.artworkReader.select(id); return; }
     const hash = new URLSearchParams({ node: id }).toString();
     if (location.hash.slice(1) === hash) window.dispatchEvent(new HashChangeEvent('hashchange'));
     else location.hash = hash;
   }
-  function link(edge, targetId, kind, direction) {
-    const target = nodes.get(targetId);
-    if (!target) return null;
-    const button = make('button', undefined, 'neighbor flow-neighbor flow-neighbor-' + kind);
-    button.dataset.edgeId = edge.id;
-    button.dataset.flowKind = kind;
-    button.dataset.targetNode = targetId;
-    const prefix = kind === 'message'
-      ? (direction === 'incoming' ? '보내는 곳' : '받는 곳')
-      : kind === 'return' ? (direction === 'incoming' ? '이 업무로 돌아오는 경로' : '돌아갈 업무') : '';
-    if (edge.name) button.append(make('strong', edge.name));
-    if (kind === 'return' && edge.returnReason && edge.returnReason !== edge.name) button.append(make('span', edge.returnReason, 'flow-return-reason'));
-    if (prefix) button.append(make('span', prefix + ' · ' + (target.actor || target.pool), 'flow-counterpart'));
-    button.append(make('span', clean(target.name), 'flow-task-name'));
-    if (!prefix) button.append(make('small', target.actor || target.pool));
-    if (kind === 'message') button.append(make('small', '자료를 주고받는 업무 위치 보기'));
-    else if (edge.via) button.append(make('small', '합류 지점을 거쳐 연결된 업무'));
-    button.onclick = () => navigate(targetId);
-    return button;
+  function plainValue(value) {
+    if (Array.isArray(value)) return value.filter(Boolean).join('\n');
+    return value === undefined || value === null ? '' : String(value);
   }
-  function section(wrapper, title, items, kind, incoming) {
-    if (!items.length) return;
-    const box = make('section', undefined, 'field flow-section flow-section-' + kind);
-    box.dataset.flowSection = kind;
-    box.append(make('h3', title));
-    for (const edge of items) {
-      const button = link(edge, incoming ? edge.source : edge.target, kind, incoming ? 'incoming' : 'outgoing');
-      if (button) box.append(button);
-    }
-    wrapper.append(box);
-  }
-  function textSection(wrapper, title, text) {
-    if (!text || !String(text).trim()) return;
-    const box = make('section', undefined, 'field flow-material-field');
-    box.append(make('h3', title), make('p', text));
-    wrapper.append(box);
+  function supportLabel(support) {
+    return support.phase === 'Phase 2' ? 'Phase 2 개발' : support.label || '솔루션 지원';
   }
   function updatePanel() {
-    // The native reader owns the selected task and all navigation. This layer only
-    // replaces its mixed relationship list after that task has finished rendering.
-    const id = new URLSearchParams(location.hash.slice(1)).get('node');
+    const id = window.artworkReader?.selected?.() || new URLSearchParams(location.hash.slice(1)).get('node');
     const node = nodes.get(id);
-    if (!node || !panel.querySelector(':scope > .actor')) return;
+    if (!node || panel.querySelector('[data-six-fields]')) return;
+    if (!panel.querySelector(':scope > .actor')) return;
     focusSelection(id);
-    if (panel.querySelector('[data-connection-details]')) return;
-    const mixedHeadings = new Set([
-      '받는 자료', '앞 업무에서 전달하는 자료', '다음 업무에 전달할 자료와 확인 결과',
-      '앞 업무 · 받는 흐름', '다음 업무 · 전달하는 흐름',
-    ]);
-    for (const old of panel.querySelectorAll(':scope > .field')) {
-      if (mixedHeadings.has(old.querySelector('h3')?.textContent)) old.remove();
+    const copy = panel.querySelector(':scope > .node-link');
+    const wrapper = make('div', undefined, 'business-detail');
+    wrapper.dataset.sixFields = id;
+    const list = make('dl', undefined, 'business-fields');
+    const fields = [
+      ['담당', node.actor || node.pool], ['업무명', node.name], ['업무 설명', node.description],
+      ['입력값', node.inputs], ['산출물', node.outputs], ['업무 규칙', node.businessRules],
+    ];
+    for (const [label, raw] of fields) {
+      const row = make('div', undefined, 'business-field');
+      row.dataset.businessField = label;
+      row.append(make('dt', label));
+      const value = plainValue(raw);
+      const content = make('dd', value || '—', value ? '' : 'not-recorded');
+      if (label === '업무명') content.classList.add('business-name');
+      row.append(content); list.append(row);
     }
-    const incoming = sequenceRelations(id, true), outgoing = sequenceRelations(id, false);
-    const wrapper = make('div', undefined, 'flow-details');
-    wrapper.dataset.connectionDetails = id;
-    textSection(wrapper, '이 업무에서 사용하는 자료', node.inputs);
-    if (!node.inputs) {
-      const previous = [...new Set(incoming.filter(edge => !isReturn(edge)).map(edge => edge.source))]
-        .map(source => nodes.get(source)).filter(source => source?.outputs);
-      textSection(wrapper, '앞 업무의 결과물', previous.map(source => clean(source.name) + '\n' + source.outputs).join('\n\n'));
+    wrapper.append(list);
+    for (const questionId of node.approvedQuestionIds || []) {
+      const question = approvedQuestions.get(questionId);
+      if (!question?.text) continue;
+      const note = make('section', undefined, 'customer-question-note');
+      note.dataset.approvedQuestion = question.id;
+      note.append(make('strong', question.label || '고객사 질문'));
+      note.append(make('p', question.text));
+      if (question.status) note.append(make('small', question.status));
+      wrapper.append(note);
     }
-    textSection(wrapper, '이 업무의 결과물', node.outputs);
-    section(wrapper, '앞 업무 · 업무 순서', incoming.filter(edge => !isReturn(edge)), 'sequence', true);
-    section(wrapper, '다음 업무 · 업무 순서', outgoing.filter(edge => !isReturn(edge)), 'sequence', false);
-    section(wrapper, '수정 후 이 업무로 돌아옴', incoming.filter(isReturn), 'return', true);
-    section(wrapper, '수정 후 돌아갈 업무', outgoing.filter(isReturn), 'return', false);
-    section(wrapper, '받는 자료 · 회사 간 전달', messages.filter(edge => edge.target === id), 'message', true);
-    section(wrapper, '보내는 자료 · 회사 간 전달', messages.filter(edge => edge.source === id), 'message', false);
-    const associations = related.filter(edge => edge.target === id || edge.source === id);
-    if (associations.length) {
-      const box = make('section', undefined, 'field flow-section flow-section-related');
-      box.dataset.flowSection = 'related';
-      box.append(make('h3', '관련 확인 · 업무 순서가 아님'));
-      for (const edge of associations) {
-        const button = link(edge, edge.source === id ? edge.target : edge.source, 'related');
-        if (button) box.append(button);
-      }
-      wrapper.append(box);
+    if (node.solutionSupport) {
+      const note = make('section', undefined, 'solution-note');
+      note.append(make('strong', supportLabel(node.solutionSupport)));
+      if (node.solutionSupport.description) note.append(make('p', node.solutionSupport.description));
+      note.append(make('small', node.solutionSupport.phase === 'Phase 2' ? 'Phase 2 개발 범위입니다. 구현 완료를 뜻하지 않습니다.' : '기존 설계에 정의된 지원 범위입니다. 구현 완료를 뜻하지 않습니다.'));
+      wrapper.append(note);
     }
-    panel.insertBefore(wrapper, panel.querySelector(':scope > .node-link'));
+    wrapper.append(make('p', '이어진 업무는 순서도의 연결선을 눌러 볼 수 있습니다.', 'edge-navigation-note'));
+    panel.replaceChildren(wrapper);
+    if (copy) panel.append(copy);
   }
+  function moveAlongEdge(edge) {
+    const selected = window.artworkReader?.selected?.() ||
+      (document.getElementById('map').classList.contains('flow-focused') ? new URLSearchParams(location.hash.slice(1)).get('node') : null);
+    const target = selected === edge.target ? edge.source : edge.target;
+    if (!nodes.has(target)) return;
+    navigate(target);
+    requestAnimationFrame(() => {
+      document.querySelector('[data-reader-node="' + CSS.escape(target) + '"]')?.focus({ preventScroll: true });
+    });
+  }
+  for (const edge of allEdges) {
+    const group = elements.get(edge.id);
+    if (!group) continue;
+    const targets = [group, elements.get(edge.id + '_label')].filter(Boolean);
+    for (const target of targets) {
+      target.dataset.readerEdge = edge.id;
+      target.setAttribute('tabindex', '0');
+      target.setAttribute('role', 'button');
+      target.setAttribute('aria-label', clean(edge.name || '연결선') + '. ' + clean(nodes.get(edge.source)?.name) + '에서 ' + clean(nodes.get(edge.target)?.name) + '로 연결. 선택 업무와 이어진 선이면 반대편 업무로, 그 외에는 화살표 도착 업무로 이동합니다.');
+      target.addEventListener('click', event => { event.stopPropagation(); moveAlongEdge(edge); });
+      target.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); event.stopPropagation(); moveAlongEdge(edge); }
+      });
+    }
+  }
+  const ns = 'http://www.w3.org/2000/svg';
+  function svgNode(tag, attrs) { const element = document.createElementNS(ns, tag); for (const [key, value] of Object.entries(attrs)) element.setAttribute(key, String(value)); return element; }
+  for (const node of nodes.values()) {
+    const group = elements.get(node.id), visual = group?.querySelector(':scope > .djs-visual');
+    if (!visual) continue;
+    if (node.gatewayMeaning && visual.querySelector(':scope > polygon')) {
+      group.classList.add('reader-korean-gateway');
+      const words = node.gatewayMeaning.includes('\n') ? node.gatewayMeaning.split('\n') : node.gatewayMeaning.split(' ');
+      const lines = words.length > 2 ? [words.slice(0,-1).join(''), words.at(-1)] : words;
+      const text = svgNode('text', { x: node.w / 2, y: node.h / 2 - (lines.length - 1) * 6 + 4, 'text-anchor': 'middle', class: 'reader-gateway-meaning' });
+      lines.forEach((line, i) => { const span = svgNode('tspan', { x: node.w / 2, dy: i ? 12 : 0 }); span.textContent = line; text.append(span); });
+      visual.append(text);
+      const title = svgNode('title', {}); title.textContent = node.gatewayExplanation || node.gatewayMeaning; group.prepend(title);
+      group.setAttribute('aria-label', clean(node.name) + '. ' + (node.gatewayExplanation || node.gatewayMeaning));
+    }
+    if (node.solutionSupport && /Task$|task$/i.test(node.type)) {
+      const label = supportLabel(node.solutionSupport);
+      const badge = svgNode('g', { class: 'reader-solution-mark', 'aria-label': label });
+      badge.append(svgNode('rect', { x: Math.max(7, node.w - 86), y: 7, width: 78, height: 17, rx: 4 }));
+      const text = svgNode('text', { x: Math.max(7, node.w - 86) + 39, y: 19, 'text-anchor': 'middle' }); text.textContent = label; badge.append(text); visual.append(badge);
+    }
+  }
+  document.addEventListener('reader:selection', event => { focusSelection(event.detail.id); if (event.detail.id) updatePanel(); });
   new MutationObserver(updatePanel).observe(panel, { childList: true, subtree: true });
   updatePanel();
 })();

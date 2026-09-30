@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="WF09_T_Collaboration" name="자재표준서 작성·대조 · 도입 후 업무">
+    <bpmn:documentation>받은 LIMS 표준서와 완료된 승인본을 대조하고 결과를 해당 완료 개정에 남긴다.
+입력 자료: 대상 자재의 LIMS 표준서 파일
+전달 자료: 완료된 개정의 대조 기록 또는 새 개정 대상</bpmn:documentation>
+    <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재의 LIMS 표준서 파일","outputs":"완료된 개정의 대조 기록 또는 새 개정 대상","perspective":"tobe","sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09"}</bpmn:documentation>
+    <bpmn:participant id="Participant_WF09_T_Process" name="자재표준서 작성·대조 · 도입 후 업무" processRef="WF09_T_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="WF09_T_Process" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_WF09_T_Process">
+      <bpmn:lane id="Lane_WF09_T_Process_R0" name="QS팀">
+        <bpmn:flowNodeRef>WF09_T_START1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF09_T01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>J_WF09_T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF09_T02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF09_T04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF09_T05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF09_T06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF09_T07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF09_T06_RESULT</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>WF09_T07_RESULT</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_WF09_T_Process_R1" name="시스템">
+        <bpmn:flowNodeRef>WF09_T03</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="WF09_T_START1" name="시작">
+      <bpmn:documentation>대상 자재의 LIMS 표준서 파일
+입력 자료: 대상 자재의 LIMS 표준서 파일
+전달 자료: 최신 승인 Artwork와 받은 LIMS 자재표준서</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"대상 자재의 LIMS 표준서 파일","outputs":"최신 승인 Artwork와 받은 LIMS 자재표준서","perspective":"tobe","workflowId":"WF09"}</bpmn:documentation>
+      <bpmn:outgoing>WF09_T_START_FLOW1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="WF09_T01" name="완료된 개정과 LIMS 표준서 파일을 연결한다">
+      <bpmn:documentation>대상 자재·개정과 비교할 표준서 파일을 확인한다. LIMS 내부 작성 절차를 대체하지 않는다.
+입력 자료: 최신 승인 Artwork와 받은 LIMS 자재표준서
+전달 자료: 대조할 표준서·승인본</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"최신 승인 Artwork와 받은 LIMS 자재표준서","outputs":"대조할 표준서·승인본","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-16","K-대조-02"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T01","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF09_T_START_FLOW1</bpmn:incoming>
+      <bpmn:outgoing>WF09_TF01</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="J_WF09_T02" name="경로 합류" gatewayDirection="Converging">
+      <bpmn:documentation>해당 경로의 업무 결과를 이어 받는다.
+입력 자료: 표준서와 승인 파일
+전달 자료: 표준서와 승인 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"표준서와 승인 파일","outputs":"표준서와 승인 파일","gatewayDirection":"Converging","gatewayMeaning":"경로 합류","perspective":"tobe","workflowId":"WF09","originalStepId":"WF09_T02"}</bpmn:documentation>
+      <bpmn:incoming>WF09_TF01</bpmn:incoming>
+      <bpmn:incoming>WF09_TF05</bpmn:incoming>
+      <bpmn:outgoing>WF09_T_JOIN_WF09_T02</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF09_T02" name="표준서·시방서의 판독값을 확인한다">
+      <bpmn:documentation>AI 판독값을 QS가 확인한다. 대조할 항목의 값과 위치를 확인하고 판독 오류를 보완한다.
+입력 자료: 표준서와 승인 파일
+전달 자료: 확인된 비교 값</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"표준서와 승인 파일","outputs":"확인된 비교 값","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-판독-03","K-판독-04","K-판독-07"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T02","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF09_T_JOIN_WF09_T02</bpmn:incoming>
+      <bpmn:outgoing>WF09_TF02</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF09_T03" name="표준서와 승인본을 대조한다">
+      <bpmn:documentation>대상 자재의 기재·규격 차이를 대조하고 결과를 완료된 개정에 연결한다.
+입력 자료: 확인한 값과 대상 판
+전달 자료: 대조 실행 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"시스템"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"확인한 값과 대상 판","outputs":"대조 실행 기록","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-16","K-대조-09","K-대조-24"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T03","actorDetail":"시스템"}</bpmn:documentation>
+      <bpmn:incoming>WF09_TF02</bpmn:incoming>
+      <bpmn:outgoing>WF09_TF03</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="WF09_T04" name="고칠 대상이 표준서인가, Artwork인가?" gatewayDirection="Diverging" default="WF09_TF07">
+      <bpmn:documentation>차이를 확인하고 표준서 보완·Artwork 새 개정·기록 보존으로 구분한다.
+입력 자료: 규칙 결과와 원문
+전달 자료: 담당자 처리 결정</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"규칙 결과와 원문","outputs":"담당자 처리 결정","gatewayDirection":"Diverging","businessRules":[],"gatewayMeaning":"하나 선택","perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-04","K-검토-16"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T04","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF09_TF03</bpmn:incoming>
+      <bpmn:outgoing>WF09_TF04</bpmn:outgoing>
+      <bpmn:outgoing>WF09_TF06</bpmn:outgoing>
+      <bpmn:outgoing>WF09_TF07</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="WF09_T05" name="표준서 파일을 보완해 다시 연결한다">
+      <bpmn:documentation>외부 표준서 업무에서 보완한 파일을 받아 다시 비교한다.
+입력 자료: 표준서 수정사항
+전달 자료: 수정된 표준서 파일</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"표준서 수정사항","outputs":"수정된 표준서 파일","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-접수-08","K-검토-16"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T05","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF09_TF04</bpmn:incoming>
+      <bpmn:outgoing>WF09_TF05</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF09_T06" name="Artwork 변경은 새 개정으로 연결한다">
+      <bpmn:documentation>완료된 개정에 차수를 붙이지 않고 새 개정 작업으로 연결한다.
+입력 자료: 완료 후 발견한 도안 변경사항
+전달 자료: 새 개정 검토 대상</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"완료 후 발견한 도안 변경사항","outputs":"새 개정 검토 대상","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["B-02","K-접수-10"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T06","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF09_TF06</bpmn:incoming>
+      <bpmn:outgoing>WF09_T06_END_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="WF09_T07" name="비교 결과와 사용 표준서를 남긴다">
+      <bpmn:documentation>어떤 표준서와 승인본을 비교했는지 기록하고 후속 발주에 사용할 자료를 연결한다.
+입력 자료: 담당자 확인 결과
+전달 자료: 표준서 대조 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"담당자 확인 결과","outputs":"표준서 대조 기록","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":["K-검토-16","B-11"],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T07","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF09_TF07</bpmn:incoming>
+      <bpmn:outgoing>WF09_T07_END_FLOW</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="WF09_T06_RESULT" name="새 개정 검토 대상">
+      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
+입력 자료: 새 개정 검토 대상
+전달 자료: 새 개정 검토 대상</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"새 개정 검토 대상","outputs":"새 개정 검토 대상","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T06_RESULT","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF09_T06_END_FLOW</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="WF09_T07_RESULT" name="표준서 대조 기록">
+      <bpmn:documentation>이 결과에서 연결된 다음 업무를 이어 간다.
+입력 자료: 표준서 대조 기록
+전달 자료: 표준서 대조 기록</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.metadata+json">{"actor":"QS팀"}</bpmn:documentation>
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"inputs":"표준서 대조 기록","outputs":"표준서 대조 기록","businessRules":[],"perspective":"tobe","phase":"Phase 1","functionIds":[],"sourceRefs":[{"path":"docs/22_URS원문.md","ref":"CF-01·C-10"},{"path":"docs/23_업무규칙장부.md","ref":"표준-01·표준-03·표준-04·표준-07·차수-22·발주-09"},{"path":"CODEX.md","ref":"완료→자재표준서→첫 발주 / LIMS 대조 Phase 1·초안지원 Phase 2"},{"path":"docs/superpowers/specs/2026-09-25-artwork-phase1-functional-design.md","ref":"K-검토-16·T-17"}],"workflowId":"WF09","originalStepId":"WF09_T07_RESULT","actorDetail":"QS 담당자"}</bpmn:documentation>
+      <bpmn:incoming>WF09_T07_END_FLOW</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="WF09_TF01" sourceRef="WF09_T01" targetRef="J_WF09_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T01","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_TF02" sourceRef="WF09_T02" targetRef="WF09_T03">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T02","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_TF03" sourceRef="WF09_T03" targetRef="WF09_T04">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T03","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_TF04" name="표준서 수정" sourceRef="WF09_T04" targetRef="WF09_T05">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T04","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">표준서 수정</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_TF05" name="새 파일 대조" sourceRef="WF09_T05" targetRef="J_WF09_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T05","kind":"return"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_TF06" name="Artwork 변경" sourceRef="WF09_T04" targetRef="WF09_T06">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T04","kind":"normal"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Artwork 변경</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_TF07" name="차이 없음·확인 마침" sourceRef="WF09_T04" targetRef="WF09_T07">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T04","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_T06_END_FLOW" sourceRef="WF09_T06" targetRef="WF09_T06_RESULT">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T06","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_T07_END_FLOW" sourceRef="WF09_T07" targetRef="WF09_T07_RESULT">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T07","kind":"normal"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_T_JOIN_WF09_T02" sourceRef="J_WF09_T02" targetRef="WF09_T02">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"J_WF09_T02"}</bpmn:documentation>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression" />
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="WF09_T_START_FLOW1" sourceRef="WF09_T_START1" targetRef="WF09_T01">
+      <bpmn:documentation textFormat="application/vnd.artwork.review-context+json">{"source":"WF09_T_START1"}</bpmn:documentation>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="WF09_T_Collaboration">
+      <bpmndi:BPMNShape id="Participant_WF09_T_Process_di" bpmnElement="Participant_WF09_T_Process" isHorizontal="true">
+        <dc:Bounds x="40" y="40" width="2520" height="780" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_WF09_T_Process_R1_di" bpmnElement="Lane_WF09_T_Process_R1" isHorizontal="true">
+        <dc:Bounds x="70" y="590" width="2490" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_WF09_T_Process_R0_di" bpmnElement="Lane_WF09_T_Process_R0" isHorizontal="true">
+        <dc:Bounds x="70" y="40" width="2490" height="550" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T_START1_di" bpmnElement="WF09_T_START1">
+        <dc:Bounds x="225" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="165" y="153" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T01_di" bpmnElement="WF09_T01">
+        <dc:Bounds x="440" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="J_WF09_T02_di" bpmnElement="J_WF09_T02" isMarkerVisible="true">
+        <dc:Bounds x="818" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="765" y="57" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T02_di" bpmnElement="WF09_T02">
+        <dc:Bounds x="1040" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T03_di" bpmnElement="WF09_T03">
+        <dc:Bounds x="1340" y="625" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T04_di" bpmnElement="WF09_T04" isMarkerVisible="true">
+        <dc:Bounds x="1718" y="98" width="54" height="54" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1635" y="160" width="220" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T05_di" bpmnElement="WF09_T05">
+        <dc:Bounds x="1940" y="75" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T06_di" bpmnElement="WF09_T06">
+        <dc:Bounds x="1940" y="235" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T07_di" bpmnElement="WF09_T07">
+        <dc:Bounds x="1940" y="395" width="210" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T06_RESULT_di" bpmnElement="WF09_T06_RESULT">
+        <dc:Bounds x="2325" y="105" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2265" y="153" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="WF09_T07_RESULT_di" bpmnElement="WF09_T07_RESULT">
+        <dc:Bounds x="2325" y="265" width="40" height="40" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2265" y="313" width="160" height="33" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="WF09_TF01_di" bpmnElement="WF09_TF01">
+        <di:waypoint x="650" y="125" />
+        <di:waypoint x="806" y="125" />
+        <di:waypoint x="806" y="118.25" />
+        <di:waypoint x="824.75" y="118.25" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_TF02_di" bpmnElement="WF09_TF02">
+        <di:waypoint x="1250" y="125" />
+        <di:waypoint x="1262" y="125" />
+        <di:waypoint x="1262" y="675" />
+        <di:waypoint x="1340" y="675" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_TF03_di" bpmnElement="WF09_TF03">
+        <di:waypoint x="1550" y="675" />
+        <di:waypoint x="1562" y="675" />
+        <di:waypoint x="1562" y="125" />
+        <di:waypoint x="1718" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_TF04_di" bpmnElement="WF09_TF04">
+        <di:waypoint x="1761.2" y="114.2" />
+        <di:waypoint x="1928" y="114.2" />
+        <di:waypoint x="1928" y="125" />
+        <di:waypoint x="1940" y="125" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1854" y="138" width="65" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_TF05_di" bpmnElement="WF09_TF05" bioc:stroke="#ad5a13" color:border-color="#ad5a13">
+        <di:waypoint x="2150" y="125" />
+        <di:waypoint x="2162" y="125" />
+        <di:waypoint x="2162" y="53" />
+        <di:waypoint x="760" y="53" />
+        <di:waypoint x="760" y="131.75" />
+        <di:waypoint x="824.75" y="131.75" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2193" y="75" width="69" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_TF06_di" bpmnElement="WF09_TF06">
+        <di:waypoint x="1772" y="125" />
+        <di:waypoint x="1928" y="125" />
+        <di:waypoint x="1928" y="285" />
+        <di:waypoint x="1940" y="285" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1842" y="261" width="76" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_TF07_di" bpmnElement="WF09_TF07">
+        <di:waypoint x="1761.2" y="135.8" />
+        <di:waypoint x="1918" y="135.8" />
+        <di:waypoint x="1918" y="445" />
+        <di:waypoint x="1940" y="445" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1928" y="359" width="110" height="17" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_T06_END_FLOW_di" bpmnElement="WF09_T06_END_FLOW">
+        <di:waypoint x="2150" y="285" />
+        <di:waypoint x="2162" y="285" />
+        <di:waypoint x="2162" y="125" />
+        <di:waypoint x="2325" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_T07_END_FLOW_di" bpmnElement="WF09_T07_END_FLOW">
+        <di:waypoint x="2150" y="445" />
+        <di:waypoint x="2162" y="445" />
+        <di:waypoint x="2162" y="285" />
+        <di:waypoint x="2325" y="285" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_T_JOIN_WF09_T02_di" bpmnElement="WF09_T_JOIN_WF09_T02">
+        <di:waypoint x="872" y="125" />
+        <di:waypoint x="1040" y="125" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="WF09_T_START_FLOW1_di" bpmnElement="WF09_T_START_FLOW1">
+        <di:waypoint x="265" y="125" />
+        <di:waypoint x="440" y="125" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,1575 @@
+{
+  "diagrams": {
+    "WF01-asis": {
+      "workflowId": "WF01",
+      "mode": "asis",
+      "bpmn": "WF01-asis.bpmn",
+      "svg": "WF01-asis.svg",
+      "stepIds": [
+        "WF01_A01",
+        "WF01_A02",
+        "WF01_A03",
+        "WF01_A04",
+        "WF01_A05",
+        "WF01_A06",
+        "WF01_A07",
+        "WF01_A08",
+        "WF01_A09",
+        "WF01_A10",
+        "WF01_A11",
+        "WF01_A12",
+        "WF01_A09_RESULT"
+      ],
+      "flowIds": [
+        "WF01_AF01",
+        "WF01_AF04",
+        "WF01_AF05",
+        "WF01_AF06",
+        "WF01_AF08",
+        "WF01_AF09",
+        "WF01_AF10",
+        "WF01_AF11",
+        "WF01_AF20",
+        "WF01_AF21",
+        "WF01_AF22",
+        "WF01_AF23",
+        "WF01_A09_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF01_A05": {
+          "targetStepId": "WF01_A05",
+          "kind": "merge"
+        },
+        "J_WF01_A06": {
+          "targetStepId": "WF01_A06",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF01_A_JOIN_WF01_A05": {
+          "source": "J_WF01_A05",
+          "target": "WF01_A05",
+          "targetStepId": "WF01_A05"
+        },
+        "WF01_A_JOIN_WF01_A06": {
+          "source": "J_WF01_A06",
+          "target": "WF01_A06",
+          "targetStepId": "WF01_A06"
+        }
+      },
+      "width": 3200,
+      "height": 920
+    },
+    "WF01-tobe": {
+      "workflowId": "WF01",
+      "mode": "tobe",
+      "bpmn": "WF01-tobe.bpmn",
+      "svg": "WF01-tobe.svg",
+      "stepIds": [
+        "WF01_T01",
+        "WF01_T02",
+        "WF01_T03",
+        "WF01_T04",
+        "WF01_T05",
+        "WF01_T06",
+        "WF01_T07",
+        "WF01_T08",
+        "WF01_T09",
+        "WF01_T10",
+        "WF01_T11",
+        "WF01_T12",
+        "WF01_T07_RESULT",
+        "WF01_T11_RESULT",
+        "WF01_T12_RESULT"
+      ],
+      "flowIds": [
+        "WF01_TF01",
+        "WF01_TF02",
+        "WF01_TF03",
+        "WF01_TF04",
+        "WF01_TF05",
+        "WF01_TF06",
+        "WF01_TF07",
+        "WF01_TF08",
+        "WF01_TF09",
+        "WF01_TF10",
+        "WF01_TF11",
+        "WF01_TF12",
+        "WF01_TF30",
+        "WF01_T07_END_FLOW",
+        "WF01_T11_END_FLOW",
+        "WF01_T12_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF01_T05": {
+          "targetStepId": "WF01_T05",
+          "kind": "merge"
+        },
+        "J_WF01_T08": {
+          "targetStepId": "WF01_T08",
+          "kind": "merge"
+        },
+        "WF01_T_START1": {
+          "targetStepId": "WF01_T01",
+          "kind": "start"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF01_T_JOIN_WF01_T05": {
+          "source": "J_WF01_T05",
+          "target": "WF01_T05",
+          "targetStepId": "WF01_T05"
+        },
+        "WF01_T_JOIN_WF01_T08": {
+          "source": "J_WF01_T08",
+          "target": "WF01_T08",
+          "targetStepId": "WF01_T08"
+        },
+        "WF01_T_START_FLOW1": {
+          "source": "WF01_T_START1",
+          "target": "WF01_T01",
+          "targetStepId": "WF01_T01"
+        }
+      },
+      "width": 4100,
+      "height": 620
+    },
+    "WF02-asis": {
+      "workflowId": "WF02",
+      "mode": "asis",
+      "bpmn": "WF02-asis.bpmn",
+      "svg": "WF02-asis.svg",
+      "stepIds": [
+        "WF02_A01",
+        "WF02_A02",
+        "WF02_A03",
+        "WF02_A04",
+        "WF02_A05",
+        "WF02_A06",
+        "WF02_A07",
+        "WF02_A08",
+        "WF02_A09",
+        "WF02_A10",
+        "WF02_A08_RESULT"
+      ],
+      "flowIds": [
+        "WF02_AF01",
+        "WF02_AF02",
+        "WF02_AF03",
+        "WF02_AF04",
+        "WF02_AF05",
+        "WF02_AF06",
+        "WF02_AF07",
+        "WF02_AF08",
+        "WF02_AF09",
+        "WF02_AFA09",
+        "WF02_AFA10",
+        "WF02_A08_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF02_A05": {
+          "targetStepId": "WF02_A05",
+          "kind": "merge"
+        },
+        "J_WF02_A08": {
+          "targetStepId": "WF02_A08",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF02_A_JOIN_WF02_A05": {
+          "source": "J_WF02_A05",
+          "target": "WF02_A05",
+          "targetStepId": "WF02_A05"
+        },
+        "WF02_A_JOIN_WF02_A08": {
+          "source": "J_WF02_A08",
+          "target": "WF02_A08",
+          "targetStepId": "WF02_A08"
+        }
+      },
+      "width": 3800,
+      "height": 460
+    },
+    "WF02-tobe": {
+      "workflowId": "WF02",
+      "mode": "tobe",
+      "bpmn": "WF02-tobe.bpmn",
+      "svg": "WF02-tobe.svg",
+      "stepIds": [
+        "WF02_T01",
+        "WF02_T02",
+        "WF02_T03",
+        "WF02_T04",
+        "WF02_T05",
+        "WF02_T06",
+        "WF02_T07",
+        "WF02_T08",
+        "WF02_T09",
+        "WF02_T10",
+        "WF02_T12",
+        "WF02_T13",
+        "WF02_T05_RESULT",
+        "WF02_T09_RESULT"
+      ],
+      "flowIds": [
+        "WF02_TF01",
+        "WF02_TF02",
+        "WF02_TF03",
+        "WF02_TF04",
+        "WF02_TF05",
+        "WF02_TF08",
+        "WF02_TF09",
+        "WF02_TF10",
+        "WF02_TF11",
+        "WF02_TF20",
+        "WF02_TFT12",
+        "WF02_TFT13",
+        "WF02_T05_END_FLOW",
+        "WF02_T09_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF02_T06": {
+          "targetStepId": "WF02_T06",
+          "kind": "merge"
+        },
+        "J_WF02_T09": {
+          "targetStepId": "WF02_T09",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF02_T_JOIN_WF02_T06": {
+          "source": "J_WF02_T06",
+          "target": "WF02_T06",
+          "targetStepId": "WF02_T06"
+        },
+        "WF02_T_JOIN_WF02_T09": {
+          "source": "J_WF02_T09",
+          "target": "WF02_T09",
+          "targetStepId": "WF02_T09"
+        }
+      },
+      "width": 3800,
+      "height": 690
+    },
+    "WF03-asis": {
+      "workflowId": "WF03",
+      "mode": "asis",
+      "bpmn": "WF03-asis.bpmn",
+      "svg": "WF03-asis.svg",
+      "stepIds": [
+        "WF03_A01",
+        "WF03_A02",
+        "WF03_A03",
+        "WF03_A04",
+        "WF03_A05",
+        "WF03_A06",
+        "WF03_A07",
+        "WF03_A08",
+        "WF03_A09",
+        "WF03_A10",
+        "WF03_A10_RESULT"
+      ],
+      "flowIds": [
+        "WF03_AF01",
+        "WF03_AF02",
+        "WF03_AF03",
+        "WF03_AF04",
+        "WF03_AF05",
+        "WF03_AF06",
+        "WF03_AF07",
+        "WF03_AF08",
+        "WF03_AF09",
+        "WF03_AF10",
+        "WF03_AF11",
+        "WF03_AF12",
+        "WF03_A10_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF03_A04": {
+          "targetStepId": "WF03_A04",
+          "kind": "merge"
+        },
+        "J_WF03_A07": {
+          "targetStepId": "WF03_A07",
+          "kind": "merge"
+        },
+        "WF03_A_START1": {
+          "targetStepId": "WF03_A01",
+          "kind": "start"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF03_A_JOIN_WF03_A04": {
+          "source": "J_WF03_A04",
+          "target": "WF03_A04",
+          "targetStepId": "WF03_A04"
+        },
+        "WF03_A_JOIN_WF03_A07": {
+          "source": "J_WF03_A07",
+          "target": "WF03_A07",
+          "targetStepId": "WF03_A07"
+        },
+        "WF03_A_START_FLOW1": {
+          "source": "WF03_A_START1",
+          "target": "WF03_A01",
+          "targetStepId": "WF03_A01"
+        }
+      },
+      "width": 3500,
+      "height": 920
+    },
+    "WF03-tobe": {
+      "workflowId": "WF03",
+      "mode": "tobe",
+      "bpmn": "WF03-tobe.bpmn",
+      "svg": "WF03-tobe.svg",
+      "stepIds": [
+        "WF03_T01",
+        "WF03_T02",
+        "WF03_T03",
+        "WF03_T04",
+        "WF03_T05",
+        "WF03_T06",
+        "WF03_T07",
+        "WF03_T08",
+        "WF03_T09",
+        "WF03_T10",
+        "WF03_T10_RESULT"
+      ],
+      "flowIds": [
+        "WF03_TF01",
+        "WF03_TF02",
+        "WF03_TF03",
+        "WF03_TF04",
+        "WF03_TF05",
+        "WF03_TF06",
+        "WF03_TF07",
+        "WF03_TF08",
+        "WF03_TF09",
+        "WF03_TF10",
+        "WF03_TF11",
+        "WF03_TF12",
+        "WF03_T10_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF03_T02": {
+          "targetStepId": "WF03_T02",
+          "kind": "merge"
+        },
+        "J_WF03_T04": {
+          "targetStepId": "WF03_T04",
+          "kind": "merge"
+        },
+        "WF03_T_START1": {
+          "targetStepId": "WF03_T01",
+          "kind": "start"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF03_T_JOIN_WF03_T02": {
+          "source": "J_WF03_T02",
+          "target": "WF03_T02",
+          "targetStepId": "WF03_T02"
+        },
+        "WF03_T_JOIN_WF03_T04": {
+          "source": "J_WF03_T04",
+          "target": "WF03_T04",
+          "targetStepId": "WF03_T04"
+        },
+        "WF03_T_START_FLOW1": {
+          "source": "WF03_T_START1",
+          "target": "WF03_T01",
+          "targetStepId": "WF03_T01"
+        }
+      },
+      "width": 3500,
+      "height": 690
+    },
+    "WF04-asis": {
+      "workflowId": "WF04",
+      "mode": "asis",
+      "bpmn": "WF04-asis.bpmn",
+      "svg": "WF04-asis.svg",
+      "stepIds": [
+        "WF04_A01",
+        "WF04_A02",
+        "WF04_A03",
+        "WF04_A04",
+        "WF04_A05",
+        "WF04_A06",
+        "WF04_A07",
+        "WF04_A08",
+        "WF04_A09",
+        "WF04_A08_RESULT"
+      ],
+      "flowIds": [
+        "WF04_AF01",
+        "WF04_AF02",
+        "WF04_AF03",
+        "WF04_AF04",
+        "WF04_AF05",
+        "WF04_AF06",
+        "WF04_AF07",
+        "WF04_AF20",
+        "WF04_AF21",
+        "WF04_AF22",
+        "WF04_A08_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF04_A02": {
+          "targetStepId": "WF04_A02",
+          "kind": "merge"
+        },
+        "J_WF04_A06": {
+          "targetStepId": "WF04_A06",
+          "kind": "merge"
+        },
+        "WF04_A_START1": {
+          "targetStepId": "WF04_A01",
+          "kind": "start"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF04_A_JOIN_WF04_A02": {
+          "source": "J_WF04_A02",
+          "target": "WF04_A02",
+          "targetStepId": "WF04_A02"
+        },
+        "WF04_A_JOIN_WF04_A06": {
+          "source": "J_WF04_A06",
+          "target": "WF04_A06",
+          "targetStepId": "WF04_A06"
+        },
+        "WF04_A_START_FLOW1": {
+          "source": "WF04_A_START1",
+          "target": "WF04_A01",
+          "targetStepId": "WF04_A01"
+        }
+      },
+      "width": 3500,
+      "height": 690
+    },
+    "WF04-tobe": {
+      "workflowId": "WF04",
+      "mode": "tobe",
+      "bpmn": "WF04-tobe.bpmn",
+      "svg": "WF04-tobe.svg",
+      "stepIds": [
+        "WF04_T01",
+        "WF04_T02",
+        "WF04_T03",
+        "WF04_T04",
+        "WF04_T05",
+        "WF04_T06",
+        "WF04_T07",
+        "WF04_T08",
+        "WF04_T09",
+        "WF04_T10",
+        "WF04_T10_RESULT"
+      ],
+      "flowIds": [
+        "WF04_TF01",
+        "WF04_TF02",
+        "WF04_TF03",
+        "WF04_TF04",
+        "WF04_TF05",
+        "WF04_TF06",
+        "WF04_TF07",
+        "WF04_TF08",
+        "WF04_TF09",
+        "WF04_TF10",
+        "WF04_TF11",
+        "WF04_T10_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF04_T03": {
+          "targetStepId": "WF04_T03",
+          "kind": "merge"
+        },
+        "J_WF04_T07": {
+          "targetStepId": "WF04_T07",
+          "kind": "merge"
+        },
+        "WF04_T_START1": {
+          "targetStepId": "WF04_T01",
+          "kind": "start"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF04_T_JOIN_WF04_T03": {
+          "source": "J_WF04_T03",
+          "target": "WF04_T03",
+          "targetStepId": "WF04_T03"
+        },
+        "WF04_T_JOIN_WF04_T07": {
+          "source": "J_WF04_T07",
+          "target": "WF04_T07",
+          "targetStepId": "WF04_T07"
+        },
+        "WF04_T_START_FLOW1": {
+          "source": "WF04_T_START1",
+          "target": "WF04_T01",
+          "targetStepId": "WF04_T01"
+        }
+      },
+      "width": 3800,
+      "height": 690
+    },
+    "WF05-asis": {
+      "workflowId": "WF05",
+      "mode": "asis",
+      "bpmn": "WF05-asis.bpmn",
+      "svg": "WF05-asis.svg",
+      "stepIds": [
+        "WF05_A01",
+        "WF05_A02",
+        "WF05_A03",
+        "WF05_A04",
+        "WF05_A05",
+        "WF05_A06",
+        "WF05_A07",
+        "WF05_A08",
+        "WF05_A09",
+        "WF05_A10",
+        "WF05_A08_RESULT",
+        "WF05_A09_RESULT",
+        "WF05_A11",
+        "WF05_A12"
+      ],
+      "flowIds": [
+        "WF05_AF01",
+        "WF05_AF04",
+        "WF05_AF05",
+        "WF05_AF06",
+        "WF05_AF07",
+        "WF05_AF08",
+        "WF05_AF09",
+        "WF05_AF20",
+        "WF05_AF21",
+        "WF05_AF22",
+        "WF05_AF23",
+        "WF05_A08_END_FLOW",
+        "WF05_A09_END_FLOW",
+        "WF05_AG1",
+        "WF05_AG2",
+        "WF05_AG3"
+      ],
+      "auxiliaryNodes": {
+        "J_WF05_A03": {
+          "targetStepId": "WF05_A03",
+          "kind": "merge"
+        },
+        "J_WF05_A04": {
+          "targetStepId": "WF05_A04",
+          "kind": "merge"
+        },
+        "J_WF05_A05": {
+          "targetStepId": "WF05_A05",
+          "kind": "merge"
+        },
+        "WF05_A_START1": {
+          "targetStepId": "WF05_A01",
+          "kind": "start"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF05_A_JOIN_WF05_A03": {
+          "source": "J_WF05_A03",
+          "target": "WF05_A03",
+          "targetStepId": "WF05_A03"
+        },
+        "WF05_A_JOIN_WF05_A04": {
+          "source": "J_WF05_A04",
+          "target": "WF05_A04",
+          "targetStepId": "WF05_A04"
+        },
+        "WF05_A_JOIN_WF05_A05": {
+          "source": "J_WF05_A05",
+          "target": "WF05_A05",
+          "targetStepId": "WF05_A05"
+        },
+        "WF05_A_START_FLOW1": {
+          "source": "WF05_A_START1",
+          "target": "WF05_A01",
+          "targetStepId": "WF05_A01"
+        }
+      },
+      "width": 3800,
+      "height": 620
+    },
+    "WF05-tobe": {
+      "workflowId": "WF05",
+      "mode": "tobe",
+      "bpmn": "WF05-tobe.bpmn",
+      "svg": "WF05-tobe.svg",
+      "stepIds": [
+        "WF05_T00",
+        "WF05_T01",
+        "WF05_T02",
+        "WF05_T03",
+        "WF05_T04",
+        "WF05_T05",
+        "WF05_T06",
+        "WF05_T07",
+        "WF05_T08",
+        "WF05_T09",
+        "WF05_T10",
+        "WF05_T11",
+        "WF05_T10_RESULT",
+        "WF05_T11_RESULT",
+        "WF05_T12",
+        "WF05_T13"
+      ],
+      "flowIds": [
+        "WF05_T00_START_FLOW",
+        "WF05_TF01",
+        "WF05_TF02",
+        "WF05_TF03",
+        "WF05_TF04",
+        "WF05_TF05",
+        "WF05_TF06",
+        "WF05_TF07",
+        "WF05_TF08",
+        "WF05_TF09",
+        "WF05_TF10",
+        "WF05_TF11",
+        "WF05_T10_END_FLOW",
+        "WF05_T11_END_FLOW",
+        "WF05_TG1",
+        "WF05_TG2",
+        "WF05_TG3"
+      ],
+      "auxiliaryNodes": {
+        "J_WF05_T01": {
+          "targetStepId": "WF05_T01",
+          "kind": "merge"
+        },
+        "J_WF05_T02": {
+          "targetStepId": "WF05_T02",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF05_T_JOIN_WF05_T01": {
+          "source": "J_WF05_T01",
+          "target": "WF05_T01",
+          "targetStepId": "WF05_T01"
+        },
+        "WF05_T_JOIN_WF05_T02": {
+          "source": "J_WF05_T02",
+          "target": "WF05_T02",
+          "targetStepId": "WF05_T02"
+        }
+      },
+      "width": 4100,
+      "height": 850
+    },
+    "WF06-asis": {
+      "workflowId": "WF06",
+      "mode": "asis",
+      "bpmn": "WF06-asis.bpmn",
+      "svg": "WF06-asis.svg",
+      "stepIds": [
+        "WF06_A00",
+        "WF06_A01",
+        "WF06_A02",
+        "WF06_A03",
+        "WF06_A04",
+        "WF06_A05",
+        "WF06_A06",
+        "WF06_A07",
+        "WF06_A08",
+        "WF06_A08_RESULT"
+      ],
+      "flowIds": [
+        "WF06_A00_START_FLOW",
+        "WF06_AF01",
+        "WF06_AF02",
+        "WF06_AF03",
+        "WF06_AF04",
+        "WF06_AF05",
+        "WF06_AF06",
+        "WF06_AF07",
+        "WF06_AF08",
+        "WF06_AF09",
+        "WF06_A08_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF06_A01": {
+          "targetStepId": "WF06_A01",
+          "kind": "merge"
+        },
+        "J_WF06_A05": {
+          "targetStepId": "WF06_A05",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF06_A_JOIN_WF06_A01": {
+          "source": "J_WF06_A01",
+          "target": "WF06_A01",
+          "targetStepId": "WF06_A01"
+        },
+        "WF06_A_JOIN_WF06_A05": {
+          "source": "J_WF06_A05",
+          "target": "WF06_A05",
+          "targetStepId": "WF06_A05"
+        }
+      },
+      "width": 3500,
+      "height": 460
+    },
+    "WF06-tobe": {
+      "workflowId": "WF06",
+      "mode": "tobe",
+      "bpmn": "WF06-tobe.bpmn",
+      "svg": "WF06-tobe.svg",
+      "stepIds": [
+        "WF06_T00",
+        "WF06_T01",
+        "WF06_T02",
+        "WF06_T03",
+        "WF06_T04",
+        "WF06_T05",
+        "WF06_T06",
+        "WF06_T07",
+        "WF06_T08",
+        "WF06_T08_RESULT"
+      ],
+      "flowIds": [
+        "WF06_T00_START_FLOW",
+        "WF06_TF01",
+        "WF06_TF02",
+        "WF06_TF03",
+        "WF06_TF04",
+        "WF06_TF05",
+        "WF06_TF06",
+        "WF06_TF07",
+        "WF06_TF08",
+        "WF06_T08_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF06_T01": {
+          "targetStepId": "WF06_T01",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF06_T_JOIN_WF06_T01": {
+          "source": "J_WF06_T01",
+          "target": "WF06_T01",
+          "targetStepId": "WF06_T01"
+        }
+      },
+      "width": 2900,
+      "height": 690
+    },
+    "WF07-asis": {
+      "workflowId": "WF07",
+      "mode": "asis",
+      "bpmn": "WF07-asis.bpmn",
+      "svg": "WF07-asis.svg",
+      "stepIds": [
+        "WF07_A00",
+        "WF07_A01",
+        "WF07_A02",
+        "WF07_A03",
+        "WF07_A04",
+        "WF07_A05",
+        "WF07_A06",
+        "WF07_A07",
+        "WF07_A08",
+        "WF07_A09",
+        "WF07_A10",
+        "WF07_A11",
+        "WF07_A12",
+        "WF07_A11_RESULT"
+      ],
+      "flowIds": [
+        "WF07_A00_START_FLOW",
+        "WF07_AF01",
+        "WF07_AF02",
+        "WF07_AF03",
+        "WF07_AF04",
+        "WF07_AF05",
+        "WF07_AF06",
+        "WF07_AF07",
+        "WF07_AF08",
+        "WF07_AF09",
+        "WF07_AF10",
+        "WF07_AF11",
+        "WF07_AF12",
+        "WF07_AF13",
+        "WF07_AF14",
+        "WF07_AF15",
+        "WF07_A11_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF07_A01": {
+          "targetStepId": "WF07_A01",
+          "kind": "merge"
+        },
+        "J_WF07_A08": {
+          "targetStepId": "WF07_A08",
+          "kind": "merge"
+        },
+        "J_WF07_A12": {
+          "targetStepId": "WF07_A12",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF07_A_JOIN_WF07_A01": {
+          "source": "J_WF07_A01",
+          "target": "WF07_A01",
+          "targetStepId": "WF07_A01"
+        },
+        "WF07_A_JOIN_WF07_A08": {
+          "source": "J_WF07_A08",
+          "target": "WF07_A08",
+          "targetStepId": "WF07_A08"
+        },
+        "WF07_A_JOIN_WF07_A12": {
+          "source": "J_WF07_A12",
+          "target": "WF07_A12",
+          "targetStepId": "WF07_A12"
+        }
+      },
+      "width": 3500,
+      "height": 850
+    },
+    "WF07-tobe": {
+      "workflowId": "WF07",
+      "mode": "tobe",
+      "bpmn": "WF07-tobe.bpmn",
+      "svg": "WF07-tobe.svg",
+      "stepIds": [
+        "WF07_T00",
+        "WF07_T01",
+        "WF07_T02",
+        "WF07_T03",
+        "WF07_T04",
+        "WF07_T05",
+        "WF07_T06",
+        "WF07_T07",
+        "WF07_T08",
+        "WF07_T09",
+        "WF07_T10",
+        "WF07_T11",
+        "WF07_T12",
+        "WF07_T11_RESULT"
+      ],
+      "flowIds": [
+        "WF07_T00_START_FLOW",
+        "WF07_TF01",
+        "WF07_TF02",
+        "WF07_TF03",
+        "WF07_TF04",
+        "WF07_TF05",
+        "WF07_TF06",
+        "WF07_TF07",
+        "WF07_TF08",
+        "WF07_TF09",
+        "WF07_TF10",
+        "WF07_TF11",
+        "WF07_TF12",
+        "WF07_TF13",
+        "WF07_TF14",
+        "WF07_TF15",
+        "WF07_T11_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF07_T01": {
+          "targetStepId": "WF07_T01",
+          "kind": "merge"
+        },
+        "J_WF07_T08": {
+          "targetStepId": "WF07_T08",
+          "kind": "merge"
+        },
+        "J_WF07_T12": {
+          "targetStepId": "WF07_T12",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF07_T_JOIN_WF07_T01": {
+          "source": "J_WF07_T01",
+          "target": "WF07_T01",
+          "targetStepId": "WF07_T01"
+        },
+        "WF07_T_JOIN_WF07_T08": {
+          "source": "J_WF07_T08",
+          "target": "WF07_T08",
+          "targetStepId": "WF07_T08"
+        },
+        "WF07_T_JOIN_WF07_T12": {
+          "source": "J_WF07_T12",
+          "target": "WF07_T12",
+          "targetStepId": "WF07_T12"
+        }
+      },
+      "width": 3500,
+      "height": 850
+    },
+    "WF08-asis": {
+      "workflowId": "WF08",
+      "mode": "asis",
+      "bpmn": "WF08-asis.bpmn",
+      "svg": "WF08-asis.svg",
+      "stepIds": [
+        "WF08_A00",
+        "WF08_A01",
+        "WF08_A02",
+        "WF08_A03",
+        "WF08_A04",
+        "WF08_A05",
+        "WF08_A06",
+        "WF08_A07",
+        "WF08_A08",
+        "WF08_A09",
+        "WF08_A10",
+        "WF08_A10_RESULT"
+      ],
+      "flowIds": [
+        "WF08_A00_START_FLOW",
+        "WF08_AF01",
+        "WF08_AF02",
+        "WF08_AF03",
+        "WF08_AF04",
+        "WF08_AF05",
+        "WF08_AF06",
+        "WF08_AF07",
+        "WF08_AF08",
+        "WF08_AF09",
+        "WF08_AF10",
+        "WF08_AF11",
+        "WF08_AF12",
+        "WF08_A10_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF08_A01": {
+          "targetStepId": "WF08_A01",
+          "kind": "merge"
+        },
+        "J_WF08_A04": {
+          "targetStepId": "WF08_A04",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF08_A_JOIN_WF08_A01": {
+          "source": "J_WF08_A01",
+          "target": "WF08_A01",
+          "targetStepId": "WF08_A01"
+        },
+        "WF08_A_JOIN_WF08_A04": {
+          "source": "J_WF08_A04",
+          "target": "WF08_A04",
+          "targetStepId": "WF08_A04"
+        }
+      },
+      "width": 3800,
+      "height": 1080
+    },
+    "WF08-tobe": {
+      "workflowId": "WF08",
+      "mode": "tobe",
+      "bpmn": "WF08-tobe.bpmn",
+      "svg": "WF08-tobe.svg",
+      "stepIds": [
+        "WF08_T00",
+        "WF08_T01",
+        "WF08_T02",
+        "WF08_T03",
+        "WF08_T04",
+        "WF08_T05",
+        "WF08_T06",
+        "WF08_T07",
+        "WF08_T08",
+        "WF08_T09",
+        "WF08_T10",
+        "WF08_T11",
+        "WF08_T12",
+        "WF08_T10_RESULT"
+      ],
+      "flowIds": [
+        "WF08_T00_START_FLOW",
+        "WF08_TF01",
+        "WF08_TF02",
+        "WF08_TF03",
+        "WF08_TF04",
+        "WF08_TF05",
+        "WF08_TF06",
+        "WF08_TF07",
+        "WF08_TF08",
+        "WF08_TF09",
+        "WF08_TF10",
+        "WF08_TF11",
+        "WF08_TF12",
+        "WF08_TF13",
+        "WF08_TF14",
+        "WF08_TF15",
+        "WF08_T10_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF08_T01": {
+          "targetStepId": "WF08_T01",
+          "kind": "merge"
+        },
+        "J_WF08_T05": {
+          "targetStepId": "WF08_T05",
+          "kind": "merge"
+        },
+        "J_WF08_T08": {
+          "targetStepId": "WF08_T08",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF08_T_JOIN_WF08_T01": {
+          "source": "J_WF08_T01",
+          "target": "WF08_T01",
+          "targetStepId": "WF08_T01"
+        },
+        "WF08_T_JOIN_WF08_T05": {
+          "source": "J_WF08_T05",
+          "target": "WF08_T05",
+          "targetStepId": "WF08_T05"
+        },
+        "WF08_T_JOIN_WF08_T08": {
+          "source": "J_WF08_T08",
+          "target": "WF08_T08",
+          "targetStepId": "WF08_T08"
+        }
+      },
+      "width": 3800,
+      "height": 620
+    },
+    "WF09-asis": {
+      "workflowId": "WF09",
+      "mode": "asis",
+      "bpmn": "WF09-asis.bpmn",
+      "svg": "WF09-asis.svg",
+      "stepIds": [
+        "WF09_A00",
+        "WF09_A01",
+        "WF09_A02",
+        "WF09_A03",
+        "WF09_A04",
+        "WF09_A05",
+        "WF09_A06",
+        "WF09_A07",
+        "WF09_A07_RESULT"
+      ],
+      "flowIds": [
+        "WF09_A00_START_FLOW",
+        "WF09_AF01",
+        "WF09_AF02",
+        "WF09_AF03",
+        "WF09_AF04",
+        "WF09_AF05",
+        "WF09_AF06",
+        "WF09_AF07",
+        "WF09_AF08",
+        "WF09_A07_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF09_A01": {
+          "targetStepId": "WF09_A01",
+          "kind": "merge"
+        },
+        "J_WF09_A03": {
+          "targetStepId": "WF09_A03",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF09_A_JOIN_WF09_A01": {
+          "source": "J_WF09_A01",
+          "target": "WF09_A01",
+          "targetStepId": "WF09_A01"
+        },
+        "WF09_A_JOIN_WF09_A03": {
+          "source": "J_WF09_A03",
+          "target": "WF09_A03",
+          "targetStepId": "WF09_A03"
+        }
+      },
+      "width": 2900,
+      "height": 620
+    },
+    "WF09-tobe": {
+      "workflowId": "WF09",
+      "mode": "tobe",
+      "bpmn": "WF09-tobe.bpmn",
+      "svg": "WF09-tobe.svg",
+      "stepIds": [
+        "WF09_T01",
+        "WF09_T02",
+        "WF09_T03",
+        "WF09_T04",
+        "WF09_T05",
+        "WF09_T06",
+        "WF09_T07",
+        "WF09_T06_RESULT",
+        "WF09_T07_RESULT"
+      ],
+      "flowIds": [
+        "WF09_TF01",
+        "WF09_TF02",
+        "WF09_TF03",
+        "WF09_TF04",
+        "WF09_TF05",
+        "WF09_TF06",
+        "WF09_TF07",
+        "WF09_T06_END_FLOW",
+        "WF09_T07_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF09_T02": {
+          "targetStepId": "WF09_T02",
+          "kind": "merge"
+        },
+        "WF09_T_START1": {
+          "targetStepId": "WF09_T01",
+          "kind": "start"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF09_T_JOIN_WF09_T02": {
+          "source": "J_WF09_T02",
+          "target": "WF09_T02",
+          "targetStepId": "WF09_T02"
+        },
+        "WF09_T_START_FLOW1": {
+          "source": "WF09_T_START1",
+          "target": "WF09_T01",
+          "targetStepId": "WF09_T01"
+        }
+      },
+      "width": 2600,
+      "height": 850
+    },
+    "WF10-asis": {
+      "workflowId": "WF10",
+      "mode": "asis",
+      "bpmn": "WF10-asis.bpmn",
+      "svg": "WF10-asis.svg",
+      "stepIds": [
+        "WF10_A01",
+        "WF10_A02",
+        "WF10_A03",
+        "WF10_A04",
+        "WF10_A05",
+        "WF10_A06",
+        "WF10_A07",
+        "WF10_A08",
+        "WF10_A09",
+        "WF10_A10",
+        "WF10_A11",
+        "WF10_A12",
+        "WF10_A03_RESULT",
+        "WF10_A10_RESULT",
+        "WF10_A12_RESULT"
+      ],
+      "flowIds": [
+        "WF10_AF01",
+        "WF10_AF02",
+        "WF10_AF03",
+        "WF10_AF04",
+        "WF10_AF05",
+        "WF10_AF06",
+        "WF10_AF07",
+        "WF10_AF08",
+        "WF10_AF09",
+        "WF10_AF10",
+        "WF10_AF11",
+        "WF10_AF12",
+        "WF10_A03_END_FLOW",
+        "WF10_A10_END_FLOW",
+        "WF10_A12_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF10_A07": {
+          "targetStepId": "WF10_A07",
+          "kind": "merge"
+        },
+        "J_WF10_A08": {
+          "targetStepId": "WF10_A08",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF10_A_JOIN_WF10_A07": {
+          "source": "J_WF10_A07",
+          "target": "WF10_A07",
+          "targetStepId": "WF10_A07"
+        },
+        "WF10_A_JOIN_WF10_A08": {
+          "source": "J_WF10_A08",
+          "target": "WF10_A08",
+          "targetStepId": "WF10_A08"
+        }
+      },
+      "width": 2900,
+      "height": 1080
+    },
+    "WF10-tobe": {
+      "workflowId": "WF10",
+      "mode": "tobe",
+      "bpmn": "WF10-tobe.bpmn",
+      "svg": "WF10-tobe.svg",
+      "stepIds": [
+        "WF10_T01",
+        "WF10_T02",
+        "WF10_T03",
+        "WF10_T04",
+        "WF10_T05",
+        "WF10_T06",
+        "WF10_T07",
+        "WF10_T08",
+        "WF10_T09",
+        "WF10_T10",
+        "WF10_T11",
+        "WF10_T12",
+        "WF10_T13",
+        "WF10_T14",
+        "WF10_T15",
+        "WF10_T03_RESULT",
+        "WF10_T10_RESULT",
+        "WF10_T12_RESULT",
+        "WF10_T15_RESULT"
+      ],
+      "flowIds": [
+        "WF10_TF01",
+        "WF10_TF02",
+        "WF10_TF03",
+        "WF10_TF04",
+        "WF10_TF05",
+        "WF10_TF06",
+        "WF10_TF07",
+        "WF10_TF08",
+        "WF10_TF09",
+        "WF10_TF10",
+        "WF10_TF11",
+        "WF10_TF12",
+        "WF10_TF13",
+        "WF10_TF14",
+        "WF10_T03_END_FLOW",
+        "WF10_T10_END_FLOW",
+        "WF10_T12_END_FLOW",
+        "WF10_T15_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF10_T07": {
+          "targetStepId": "WF10_T07",
+          "kind": "merge"
+        },
+        "J_WF10_T08": {
+          "targetStepId": "WF10_T08",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF10_T_JOIN_WF10_T07": {
+          "source": "J_WF10_T07",
+          "target": "WF10_T07",
+          "targetStepId": "WF10_T07"
+        },
+        "WF10_T_JOIN_WF10_T08": {
+          "source": "J_WF10_T08",
+          "target": "WF10_T08",
+          "targetStepId": "WF10_T08"
+        }
+      },
+      "width": 2900,
+      "height": 1240
+    },
+    "WF11-asis": {
+      "workflowId": "WF11",
+      "mode": "asis",
+      "bpmn": "WF11-asis.bpmn",
+      "svg": "WF11-asis.svg",
+      "stepIds": [
+        "WF11_A01",
+        "WF11_A02",
+        "WF11_A03",
+        "WF11_A04",
+        "WF11_A05",
+        "WF11_A06",
+        "WF11_A07",
+        "WF11_A08",
+        "WF11_A09",
+        "WF11_A10",
+        "WF11_A11",
+        "WF11_A12",
+        "WF11_A06_RESULT",
+        "WF11_A12_RESULT"
+      ],
+      "flowIds": [
+        "WF11_AF01",
+        "WF11_AF02",
+        "WF11_AF03",
+        "WF11_AF04",
+        "WF11_AF05",
+        "WF11_AF06",
+        "WF11_AF07",
+        "WF11_AF08",
+        "WF11_AF09",
+        "WF11_AF10",
+        "WF11_AF11",
+        "WF11_AF12",
+        "WF11_A06_END_FLOW",
+        "WF11_A12_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF11_A03": {
+          "targetStepId": "WF11_A03",
+          "kind": "merge"
+        },
+        "J_WF11_A11": {
+          "targetStepId": "WF11_A11",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF11_A_JOIN_WF11_A03": {
+          "source": "J_WF11_A03",
+          "target": "WF11_A03",
+          "targetStepId": "WF11_A03"
+        },
+        "WF11_A_JOIN_WF11_A11": {
+          "source": "J_WF11_A11",
+          "target": "WF11_A11",
+          "targetStepId": "WF11_A11"
+        }
+      },
+      "width": 2300,
+      "height": 850
+    },
+    "WF11-tobe": {
+      "workflowId": "WF11",
+      "mode": "tobe",
+      "bpmn": "WF11-tobe.bpmn",
+      "svg": "WF11-tobe.svg",
+      "stepIds": [
+        "WF11_T01",
+        "WF11_T02",
+        "WF11_T03",
+        "WF11_T04",
+        "WF11_T05",
+        "WF11_T06",
+        "WF11_T07",
+        "WF11_T08",
+        "WF11_T09",
+        "WF11_T10",
+        "WF11_T11",
+        "WF11_T12",
+        "WF11_T13",
+        "WF11_T14",
+        "WF11_T15",
+        "WF11_T16",
+        "WF11_T03_RESULT",
+        "WF11_T06_RESULT",
+        "WF11_T07_RESULT",
+        "WF11_T16_RESULT"
+      ],
+      "flowIds": [
+        "WF11_TF01",
+        "WF11_TF02",
+        "WF11_TF03",
+        "WF11_TF04",
+        "WF11_TF05",
+        "WF11_TF06",
+        "WF11_TF07",
+        "WF11_TF08",
+        "WF11_TF09",
+        "WF11_TF10",
+        "WF11_TF11",
+        "WF11_TF12",
+        "WF11_TF13",
+        "WF11_TF14",
+        "WF11_TF15",
+        "WF11_TF16",
+        "WF11_TF17",
+        "WF11_T03_END_FLOW",
+        "WF11_T06_END_FLOW",
+        "WF11_T07_END_FLOW",
+        "WF11_T16_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF11_T10": {
+          "targetStepId": "WF11_T10",
+          "kind": "merge"
+        },
+        "J_WF11_T15": {
+          "targetStepId": "WF11_T15",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF11_T_JOIN_WF11_T10": {
+          "source": "J_WF11_T10",
+          "target": "WF11_T10",
+          "targetStepId": "WF11_T10"
+        },
+        "WF11_T_JOIN_WF11_T15": {
+          "source": "J_WF11_T15",
+          "target": "WF11_T15",
+          "targetStepId": "WF11_T15"
+        }
+      },
+      "width": 3200,
+      "height": 780
+    },
+    "WF12-asis": {
+      "workflowId": "WF12",
+      "mode": "asis",
+      "bpmn": "WF12-asis.bpmn",
+      "svg": "WF12-asis.svg",
+      "stepIds": [
+        "WF12_A01",
+        "WF12_A02",
+        "WF12_A03",
+        "WF12_A04",
+        "WF12_A05",
+        "WF12_A06",
+        "WF12_A06_RESULT"
+      ],
+      "flowIds": [
+        "WF12_AF01",
+        "WF12_AF02",
+        "WF12_AF03",
+        "WF12_AF04",
+        "WF12_AF05",
+        "WF12_AF06",
+        "WF12_AF07",
+        "WF12_A06_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF12_A06": {
+          "targetStepId": "WF12_A06",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF12_A_JOIN_WF12_A06": {
+          "source": "J_WF12_A06",
+          "target": "WF12_A06",
+          "targetStepId": "WF12_A06"
+        }
+      },
+      "width": 2000,
+      "height": 620
+    },
+    "WF12-tobe": {
+      "workflowId": "WF12",
+      "mode": "tobe",
+      "bpmn": "WF12-tobe.bpmn",
+      "svg": "WF12-tobe.svg",
+      "stepIds": [
+        "WF12_T00",
+        "WF12_T01",
+        "WF12_T02",
+        "WF12_T03",
+        "WF12_T04",
+        "WF12_T05",
+        "WF12_T06",
+        "WF12_T07",
+        "WF12_T08",
+        "WF12_T09",
+        "WF12_T10",
+        "WF12_T11",
+        "WF12_T12",
+        "WF12_T13",
+        "WF12_T14",
+        "WF12_T15",
+        "WF12_T16",
+        "WF12_T17",
+        "WF12_T18",
+        "WF12_T19",
+        "WF12_T20",
+        "WF12_T21",
+        "WF12_T10_RESULT",
+        "WF12_T17_RESULT"
+      ],
+      "flowIds": [
+        "WF12_T00_START_FLOW",
+        "WF12_TF01",
+        "WF12_TF02",
+        "WF12_TF03",
+        "WF12_TF04",
+        "WF12_TF05",
+        "WF12_TF06",
+        "WF12_TF07",
+        "WF12_TF08",
+        "WF12_TF09",
+        "WF12_TF10",
+        "WF12_TF11",
+        "WF12_TF12",
+        "WF12_TF13",
+        "WF12_TF14",
+        "WF12_TF15",
+        "WF12_TF16",
+        "WF12_TF17",
+        "WF12_TF18",
+        "WF12_TF19",
+        "WF12_TF20",
+        "WF12_TF21",
+        "WF12_TF22",
+        "WF12_TF23",
+        "WF12_TF24",
+        "WF12_TF25",
+        "WF12_TF26",
+        "WF12_TF27",
+        "WF12_T10_END_FLOW",
+        "WF12_T17_END_FLOW"
+      ],
+      "auxiliaryNodes": {
+        "J_WF12_T01": {
+          "targetStepId": "WF12_T01",
+          "kind": "merge"
+        },
+        "J_WF12_T09": {
+          "targetStepId": "WF12_T09",
+          "kind": "merge"
+        },
+        "J_WF12_T10": {
+          "targetStepId": "WF12_T10",
+          "kind": "merge"
+        },
+        "J_WF12_T17": {
+          "targetStepId": "WF12_T17",
+          "kind": "merge"
+        }
+      },
+      "auxiliaryEdges": {
+        "WF12_T_JOIN_WF12_T01": {
+          "source": "J_WF12_T01",
+          "target": "WF12_T01",
+          "targetStepId": "WF12_T01"
+        },
+        "WF12_T_JOIN_WF12_T09": {
+          "source": "J_WF12_T09",
+          "target": "WF12_T09",
+          "targetStepId": "WF12_T09"
+        },
+        "WF12_T_JOIN_WF12_T10": {
+          "source": "J_WF12_T10",
+          "target": "WF12_T10",
+          "targetStepId": "WF12_T10"
+        },
+        "WF12_T_JOIN_WF12_T17": {
+          "source": "J_WF12_T17",
+          "target": "WF12_T17",
+          "targetStepId": "WF12_T17"
+        }
+      },
+      "width": 3800,
+      "height": 1100
+    }
+  }
+}

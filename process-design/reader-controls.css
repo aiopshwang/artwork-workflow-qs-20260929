@@ -61,3 +61,32 @@
 #map .reader-selected-element.djs-shape .djs-visual > circle,
 #map .reader-selected-element.djs-shape .djs-visual > polygon { stroke: #126da9 !important; stroke-width: 3px !important; fill: #edf7fd !important; }
 .flow-return-reason { display: block; margin-bottom: 5px; color: #975114; font-size: 11px; line-height: 1.6; }
+
+/* Revision 3: six business facts and direct edge navigation. */
+.business-fields { margin: 0; }
+.business-field { margin: 0 0 18px; }
+.business-field dt { color: #627e93; font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+.business-field dd { margin: 0; font-size: 14px; line-height: 1.85; white-space: pre-line; overflow-wrap: anywhere; }
+.business-field dd.business-name { font-size: 18px; font-weight: 650; line-height: 1.7; }
+.business-field dd.not-recorded { color: #81909b; }
+.solution-note { border: 1px solid #bad5d8; border-left: 3px solid #39818c; border-radius: 6px; padding: 12px; background: #f3fafb; margin: 20px 0; }
+.solution-note strong { font-size: 12px; color: #276774; }
+.solution-note p { font-size: 13px; line-height: 1.8; margin: 8px 0; }
+.solution-note small { font-size: 11px; line-height: 1.7; color: #647f8d; }
+.edge-navigation-note { font-size: 12px; color: #668096; line-height: 1.8; margin: 20px 0 0; }
+.customer-question-note { border: 1px solid #c4d4e3; border-radius: 6px; padding: 12px; background: #f6f9fc; margin: 20px 0; }
+.customer-question-note strong { font-size: 12px; color: #315d83; }
+.customer-question-note p { font-size: 14px; line-height: 1.85; margin: 8px 0; }
+.customer-question-note small { color: #627e93; font-size: 12px; }
+.viewport [data-reader-edge], .viewport [data-reader-edge] * { cursor: pointer; }
+.viewport [data-reader-edge] .djs-hit-stroke { stroke-width: 22px !important; pointer-events: stroke !important; vector-effect: non-scaling-stroke; }
+.viewport [data-reader-edge]:focus-visible { outline: none; }
+.viewport [data-reader-edge]:focus-visible .djs-visual > path { stroke-width: 5px !important; filter: drop-shadow(0 0 2px #126da9); }
+.viewport.is-dragging [data-reader-edge], .viewport.is-dragging [data-reader-edge] * { cursor: grabbing !important; }
+.reader-korean-gateway .djs-visual > path, .reader-korean-gateway .djs-visual > circle { display: none; }
+.reader-gateway-meaning { font-family: Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 10px; font-weight: 650; fill: #33566f; pointer-events: none; }
+.reader-solution-mark rect { fill: #e9f5f6; stroke: #83acb4; stroke-width: .8px; }
+.reader-solution-mark text { fill: #276774; font-family: Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; font-size: 10px; font-weight: 600; }
+@media (max-width: 620px) { .business-field dd, .customer-question-note p { font-size: 16px; line-height: 1.8; } .business-field dd.business-name { font-size: 17px; } }
+
+.viewport [data-reader-edge], .viewport [data-reader-node] { -webkit-tap-highlight-color: transparent; }
